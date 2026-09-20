@@ -114,8 +114,12 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
             add("manager", say("manager", q, st.get("filler", .2)))
             add("client", say("client", pick(seg["pain"]), .3))
         if random.random() < st.get("qualify", .4) and P["questions"].get("qualify"):
-            add("manager", say("manager", random.choice(P["questions"]["qualify"]), st.get("filler", .2)))
-            add("client", say("client", random.choice(P.get("qualify_answers", ["Решаю я.", "Согласовываю с руководителем."])), .25))
+            # сильный менеджер закрывает квалификацию несколькими вопросами, слабый одним
+            k = 3 if st.get("qualify", .4) > .6 else 2 if st.get("qualify", .4) > .3 else 1
+            for q in random.sample(P["questions"]["qualify"], k=min(k, len(P["questions"]["qualify"]))):
+                add("manager", say("manager", q, st.get("filler", .2)))
+                add("client", say("client", random.choice(
+                    P.get("qualify_answers", ["Решаю я.", "Согласовываю с руководителем."])), .25))
         if random.random() < st.get("to_depth", .3) and P["questions"].get("deep"):
             add("manager", random.choice(P["questions"]["deep"]))
             add("client", say("client", pick(seg["cost"]), .35))
@@ -294,9 +298,24 @@ def main():
     for lead in leads:
         if cid >= a.calls and chid >= chat_budget:
             break
-        reached = stages.index(lead["stage"])
         mgr = random.choice(mgrs)                     # сделку ведёт один человек
         lead["manager_id"] = mgr["id"]
+
+        # Докуда дошла сделка — следствие того, как с ней работали.
+        # Без этой связи аналитика показала бы, что качество разговоров
+        # не влияет на исход, и все выводы кабинета были бы неправдой.
+        st_ = mgr["style"]
+        skill = (st_.get("asks_first", .5) + st_.get("to_depth", .3) + st_.get("next_step", .5)) / 3
+        w = []
+        for i in range(n_stages):
+            if i < n_stages - 2:                      # рабочие этапы
+                w.append(max(.05, 1.0 - skill * (i / max(1, n_stages - 2)) * 0.9))
+            elif i == n_stages - 2:                   # выиграна
+                w.append(.15 + skill * 1.1)
+            else:                                     # проиграна
+                w.append(.55 - skill * .40)
+        reached = random.choices(range(n_stages), weights=w)[0]
+        lead["stage"] = stages[reached]
         seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
         dt = start + timedelta(days=random.randint(0, 70), hours=random.randint(0, 9),
                                minutes=random.choice([0, 5, 10, 15, 20, 30, 40, 45]))

@@ -28,6 +28,7 @@ def main() -> None:
         print(f"  {profile}: {calls} звонков, {leads} лидов")
 
     out = ROOT / "cabinet" / "data.js"
+    out.parent.mkdir(exist_ok=True)
     payload = json.dumps(bundle, ensure_ascii=False, indent=2)
     out.write_text(
         "// Сгенерировано scripts/build_data.py — руками не править.\n"
@@ -35,7 +36,11 @@ def main() -> None:
         f"window.CABINET_DATA = {payload};\n",
         encoding="utf-8",
     )
-    print(f"→ {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)")
+    demo = ROOT / "demo" / "data.js"
+    if demo.parent.exists():
+        demo.write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
+    print(f"→ {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)" +
+          (" · demo/data.js обновлён" if demo.parent.exists() else ""))
 
 
 if __name__ == "__main__":
