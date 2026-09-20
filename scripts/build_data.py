@@ -12,13 +12,15 @@ import json
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-PROFILES = ("b2b", "b2c")
+PROFILES = ("b2b", "b2c", "own")   # own — база участника, появляется после шага 0
 
 
 def main() -> None:
     bundle = {}
     for profile in PROFILES:
         path = ROOT / "data" / profile / "dataset.json"
+        if not path.exists():
+            continue
         with path.open(encoding="utf-8") as fh:
             bundle[profile] = json.load(fh)
         calls = len(bundle[profile]["calls"])

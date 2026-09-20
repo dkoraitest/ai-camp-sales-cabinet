@@ -485,6 +485,13 @@ function go(id){ active = id; draw(); }
   $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
     ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
+  if(meta.synthetic){
+    const b = document.createElement('span');
+    b.className = 'pill warn'; b.style.marginLeft = '4px';
+    b.textContent = 'данные синтетические';
+    b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
+    document.querySelector('header').appendChild(b);
+  }
   draw();
 })();
 </script>
