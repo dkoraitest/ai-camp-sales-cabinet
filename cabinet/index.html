@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кабинет продаж</title>
+<style>
+  :root{
+    --bg:#0b0d12; --panel:#12151d; --panel-2:#171b25; --line:#222838;
+    --fg:#f2f4f8; --muted:#8b93a7; --accent:#5b8cff; --good:#34d399;
+    --warn:#fbbf24; --bad:#f87171; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+  header{padding:22px 28px;border-bottom:1px solid var(--line);
+    display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+  h1{font-size:20px;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13px}
+  nav{display:flex;gap:4px;padding:0 20px;border-bottom:1px solid var(--line);overflow-x:auto}
+  nav button{background:none;border:0;color:var(--muted);padding:14px 16px;
+    font-size:14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+  nav button.on{color:var(--fg);border-bottom-color:var(--accent)}
+  main{padding:24px 28px;max-width:1320px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .cards{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+  .kpi{font-size:30px;font-weight:600;letter-spacing:-.02em}
+  .kpi-label{color:var(--muted);font-size:13px;margin-bottom:6px}
+  .kpi-note{color:var(--muted);font-size:12px;margin-top:6px}
+  h2{font-size:15px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);
+    margin:30px 0 12px;font-weight:600}
+  h2:first-child{margin-top:0}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;color:var(--muted);font-weight:500;font-size:12px;
+    text-transform:uppercase;letter-spacing:.05em;padding:10px 12px;border-bottom:1px solid var(--line)}
+  td{padding:11px 12px;border-bottom:1px solid var(--line)}
+  tr.clickable{cursor:pointer}
+  tr.clickable:hover td{background:var(--panel-2)}
+  .pill{display:inline-block;padding:3px 9px;border-radius:99px;font-size:12px;
+    background:var(--panel-2);border:1px solid var(--line);color:var(--muted)}
+  .pill.good{color:var(--good);border-color:rgba(52,211,153,.3)}
+  .pill.warn{color:var(--warn);border-color:rgba(251,191,36,.3)}
+  .pill.bad{color:var(--bad);border-color:rgba(248,113,113,.3)}
+  .pill.accent{color:var(--accent);border-color:rgba(91,140,255,.35)}
+  .bar{height:6px;background:var(--panel-2);border-radius:99px;overflow:hidden}
+  .bar > i{display:block;height:100%;background:var(--accent)}
+  .bar.good > i{background:var(--good)} .bar.warn > i{background:var(--warn)} .bar.bad > i{background:var(--bad)}
+  .empty{background:var(--panel);border:1px dashed var(--line);border-radius:var(--radius);
+    padding:34px;text-align:center;color:var(--muted)}
+  .empty b{color:var(--fg);display:block;margin-bottom:6px;font-size:16px}
+  .empty code{background:var(--panel-2);padding:2px 7px;border-radius:6px;color:var(--accent)}
+  dialog{background:var(--panel);color:var(--fg);border:1px solid var(--line);
+    border-radius:var(--radius);max-width:780px;width:92%;padding:0}
+  dialog::backdrop{background:rgba(0,0,0,.6)}
+  .dlg-head{padding:20px 24px;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+  .dlg-body{padding:20px 24px;max-height:64vh;overflow:auto}
+  .turn{margin-bottom:12px;display:flex;gap:10px}
+  .turn .who{flex:0 0 76px;color:var(--muted);font-size:12px;padding-top:2px}
+  .turn.client .text{background:var(--panel-2);border-radius:10px;padding:9px 12px}
+  .turn.manager .text{background:rgba(91,140,255,.1);border-radius:10px;padding:9px 12px}
+  .x{background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  select,input,button.act{background:var(--panel-2);border:1px solid var(--line);color:var(--fg);
+    padding:8px 11px;border-radius:9px;font-size:14px}
+  button.act{cursor:pointer;border-color:rgba(91,140,255,.35);color:var(--accent)}
+  button.act:disabled{cursor:not-allowed;color:var(--muted);border-color:var(--line)}
+  .crit{display:flex;justify-content:space-between;gap:12px;padding:9px 0;
+    border-bottom:1px solid var(--line);font-size:14px}
+  .crit:last-child{border:0}
+  .muted{color:var(--muted)}
+  .small{font-size:13px}
+  .insight{border-left:3px solid var(--accent);padding:12px 16px;background:var(--panel);
+    border-radius:0 10px 10px 0;margin-bottom:10px}
+  .insight.warn{border-left-color:var(--warn)}
+  .insight.bad{border-left-color:var(--bad)}
+  .insight.good{border-left-color:var(--good)}
+  .insight h4{margin:0 0 4px;font-size:14px}
+  .insight p{margin:0;color:var(--muted);font-size:13px}
+  .funnel{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+  .fstep{flex:1 0 150px;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;padding:12px}
+  .fstep.focus{border-color:rgba(91,140,255,.5);background:rgba(91,140,255,.07)}
+  .fstep b{font-size:13px} .fstep p{margin:6px 0 0;font-size:12px;color:var(--muted)}
+  .skill{margin-bottom:10px}
+  .skill .lbl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+  .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
+    border-left:2px solid var(--accent);white-space:pre-wrap}
+  .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  .two{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+  @media(max-width:860px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="brand">Кабинет продаж</h1>
+  <span class="sub" id="profile-note"></span>
+</header>
+
+<nav id="tabs"></nav>
+<main id="view"></main>
+
+<dialog id="modal">
+  <div class="dlg-head">
+    <div><strong id="m-title"></strong><div class="sub" id="m-sub"></div></div>
+    <button class="x" onclick="document.getElementById('modal').close()">&times;</button>
+  </div>
+  <div class="dlg-body" id="m-body"></div>
+</dialog>
+
+<script src="data.js"></script>
+<script src="config.js"></script>
+<!-- Появляются по мере прохождения шагов. Пока файла нет, браузер ругнётся в консоль
+     и покажет заглушку — это нормально. -->
+<script src="scores.js" onerror="void 0"></script>
+<script src="coach.js" onerror="void 0"></script>
+<script src="enrich.js" onerror="void 0"></script>
+<script src="deep.js" onerror="void 0"></script>
+<script>
+const CFG = window.CABINET_CONFIG || {profile:'b2b', matrix:{extract:[],evaluate:[]}, questions:[]};
+
+/* ------------------------------------------------------------------
+   DataSource — единственная точка, которая знает, откуда берутся данные.
+   Чтобы подключить свою CRM: поменяйте тела методов, интерфейс не трогайте.
+   Подробнее — docs/architecture.md
+------------------------------------------------------------------- */
+const DataSource = {
+  profile(){ return (window.CABINET_DATA||{})[CFG.profile] || {calls:[],chats:[],leads:[],managers:[],profile:{}} },
+  calls(){ return this.profile().calls || [] },
+  chats(){ return this.profile().chats || [] },
+  leads(){ return this.profile().leads || [] },
+  managers(){ return this.profile().managers || [] },
+  meta(){ return this.profile().profile || {} },
+  funnel(){ return (CFG.funnel && CFG.funnel.length) ? CFG.funnel : (this.meta().funnel || []) },
+  // все коммуникации одним списком: звонки и переписка склеены по сделке и этапу
+  contacts(){
+    const calls = this.calls().map(c => ({...c, kind:'call', when:c.date,
+      volume:c.duration_min + ' мин', turns:(c.transcript||[]).length}));
+    const chats = this.chats().map(c => ({...c, kind:'chat', when:c.date_start,
+      volume:(c.messages||[]).length + ' сообщ.', turns:(c.messages||[]).length}));
+    return [...calls, ...chats].sort((a,b) => new Date(a.when) - new Date(b.when));
+  },
+  scores(){ return window.CABINET_SCORES || null },
+  coaching(){ return window.CABINET_COACH || null },
+  enrichment(){ return window.CABINET_ENRICH || null },
+  deep(){ return window.CABINET_DEEP || null }
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mgrName = id => (DataSource.managers().find(m => m.id === id) || {}).name || id;
+const fmtDate = s => s ? new Date(s).toLocaleString('ru-RU',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
+const money = n => n ? new Intl.NumberFormat('ru-RU').format(n) + ' ₸' : '—';
+const stageLabel = code => (DataSource.meta().stage_labels || {})[code] || code;
+const grade = (v,max) => { const r = v/(max||10); return r>=.75?'good':r>=.5?'warn':'bad' };
+
+function scoreOf(id){
+  const s = DataSource.scores();
+  if(!s) return null;
+  return (s.items || s.calls || []).find(x => x.id === id) || null;
+}
+function emptyBlock(title, hint, step){
+  return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
+    '<span class="muted">Появится после</span> <code>'+esc(step)+'</code></div>';
+}
+function kpi(label, value, note){
+  return '<div class="card"><div class="kpi-label">'+esc(label)+'</div><div class="kpi">'+esc(value)+'</div>'+
+    (note ? '<div class="kpi-note">'+esc(note)+'</div>' : '')+'</div>';
+}
+
+/* ---------------------------- ОБЗОР ---------------------------- */
+function renderOverview(){
+  const contacts = DataSource.contacts(), leads = DataSource.leads(), sc = DataSource.scores();
+  const items = sc ? (sc.items || sc.calls || []) : [];
+  const avg = items.length ? (items.reduce((a,c)=>a+(c.total||0),0)/items.length).toFixed(1) : null;
+  const won = leads.filter(l => l.stage === 'closed_won').length;
+  const lost = leads.filter(l => l.stage === 'closed_lost').length;
+  const conv = (won+lost) ? Math.round(won/(won+lost)*100) : 0;
+
+  let html = '<div class="grid">'+
+    kpi('Коммуникаций', contacts.length, DataSource.calls().length+' звонков · '+DataSource.chats().length+' переписок')+
+    kpi('Разобрано', items.length || '—', items.length ? 'по вашей матрице' : 'аналитика не собрана')+
+    kpi('Средний балл', avg ?? '—', avg ? 'из 10' : '')+
+    kpi('Лидов', leads.length, '')+
+    kpi('Конверсия', conv+'%', won+' выиграно / '+lost+' проиграно')+
+  '</div>';
+
+  const fn = DataSource.funnel();
+  if(fn.length){
+    html += '<h2>Воронка · коммуникации склеиваются по этапам</h2><div class="funnel">';
+    fn.forEach(s => {
+      const n = contacts.filter(c => c.stage === s.id).length;
+      html += '<div class="fstep'+(s.id===CFG.focus_stage?' focus':'')+'"><b>'+esc(s.label)+'</b>'+
+        '<p>'+esc(s.goal||'')+'</p>'+
+        '<p style="margin-top:8px"><span class="pill'+(s.id===CFG.focus_stage?' accent':'')+'">'+n+' контактов</span></p></div>';
+    });
+    html += '</div>';
+  }
+
+  const mx = CFG.matrix || {extract:[],evaluate:[]};
+  if((mx.evaluate||[]).length){
+    html += '<h2>Матрица · что система достаёт из каждого контакта</h2><div class="two">';
+    html += '<div class="card"><div class="kpi-label">Слой 1 · извлекаем факты</div>';
+    (mx.extract||[]).forEach(e => html += '<div class="crit"><span>'+esc(e.label)+'</span>'+
+      '<span class="muted small" style="max-width:55%;text-align:right">'+esc(e.note||'')+'</span></div>');
+    html += '</div><div class="card"><div class="kpi-label">Слой 2 · оцениваем работу</div>';
+    (mx.evaluate||[]).forEach(e => html += '<div class="crit"><span>'+esc(e.name)+'</span>'+
+      '<span class="muted small" style="max-width:55%;text-align:right">'+esc(e.includes||'')+'</span></div>');
+    html += '</div></div>';
+  } else {
+    html += '<h2>Матрица оценки</h2>'+emptyBlock('Матрица ещё не настроена',
+      'Кабинет не знает, что считать хорошим разговором в вашем бизнесе.','шага 0');
+  }
+
+  if((CFG.questions||[]).length){
+    html += '<h2>Вопросы, на которые отвечает кабинет</h2><div class="card">';
+    CFG.questions.forEach((q,i) => html += '<div class="crit"><span>'+(i+1)+'. '+esc(q)+'</span></div>');
+    html += '</div>';
+  }
+  return html;
+}
+
+/* ------------------------ КОММУНИКАЦИИ ------------------------ */
+function renderContacts(){
+  const all = DataSource.contacts();
+  const stages = [...new Set(all.map(c => c.stage))];
+  let html = '<div class="row">'+
+    '<select id="f-kind"><option value="">Звонки и переписка</option><option value="call">Только звонки</option><option value="chat">Только переписка</option></select>'+
+    '<select id="f-stage"><option value="">Все этапы</option>'+
+      stages.map(s => '<option value="'+esc(s)+'">'+esc(stageLabel(s))+'</option>').join('')+'</select>'+
+    '<select id="f-mgr"><option value="">Все менеджеры</option>'+
+      DataSource.managers().map(m => '<option value="'+esc(m.id)+'">'+esc(m.name)+'</option>').join('')+'</select>'+
+    '<span class="muted" id="f-count"></span></div>'+
+  '<table><thead><tr><th>Дата</th><th>Канал</th><th>Менеджер</th><th>Этап</th><th>Объём</th><th>Балл</th><th>Итог</th></tr></thead>'+
+  '<tbody id="c-body"></tbody></table>';
+  setTimeout(bindFilters, 0);
+  return html;
+}
+function bindFilters(){
+  const draw = () => {
+    const fk = $('#f-kind').value, fs = $('#f-stage').value, fm = $('#f-mgr').value;
+    const rows = DataSource.contacts().filter(c =>
+      (!fk || c.kind === fk) && (!fs || c.stage === fs) && (!fm || c.manager_id === fm));
+    $('#c-body').innerHTML = rows.map(c => {
+      const s = scoreOf(c.id);
+      const badge = s ? '<span class="pill '+grade(s.total,10)+'">'+s.total.toFixed(1)+'</span>' : '<span class="pill">—</span>';
+      const ch = c.kind === 'call' ? 'звонок' : (c.channel || 'переписка');
+      return '<tr class="clickable" onclick="openContact(\''+c.id+'\')">'+
+        '<td>'+fmtDate(c.when)+'</td><td><span class="pill">'+esc(ch)+'</span></td>'+
+        '<td>'+esc(mgrName(c.manager_id))+'</td>'+
+        '<td><span class="pill">'+esc(stageLabel(c.stage))+'</span></td>'+
+        '<td class="muted">'+esc(c.volume)+'</td><td>'+badge+'</td>'+
+        '<td class="muted">'+esc(c.outcome||'')+'</td></tr>';
+    }).join('');
+    $('#f-count').textContent = rows.length+' из '+DataSource.contacts().length;
+  };
+  ['#f-kind','#f-stage','#f-mgr'].forEach(s => $(s).onchange = draw);
+  draw();
+}
+function openContact(id){
+  const c = DataSource.contacts().find(x => x.id === id);
+  if(!c) return;
+  const s = scoreOf(id);
+  $('#m-title').textContent = mgrName(c.manager_id)+' · '+stageLabel(c.stage);
+  $('#m-sub').textContent = fmtDate(c.when)+' · '+(c.kind==='call'?'звонок':c.channel)+' · '+c.volume+' · '+(c.outcome||'');
+
+  let body = '';
+  if(s){
+    body += '<div class="card" style="margin-bottom:16px"><div class="kpi-label">Оценка по матрице</div>'+
+      '<div class="kpi">'+s.total.toFixed(1)+' <span class="muted" style="font-size:16px">/ 10</span></div>';
+    (s.evaluate || s.criteria || []).forEach(cr => {
+      const v = cr.value, max = cr.max || 10;
+      body += '<div class="skill"><div class="lbl"><span>'+esc(cr.name)+'</span>'+
+        '<span class="muted">'+v+'/'+max+'</span></div>'+
+        '<div class="bar '+grade(v,max)+'"><i style="width:'+Math.round(v/max*100)+'%"></i></div></div>';
+    });
+    if(s.comment) body += '<p class="muted small" style="margin:12px 0 0">'+esc(s.comment)+'</p>';
+    body += '</div>';
+
+    const ex = s.extracted;
+    if(ex){
+      body += '<div class="card" style="margin-bottom:16px"><div class="kpi-label">Извлечено из контакта</div>';
+      if(ex.spsv) Object.entries(ex.spsv).forEach(([k,v]) =>
+        body += '<div class="crit"><span class="muted">'+esc(k)+'</span><span style="max-width:65%;text-align:right">'+esc(v)+'</span></div>');
+      if(ex.qualification) Object.entries(ex.qualification).forEach(([k,v]) =>
+        body += '<div class="crit"><span class="muted">'+esc(k)+'</span><span>'+(v===true?'<span class="pill good">да</span>':v===false?'<span class="pill bad">нет</span>':esc(v))+'</span></div>');
+      if((ex.objections||[]).length) body += '<div class="crit"><span class="muted">возражения</span>'+
+        '<span style="max-width:65%;text-align:right">'+ex.objections.map(o=>'«'+esc(o)+'»').join('<br>')+'</span></div>';
+      if(ex.next_step) body += '<div class="crit"><span class="muted">следующий шаг</span><span>'+esc(ex.next_step)+'</span></div>';
+      if(ex.signals) body += '<div class="crit"><span class="muted">сигналы</span><span style="max-width:65%;text-align:right">'+esc(ex.signals)+'</span></div>';
+      body += '</div>';
+    }
+  }
+  const turns = c.kind === 'call' ? (c.transcript||[]) : (c.messages||[]);
+  body += turns.map(t => '<div class="turn '+t.who+'"><div class="who">'+
+    (t.who==='manager'?'менеджер':'клиент')+(t.ts?'<br><span style="opacity:.6">'+fmtDate(t.ts).slice(0,5)+'</span>':'')+
+    '</div><div class="text">'+esc(t.text)+'</div></div>').join('');
+  $('#m-body').innerHTML = body;
+  $('#modal').showModal();
+}
+
+/* -------------------------- МЕНЕДЖЕРЫ -------------------------- */
+function renderManagers(){
+  const coach = DataSource.coaching();
+  let html = '<div class="cards">';
+  DataSource.managers().forEach(m => {
+    const mine = DataSource.contacts().filter(c => c.manager_id === m.id);
+    const scored = mine.map(c => scoreOf(c.id)).filter(Boolean);
+    const avg = scored.length ? scored.reduce((a,s)=>a+s.total,0)/scored.length : null;
+    const fb = coach ? (coach.managers||[]).find(x => x.id === m.id) : null;
+
+    html += '<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline">'+
+      '<strong>'+esc(m.name)+'</strong>'+
+      (avg!==null ? '<span class="pill '+grade(avg,10)+'">'+avg.toFixed(1)+'</span>' : '<span class="pill">—</span>')+'</div>'+
+      '<div class="muted small" style="margin-top:2px">'+esc(m.role)+'</div>'+
+      '<div class="kpi-note">'+mine.length+' контактов · '+
+        mine.filter(c=>c.kind==='call').length+' звонков, '+mine.filter(c=>c.kind==='chat').length+' переписок</div>';
+
+    if(fb && (fb.skills||[]).length){
+      html += '<div style="margin-top:14px"><div class="kpi-label">Карта навыков</div>';
+      fb.skills.forEach(s => {
+        html += '<div class="skill"><div class="lbl"><span>'+esc(s.name)+'</span>'+
+          '<span class="muted">'+s.value+'/'+(s.max||10)+'</span></div>'+
+          '<div class="bar '+grade(s.value,s.max||10)+'"><i style="width:'+Math.round(s.value/(s.max||10)*100)+'%"></i></div></div>';
+      });
+      html += '</div>';
+    }
+    if(fb){
+      html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line)">'+
+        '<div class="kpi-label">Обратная связь</div><p class="small" style="margin:6px 0 0">'+esc(fb.summary)+'</p>';
+      if(fb.focus) html += '<p class="muted small" style="margin:8px 0 0"><b>Фокус недели:</b> '+esc(fb.focus)+'</p>';
+      if(fb.quote) html += '<p class="small" style="margin:10px 0 0;padding:10px 12px;background:var(--panel-2);'+
+        'border-radius:10px;border-left:2px solid var(--accent)">'+esc(fb.quote)+'</p>';
+      html += '</div>';
+
+      if(fb.drill){
+        html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line)">'+
+          '<div class="kpi-label">Тренировка · '+esc(fb.drill.skill_name||'')+'</div>'+
+          '<p class="small" style="margin:6px 0 0"><b>'+esc(fb.drill.title)+'</b></p>'+
+          '<p class="muted small" style="margin:6px 0 0">'+esc(fb.drill.task)+'</p>'+
+          (fb.drill.expected ? '<p class="muted small" style="margin:6px 0 0"><b>Что проверяем:</b> '+esc(fb.drill.expected)+'</p>' : '')+
+          '</div>';
+      }
+      (fb.telegram_messages||[]).forEach(t => {
+        html += '<div class="tg"><div class="meta">Telegram '+esc(fb.telegram||'')+
+          ' · '+esc(t.trigger||'')+'</div>'+esc(t.text)+'</div>';
+      });
+    }
+    html += '</div>';
+  });
+  html += '</div>';
+
+  if(!coach) html += '<h2>Карта навыков и обратная связь</h2>'+
+    emptyBlock('Тренер ещё не подключён',
+      'Кабинет оценивает разговоры, но пока не объясняет менеджеру, что делать иначе, и не тренирует слабые места.','шага 2');
+  return html;
+}
+
+/* ---------------------------- ЛИДЫ ---------------------------- */
+function renderLeads(){
+  const leads = DataSource.leads(), enr = DataSource.enrichment();
+  const isB2C = CFG.profile === 'b2c';
+  let html = '<table><thead><tr>'+
+    '<th>'+(isB2C?'Родитель':'Компания')+'</th><th>'+(isB2C?'Возраст':'Контакт')+'</th>'+
+    '<th>Источник</th><th>Этап</th><th>Сумма</th>'+
+    '<th>'+(isB2C?'Реакция, мин':'След. шаг')+'</th><th></th></tr></thead><tbody>';
+  leads.forEach(l => {
+    const e = enr ? (enr.leads||[]).find(x => x.id === l.id) : null;
+    html += '<tr class="clickable" onclick="openLead(\''+l.id+'\')">'+
+      '<td>'+esc(l.company || l.parent)+'</td>'+
+      '<td>'+esc(isB2C ? l.child_age+' лет' : (l.contact||''))+'</td>'+
+      '<td class="muted">'+esc(l.source)+'</td>'+
+      '<td><span class="pill">'+esc(stageLabel(l.stage))+'</span></td>'+
+      '<td>'+money(l.value_kzt)+'</td>'+
+      '<td class="muted">'+(isB2C ? (l.responded_in_min ?? '—') : (l.next_step || '<span class="pill bad">нет</span>'))+'</td>'+
+      '<td>'+(e ? '<span class="pill good">обогащён</span>' : '')+'</td></tr>';
+  });
+  html += '</tbody></table>';
+  if(!enr) html += '<h2>Обогащение</h2>'+emptyBlock('Карточки пока сырые',
+    'Кабинет знает только то, что записал менеджер. Внешнего контекста о клиенте нет.','шага 3');
+  return html;
+}
+function openLead(id){
+  const l = DataSource.leads().find(x => x.id === id);
+  if(!l) return;
+  const enr = DataSource.enrichment();
+  const e = enr ? (enr.leads||[]).find(x => x.id === id) : null;
+  $('#m-title').textContent = l.company || l.parent;
+  $('#m-sub').textContent = stageLabel(l.stage)+' · '+money(l.value_kzt)+' · источник: '+l.source;
+  let body = '<div class="card" style="margin-bottom:16px">';
+  Object.entries(l).forEach(([k,v]) => { if(k!=='id')
+    body += '<div class="crit"><span class="muted">'+esc(k)+'</span><span>'+esc(v ?? '—')+'</span></div>'; });
+  body += '</div>';
+  if(e){
+    if(e.context) body += '<h2 style="margin-top:0">Контекст</h2><div class="card">'+esc(e.context)+'</div>';
+    if(e.message) body += '<h2>Сообщение</h2><div class="card" style="white-space:pre-wrap">'+esc(e.message)+'</div>';
+  }
+  const rel = DataSource.contacts().filter(c => c.lead_id === id);
+  if(rel.length){
+    body += '<h2>История коммуникаций</h2>';
+    rel.forEach(c => body += '<div class="crit"><span>'+fmtDate(c.when)+' · '+
+      (c.kind==='call'?'звонок':c.channel)+' · '+esc(mgrName(c.manager_id))+'</span>'+
+      '<span class="muted small" style="max-width:55%;text-align:right">'+esc(c.outcome||'')+'</span></div>');
+  }
+  $('#m-body').innerHTML = body;
+  $('#modal').showModal();
+}
+
+/* --------------------------- ИНСАЙТЫ --------------------------- */
+function renderInsights(){
+  const sc = DataSource.scores();
+  if(!sc || !(sc.insights||[]).length){
+    return emptyBlock('Инсайтов пока нет',
+      'Когда коммуникации будут разобраны, кабинет сам найдёт закономерности: где проседает воронка, кто в чём силён, какие возражения повторяются.','шага 1');
+  }
+  return sc.insights.map(i => '<div class="insight '+esc(i.level||'')+'"><h4>'+esc(i.title)+'</h4><p>'+esc(i.text)+'</p></div>').join('');
+}
+
+/* ----------------------- ГЛУБОКАЯ АНАЛИТИКА ----------------------- */
+function renderDeep(){
+  const d = DataSource.deep();
+  const have = DataSource.contacts().length;
+  const need = (CFG.deep_analytics||{}).min_items || 300;
+  let html = '<div class="card" style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">'+
+    '<div><div class="kpi-label">Кросс-аналитика по всей базе</div>'+
+    '<div class="small muted">Разбор выигранных сделок, связь квалификации с закрытием, карта возражений, SPSV по сегментам</div></div>'+
+    '<div style="text-align:right"><div class="kpi">'+have+' <span class="muted" style="font-size:15px">/ '+need+'</span></div>'+
+    '<div class="kpi-note">контактов в базе</div></div></div>';
+  if(have < need) html += '<p class="muted small" style="margin:14px 0 0">'+
+    'На таком объёме выводы — иллюстрация механики, а не статистика. Чтобы закономерности стали значимыми, нужно от '+need+' контактов: это примерно месяц работы отдела из четырёх человек.</p>';
+  html += '</div>';
+
+  if(!d) return html + emptyBlock('Глубокая аналитика не запускалась',
+    'Это отдельный разрез: не «как прошёл разговор», а «что общего у сделок, которые мы выиграли».','шага 4');
+
+  if((d.spsv||[]).length){
+    html += '<h2>SPSV по сегментам</h2><div class="cards">';
+    d.spsv.forEach(s => {
+      html += '<div class="card"><div style="display:flex;justify-content:space-between"><strong>'+esc(s.segment)+'</strong>'+
+        '<span class="pill">'+esc(s.share)+'</span></div>';
+      [['Ситуация',s.situation],['Проблема',s.problem],['Решение',s.solution],['Ценность',s.value]].forEach(([k,v]) => {
+        if(v) html += '<div style="margin-top:10px"><div class="kpi-label">'+k+'</div><div class="small">'+esc(v)+'</div></div>';
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  if((d.win_patterns||[]).length){
+    html += '<h2>Что общего у выигранных сделок</h2>';
+    d.win_patterns.forEach(p => html += '<div class="insight good"><h4>'+esc(p.title)+'</h4><p>'+esc(p.text)+'</p></div>');
+  }
+  if((d.qualification_link||[]).length){
+    html += '<h2>Квалификация и исход</h2>';
+    d.qualification_link.forEach(p => html += '<div class="insight '+esc(p.level||'warn')+'"><h4>'+esc(p.title)+'</h4><p>'+esc(p.text)+'</p></div>');
+  }
+  if((d.objection_map||[]).length){
+    html += '<h2>Карта возражений</h2><table><thead><tr><th>Возражение</th><th>Частота</th><th>Что отвечают лучшие</th></tr></thead><tbody>';
+    d.objection_map.forEach(o => html += '<tr><td>«'+esc(o.objection)+'»</td><td>'+esc(o.count)+'</td>'+
+      '<td class="muted">'+esc(o.best_response)+'</td></tr>');
+    html += '</tbody></table>';
+  }
+  return html;
+}
+
+/* ---------------------------- Каркас ---------------------------- */
+const TABS = [
+  {id:'overview', label:'Обзор',         render:renderOverview},
+  {id:'contacts', label:'Коммуникации',  render:renderContacts},
+  {id:'managers', label:'Менеджеры',     render:renderManagers},
+  {id:'leads',    label:'Лиды',          render:renderLeads},
+  {id:'insights', label:'Инсайты',       render:renderInsights},
+  {id:'deep',     label:'Глубина',       render:renderDeep}
+];
+let active = 'overview';
+function draw(){
+  $('#tabs').innerHTML = TABS.map(t => '<button class="'+(t.id===active?'on':'')+'" onclick="go(\''+t.id+'\')">'+t.label+'</button>').join('');
+  $('#view').innerHTML = (TABS.find(t => t.id === active) || TABS[0]).render();
+}
+function go(id){ active = id; draw(); }
+
+(function init(){
+  const meta = DataSource.meta();
+  $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
+    ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
+  $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
+  draw();
+})();
+</script>
+</body>
+</html>
