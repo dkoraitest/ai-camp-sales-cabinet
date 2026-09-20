@@ -100,6 +100,38 @@
   .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  /* Лента сделки: коммуникации, склеенные по этапам */
+  .thread{margin:4px 0 0}
+  .thr-stage{position:relative;border-left:2px solid var(--line);margin-left:5px;padding:0 0 16px 18px}
+  .thr-stage:last-child{padding-bottom:2px}
+  .thr-stage.open{border-left-color:var(--accent)}
+  .thr-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+    flex-wrap:wrap;margin-bottom:6px}
+  .thr-head b{font-size:14px}
+  .thr-head::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;
+    border-radius:99px;background:var(--line);border:3px solid var(--bg)}
+  .thr-stage.open .thr-head::before{background:var(--accent)}
+  .thr-item{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    padding:7px 10px;border-radius:9px;font-size:13px;cursor:pointer}
+  .thr-item:hover{background:var(--panel-2)}
+  .thr-when{color:var(--muted);flex:0 0 86px}
+  .thr-out{flex:1 1 180px;text-align:right}
+  .thr-gap{color:var(--muted);font-size:12px;padding:2px 0 0 18px;margin-left:5px}
+  .strip{display:inline-flex;gap:3px;vertical-align:middle}
+  .strip i{width:20px;height:18px;border-radius:5px;background:var(--panel-2);
+    border:1px solid var(--line);font-style:normal;font-size:11px;color:var(--muted);
+    display:flex;align-items:center;justify-content:center}
+  .strip i.has{background:rgba(91,140,255,.18);border-color:rgba(91,140,255,.45);color:var(--fg)}
+  .strip i.cur{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  details.deal{background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:0;margin-bottom:8px}
+  details.deal > summary{cursor:pointer;list-style:none;padding:13px 16px;
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  details.deal > summary::-webkit-details-marker{display:none}
+  details.deal[open] > summary{border-bottom:1px solid var(--line)}
+  details.deal > summary:hover{background:var(--panel-2);border-radius:var(--radius)}
+  .deal-body{padding:14px 16px}
+  .deal-name{font-weight:600;flex:1 1 200px}
   .two{display:grid;gap:14px;grid-template-columns:1fr 1fr}
   @media(max-width:860px){.two{grid-template-columns:1fr}}
 </style>
@@ -172,6 +204,74 @@ function scoreOf(id){
   const s = DataSource.scores();
   if(!s) return null;
   return (s.items || s.calls || []).find(x => x.id === id) || null;
+}
+/* -------------------------------------------------------------------
+   Сделка и её коммуникации.
+
+   Атом данных — коммуникация. У неё есть lead_id (с кем разговор)
+   и stage — этап, НА КОТОРОМ разговор произошёл. У сделки свой stage —
+   тот, где она стоит сейчас. Из этой пары всё и собирается: группируем
+   коммуникации по сделке, внутри — по этапу, по дате. Ничего в данные
+   добавлять не нужно, переход на этап — это первый разговор на нём.
+------------------------------------------------------------------- */
+const leadOf = id => DataSource.leads().find(l => l.id === id) || null;
+const leadName = id => { const l = leadOf(id); return l ? (l.company || l.parent || id) : '—' };
+const plural = (n,a,b,c) => { const d=n%100, e=n%10;
+  return d>4&&d<21 ? c : e===1 ? a : e>1&&e<5 ? b : c };
+let _now = null;
+function dataNow(){                       // «сегодня» базы — последняя активность в ней
+  if(!_now){ const a = DataSource.contacts(); _now = a.length ? new Date(a[a.length-1].when) : new Date() }
+  return _now;
+}
+function dealTimeline(leadId, pool){
+  const items = (pool || DataSource.contacts()).filter(c => c.lead_id === leadId);
+  const groups = [];
+  items.forEach(c => {
+    const last = groups[groups.length-1];
+    if(last && last.stage === c.stage) last.items.push(c); else groups.push({stage:c.stage, items:[c]});
+  });
+  groups.forEach((g,i) => {
+    const start = new Date(g.items[0].when);
+    const next = groups[i+1];
+    g.open = !next;
+    g.days = Math.max(0, Math.round(((next ? new Date(next.items[0].when) : dataNow()) - start)/864e5));
+    const sc = g.items.map(c => scoreOf(c.id)).filter(Boolean);
+    g.avg = sc.length ? sc.reduce((a,s) => a+s.total, 0)/sc.length : null;
+  });
+  return groups;
+}
+function dealThread(leadId, pool){
+  const groups = dealTimeline(leadId, pool);
+  if(!groups.length) return '<p class="muted small">По этой сделке нет записанных коммуникаций.</p>';
+  const term = DataSource.funnel().map(s => s.id || s).slice(-2);   // закрытая сделка нигде не «стоит»
+  return '<div class="thread">'+groups.map(g =>
+    '<div class="thr-stage'+(g.open?' open':'')+'">'+
+      '<div class="thr-head"><b>'+esc(stageLabel(g.stage))+'</b><span class="muted small">'+
+        g.items.length+' '+plural(g.items.length,'коммуникация','коммуникации','коммуникаций')+
+        (term.indexOf(g.stage) >= 0 ? '' :
+          ' · '+g.days+' '+plural(g.days,'день','дня','дней')+(g.open?' и стоит здесь':' на этапе'))+
+        (g.avg!=null ? ' · ср. балл '+g.avg.toFixed(1) : '')+
+      '</span></div>'+
+      g.items.map(c => {
+        const s = scoreOf(c.id);
+        return '<div class="thr-item" onclick="if(window.openContact)openContact(\''+c.id+'\')">'+
+          '<span class="thr-when">'+fmtDate(c.when)+'</span>'+
+          '<span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span>'+
+          '<span class="muted">'+esc(c.volume)+'</span>'+
+          '<span class="muted">'+esc(mgrName(c.manager_id))+'</span>'+
+          (s ? '<span class="pill '+grade(s.total,10)+'">'+s.total.toFixed(1)+'</span>' : '')+
+          '<span class="thr-out muted small">'+esc(c.outcome||'')+'</span></div>';
+      }).join('')+
+    '</div>').join('')+'</div>';
+}
+function dealStrip(leadId, pool){        // где по воронке лежит масса разговоров
+  const fn = DataSource.funnel().map(s => s.id || s);
+  const items = (pool || DataSource.contacts()).filter(c => c.lead_id === leadId);
+  const cnt = {}; items.forEach(c => cnt[c.stage] = (cnt[c.stage]||0)+1);
+  const l = leadOf(leadId), cur = l ? fn.indexOf(l.stage) : -1;
+  return '<span class="strip" title="сколько коммуникаций на каждом этапе">'+fn.map((s,i) =>
+    '<i class="'+(cnt[s]?'has':'')+(i===cur?' cur':'')+'" title="'+esc(stageLabel(s))+': '+
+      (cnt[s]||0)+'">'+(cnt[s]||'')+'</i>').join('')+'</span>';
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
@@ -400,18 +500,22 @@ registerTab({ id: 'overview', label: 'Обзор', render: renderOverview });
 <script>
 /* Блок «Коммуникации». Подключается сборщиком: scripts/build_cabinet.py */
 /* ------------------------ КОММУНИКАЦИИ ------------------------ */
+/* Два взгляда на одно и то же:
+   «по датам»   — лента разговоров, так удобно разбирать качество;
+   «по сделкам» — те же разговоры, склеенные по клиенту и этапу,
+                  так видно, из чего сложился путь сделки.            */
 function renderContacts(){
   const all = DataSource.contacts();
   const stages = [...new Set(all.map(c => c.stage))];
   let html = '<div class="row">'+
+    '<select id="f-view"><option value="flat">По датам</option><option value="deal">По сделкам</option></select>'+
     '<select id="f-kind"><option value="">Звонки и переписка</option><option value="call">Только звонки</option><option value="chat">Только переписка</option></select>'+
     '<select id="f-stage"><option value="">Все этапы</option>'+
       stages.map(s => '<option value="'+esc(s)+'">'+esc(stageLabel(s))+'</option>').join('')+'</select>'+
     '<select id="f-mgr"><option value="">Все менеджеры</option>'+
       DataSource.managers().map(m => '<option value="'+esc(m.id)+'">'+esc(m.name)+'</option>').join('')+'</select>'+
     '<span class="muted" id="f-count"></span></div>'+
-  '<table><thead><tr><th>Дата</th><th>Канал</th><th>Менеджер</th><th>Этап</th><th>Объём</th><th>Балл</th><th>Итог</th></tr></thead>'+
-  '<tbody id="c-body"></tbody></table>';
+  '<div id="c-out"></div>';
   setTimeout(bindFilters, 0);
   return html;
 }
@@ -420,28 +524,53 @@ function bindFilters(){
     const fk = $('#f-kind').value, fs = $('#f-stage').value, fm = $('#f-mgr').value;
     const rows = DataSource.contacts().filter(c =>
       (!fk || c.kind === fk) && (!fs || c.stage === fs) && (!fm || c.manager_id === fm));
-    $('#c-body').innerHTML = rows.map(c => {
+    $('#c-out').innerHTML = $('#f-view').value === 'deal' ? byDeal(rows) : byDate(rows);
+    $('#f-count').textContent = rows.length+' из '+DataSource.contacts().length;
+  };
+  ['#f-view','#f-kind','#f-stage','#f-mgr'].forEach(s => $(s).onchange = draw);
+  draw();
+}
+function byDate(rows){
+  return '<table><thead><tr><th>Дата</th><th>Клиент</th><th>Канал</th><th>Менеджер</th>'+
+    '<th>Этап</th><th>Объём</th><th>Балл</th><th>Итог</th></tr></thead><tbody>'+
+    rows.map(c => {
       const s = scoreOf(c.id);
       const badge = s ? '<span class="pill '+grade(s.total,10)+'">'+s.total.toFixed(1)+'</span>' : '<span class="pill">—</span>';
-      const ch = c.kind === 'call' ? 'звонок' : (c.channel || 'переписка');
       return '<tr class="clickable" onclick="openContact(\''+c.id+'\')">'+
-        '<td>'+fmtDate(c.when)+'</td><td><span class="pill">'+esc(ch)+'</span></td>'+
+        '<td>'+fmtDate(c.when)+'</td>'+
+        '<td>'+esc(leadName(c.lead_id))+'</td>'+
+        '<td><span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span></td>'+
         '<td>'+esc(mgrName(c.manager_id))+'</td>'+
         '<td><span class="pill">'+esc(stageLabel(c.stage))+'</span></td>'+
         '<td class="muted">'+esc(c.volume)+'</td><td>'+badge+'</td>'+
         '<td class="muted">'+esc(c.outcome||'')+'</td></tr>';
-    }).join('');
-    $('#f-count').textContent = rows.length+' из '+DataSource.contacts().length;
-  };
-  ['#f-kind','#f-stage','#f-mgr'].forEach(s => $(s).onchange = draw);
-  draw();
+    }).join('')+'</tbody></table>';
 }
+function byDeal(rows){
+  const ids = [...new Set(rows.map(c => c.lead_id))];
+  ids.sort((a,b) => new Date(last(rows,b).when) - new Date(last(rows,a).when));
+  return ids.map(id => {
+    const own = rows.filter(c => c.lead_id === id), l = leadOf(id) || {};
+    const sc = own.map(c => scoreOf(c.id)).filter(Boolean);
+    const avg = sc.length ? sc.reduce((a,s) => a+s.total, 0)/sc.length : null;
+    return '<details class="deal"><summary>'+
+      '<span class="deal-name">'+esc(leadName(id))+'</span>'+
+      dealStrip(id, rows)+
+      '<span class="pill">'+esc(stageLabel(l.stage))+'</span>'+
+      '<span class="muted small">'+own.length+' '+plural(own.length,'коммуникация','коммуникации','коммуникаций')+'</span>'+
+      (avg!=null ? '<span class="pill '+grade(avg,10)+'">'+avg.toFixed(1)+'</span>' : '')+
+      (l.value_kzt ? '<span class="muted small">'+money(l.value_kzt)+'</span>' : '')+
+      '</summary><div class="deal-body">'+dealThread(id, rows)+'</div></details>';
+  }).join('') || emptyBlock('Ничего не нашлось', 'Снимите один из фильтров.', 'сброса фильтров');
+}
+const last = (rows, id) => rows.filter(c => c.lead_id === id).slice(-1)[0];
 function openContact(id){
   const c = DataSource.contacts().find(x => x.id === id);
   if(!c) return;
   const s = scoreOf(id);
-  $('#m-title').textContent = mgrName(c.manager_id)+' · '+stageLabel(c.stage);
-  $('#m-sub').textContent = fmtDate(c.when)+' · '+(c.kind==='call'?'звонок':c.channel)+' · '+c.volume+' · '+(c.outcome||'');
+  $('#m-title').textContent = leadName(c.lead_id)+' · '+stageLabel(c.stage);
+  $('#m-sub').textContent = fmtDate(c.when)+' · '+(c.kind==='call'?'звонок':c.channel)+' · '+
+    c.volume+' · '+mgrName(c.manager_id)+(c.outcome ? ' · '+c.outcome : '');
 
   let body = '';
   if(s){
@@ -474,6 +603,10 @@ function openContact(id){
   body += turns.map(t => '<div class="turn '+t.who+'"><div class="who">'+
     (t.who==='manager'?'менеджер':'клиент')+(t.ts?'<br><span style="opacity:.6">'+fmtDate(t.ts).slice(0,5)+'</span>':'')+
     '</div><div class="text">'+esc(t.text)+'</div></div>').join('');
+
+  /* Разговор не висит в воздухе: показываем, во что он склеен */
+  const rest = DataSource.contacts().filter(x => x.lead_id === c.lead_id);
+  if(rest.length > 1) body += '<h2>Эта сделка целиком</h2>'+dealThread(c.lead_id);
   $('#m-body').innerHTML = body;
   $('#modal').showModal();
 }
@@ -594,11 +727,15 @@ registerTab({ id: 'managers', label: 'Менеджеры', render: renderManager
 /* Блок «Лиды». Подключается сборщиком: scripts/build_cabinet.py */
 /* ---------------------------- ЛИДЫ ---------------------------- */
 function renderLeads(){
-  const leads = DataSource.leads(), enr = DataSource.enrichment();
+  const enr = DataSource.enrichment();
+  /* Сверху — сделки, где недавно разговаривали: с них начинается работа. */
+  const act = {}; DataSource.contacts().forEach(c => act[c.lead_id] = c.when);
+  const leads = DataSource.leads().slice().sort((a,b) =>
+    (act[b.id] ? new Date(act[b.id]) : 0) - (act[a.id] ? new Date(act[a.id]) : 0));
   const isB2C = CFG.profile === 'b2c';
   let html = '<table><thead><tr>'+
     '<th>'+(isB2C?'Родитель':'Компания')+'</th><th>'+(isB2C?'Возраст':'Контакт')+'</th>'+
-    '<th>Источник</th><th>Этап</th><th>Сумма</th>'+
+    '<th>Источник</th><th>Коммуникации</th><th>Этап</th><th>Сумма</th>'+
     '<th>'+(isB2C?'Реакция, мин':'След. шаг')+'</th><th></th></tr></thead><tbody>';
   leads.forEach(l => {
     const e = enr ? (enr.leads||[]).find(x => x.id === l.id) : null;
@@ -606,9 +743,11 @@ function renderLeads(){
       '<td>'+esc(l.company || l.parent)+'</td>'+
       '<td>'+esc(isB2C ? l.child_age+' лет' : (l.contact||''))+'</td>'+
       '<td class="muted">'+esc(l.source)+'</td>'+
+      '<td>'+dealStrip(l.id)+'</td>'+
       '<td><span class="pill">'+esc(stageLabel(l.stage))+'</span></td>'+
       '<td>'+money(l.value_kzt)+'</td>'+
-      '<td class="muted">'+(isB2C ? (l.responded_in_min ?? '—') : (l.next_step || '<span class="pill bad">нет</span>'))+'</td>'+
+      '<td class="muted">'+(isB2C ? (l.responded_in_min ?? '—')
+        : closed(l.stage) ? '—' : (l.next_step || '<span class="pill bad">нет</span>'))+'</td>'+
       '<td>'+(e ? '<span class="pill good">обогащён</span>' : '')+'</td></tr>';
   });
   html += '</tbody></table>';
@@ -631,16 +770,14 @@ function openLead(id){
     if(e.context) body += '<h2 style="margin-top:0">Контекст</h2><div class="card">'+esc(e.context)+'</div>';
     if(e.message) body += '<h2>Сообщение</h2><div class="card" style="white-space:pre-wrap">'+esc(e.message)+'</div>';
   }
-  const rel = DataSource.contacts().filter(c => c.lead_id === id);
-  if(rel.length){
-    body += '<h2>История коммуникаций</h2>';
-    rel.forEach(c => body += '<div class="crit"><span>'+fmtDate(c.when)+' · '+
-      (c.kind==='call'?'звонок':c.channel)+' · '+esc(mgrName(c.manager_id))+'</span>'+
-      '<span class="muted small" style="max-width:55%;text-align:right">'+esc(c.outcome||'')+'</span></div>');
-  }
+  /* Путь сделки: коммуникации, склеенные по этапам. Разговор открывается кликом. */
+  body += '<h2>Путь сделки</h2>'+dealThread(id);
   $('#m-body').innerHTML = body;
   $('#modal').showModal();
 }
+/* У закрытой сделки следующего шага не бывает — красное «нет» здесь врёт. */
+const closed = st => { const f = DataSource.funnel().map(x => x.id || x);
+  return f.length > 2 && f.slice(-2).indexOf(st) >= 0 };
 registerTab({ id: 'leads', label: 'Лиды', render: renderLeads });
 
 </script>

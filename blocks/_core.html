@@ -100,6 +100,38 @@
   .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  /* Лента сделки: коммуникации, склеенные по этапам */
+  .thread{margin:4px 0 0}
+  .thr-stage{position:relative;border-left:2px solid var(--line);margin-left:5px;padding:0 0 16px 18px}
+  .thr-stage:last-child{padding-bottom:2px}
+  .thr-stage.open{border-left-color:var(--accent)}
+  .thr-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+    flex-wrap:wrap;margin-bottom:6px}
+  .thr-head b{font-size:14px}
+  .thr-head::before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;
+    border-radius:99px;background:var(--line);border:3px solid var(--bg)}
+  .thr-stage.open .thr-head::before{background:var(--accent)}
+  .thr-item{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+    padding:7px 10px;border-radius:9px;font-size:13px;cursor:pointer}
+  .thr-item:hover{background:var(--panel-2)}
+  .thr-when{color:var(--muted);flex:0 0 86px}
+  .thr-out{flex:1 1 180px;text-align:right}
+  .thr-gap{color:var(--muted);font-size:12px;padding:2px 0 0 18px;margin-left:5px}
+  .strip{display:inline-flex;gap:3px;vertical-align:middle}
+  .strip i{width:20px;height:18px;border-radius:5px;background:var(--panel-2);
+    border:1px solid var(--line);font-style:normal;font-size:11px;color:var(--muted);
+    display:flex;align-items:center;justify-content:center}
+  .strip i.has{background:rgba(91,140,255,.18);border-color:rgba(91,140,255,.45);color:var(--fg)}
+  .strip i.cur{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+  details.deal{background:var(--panel);border:1px solid var(--line);
+    border-radius:var(--radius);padding:0;margin-bottom:8px}
+  details.deal > summary{cursor:pointer;list-style:none;padding:13px 16px;
+    display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  details.deal > summary::-webkit-details-marker{display:none}
+  details.deal[open] > summary{border-bottom:1px solid var(--line)}
+  details.deal > summary:hover{background:var(--panel-2);border-radius:var(--radius)}
+  .deal-body{padding:14px 16px}
+  .deal-name{font-weight:600;flex:1 1 200px}
   .two{display:grid;gap:14px;grid-template-columns:1fr 1fr}
   @media(max-width:860px){.two{grid-template-columns:1fr}}
 </style>
@@ -172,6 +204,74 @@ function scoreOf(id){
   const s = DataSource.scores();
   if(!s) return null;
   return (s.items || s.calls || []).find(x => x.id === id) || null;
+}
+/* -------------------------------------------------------------------
+   Сделка и её коммуникации.
+
+   Атом данных — коммуникация. У неё есть lead_id (с кем разговор)
+   и stage — этап, НА КОТОРОМ разговор произошёл. У сделки свой stage —
+   тот, где она стоит сейчас. Из этой пары всё и собирается: группируем
+   коммуникации по сделке, внутри — по этапу, по дате. Ничего в данные
+   добавлять не нужно, переход на этап — это первый разговор на нём.
+------------------------------------------------------------------- */
+const leadOf = id => DataSource.leads().find(l => l.id === id) || null;
+const leadName = id => { const l = leadOf(id); return l ? (l.company || l.parent || id) : '—' };
+const plural = (n,a,b,c) => { const d=n%100, e=n%10;
+  return d>4&&d<21 ? c : e===1 ? a : e>1&&e<5 ? b : c };
+let _now = null;
+function dataNow(){                       // «сегодня» базы — последняя активность в ней
+  if(!_now){ const a = DataSource.contacts(); _now = a.length ? new Date(a[a.length-1].when) : new Date() }
+  return _now;
+}
+function dealTimeline(leadId, pool){
+  const items = (pool || DataSource.contacts()).filter(c => c.lead_id === leadId);
+  const groups = [];
+  items.forEach(c => {
+    const last = groups[groups.length-1];
+    if(last && last.stage === c.stage) last.items.push(c); else groups.push({stage:c.stage, items:[c]});
+  });
+  groups.forEach((g,i) => {
+    const start = new Date(g.items[0].when);
+    const next = groups[i+1];
+    g.open = !next;
+    g.days = Math.max(0, Math.round(((next ? new Date(next.items[0].when) : dataNow()) - start)/864e5));
+    const sc = g.items.map(c => scoreOf(c.id)).filter(Boolean);
+    g.avg = sc.length ? sc.reduce((a,s) => a+s.total, 0)/sc.length : null;
+  });
+  return groups;
+}
+function dealThread(leadId, pool){
+  const groups = dealTimeline(leadId, pool);
+  if(!groups.length) return '<p class="muted small">По этой сделке нет записанных коммуникаций.</p>';
+  const term = DataSource.funnel().map(s => s.id || s).slice(-2);   // закрытая сделка нигде не «стоит»
+  return '<div class="thread">'+groups.map(g =>
+    '<div class="thr-stage'+(g.open?' open':'')+'">'+
+      '<div class="thr-head"><b>'+esc(stageLabel(g.stage))+'</b><span class="muted small">'+
+        g.items.length+' '+plural(g.items.length,'коммуникация','коммуникации','коммуникаций')+
+        (term.indexOf(g.stage) >= 0 ? '' :
+          ' · '+g.days+' '+plural(g.days,'день','дня','дней')+(g.open?' и стоит здесь':' на этапе'))+
+        (g.avg!=null ? ' · ср. балл '+g.avg.toFixed(1) : '')+
+      '</span></div>'+
+      g.items.map(c => {
+        const s = scoreOf(c.id);
+        return '<div class="thr-item" onclick="if(window.openContact)openContact(\''+c.id+'\')">'+
+          '<span class="thr-when">'+fmtDate(c.when)+'</span>'+
+          '<span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span>'+
+          '<span class="muted">'+esc(c.volume)+'</span>'+
+          '<span class="muted">'+esc(mgrName(c.manager_id))+'</span>'+
+          (s ? '<span class="pill '+grade(s.total,10)+'">'+s.total.toFixed(1)+'</span>' : '')+
+          '<span class="thr-out muted small">'+esc(c.outcome||'')+'</span></div>';
+      }).join('')+
+    '</div>').join('')+'</div>';
+}
+function dealStrip(leadId, pool){        // где по воронке лежит масса разговоров
+  const fn = DataSource.funnel().map(s => s.id || s);
+  const items = (pool || DataSource.contacts()).filter(c => c.lead_id === leadId);
+  const cnt = {}; items.forEach(c => cnt[c.stage] = (cnt[c.stage]||0)+1);
+  const l = leadOf(leadId), cur = l ? fn.indexOf(l.stage) : -1;
+  return '<span class="strip" title="сколько коммуникаций на каждом этапе">'+fn.map((s,i) =>
+    '<i class="'+(cnt[s]?'has':'')+(i===cur?' cur':'')+'" title="'+esc(stageLabel(s))+': '+
+      (cnt[s]||0)+'">'+(cnt[s]||'')+'</i>').join('')+'</span>';
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+

@@ -87,6 +87,65 @@ def say(who, text, p):
 # сколько «кругов» вопрос-ответ на этапе: на демо и переговорах разговор длиннее
 STAGE_DEPTH = {0: 1, 1: 3, 2: 4, 3: 3, 4: 3, 5: 2, 6: 1}
 
+CITIES = ["Астана", "Алматы", "Шымкент", "Караганда", "Актобе", "Атырау"]
+
+def unique_names(base, n, suffixes=CITIES):
+    """Имена клиентов не должны повторяться.
+
+    Профиль компании даёт десяток названий, а сделок нужны сотни. Если просто
+    крутить список по кругу, в таблице коммуникаций одна и та же «Мега Склад»
+    встретится четырнадцать раз — и человек прочитает это как одну сделку.
+    Поэтому недостающие названия собираются из частей тех же имён."""
+    out = list(dict.fromkeys(base))
+    seen = set(out)
+    heads = [c.split()[0] for c in out]
+    tails = [c.split()[-1] for c in out if len(c.split()) > 1] or heads
+    for extra in ([""] + list(suffixes)):
+        for h in heads:
+            for t in tails:
+                if len(out) >= n:
+                    return out[:n]
+                name = " ".join(x for x in (h, t, extra) if x)
+                if name not in seen:
+                    seen.add(name); out.append(name)
+    i = 2
+    while len(out) < n:
+        out += [f"{c} {i}" for c in base]
+        i += 1
+    return out[:n]
+
+
+def people_pool(base):
+    """Имена собеседников — перекрёстное произведение имён и фамилий из профиля.
+
+    Повторяющееся имя у разных компаний не мешает: сделку различает компания.
+    А вот «Руслан Ибраев 3» в карточке сразу выдаёт генератор."""
+    fem = lambda w: w.endswith(("ова", "ева", "ина", "ская", "кызы"))
+    groups = {}
+    for name in base:                      # имена и фамилии не смешиваются по роду
+        f, l = name.split()[0], name.split()[-1]
+        g = groups.setdefault(fem(l), ([], []))
+        g[0].append(f); g[1].append(l)
+    pool = []
+    for firsts, lasts in groups.values():
+        firsts, lasts = list(dict.fromkeys(firsts)), list(dict.fromkeys(lasts))
+        pool += [f"{f} {l}" for l in lasts for f in firsts]
+    random.shuffle(pool)
+    return pool or list(base)
+
+
+def workhour(dt):
+    """Ставит разговор в рабочее время буднего дня.
+
+    Раньше дата следующего касания двигалась на «плюс несколько дней и
+    плюс-минус несколько часов», и через три шага звонок оказывался в 03:40
+    в воскресенье. В зале это первое, что замечает человек из продаж."""
+    while dt.weekday() > 4:
+        dt += timedelta(days=1)
+    return dt.replace(hour=random.randint(9, 17),
+                      minute=random.choice([0, 5, 10, 15, 20, 25, 30, 40, 45, 50]))
+
+
 def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
     st = mgr["style"]; t = []; said = set()
     add = lambda w, x: t.append({"who": w, "text": x})
@@ -265,16 +324,19 @@ def main():
 
     random.seed(2609)
     flow = P["type"] == "flow"
-    start = datetime.now() - timedelta(days=90)
+    now = datetime.now().replace(second=0, microsecond=0)
+    start = now - timedelta(days=90)
     stages = [s["id"] for s in P["funnel"]]
     weights = [18, 22, 16, 14, 10, 10, 10][:len(stages)] or [1] * len(stages)
 
+    names = unique_names(P["clients"], a.leads)
+    people = people_pool(P.get("contact_names", ["Клиент Клиентов"]))
     leads = []
     for i in range(a.leads):
         resp = random.choices([6, 9, 12, 15, 20, 30, 45, 60, 90, 150, 240],
                               weights=[8, 10, 12, 12, 10, 9, 8, 7, 6, 5, 4])[0]
-        leads.append({"id": f"l{i+1:03d}", "company": P["clients"][i % len(P["clients"])],
-          "contact": random.choice(P.get("contact_names", ["Клиент Клиентов"])),
+        leads.append({"id": f"l{i+1:03d}", "company": names[i],
+          "contact": people[i % len(people)],
           "position": random.choice(P.get("positions", ["Руководитель"])),
           "industry": random.choice(P["segments"])["name"],
           "size": random.randint(20, 400),
@@ -322,18 +384,21 @@ def main():
         reached = random.choices(range(n_stages), weights=w)[0]
         lead["stage"] = stages[reached]
         seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
-        dt = start + timedelta(days=random.randint(0, 70), hours=random.randint(0, 9),
-                               minutes=random.choice([0, 5, 10, 15, 20, 30, 40, 45]))
-
+        # Проигранная сделка не проходит через «выиграна»: терминальный этап один.
         path = list(range(reached + 1))
-        if lead["stage"] in terminal and reached > 1:
-            path = list(range(reached))+[reached]     # финальный этап — последним контактом
-        for si in path:
+        if lead["stage"] in terminal:
+            path = list(range(min(reached, n_stages - 2))) + [reached]
+
+        # Цепочка касаний строится назад от сегодня, чтобы последний разговор
+        # не оказался в будущем: пауза между этапами известна заранее.
+        gaps = [random.randint(2, 12) for _ in path]
+        dt = workhour(now - timedelta(days=sum(gaps[:-1]) + random.randint(1, 40)))
+        for n, si in enumerate(path):
             if cid >= a.calls:
                 break
             cid += 1
             calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
-            dt += timedelta(days=random.randint(2, 12), hours=random.randint(-3, 4))
+            dt = workhour(dt + timedelta(days=gaps[n]))
 
             # переписка возникает между звонками, чаще на средних этапах
             if chid < chat_budget and 0 < si < n_stages - 2 and random.random() < .45:
@@ -343,7 +408,7 @@ def main():
                         "avoid": "pricelist", "discount": "haggle"}.get(style, "fade")
                 if random.random() < .3:
                     kind = random.choice(list(CHAT_KINDS))
-                ch = build_chat(P, mgr, lead, chid, dt - timedelta(days=1), kind)
+                ch = build_chat(P, mgr, lead, chid, workhour(dt - timedelta(days=1)), kind)
                 ch["stage"] = stages[si]
                 chats.append(ch)
 
@@ -354,7 +419,7 @@ def main():
         seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
         si = random.randint(0, stages.index(lead["stage"]))
         cid += 1
-        dt = start + timedelta(days=random.randint(0, 88), hours=random.randint(0, 9))
+        dt = workhour(now - timedelta(days=random.randint(2, 90)))
         calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
 
     calls.sort(key=lambda c: c["date"]); chats.sort(key=lambda c: c["date_start"])

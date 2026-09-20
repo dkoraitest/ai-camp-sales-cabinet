@@ -4852,7 +4852,7 @@ window.CABINET_SCORES = {
       "id": "c083",
       "type": "call",
       "total": 2.7,
-      "stage": "closed_won",
+      "stage": "negotiation",
       "evaluate": [
         {
           "id": "structure",
@@ -6943,7 +6943,7 @@ window.CABINET_SCORES = {
       "id": "c028",
       "type": "call",
       "total": 3.4,
-      "stage": "closed_won",
+      "stage": "negotiation",
       "evaluate": [
         {
           "id": "structure",
@@ -10717,7 +10717,7 @@ window.CABINET_SCORES = {
       "id": "c018",
       "type": "call",
       "total": 7.4,
-      "stage": "closed_won",
+      "stage": "negotiation",
       "evaluate": [
         {
           "id": "structure",
