@@ -100,6 +100,25 @@
   .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  /* Команда: карточки в одну линию, листается вбок */
+  .rail{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 12px;
+    scroll-snap-type:x proximity;scroll-behavior:smooth}
+  .rail > .card{flex:0 0 320px;scroll-snap-align:start;display:flex;flex-direction:column}
+  .rail::-webkit-scrollbar{height:8px}
+  .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+  .rail::-webkit-scrollbar-thumb:hover{background:var(--muted)}
+  .rail-head{display:flex;align-items:center;gap:8px;margin:30px 0 12px}
+  .rail-head h2{margin:0}
+  .arrow{background:var(--panel-2);border:1px solid var(--line);color:var(--muted);
+    width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:15px;line-height:1;padding:0}
+  .arrow:hover{color:var(--fg);border-color:var(--muted)}
+  .weak{background:var(--panel-2);border-radius:10px;padding:9px 11px;font-size:13px;margin-top:12px}
+  .weak .lbl{color:var(--muted);font-size:12px;margin-bottom:2px}
+  .weak .val{display:flex;justify-content:space-between;gap:8px;align-items:center}
+  .focus{font-size:13px;margin:10px 0 0;color:var(--muted)}
+  .focus b{color:var(--fg);font-weight:600}
+  .card-cta{margin-top:auto;padding-top:14px}
+  .card-cta button{width:100%}
   /* Лента сделки: коммуникации, склеенные по этапам */
   .thread{margin:4px 0 0}
   .thr-stage{position:relative;border-left:2px solid var(--line);margin-left:5px;padding:0 0 16px 18px}

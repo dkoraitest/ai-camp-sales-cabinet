@@ -6,3 +6,5 @@ active/
 data/own/
 cabinet/
 __pycache__/
+.env
+.env.*
