@@ -207,6 +207,7 @@ def main():
     ap.add_argument("--calls", type=int, default=260)
     ap.add_argument("--chats", type=int, default=90)
     ap.add_argument("--leads", type=int, default=180)
+    ap.add_argument("--no-chats", action="store_true", help="у участника нет переписки как канала")
     a = ap.parse_args()
 
     path = pathlib.Path(a.profile)
@@ -257,7 +258,8 @@ def main():
         dt = start + timedelta(days=random.randint(0, 88), hours=random.randint(0, 9),
                                minutes=random.choice([0, 5, 10, 15, 20, 30, 40, 45]))
         calls.append(build_call(P, mgr, random.choice(stages), seg, lead, i + 1, dt))
-    for i in range(a.chats):
+    chat_n = 0 if a.no_chats else a.chats
+    for i in range(chat_n):
         lead = random.choice(leads); mgr = random.choice(mgrs)
         style = mgr["style"].get("objection_style", "justify")
         kind = {"counter": "lead", "justify": "fade", "avoid": "pricelist", "discount": "haggle"}.get(style, "fade")
