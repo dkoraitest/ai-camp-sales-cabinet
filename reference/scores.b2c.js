@@ -1,979 +1,29 @@
-// ЭТАЛОН · пересчитан по фактической базе (b2b): 181 коммуникаций.
+// ЭТАЛОН · пересчитан по фактической базе (b2c): 229 коммуникаций.
 // Сгенерировано scripts/score_reference.py — цифры сходятся с данными.
 
 window.CABINET_SCORES = {
   "items": [
     {
-      "id": "c030",
+      "id": "c139",
       "type": "call",
-      "total": 4.0,
+      "total": 5.7,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 2,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
           "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c094",
-      "type": "call",
-      "total": 6.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c089",
-      "type": "call",
-      "total": 9.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c076",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c078",
-      "type": "call",
-      "total": 9.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c074",
-      "type": "call",
-      "total": 6.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, next step не зафиксирован"
-    },
-    {
-      "id": "c022",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c039",
-      "type": "call",
-      "total": 7.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c131",
-      "type": "call",
-      "total": 8.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c062",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c128",
-      "type": "call",
-      "total": 3.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c040",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c045",
-      "type": "call",
-      "total": 7.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c043",
-      "type": "call",
-      "total": 6.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c098",
-      "type": "call",
-      "total": 5.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c085",
-      "type": "call",
-      "total": 7.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, next step не зафиксирован"
-    },
-    {
-      "id": "c116",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c025",
-      "type": "call",
-      "total": 5.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c120",
-      "type": "call",
-      "total": 6.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c017",
-      "type": "call",
-      "total": 8.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
           "max": 10
         },
         {
@@ -991,1156 +41,6 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c073",
-      "type": "call",
-      "total": 7.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c110",
-      "type": "call",
-      "total": 4.9,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c097",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c109",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c122",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c077",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c050",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c072",
-      "type": "call",
-      "total": 5.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c124",
-      "type": "call",
-      "total": 7.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c024",
-      "type": "call",
-      "total": 6.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c042",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c069",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c091",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c088",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c021",
-      "type": "call",
-      "total": 4.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c047",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c049",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c046",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c029",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c083",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c084",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c018",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c019",
-      "type": "call",
-      "total": 3.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
           "value": 3,
           "max": 10
         },
@@ -2151,1062 +51,62 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c058",
-      "type": "call",
-      "total": 5.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c082",
-      "type": "call",
-      "total": 3.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c111",
-      "type": "call",
-      "total": 7.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c028",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c118",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c026",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c103",
-      "type": "call",
-      "total": 4.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c068",
-      "type": "call",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c065",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c023",
-      "type": "call",
-      "total": 7.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c114",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c108",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c048",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c054",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c033",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c035",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c087",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c129",
-      "type": "call",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c059",
-      "type": "call",
-      "total": 7.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c099",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c123",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
       "id": "c020",
       "type": "call",
-      "total": 7.6,
+      "total": 6.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c103",
+      "type": "call",
+      "total": 9.3,
       "evaluate": [
         {
           "id": "structure",
@@ -3217,13 +117,63 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 7,
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c111",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
           "max": 10
         },
         {
@@ -3235,13 +185,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 10,
+          "value": 8,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -3251,12 +201,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c041",
+      "id": "c070",
       "type": "call",
-      "total": 9.0,
+      "total": 9.4,
       "evaluate": [
         {
           "id": "structure",
@@ -3291,7 +241,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -3301,29 +251,79 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c064",
+      "id": "c075",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c107",
       "type": "call",
       "total": 6.6,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 9,
+          "value": 3,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 7,
+          "value": 10,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 2,
+          "value": 5,
           "max": 10
         },
         {
@@ -3351,112 +351,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c125",
+      "id": "c066",
       "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c104",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c070",
-      "type": "call",
-      "total": 8.4,
+      "total": 7.9,
       "evaluate": [
         {
           "id": "structure",
@@ -3467,7 +367,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 10,
+          "value": 9,
           "max": 10
         },
         {
@@ -3479,7 +379,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 2,
           "max": 10
         },
         {
@@ -3501,23 +401,23 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c027",
+      "id": "c065",
       "type": "call",
-      "total": 4.1,
+      "total": 2.3,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 1,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 0,
           "max": 10
         },
         {
@@ -3529,107 +429,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c051",
-      "type": "call",
-      "total": 9.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c121",
-      "type": "call",
-      "total": 3.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 2,
           "max": 10
         },
         {
@@ -3651,12 +451,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "цена названа без ценности, ушли думать"
     },
     {
-      "id": "c101",
+      "id": "c148",
       "type": "call",
-      "total": 8.4,
+      "total": 9.4,
       "evaluate": [
         {
           "id": "structure",
@@ -3679,7 +479,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -3691,7 +491,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -3701,12 +501,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c086",
+      "id": "c162",
       "type": "call",
-      "total": 8.4,
+      "total": 8.7,
       "evaluate": [
         {
           "id": "structure",
@@ -3724,56 +524,6 @@ window.CABINET_SCORES = {
           "id": "qualification",
           "name": "Качество квалификации",
           "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c038",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
           "max": 10
         },
         {
@@ -3785,13 +535,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 10,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -3801,12 +551,62 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c080",
+      "id": "c095",
       "type": "call",
-      "total": 6.0,
+      "total": 2.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c158",
+      "type": "call",
+      "total": 5.4,
       "evaluate": [
         {
           "id": "structure",
@@ -3817,19 +617,19 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 6,
+          "value": 2,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 2,
+          "value": 0,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 2,
+          "value": 4,
           "max": 10
         },
         {
@@ -3851,110 +651,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "c016",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c055",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c060",
+      "id": "c105",
       "type": "call",
       "total": 7.4,
       "evaluate": [
@@ -4001,17 +701,67 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c015",
+      "id": "c100",
       "type": "call",
-      "total": 8.0,
+      "total": 5.7,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
           "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c156",
+      "type": "call",
+      "total": 6.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
           "max": 10
         },
         {
@@ -4029,7 +779,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 9,
+          "value": 2,
           "max": 10
         },
         {
@@ -4051,12 +801,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c063",
+      "id": "c114",
       "type": "call",
-      "total": 9.0,
+      "total": 5.1,
       "evaluate": [
         {
           "id": "structure",
@@ -4067,7 +817,57 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 10,
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c154",
+      "type": "call",
+      "total": 6.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
           "max": 10
         },
         {
@@ -4079,13 +879,13 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 9,
+          "value": 4,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 10,
+          "value": 5,
           "max": 10
         },
         {
@@ -4101,12 +901,112 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c117",
+      "id": "c039",
       "type": "call",
-      "total": 6.1,
+      "total": 4.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c102",
+      "type": "call",
+      "total": 7.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c127",
+      "type": "call",
+      "total": 7.0,
       "evaluate": [
         {
           "id": "structure",
@@ -4129,7 +1029,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 3,
+          "value": 9,
           "max": 10
         },
         {
@@ -4151,10 +1051,360 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, next step не зафиксирован"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c130",
+      "id": "c116",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c126",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c160",
+      "type": "call",
+      "total": 8.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c027",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c037",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c121",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c104",
+      "type": "call",
+      "total": 2.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c112",
       "type": "call",
       "total": 3.4,
       "evaluate": [
@@ -4201,41 +1451,141 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "цена названа без ценности, ушли думать"
     },
     {
-      "id": "c052",
+      "id": "c063",
       "type": "call",
-      "total": 3.6,
+      "total": 7.3,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 7,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0,
+          "value": 5,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 3,
+          "value": 5,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 1,
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c055",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c115",
+      "type": "call",
+      "total": 6.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
           "max": 10
         },
         {
@@ -4251,23 +1601,123 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c092",
+      "id": "c017",
       "type": "call",
-      "total": 3.6,
+      "total": 7.9,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c090",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c079",
+      "type": "call",
+      "total": 6.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
           "max": 10
         },
         {
@@ -4279,19 +1729,19 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 9,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 1,
+          "value": 8,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -4301,10 +1751,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "c013",
+      "id": "c094",
       "type": "call",
       "total": 8.4,
       "evaluate": [
@@ -4323,160 +1773,10 @@ window.CABINET_SCORES = {
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
           "value": 5,
           "max": 10
         },
         {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c014",
-      "type": "call",
-      "total": 3.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c056",
-      "type": "call",
-      "total": 4.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c132",
-      "type": "call",
-      "total": 9.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
           "value": 9,
@@ -4485,13 +1785,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 10,
+          "value": 8,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -4501,157 +1801,7 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c127",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c096",
-      "type": "call",
-      "total": 7.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c081",
-      "type": "call",
-      "total": 3.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
       "id": "c036",
@@ -4673,107 +1823,7 @@ window.CABINET_SCORES = {
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
           "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c115",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c106",
-      "type": "call",
-      "total": 7.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
           "max": 10
         },
         {
@@ -4791,7 +1841,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -4801,610 +1851,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c119",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c093",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c075",
-      "type": "call",
-      "total": 5.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c031",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c066",
-      "type": "call",
-      "total": 6.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c044",
-      "type": "call",
-      "total": 3.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c061",
-      "type": "call",
-      "total": 7.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c067",
-      "type": "call",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c01",
-      "type": "call",
-      "total": 5.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "перешли к демо без выявленной боли"
-    },
-    {
-      "id": "c037",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c02",
-      "type": "call",
-      "total": 7.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "выявлена боль, назначена встреча с финдиректором"
-    },
-    {
-      "id": "c03",
-      "type": "call",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "демо проведено, следующий шаг не зафиксирован"
-    },
-    {
-      "id": "c04",
+      "id": "c048",
       "type": "call",
       "total": 5.9,
       "evaluate": [
@@ -5417,63 +1867,63 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
           "value": 8,
           "max": 10
         },
         {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 3,
           "max": 10
         },
         {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
           "max": 10
-        }
-      ],
-      "comment": "КП отправлено, договорённость о решении к 12.09"
-    },
-    {
-      "id": "c053",
-      "type": "call",
-      "total": 6.3,
-      "evaluate": [
+        },
         {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
           "value": 7,
           "max": 10
         },
         {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c157",
+      "type": "call",
+      "total": 6.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 10,
+          "value": 9,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 5,
+          "value": 10,
           "max": 10
         },
         {
@@ -5485,7 +1935,7 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 5,
           "max": 10
         },
         {
@@ -5501,62 +1951,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, next step не зафиксирован"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c05",
+      "id": "c101",
       "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "клиент не понял, кто звонит, разговор свернулся"
-    },
-    {
-      "id": "c113",
-      "type": "call",
-      "total": 8.0,
+      "total": 9.4,
       "evaluate": [
         {
           "id": "structure",
@@ -5579,7 +1979,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 2,
+          "value": 9,
           "max": 10
         },
         {
@@ -5591,7 +1991,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 6,
+          "value": 9,
           "max": 10
         },
         {
@@ -5601,67 +2001,17 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c107",
+      "id": "c091",
       "type": "call",
-      "total": 6.0,
+      "total": 4.3,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
           "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c032",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
           "max": 10
         },
         {
@@ -5679,89 +2029,39 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 3,
+          "value": 2,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 1,
+          "value": 6,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c076",
+      "type": "call",
+      "total": 7.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
           "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c06",
-      "type": "call",
-      "total": 4.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "дана скидка 15% без встречного условия"
-    },
-    {
-      "id": "c057",
-      "type": "call",
-      "total": 8.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
           "max": 10
         },
         {
@@ -5779,113 +2079,13 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
-    },
-    {
-      "id": "c105",
-      "type": "call",
-      "total": 4.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, следующий шаг с датой"
-    },
-    {
-      "id": "c102",
-      "type": "call",
-      "total": 5.0,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
           "value": 2,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 5,
           "max": 10
         },
         {
@@ -5901,360 +2101,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c100",
-      "type": "call",
-      "total": 5.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 8,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c071",
-      "type": "call",
-      "total": 3.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c112",
-      "type": "call",
-      "total": 4.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, next step не зафиксирован"
-    },
-    {
-      "id": "c126",
-      "type": "call",
-      "total": 7.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 9,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "ситуация выяснена, до денег не дошли, следующий шаг с датой"
-    },
-    {
-      "id": "c095",
-      "type": "call",
-      "total": 3.6,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "презентация без выявления, next step не зафиксирован"
-    },
-    {
-      "id": "c07",
-      "type": "call",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "договор подписан, 8.4 млн ₸"
-    },
-    {
-      "id": "c08",
-      "type": "call",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "клиент выбрал конкурента"
-    },
-    {
-      "id": "c079",
+      "id": "c145",
       "type": "call",
       "total": 4.6,
       "evaluate": [
@@ -6301,12 +2151,412 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "c09",
+      "id": "c143",
       "type": "call",
-      "total": 5.3,
+      "total": 7.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c088",
+      "type": "call",
+      "total": 4.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c054",
+      "type": "call",
+      "total": 4.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c086",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c141",
+      "type": "call",
+      "total": 3.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c131",
+      "type": "call",
+      "total": 4.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c049",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c092",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c081",
+      "type": "call",
+      "total": 4.1,
       "evaluate": [
         {
           "id": "structure",
@@ -6317,13 +2567,263 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 6,
+          "value": 1,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c117",
+      "type": "call",
+      "total": 4.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
           "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c138",
+      "type": "call",
+      "total": 5.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c096",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c018",
+      "type": "call",
+      "total": 8.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c044",
+      "type": "call",
+      "total": 6.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
           "max": 10
         },
         {
@@ -6351,10 +2851,4060 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность частично выявлена, ЛПР не установлен"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "c090",
+      "id": "c032",
+      "type": "call",
+      "total": 5.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c052",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c035",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c106",
+      "type": "call",
+      "total": 4.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c123",
+      "type": "call",
+      "total": 4.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c080",
+      "type": "call",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c085",
+      "type": "call",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c109",
+      "type": "call",
+      "total": 2.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c040",
+      "type": "call",
+      "total": 8.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c142",
+      "type": "call",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c025",
+      "type": "call",
+      "total": 6.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c023",
+      "type": "call",
+      "total": 2.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c034",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c120",
+      "type": "call",
+      "total": 4.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c045",
+      "type": "call",
+      "total": 6.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c022",
+      "type": "call",
+      "total": 3.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c163",
+      "type": "call",
+      "total": 6.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c068",
+      "type": "call",
+      "total": 9.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c108",
+      "type": "call",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c147",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c056",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c149",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c140",
+      "type": "call",
+      "total": 5.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c130",
+      "type": "call",
+      "total": 7.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c074",
+      "type": "call",
+      "total": 4.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c021",
+      "type": "call",
+      "total": 3.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c087",
+      "type": "call",
+      "total": 2.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c043",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c084",
+      "type": "call",
+      "total": 5.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c015",
+      "type": "call",
+      "total": 7.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c134",
+      "type": "call",
+      "total": 7.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c118",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c128",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c057",
+      "type": "call",
+      "total": 5.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c077",
+      "type": "call",
+      "total": 5.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c083",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c113",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c110",
+      "type": "call",
+      "total": 4.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c026",
+      "type": "call",
+      "total": 4.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c046",
+      "type": "call",
+      "total": 5.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c133",
+      "type": "call",
+      "total": 6.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c152",
+      "type": "call",
+      "total": 2.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c019",
+      "type": "call",
+      "total": 7.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c073",
+      "type": "call",
+      "total": 6.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c161",
+      "type": "call",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c082",
+      "type": "call",
+      "total": 7.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c062",
+      "type": "call",
+      "total": 4.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c098",
+      "type": "call",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c155",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c132",
+      "type": "call",
+      "total": 4.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c137",
+      "type": "call",
+      "total": 4.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c124",
+      "type": "call",
+      "total": 4.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c129",
+      "type": "call",
+      "total": 8.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c051",
+      "type": "call",
+      "total": 7.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c099",
+      "type": "call",
+      "total": 8.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c150",
+      "type": "call",
+      "total": 4.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c042",
+      "type": "call",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c119",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c053",
+      "type": "call",
+      "total": 7.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c135",
+      "type": "call",
+      "total": 2.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c01",
+      "type": "call",
+      "total": 7.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный, выяснен мотив родителя"
+    },
+    {
+      "id": "c060",
+      "type": "call",
+      "total": 4.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c159",
+      "type": "call",
+      "total": 3.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c02",
+      "type": "call",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, клиент ушёл думать"
+    },
+    {
+      "id": "c047",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c028",
+      "type": "call",
+      "total": 3.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c069",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c03",
+      "type": "call",
+      "total": 4.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "оплата, разбита на две части"
+    },
+    {
+      "id": "c04",
+      "type": "call",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "не дозвонился до сути, следующий шаг не назначен"
+    },
+    {
+      "id": "c061",
+      "type": "call",
+      "total": 8.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c029",
+      "type": "call",
+      "total": 8.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c125",
+      "type": "call",
+      "total": 9.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c05",
+      "type": "call",
+      "total": 4.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "отработано возражение про возраст, записаны на пробный"
+    },
+    {
+      "id": "c153",
+      "type": "call",
+      "total": 2.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c164",
+      "type": "call",
+      "total": 3.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c06",
+      "type": "call",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "отказ, цена не отработана"
+    },
+    {
+      "id": "c024",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c041",
+      "type": "call",
+      "total": 8.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c033",
+      "type": "call",
+      "total": 3.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c136",
+      "type": "call",
+      "total": 8.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c07",
+      "type": "call",
+      "total": 5.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "выявлен настоящий ЛПР — решает папа"
+    },
+    {
+      "id": "c016",
       "type": "call",
       "total": 8.4,
       "evaluate": [
@@ -6401,23 +6951,73 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность доведена до цифры, следующий шаг с датой"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c10",
+      "id": "c122",
       "type": "call",
-      "total": 7.0,
+      "total": 4.3,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
           "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c038",
+      "type": "call",
+      "total": 7.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
           "max": 10
         },
         {
@@ -6451,62 +7051,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "демо под сценарий клиента, назначено КП"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "c11",
+      "id": "c08",
       "type": "call",
-      "total": 7.3,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 10,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "выявлены три стейкхолдера, согласован формат пилота"
-    },
-    {
-      "id": "c034",
-      "type": "call",
-      "total": 4.0,
+      "total": 3.4,
       "evaluate": [
         {
           "id": "structure",
@@ -6541,7 +7091,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 7,
+          "value": 3,
           "max": 10
         },
         {
@@ -6551,10 +7101,60 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "подтверждение записи, без подготовки родителя"
     },
     {
-      "id": "c12",
+      "id": "c064",
+      "type": "call",
+      "total": 3.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c09",
       "type": "call",
       "total": 3.3,
       "evaluate": [
@@ -6601,11 +7201,261 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "follow-up без результата, next step не назначен"
+      "comment": "оплата корпоративная, счёт на ТОО"
     },
     {
-      "id": "ch028",
-      "type": "chat",
+      "id": "c093",
+      "type": "call",
+      "total": 3.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c10",
+      "type": "call",
+      "total": 5.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "презентация без вопросов, интерес не проверен"
+    },
+    {
+      "id": "c11",
+      "type": "call",
+      "total": 4.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "оплата после отработки возражения о времени"
+    },
+    {
+      "id": "c030",
+      "type": "call",
+      "total": 9.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c059",
+      "type": "call",
+      "total": 7.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, но до записи не дошли"
+    },
+    {
+      "id": "c12",
+      "type": "call",
       "total": 3.1,
       "evaluate": [
         {
@@ -6651,11 +7501,11 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
+      "comment": "не предложен следующий шаг"
     },
     {
-      "id": "ch023",
-      "type": "chat",
+      "id": "c13",
+      "type": "call",
       "total": 3.1,
       "evaluate": [
         {
@@ -6701,17 +7551,17 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
+      "comment": "оплата, допродажа второго направления"
     },
     {
-      "id": "ch030",
-      "type": "chat",
-      "total": 3.7,
+      "id": "c071",
+      "type": "call",
+      "total": 4.7,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -6729,13 +7579,13 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 2,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 8,
           "max": 10
         },
         {
@@ -6751,12 +7601,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "ch022",
-      "type": "chat",
-      "total": 3.7,
+      "id": "c14",
+      "type": "call",
+      "total": 3.3,
       "evaluate": [
         {
           "id": "structure",
@@ -6767,7 +7617,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -6785,7 +7635,7 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
           "max": 10
         },
         {
@@ -6801,17 +7651,17 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "отказ, причина не выяснена"
     },
     {
-      "id": "ch006",
-      "type": "chat",
-      "total": 3.7,
+      "id": "c067",
+      "type": "call",
+      "total": 5.6,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -6829,19 +7679,19 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 5,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 8,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -6851,17 +7701,17 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "ch042",
-      "type": "chat",
-      "total": 4.4,
+      "id": "c058",
+      "type": "call",
+      "total": 5.1,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
@@ -6891,7 +7741,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -6901,29 +7751,29 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "записаны на пробный без выяснения мотива"
     },
     {
-      "id": "ch013",
-      "type": "chat",
-      "total": 4.4,
+      "id": "c072",
+      "type": "call",
+      "total": 8.9,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 9,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 10,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0,
+          "value": 10,
           "max": 10
         },
         {
@@ -6935,13 +7785,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 6,
+          "value": 10,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 9,
           "max": 10
         },
         {
@@ -6951,12 +7801,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "ch035",
-      "type": "chat",
-      "total": 3.7,
+      "id": "c078",
+      "type": "call",
+      "total": 8.1,
       "evaluate": [
         {
           "id": "structure",
@@ -6967,13 +7817,13 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 10,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0,
+          "value": 10,
           "max": 10
         },
         {
@@ -6985,13 +7835,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 10,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 9,
           "max": 10
         },
         {
@@ -7001,47 +7851,47 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "мотив выяснен, записаны на пробный"
     },
     {
-      "id": "ch024",
-      "type": "chat",
-      "total": 4.4,
+      "id": "c089",
+      "type": "call",
+      "total": 6.1,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 1,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 10,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0,
+          "value": 10,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 2,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 6,
+          "value": 5,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -7051,16 +7901,316 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "мотив выяснен, но до записи не дошли"
     },
     {
-      "id": "ch015",
-      "type": "chat",
+      "id": "c050",
+      "type": "call",
       "total": 3.1,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
+          "value": 7,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c031",
+      "type": "call",
+      "total": 2.4,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c097",
+      "type": "call",
+      "total": 3.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "цена названа без ценности, ушли думать"
+    },
+    {
+      "id": "c151",
+      "type": "call",
+      "total": 7.3,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 10,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "c144",
+      "type": "call",
+      "total": 3.6,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "записаны на пробный без выяснения мотива"
+    },
+    {
+      "id": "c146",
+      "type": "call",
+      "total": 7.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 8,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 9,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "мотив выяснен, записаны на пробный"
+    },
+    {
+      "id": "ch058",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
           "value": 5,
           "max": 10
         },
@@ -7097,14 +8247,14 @@ window.CABINET_SCORES = {
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 9,
+          "value": 7,
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
     },
     {
-      "id": "ch005",
+      "id": "ch050",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -7117,7 +8267,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -7135,13 +8285,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -7151,261 +8301,11 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
-    },
-    {
-      "id": "ch009",
-      "type": "chat",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
       "id": "ch016",
       "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
-    },
-    {
-      "id": "ch025",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
-    },
-    {
-      "id": "ch046",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
-    },
-    {
-      "id": "ch008",
-      "type": "chat",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
-    },
-    {
-      "id": "ch037",
-      "type": "chat",
       "total": 3.1,
       "evaluate": [
         {
@@ -7451,357 +8351,7 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
-    },
-    {
-      "id": "ch012",
-      "type": "chat",
-      "total": 3.7,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
-    },
-    {
-      "id": "ch040",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
-    },
-    {
-      "id": "ch045",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
-    },
-    {
-      "id": "ch019",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
-    },
-    {
-      "id": "ch039",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
-    },
-    {
-      "id": "ch026",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
-    },
-    {
-      "id": "ch048",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "снято возражение по нагрузке, оплата прошла"
     },
     {
       "id": "ch011",
@@ -7851,10 +8401,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "снято возражение по нагрузке, оплата прошла"
     },
     {
-      "id": "ch041",
+      "id": "ch053",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -7867,7 +8417,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -7885,13 +8435,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -7901,23 +8451,23 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
-      "id": "ch020",
+      "id": "ch029",
       "type": "chat",
-      "total": 4.4,
+      "total": 3.1,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 5,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 0,
           "max": 10
         },
         {
@@ -7929,13 +8479,13 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 6,
+          "value": 1,
           "max": 10
         },
         {
@@ -7951,23 +8501,23 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "снято возражение по нагрузке, оплата прошла"
     },
     {
-      "id": "ch018",
+      "id": "ch026",
       "type": "chat",
-      "total": 4.4,
+      "total": 3.1,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 5,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1,
+          "value": 0,
           "max": 10
         },
         {
@@ -7979,13 +8529,13 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 6,
+          "value": 1,
           "max": 10
         },
         {
@@ -8001,10 +8551,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "снято возражение по нагрузке, оплата прошла"
     },
     {
-      "id": "ch034",
+      "id": "ch056",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -8017,7 +8567,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -8035,78 +8585,28 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
-    },
-    {
-      "id": "ch032",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
           "value": 6,
           "max": 10
         },
         {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
           "id": "balance",
           "name": "Баланс диалога",
           "value": 9,
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
-      "id": "ch036",
+      "id": "ch028",
       "type": "chat",
-      "total": 3.1,
+      "total": 3.0,
       "evaluate": [
         {
           "id": "structure",
@@ -8117,7 +8617,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 0,
+          "value": 1,
           "max": 10
         },
         {
@@ -8147,116 +8647,16 @@ window.CABINET_SCORES = {
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 9,
+          "value": 7,
           "max": 10
         }
       ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
-    },
-    {
-      "id": "ch007",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
-    },
-    {
-      "id": "ch038",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
+      "comment": "не пришли на пробный, причина не выяснена"
     },
     {
       "id": "ch014",
       "type": "chat",
-      "total": 3.1,
+      "total": 3.7,
       "evaluate": [
         {
           "id": "structure",
@@ -8267,7 +8667,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 0,
+          "value": 1,
           "max": 10
         },
         {
@@ -8291,7 +8691,7 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -8301,10 +8701,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
-      "id": "ch049",
+      "id": "ch063",
       "type": "chat",
       "total": 3.1,
       "evaluate": [
@@ -8351,10 +8751,60 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "прайс вместо диалога, интерес не проверен"
     },
     {
-      "id": "ch027",
+      "id": "ch024",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch022",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -8367,7 +8817,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -8385,13 +8835,13 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
+          "value": 6,
           "max": 10
         },
         {
@@ -8401,10 +8851,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
-      "id": "ch017",
+      "id": "ch019",
       "type": "chat",
       "total": 3.1,
       "evaluate": [
@@ -8451,7 +8901,157 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch032",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch033",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch008",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
     },
     {
       "id": "ch031",
@@ -8501,10 +9101,10 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг о скидке ушёл в мессенджер, ценность не вернулась"
+      "comment": "снято возражение по нагрузке, оплата прошла"
     },
     {
-      "id": "ch033",
+      "id": "ch040",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -8517,57 +9117,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
-    },
-    {
-      "id": "ch047",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
+          "value": 1,
           "max": 10
         },
         {
@@ -8591,170 +9141,20 @@ window.CABINET_SCORES = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
-    },
-    {
-      "id": "ch010",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
-    },
-    {
-      "id": "ch029",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
           "value": 6,
           "max": 10
         },
         {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
           "id": "balance",
           "name": "Баланс диалога",
           "value": 9,
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     },
     {
-      "id": "ch02",
-      "type": "chat",
-      "total": 4.4,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 7,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 6,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "снято скрытое возражение финдиректора, решение ускорено"
-    },
-    {
-      "id": "ch01",
+      "id": "ch035",
       "type": "chat",
       "total": 3.7,
       "evaluate": [
@@ -8767,7 +9167,7 @@ window.CABINET_SCORES = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2,
+          "value": 1,
           "max": 10
         },
         {
@@ -8785,7 +9185,57 @@ window.CABINET_SCORES = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 3,
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch034",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
           "max": 10
         },
         {
@@ -8797,11 +9247,11 @@ window.CABINET_SCORES = {
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 9,
+          "value": 7,
           "max": 10
         }
       ],
-      "comment": "переписка затухла, менеджер не перехватил инициативу"
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
     },
     {
       "id": "ch021",
@@ -8851,7 +9301,2007 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch018",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch010",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch049",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch012",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch061",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch006",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch055",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch020",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch030",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch065",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch036",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch044",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch042",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch048",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch039",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch037",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch064",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch007",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch052",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch060",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch027",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch023",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch015",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch051",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch013",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch041",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch054",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch043",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch009",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch059",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch01",
+      "type": "chat",
+      "total": 2.9,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
+    },
+    {
+      "id": "ch038",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch02",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 2,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch046",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "не пришли на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch017",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch025",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
+    },
+    {
+      "id": "ch04",
+      "type": "chat",
+      "total": 3.0,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 7,
+          "max": 10
+        }
+      ],
+      "comment": "клиент не пришёл на пробный, причина не выяснена"
+    },
+    {
+      "id": "ch045",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "снято возражение по нагрузке, оплата прошла"
+    },
+    {
+      "id": "ch047",
+      "type": "chat",
+      "total": 3.7,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 6,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "возражение по цене ушло в переписку и там умерло"
+    },
+    {
+      "id": "ch05",
+      "type": "chat",
+      "total": 3.1,
+      "evaluate": [
+        {
+          "id": "structure",
+          "name": "Соблюдение структуры разговора",
+          "value": 5,
+          "max": 10
+        },
+        {
+          "id": "discovery",
+          "name": "Глубина выявления",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "qualification",
+          "name": "Качество квалификации",
+          "value": 0,
+          "max": 10
+        },
+        {
+          "id": "objections",
+          "name": "Работа с ценой и возражениями",
+          "value": 4,
+          "max": 10
+        },
+        {
+          "id": "deal_control",
+          "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
+          "value": 3,
+          "max": 10
+        },
+        {
+          "id": "balance",
+          "name": "Баланс диалога",
+          "value": 9,
+          "max": 10
+        }
+      ],
+      "comment": "прайс вместо диалога, интерес не проверен"
     },
     {
       "id": "ch03",
@@ -8901,12 +11351,12 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг по скидке продолжен в переписке, ценность не возвращена в разговор"
+      "comment": "снято возражение по расписанию, оплата прошла"
     },
     {
-      "id": "ch044",
+      "id": "ch057",
       "type": "chat",
-      "total": 3.1,
+      "total": 2.9,
       "evaluate": [
         {
           "id": "structure",
@@ -8947,21 +11397,21 @@ window.CABINET_SCORES = {
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 9,
+          "value": 7,
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "родитель подготовлен к пробному, пришли вовремя"
     },
     {
-      "id": "ch043",
+      "id": "ch062",
       "type": "chat",
-      "total": 4.4,
+      "total": 3.7,
       "evaluate": [
         {
           "id": "structure",
           "name": "Соблюдение структуры разговора",
-          "value": 7,
+          "value": 5,
           "max": 10
         },
         {
@@ -8979,110 +11429,65 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
+          "value": 1,
+          "max": 10
+        },
+        {
+          "id": "expertise",
+          "name": "Экспертность",
           "value": 6,
           "max": 10
         },
         {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
           "id": "balance",
           "name": "Баланс диалога",
           "value": 9,
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято через переписку, решение ускорено"
-    },
-    {
-      "id": "ch04",
-      "type": "chat",
-      "total": 3.1,
-      "evaluate": [
-        {
-          "id": "structure",
-          "name": "Соблюдение структуры разговора",
-          "value": 5,
-          "max": 10
-        },
-        {
-          "id": "discovery",
-          "name": "Глубина выявления",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "qualification",
-          "name": "Качество квалификации",
-          "value": 0,
-          "max": 10
-        },
-        {
-          "id": "objections",
-          "name": "Работа с ценой и возражениями",
-          "value": 4,
-          "max": 10
-        },
-        {
-          "id": "deal_control",
-          "name": "Управление сделкой",
-          "value": 1,
-          "max": 10
-        },
-        {
-          "id": "expertise",
-          "name": "Экспертность",
-          "value": 3,
-          "max": 10
-        },
-        {
-          "id": "balance",
-          "name": "Баланс диалога",
-          "value": 9,
-          "max": 10
-        }
-      ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "возражение по цене ушло в переписку и там умерло"
     }
   ],
   "insights": [
     {
       "level": "bad",
-      "title": "Следующий шаг фиксируется в 41% контактов",
-      "text": "Из 181 разобранных коммуникаций договорённость с датой есть в 75. Остальные заканчиваются на «я пришлю информацию» и «подумайте» — именно из этой части набирается очередь зависших сделок."
+      "title": "Скорость реакции решает больше, чем качество разговора",
+      "text": "Заявки, обработанные за 20 минут, доходят до оплаты в 26% случаев (152 лидов). Те, до которых добрались позже часа — в 2% (41 лидов). Разговор при этом ведёт один и тот же отдел по одним и тем же скриптам."
     },
     {
       "level": "bad",
-      "title": "Потребность доводится до цифры в 19% разговоров — и это меняет исход",
-      "text": "Когда менеджер спрашивает, во что клиенту обходится текущая ситуация, сделка оказывается на КП или дальше в 44% случаев. Без такого вопроса — в 30%."
+      "title": "Следующий шаг фиксируется в 47% контактов",
+      "text": "Из 229 разобранных коммуникаций договорённость с датой есть в 107. Остальные заканчиваются на «я пришлю информацию» и «подумайте» — именно из этой части набирается очередь зависших сделок."
+    },
+    {
+      "level": "bad",
+      "title": "Мотив родителя выясняется в 38% разговоров — и это меняет исход",
+      "text": "Когда менеджер выясняет, чего родитель хочет для ребёнка, заявка доходит до оплаты или счёта в 35% случаев. Без такого вопроса — в 37%."
     },
     {
       "level": "warn",
       "title": "Разброс внутри команды",
-      "text": "Виктория Ким 6.7 из 10, Марат Сулейменов 4.1 при среднем 5.1. Это не разница в старании: она складывается из того, задаёт ли человек вопросы до презентации и фиксирует ли договорённость в конце."
+      "text": "Алия Жумабаева 6.6 из 10, Ерлан Касымов 3.6 при среднем 5.2. Это не разница в старании: она складывается из того, задаёт ли человек вопросы до презентации и фиксирует ли договорённость в конце."
     },
     {
       "level": "bad",
-      "title": "Переписка слабее звонков: 3.6 против 5.6",
+      "title": "Переписка слабее звонков: 3.2 против 6.0",
       "text": "В чатах менеджеры напоминают о себе вместо ведения сделки. Серия «отправил — напоминаю — есть новости?» не даёт клиенту ни одного повода ответить, и переписка затухает."
     },
     {
-      "level": "bad",
-      "title": "На возражение по цене скидка звучит чаще встречного вопроса",
-      "text": "Возражение прозвучало в 47 контактах. Ответом «дам скидку» или «спрошу у руководителя» закрывали 13, встречным вопросом или предложением решения — 10. Остальные ответили свойствами продукта или согласились «подумайте» — это тихая потеря сделки."
+      "level": "warn",
+      "title": "Возражение отрабатывают решением, но не все",
+      "text": "Возражение прозвучало в 111 контактах. Ответом «дам скидку» или «спрошу у руководителя» закрывали 0, встречным вопросом или предложением решения — 46. Остальные ответили свойствами продукта или согласились «подумайте» — это тихая потеря сделки."
     },
     {
       "level": "warn",
-      "title": "Квалификация проходит в 19% контактов",
+      "title": "Квалификация проходит в 20% контактов",
       "text": "В остальных не выяснено, кто принимает решение и какой бюджет. Эти сделки возвращаются на предыдущий этап чаще всего: возражение приходит от человека, которого в разговоре не было."
     }
   ]

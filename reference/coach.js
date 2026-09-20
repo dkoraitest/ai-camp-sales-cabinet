@@ -1,5 +1,5 @@
-// ЭТАЛОН · результат шага 2: карта навыков, обратная связь, тренировки и то,
-// что уходит менеджеру в Telegram. Скопировать в cabinet/coach.js.
+// ЭТАЛОН · шаг 2: карта навыков (пересчитана по всей базе), обратная связь,
+// тренировки и тексты для Telegram. Скопировать в cabinet/coach.js.
 
 window.CABINET_COACH = {
   "managers": [
@@ -10,43 +10,43 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 8.6,
+          "value": 8,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 8.0,
+          "value": 6.4,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 8.2,
+          "value": 5.5,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 6.6,
+          "value": 5.5,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 9.0,
+          "value": 7.8,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 8.8,
+          "value": 5.0,
           "max": 10
         },
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 8.2,
+          "value": 9,
           "max": 10
         }
       ],
@@ -76,43 +76,43 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 4.8,
+          "value": 6.8,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1.8,
+          "value": 2.0,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 1.2,
+          "value": 0.6,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 1.6,
+          "value": 3.8,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 1.2,
+          "value": 2.9,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 4.4,
+          "value": 5.0,
           "max": 10
         },
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 3.8,
+          "value": 9,
           "max": 10
         }
       ],
@@ -146,7 +146,7 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 3.3,
+          "value": 6.4,
           "max": 10
         },
         {
@@ -158,31 +158,31 @@ window.CABINET_COACH = {
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0.7,
+          "value": 0.4,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 0.7,
+          "value": 3.9,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 2.0,
+          "value": 2.5,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 3.7,
+          "value": 4.6,
           "max": 10
         },
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 4.0,
+          "value": 9,
           "max": 10
         }
       ],
@@ -212,43 +212,43 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 6.3,
+          "value": 7.1,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 4.3,
+          "value": 3.9,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 3.7,
+          "value": 2.4,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 2.7,
+          "value": 4.1,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 5.0,
+          "value": 4.0,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 5.7,
+          "value": 5.2,
           "max": 10
         },
         {
           "id": "balance",
           "name": "Баланс диалога",
-          "value": 6.0,
+          "value": 9,
           "max": 10
         }
       ],

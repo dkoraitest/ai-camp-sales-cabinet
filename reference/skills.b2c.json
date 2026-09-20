@@ -1,0 +1,46 @@
+{
+  "skills": {
+    "m1": {
+      "structure": 7.8,
+      "discovery": 5.8,
+      "qualification": 4.5,
+      "objections": 6.6,
+      "deal_control": 6.2,
+      "expertise": 6.7,
+      "balance": 9.0
+    },
+    "m3": {
+      "structure": 7.2,
+      "discovery": 5.4,
+      "qualification": 3.9,
+      "objections": 5.7,
+      "deal_control": 5.2,
+      "expertise": 6.1,
+      "balance": 8.5
+    },
+    "m4": {
+      "structure": 5.8,
+      "discovery": 3.5,
+      "qualification": 2.4,
+      "objections": 3.6,
+      "deal_control": 4.4,
+      "expertise": 4.1,
+      "balance": 8.7
+    },
+    "m2": {
+      "structure": 4.4,
+      "discovery": 1.1,
+      "qualification": 0.5,
+      "objections": 3.4,
+      "deal_control": 2.5,
+      "expertise": 4.1,
+      "balance": 8.9
+    }
+  },
+  "avg": {
+    "m1": 6.6,
+    "m3": 6.0,
+    "m4": 4.6,
+    "m2": 3.6
+  }
+}
