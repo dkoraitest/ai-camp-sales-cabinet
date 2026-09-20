@@ -52,7 +52,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l042",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c117",
@@ -103,7 +110,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c042",
@@ -154,7 +168,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c112",
@@ -205,7 +226,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c196",
@@ -256,7 +284,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l061",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c078",
@@ -307,7 +342,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c141",
@@ -358,7 +400,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l041",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c011",
@@ -409,7 +458,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l006",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c006",
@@ -460,7 +516,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l003",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c199",
@@ -511,7 +574,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l062",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c142",
@@ -562,7 +632,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l041",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c197",
@@ -613,7 +690,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l061",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c047",
@@ -664,7 +748,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c043",
@@ -715,7 +806,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c193",
@@ -766,7 +864,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l058",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c113",
@@ -817,7 +922,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c118",
@@ -868,7 +980,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l034",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c101",
@@ -919,7 +1038,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c054",
@@ -970,7 +1096,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c012",
@@ -1021,7 +1154,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l006",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c037",
@@ -1072,7 +1212,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l012",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c044",
@@ -1123,7 +1270,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c194",
@@ -1174,7 +1328,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l059",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c007",
@@ -1225,7 +1386,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l003",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c200",
@@ -1276,7 +1444,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l062",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c079",
@@ -1327,7 +1502,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c182",
@@ -1378,7 +1560,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l055",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c140",
@@ -1429,7 +1618,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l040",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c041",
@@ -1480,7 +1676,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l013",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c048",
@@ -1531,7 +1734,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c065",
@@ -1582,7 +1792,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l019",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c198",
@@ -1633,7 +1850,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l061",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c114",
@@ -1684,7 +1908,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c049",
@@ -1735,7 +1966,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c045",
@@ -1786,7 +2024,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c119",
@@ -1837,7 +2082,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l034",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c183",
@@ -1888,7 +2140,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l055",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c036",
@@ -1939,7 +2198,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l011",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c050",
@@ -1990,7 +2256,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c172",
@@ -2041,7 +2314,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l052",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c055",
@@ -2092,7 +2372,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c069",
@@ -2143,7 +2430,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c038",
@@ -2194,7 +2488,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l012",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c046",
@@ -2245,7 +2546,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c102",
@@ -2296,7 +2604,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c130",
@@ -2347,7 +2662,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c184",
@@ -2398,7 +2720,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l055",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c124",
@@ -2449,7 +2778,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c056",
@@ -2500,7 +2836,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c080",
@@ -2551,7 +2894,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c023",
@@ -2602,7 +2952,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c051",
@@ -2653,7 +3010,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c039",
@@ -2704,7 +3068,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l012",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c020",
@@ -2755,7 +3126,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l008",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c115",
@@ -2806,7 +3184,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c120",
@@ -2857,7 +3242,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c173",
@@ -2908,7 +3300,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l052",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c057",
@@ -2959,7 +3358,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c081",
@@ -3010,7 +3416,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c008",
@@ -3061,7 +3474,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l004",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c052",
@@ -3112,7 +3532,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l015",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c070",
@@ -3163,7 +3590,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c024",
@@ -3214,7 +3648,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c169",
@@ -3265,7 +3706,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l051",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c103",
@@ -3316,7 +3764,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c121",
@@ -3367,7 +3822,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l034",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c195",
@@ -3418,7 +3880,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l060",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c021",
@@ -3469,7 +3938,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l008",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c125",
@@ -3520,7 +3996,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c025",
@@ -3571,7 +4054,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c116",
@@ -3622,7 +4112,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c131",
@@ -3673,7 +4170,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c040",
@@ -3724,7 +4228,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l012",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c058",
@@ -3775,7 +4286,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c174",
@@ -3826,7 +4344,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l052",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c022",
@@ -3877,7 +4402,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l008",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c060",
@@ -3928,7 +4460,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c089",
@@ -3979,7 +4518,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l025",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c082",
@@ -4030,7 +4576,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c059",
@@ -4081,7 +4634,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l017",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c158",
@@ -4132,7 +4692,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l048",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c148",
@@ -4183,7 +4750,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c123",
@@ -4234,7 +4808,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l035",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c175",
@@ -4285,7 +4866,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l052",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c071",
@@ -4336,7 +4924,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c170",
@@ -4387,7 +4982,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l051",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c181",
@@ -4438,7 +5040,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l054",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c090",
@@ -4489,7 +5098,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l025",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c009",
@@ -4540,7 +5156,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l004",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c104",
@@ -4591,7 +5214,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c122",
@@ -4642,7 +5272,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c144",
@@ -4693,7 +5330,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l043",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": false,
+        "timing": true
+      }
     },
     {
       "id": "c105",
@@ -4744,7 +5388,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c126",
@@ -4795,7 +5446,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c072",
@@ -4846,7 +5504,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c083",
@@ -4897,7 +5562,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c159",
@@ -4948,7 +5620,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l048",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c100",
@@ -4999,7 +5678,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l029",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c132",
@@ -5050,7 +5736,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c108",
@@ -5101,7 +5794,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l032",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c026",
@@ -5152,7 +5852,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c066",
@@ -5203,7 +5910,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l020",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c053",
@@ -5254,7 +5968,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l016",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c160",
@@ -5305,7 +6026,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l049",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c164",
@@ -5356,7 +6084,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c133",
@@ -5407,7 +6142,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c145",
@@ -5458,7 +6200,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l043",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c147",
@@ -5509,7 +6258,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l044",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c139",
@@ -5560,7 +6316,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l039",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c185",
@@ -5611,7 +6374,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c061",
@@ -5662,7 +6432,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c149",
@@ -5713,7 +6490,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c171",
@@ -5764,7 +6548,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l051",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c106",
@@ -5815,7 +6606,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l030",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c146",
@@ -5866,7 +6664,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l043",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c067",
@@ -5917,7 +6722,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l020",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c075",
@@ -5968,7 +6780,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l022",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c027",
@@ -6019,7 +6838,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c085",
@@ -6070,7 +6896,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l024",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c127",
@@ -6121,7 +6954,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c091",
@@ -6172,7 +7012,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l026",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c176",
@@ -6223,7 +7070,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l053",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c062",
@@ -6274,7 +7128,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c153",
@@ -6325,7 +7186,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l046",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c150",
@@ -6376,7 +7244,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c073",
@@ -6427,7 +7302,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c128",
@@ -6478,7 +7360,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c084",
@@ -6529,7 +7418,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c092",
@@ -6580,7 +7476,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l026",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c109",
@@ -6631,7 +7534,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l032",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c134",
@@ -6682,7 +7592,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c165",
@@ -6733,7 +7650,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c093",
@@ -6784,7 +7708,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c186",
@@ -6835,7 +7766,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c161",
@@ -6886,7 +7824,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l049",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c191",
@@ -6937,7 +7882,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l057",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c028",
@@ -6988,7 +7940,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c177",
@@ -7039,7 +7998,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l053",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c010",
@@ -7090,7 +8056,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l005",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c086",
@@ -7141,7 +8114,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l024",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c076",
@@ -7192,7 +8172,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l022",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c166",
@@ -7243,7 +8230,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c162",
@@ -7294,7 +8288,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l049",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c013",
@@ -7345,7 +8346,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c154",
@@ -7396,7 +8404,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l046",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c087",
@@ -7447,7 +8462,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l024",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c136",
@@ -7498,7 +8520,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l038",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c156",
@@ -7549,7 +8578,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l047",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c001",
@@ -7600,7 +8636,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l001",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c192",
@@ -7651,7 +8694,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l057",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c063",
@@ -7702,7 +8752,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c107",
@@ -7753,7 +8810,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l031",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c110",
@@ -7804,7 +8868,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l032",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c068",
@@ -7855,7 +8926,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, next step не зафиксирован"
+      "comment": "потребность раскрыта до последствий, next step не зафиксирован",
+      "lead_id": "l020",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c129",
@@ -7906,7 +8984,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l036",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c178",
@@ -7957,7 +9042,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l053",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c094",
@@ -8008,7 +9100,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c077",
@@ -8059,7 +9158,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l022",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c074",
@@ -8110,7 +9216,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c187",
@@ -8161,7 +9274,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c163",
@@ -8212,7 +9332,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l049",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c030",
@@ -8263,7 +9390,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l010",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c088",
@@ -8314,7 +9448,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l024",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c151",
@@ -8365,7 +9506,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c005",
@@ -8416,7 +9564,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l002",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c097",
@@ -8467,7 +9622,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l028",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c152",
@@ -8518,7 +9680,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c095",
@@ -8569,7 +9738,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c031",
@@ -8620,7 +9796,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c029",
@@ -8671,7 +9854,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c01",
@@ -8722,7 +9912,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "перешли к демо без выявленной боли"
+      "comment": "перешли к демо без выявленной боли",
+      "lead_id": "l03",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c157",
@@ -8773,7 +9970,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l047",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c02",
@@ -8824,7 +10028,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "выявлена боль, назначена встреча с финдиректором"
+      "comment": "выявлена боль, назначена встреча с финдиректором",
+      "lead_id": "l05",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c135",
@@ -8875,7 +10086,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c064",
@@ -8926,7 +10144,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c03",
@@ -8977,7 +10202,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "демо проведено, следующий шаг не зафиксирован"
+      "comment": "демо проведено, следующий шаг не зафиксирован",
+      "lead_id": "l07",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c167",
@@ -9028,7 +10260,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c188",
@@ -9079,7 +10318,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c014",
@@ -9130,7 +10376,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c04",
@@ -9181,7 +10434,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "КП отправлено, договорённость о решении к 12.09"
+      "comment": "КП отправлено, договорённость о решении к 12.09",
+      "lead_id": "l05",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": true
+      }
     },
     {
       "id": "c05",
@@ -9232,7 +10492,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "клиент не понял, кто звонит, разговор свернулся"
+      "comment": "клиент не понял, кто звонит, разговор свернулся",
+      "lead_id": "l11",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c098",
@@ -9283,7 +10550,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l028",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c06",
@@ -9334,7 +10608,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "дана скидка 15% без встречного условия"
+      "comment": "дана скидка 15% без встречного условия",
+      "lead_id": "l09",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c137",
@@ -9385,7 +10666,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l038",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c155",
@@ -9436,7 +10724,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l046",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c168",
@@ -9487,7 +10782,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c189",
@@ -9538,7 +10840,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c111",
@@ -9589,7 +10898,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l032",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c179",
@@ -9640,7 +10956,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l053",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c096",
@@ -9691,7 +11014,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c032",
@@ -9742,7 +11072,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c002",
@@ -9793,7 +11130,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l001",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c07",
@@ -9844,7 +11188,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "договор подписан, 8.4 млн ₸"
+      "comment": "договор подписан, 8.4 млн ₸",
+      "lead_id": "l02",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c08",
@@ -9895,7 +11246,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "клиент выбрал конкурента"
+      "comment": "клиент выбрал конкурента",
+      "lead_id": "l03",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c09",
@@ -9946,7 +11304,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность частично выявлена, ЛПР не установлен"
+      "comment": "потребность частично выявлена, ЛПР не установлен",
+      "lead_id": "l14",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c180",
@@ -9997,7 +11362,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l053",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c138",
@@ -10048,7 +11420,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l038",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c10",
@@ -10099,7 +11478,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "демо под сценарий клиента, назначено КП"
+      "comment": "демо под сценарий клиента, назначено КП",
+      "lead_id": "l16",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c11",
@@ -10150,7 +11536,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "выявлены три стейкхолдера, согласован формат пилота"
+      "comment": "выявлены три стейкхолдера, согласован формат пилота",
+      "lead_id": "l18",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c12",
@@ -10201,7 +11594,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "follow-up без результата, next step не назначен"
+      "comment": "follow-up без результата, next step не назначен",
+      "lead_id": "l07",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c099",
@@ -10252,7 +11652,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l028",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c015",
@@ -10303,7 +11710,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c033",
@@ -10354,7 +11768,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c190",
@@ -10405,7 +11826,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "потребность раскрыта до последствий, следующий шаг с датой"
+      "comment": "потребность раскрыта до последствий, следующий шаг с датой",
+      "lead_id": "l056",
+      "bant": {
+        "budget": true,
+        "authority": true,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c003",
@@ -10456,7 +11884,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l001",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c034",
@@ -10507,7 +11942,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c035",
@@ -10558,7 +12000,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, следующий шаг с датой"
+      "comment": "презентация без выявления, следующий шаг с датой",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c016",
@@ -10609,7 +12058,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c004",
@@ -10660,7 +12116,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "презентация без выявления, next step не зафиксирован"
+      "comment": "презентация без выявления, next step не зафиксирован",
+      "lead_id": "l001",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "c017",
@@ -10711,7 +12174,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "c018",
@@ -10762,7 +12232,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой"
+      "comment": "ситуация выяснена, до сути не дошли, следующий шаг с датой",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": true,
+        "need": true,
+        "timing": true
+      }
     },
     {
       "id": "c019",
@@ -10813,7 +12290,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован"
+      "comment": "ситуация выяснена, до сути не дошли, next step не зафиксирован",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": true,
+        "timing": false
+      }
     },
     {
       "id": "ch039",
@@ -10864,7 +12348,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l033",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch002",
@@ -10915,7 +12406,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l003",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch013",
@@ -10966,7 +12464,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch040",
@@ -11017,7 +12522,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch014",
@@ -11068,7 +12580,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch003",
@@ -11119,7 +12638,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l006",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch026",
@@ -11170,7 +12696,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch016",
@@ -11221,7 +12754,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l015",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch041",
@@ -11272,7 +12812,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l034",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch017",
@@ -11323,7 +12870,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l017",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch015",
@@ -11374,7 +12928,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l014",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch034",
@@ -11425,7 +12986,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l030",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch042",
@@ -11476,7 +13044,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch012",
@@ -11527,7 +13102,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l012",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch055",
@@ -11578,7 +13160,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l052",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch022",
@@ -11629,7 +13218,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch035",
@@ -11680,7 +13276,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l030",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch043",
@@ -11731,7 +13334,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l034",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch006",
@@ -11782,7 +13392,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l008",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch044",
@@ -11833,7 +13450,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l036",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch027",
@@ -11884,7 +13508,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l023",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch030",
@@ -11935,7 +13566,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l025",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch046",
@@ -11986,7 +13624,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch054",
@@ -12037,7 +13682,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l051",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch048",
@@ -12088,7 +13740,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l043",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch007",
@@ -12139,7 +13798,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch018",
@@ -12190,7 +13856,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch049",
@@ -12241,7 +13914,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l045",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch023",
@@ -12292,7 +13972,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch045",
@@ -12343,7 +14030,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l036",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch008",
@@ -12394,7 +14088,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l009",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch028",
@@ -12445,7 +14146,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l024",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch036",
@@ -12496,7 +14204,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l032",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch024",
@@ -12547,7 +14262,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l021",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch031",
@@ -12598,7 +14320,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch047",
@@ -12649,7 +14378,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l037",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch019",
@@ -12700,7 +14436,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch025",
@@ -12751,7 +14494,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l022",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch052",
@@ -12802,7 +14552,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch02",
@@ -12853,7 +14610,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "снято скрытое возражение финдиректора, решение ускорено"
+      "comment": "снято скрытое возражение финдиректора, решение ускорено",
+      "lead_id": "l05",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch01",
@@ -12904,7 +14668,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "переписка затухла, менеджер не перехватил инициативу"
+      "comment": "переписка затухла, менеджер не перехватил инициативу",
+      "lead_id": "l07",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch029",
@@ -12955,7 +14726,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l024",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch03",
@@ -13006,7 +14784,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг по скидке продолжен в переписке, ценность не возвращена в разговор"
+      "comment": "торг по скидке продолжен в переписке, ценность не возвращена в разговор",
+      "lead_id": "l09",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch053",
@@ -13057,7 +14842,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l050",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch037",
@@ -13108,7 +14900,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l032",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch020",
@@ -13159,7 +14958,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l018",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch009",
@@ -13210,7 +15016,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch021",
@@ -13261,7 +15074,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l020",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch050",
@@ -13312,7 +15132,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "скрытое возражение снято в переписке, решение ускорено"
+      "comment": "скрытое возражение снято в переписке, решение ускорено",
+      "lead_id": "l045",
+      "bant": {
+        "budget": true,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch04",
@@ -13363,7 +15190,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс отправлен без контекста, диалог закончился"
+      "comment": "прайс отправлен без контекста, диалог закончился",
+      "lead_id": "l14",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch051",
@@ -13414,7 +15248,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "прайс без контекста, диалог закончился"
+      "comment": "прайс без контекста, диалог закончился",
+      "lead_id": "l046",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch032",
@@ -13465,7 +15306,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l027",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch038",
@@ -13516,7 +15364,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l032",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch010",
@@ -13567,7 +15422,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch033",
@@ -13618,7 +15480,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l028",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch011",
@@ -13669,7 +15538,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l010",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch004",
@@ -13720,7 +15596,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch001",
@@ -13771,7 +15654,14 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "серия напоминаний без нового аргумента, переписка затухла"
+      "comment": "серия напоминаний без нового аргумента, переписка затухла",
+      "lead_id": "l001",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     },
     {
       "id": "ch005",
@@ -13822,9 +15712,410 @@ window.CABINET_SCORES = {
           "max": 10
         }
       ],
-      "comment": "торг ушёл в мессенджер, ценность не вернулась"
+      "comment": "торг ушёл в мессенджер, ценность не вернулась",
+      "lead_id": "l007",
+      "bant": {
+        "budget": false,
+        "authority": false,
+        "need": false,
+        "timing": false
+      }
     }
   ],
+  "aggregates": {
+    "profile": "b2b",
+    "total_contacts": 271,
+    "calls": 212,
+    "chats": 59,
+    "focus_stage": "discovery",
+    "focus_label": "Выявление потребности",
+    "qualification_stage": "discovery",
+    "avg_total": 5.5,
+    "focus": {
+      "contacts": 68,
+      "avg": 5.2,
+      "with_depth": 13,
+      "with_close": 27,
+      "pitch_first": 8,
+      "avg_q_before_pitch": 4.2,
+      "by_manager": {
+        "Виктория Ким": 7.3,
+        "Денис Ахметов": 3.8,
+        "Марат Сулейменов": 4.0,
+        "Айдана Бекова": 4.5
+      }
+    },
+    "funnel": [
+      {
+        "stage": "first_contact",
+        "label": "Первый контакт",
+        "contacts": 63,
+        "avg": 5.7,
+        "leads_on_stage": 17,
+        "money_on_stage": 146750000,
+        "close_rate": 0.52
+      },
+      {
+        "stage": "discovery",
+        "label": "Выявление потребности",
+        "contacts": 68,
+        "avg": 5.2,
+        "leads_on_stage": 12,
+        "money_on_stage": 104400000,
+        "close_rate": 0.4
+      },
+      {
+        "stage": "demo",
+        "label": "Демонстрация",
+        "contacts": 50,
+        "avg": 5.6,
+        "leads_on_stage": 11,
+        "money_on_stage": 100150000,
+        "close_rate": 0.4
+      },
+      {
+        "stage": "proposal",
+        "label": "КП",
+        "contacts": 43,
+        "avg": 5.5,
+        "leads_on_stage": 9,
+        "money_on_stage": 75750000,
+        "close_rate": 0.44
+      },
+      {
+        "stage": "negotiation",
+        "label": "Переговоры",
+        "contacts": 33,
+        "avg": 5.3,
+        "leads_on_stage": 7,
+        "money_on_stage": 81800000,
+        "close_rate": 0.48
+      },
+      {
+        "stage": "closed_won",
+        "label": "Сделка закрыта",
+        "contacts": 10,
+        "avg": 6.7,
+        "leads_on_stage": 10,
+        "money_on_stage": 70900000,
+        "close_rate": 0.7
+      },
+      {
+        "stage": "closed_lost",
+        "label": "Проиграна",
+        "contacts": 4,
+        "avg": 4.4,
+        "leads_on_stage": 4,
+        "money_on_stage": 41900000,
+        "close_rate": 0.25
+      }
+    ],
+    "channels": {
+      "calls_avg": 5.9,
+      "chats_avg": 4.1
+    },
+    "managers": {
+      "Виктория Ким": {
+        "contacts": 88,
+        "avg": 7.7,
+        "close_rate": 0.89,
+        "depth_rate": 0.59
+      },
+      "Денис Ахметов": {
+        "contacts": 65,
+        "avg": 4.0,
+        "close_rate": 0.2,
+        "depth_rate": 0.0
+      },
+      "Марат Сулейменов": {
+        "contacts": 70,
+        "avg": 4.2,
+        "close_rate": 0.17,
+        "depth_rate": 0.0
+      },
+      "Айдана Бекова": {
+        "contacts": 48,
+        "avg": 5.3,
+        "close_rate": 0.42,
+        "depth_rate": 0.17
+      }
+    },
+    "behaviour_vs_outcome": {
+      "with_depth": 0.48,
+      "without_depth": 0.41,
+      "with_close": 0.52,
+      "without_close": 0.35,
+      "objection_counter": 0.7,
+      "objection_discount": 0.47
+    },
+    "bant": {
+      "stage": "discovery",
+      "label": "Выявление потребности",
+      "contacts": 68,
+      "coverage": {
+        "budget": 0.1,
+        "authority": 0.15,
+        "need": 0.35,
+        "timing": 0.15
+      },
+      "full": 3,
+      "none": 41,
+      "full_vs_outcome": 0.67
+    },
+    "segments": [
+      {
+        "segment": "Дистрибуция",
+        "leads": 65,
+        "contacts": 118,
+        "won": 10,
+        "lost": 7,
+        "win_rate": 0.59,
+        "avg_quality": 5.8,
+        "top_client_lines": [
+          "Сборка заказа занимает полтора часа вместо двадцати минут.",
+          "Похожие позиции путают постоянно, возвраты каждую неделю.",
+          "Решаю я, но ИТ должен посмотреть на интеграции.",
+          "Да, но недолго, у меня встреча через пятнадцать минут.",
+          "Я инициирую, но бюджет утверждает финансовый директор."
+        ]
+      },
+      {
+        "segment": "Логистика",
+        "leads": 55,
+        "contacts": 84,
+        "won": 6,
+        "lost": 2,
+        "win_rate": 0.75,
+        "avg_quality": 5.9,
+        "top_client_lines": [
+          "Отгрузки срываются, клиенты ждут по две-три недели.",
+          "Три склада: основной в Алматы и два региональных.",
+          "Остатки не сходятся с фактом, находим только на инвентаризации.",
+          "Я инициирую, но бюджет утверждает финансовый директор.",
+          "Пока не закладывали, будем смотреть по цифрам."
+        ]
+      },
+      {
+        "segment": "Производство",
+        "leads": 39,
+        "contacts": 60,
+        "won": 4,
+        "lost": 3,
+        "win_rate": 0.57,
+        "avg_quality": 4.3,
+        "top_client_lines": [
+          "Сырьё списывается задним числом, себестоимость плывёт.",
+          "Директор видит картину по группе раз в месяц и уже неактуальную.",
+          "Да, но недолго, у меня встреча через пятнадцать минут.",
+          "У нас уже стоит система, правда толком не пользуемся.",
+          "Мы можем сначала на одном направлении попробовать?"
+        ]
+      },
+      {
+        "segment": "прочие (13 мелких)",
+        "leads": 15,
+        "contacts": 9,
+        "won": 0,
+        "lost": 3,
+        "win_rate": 0.0,
+        "avg_quality": 5.4,
+        "top_client_lines": []
+      }
+    ],
+    "bant_by_stage": {
+      "deals": 71,
+      "stages": [
+        {
+          "stage": "first_contact",
+          "label": "Первый контакт",
+          "leads": 17,
+          "full": 0,
+          "partial": 5,
+          "none": 12,
+          "money": 146750000,
+          "money_full": 0,
+          "coverage": {
+            "budget": 2,
+            "authority": 3,
+            "need": 5,
+            "timing": 1
+          }
+        },
+        {
+          "stage": "discovery",
+          "label": "Выявление потребности",
+          "leads": 12,
+          "full": 0,
+          "partial": 9,
+          "none": 3,
+          "money": 104400000,
+          "money_full": 0,
+          "coverage": {
+            "budget": 4,
+            "authority": 5,
+            "need": 8,
+            "timing": 2
+          }
+        },
+        {
+          "stage": "demo",
+          "label": "Демонстрация",
+          "leads": 11,
+          "full": 2,
+          "partial": 2,
+          "none": 7,
+          "money": 100150000,
+          "money_full": 12600000,
+          "coverage": {
+            "budget": 2,
+            "authority": 2,
+            "need": 4,
+            "timing": 2
+          }
+        },
+        {
+          "stage": "proposal",
+          "label": "КП",
+          "leads": 9,
+          "full": 3,
+          "partial": 5,
+          "none": 1,
+          "money": 75750000,
+          "money_full": 38950000,
+          "coverage": {
+            "budget": 5,
+            "authority": 3,
+            "need": 7,
+            "timing": 4
+          }
+        },
+        {
+          "stage": "negotiation",
+          "label": "Переговоры",
+          "leads": 7,
+          "full": 0,
+          "partial": 3,
+          "none": 4,
+          "money": 81800000,
+          "money_full": 0,
+          "coverage": {
+            "budget": 1,
+            "authority": 0,
+            "need": 3,
+            "timing": 1
+          }
+        },
+        {
+          "stage": "closed_won",
+          "label": "Сделка закрыта",
+          "leads": 10,
+          "full": 7,
+          "partial": 2,
+          "none": 1,
+          "money": 70900000,
+          "money_full": 38100000,
+          "coverage": {
+            "budget": 7,
+            "authority": 8,
+            "need": 9,
+            "timing": 8
+          }
+        },
+        {
+          "stage": "closed_lost",
+          "label": "Проиграна",
+          "leads": 5,
+          "full": 0,
+          "partial": 3,
+          "none": 2,
+          "money": 44700000,
+          "money_full": 0,
+          "coverage": {
+            "budget": 0,
+            "authority": 1,
+            "need": 3,
+            "timing": 1
+          }
+        }
+      ],
+      "labels": {
+        "budget": "Бюджет",
+        "authority": "Полномочия",
+        "need": "Потребность",
+        "timing": "Сроки"
+      }
+    },
+    "won_vs_lost": {
+      "won_label": "Сделка закрыта",
+      "lost_label": "Проиграна",
+      "won_deals": 10,
+      "lost_deals": 5,
+      "won_contacts": 73,
+      "lost_contacts": 30,
+      "rows": [
+        {
+          "label": "Спросили, во что обходится проблема",
+          "kind": "share",
+          "won": 0.38,
+          "lost": 0.0
+        },
+        {
+          "label": "Квалифицировали в разговоре",
+          "kind": "share",
+          "won": 0.52,
+          "lost": 0.07
+        },
+        {
+          "label": "Зафиксировали следующий шаг",
+          "kind": "share",
+          "won": 0.74,
+          "lost": 0.2
+        },
+        {
+          "label": "Открыли разговор слабо",
+          "kind": "share",
+          "won": 0.03,
+          "lost": 0.27
+        },
+        {
+          "label": "На возражение — встречный вопрос",
+          "kind": "share",
+          "won": 0.38,
+          "lost": 0.0
+        },
+        {
+          "label": "На возражение — скидка",
+          "kind": "share",
+          "won": 0.08,
+          "lost": 0.13
+        },
+        {
+          "label": "Полный BANT по сделке",
+          "kind": "share",
+          "won": 0.7,
+          "lost": 0.0
+        },
+        {
+          "label": "Вопросов до первого слова о продукте",
+          "kind": "num",
+          "won": 6.4,
+          "lost": 3.2
+        },
+        {
+          "label": "Коммуникаций на сделку",
+          "kind": "num",
+          "won": 7.3,
+          "lost": 6.0
+        },
+        {
+          "label": "Средний балл разговора",
+          "kind": "num",
+          "won": 6.8,
+          "lost": 4.4
+        }
+      ]
+    }
+  },
   "insights": [
     {
       "level": "bad",

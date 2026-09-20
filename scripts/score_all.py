@@ -128,8 +128,9 @@ def main():
         kind = "chat" if "messages" in c else "call"
         vals, total, f = mark(c)
         items.append({"id": c["id"], "type": kind, "total": total, "stage": c["stage"],
+                      "lead_id": c["lead_id"],
                       "evaluate": [{"id": k, "name": NAMES[k], "value": v, "max": 10} for k, v in vals.items()],
-                      "comment": c.get("outcome", "")})
+                      "bant": f["bant"], "comment": c.get("outcome", "")})
         flags[c["id"]] = dict(f, mgr=c["manager_id"], stage=c["stage"], kind=kind,
                               total=total, lead=c["lead_id"])
 
@@ -241,14 +242,80 @@ def main():
                            if any(v["avg"] for _, v in rest) else None,
             "top_client_lines": []})
 
+    # ── BANT по всей воронке: сколько сделок на каждом этапе квалифицированы ──
+    # Квалификация копится по сделке, а не живёт в одном разговоре: признак
+    # мог прозвучать на первом звонке, а решение о КП принимается на четвёртом.
+    lead_bant = defaultdict(lambda: {k: False for k in BANT})
+    for f in flags.values():
+        e = lead_bant[f["lead"]]          # сделка попадает в счёт, даже если не выяснено ничего
+        for k, v in f["bant"].items():
+            if v: e[k] = True
+    worked = [l for l in d["leads"] if l["id"] in lead_bant]
+    by_stage = []
+    for s_ in stages:
+        ls = [l for l in worked if l["stage"] == s_]
+        full = [l for l in ls if all(lead_bant[l["id"]].values())]
+        none_ = [l for l in ls if not any(lead_bant[l["id"]].values())]
+        by_stage.append({
+            "stage": s_, "label": labels.get(s_, s_), "leads": len(ls),
+            "full": len(full), "partial": len(ls) - len(full) - len(none_), "none": len(none_),
+            "money": sum(l["value_kzt"] for l in ls),
+            "money_full": sum(l["value_kzt"] for l in full),
+            "coverage": {k: sum(1 for l in ls if lead_bant[l["id"]][k]) for k in BANT} if ls else {},
+        })
+    agg["bant_by_stage"] = {"deals": len(worked), "stages": by_stage,
+                            "labels": {"budget": "Бюджет", "authority": "Полномочия",
+                                       "need": "Потребность", "timing": "Сроки"}}
+
+    # ── о чём говорят в выигранных сделках и чего не было в проигранных ──
+    # Сравниваются не свойства клиента, а поведение менеджера: свойства
+    # повторить нельзя, поведение можно.
+    def side(stage_id):
+        ids = {l["id"] for l in d["leads"] if l["stage"] == stage_id and l["id"] in lead_bant}
+        g = [f for f in flags.values() if f["lead"] in ids]
+        return ids, g
+    won_ids, won_g = side(won)
+    lost_ids, lost_g = side(lost)
+    share = lambda g, pred: round(sum(1 for f in g if pred(f)) / len(g), 2) if g else None
+    num = lambda g, key: round(st.mean([f[key] for f in g]), 1) if g else None
+    deal_share = lambda ids, pred: round(sum(1 for i in ids if pred(i)) / len(ids), 2) if ids else None
+    rows = [
+        ("Спросили, во что обходится проблема", "share", share(won_g, lambda f: f["depth"]), share(lost_g, lambda f: f["depth"])),
+        ("Квалифицировали в разговоре", "share", share(won_g, lambda f: f["qual"]), share(lost_g, lambda f: f["qual"])),
+        ("Зафиксировали следующий шаг", "share", share(won_g, lambda f: f["close"]), share(lost_g, lambda f: f["close"])),
+        ("Открыли разговор слабо", "share", share(won_g, lambda f: f["weak_open"]), share(lost_g, lambda f: f["weak_open"])),
+        ("На возражение — встречный вопрос", "share", share(won_g, lambda f: f["objection"] and f["counter"]),
+                                                      share(lost_g, lambda f: f["objection"] and f["counter"])),
+        ("На возражение — скидка", "share", share(won_g, lambda f: f["objection"] and f["discount"]),
+                                            share(lost_g, lambda f: f["objection"] and f["discount"])),
+        ("Полный BANT по сделке", "share", deal_share(won_ids, lambda i: all(lead_bant[i].values())),
+                                           deal_share(lost_ids, lambda i: all(lead_bant[i].values()))),
+        ("Вопросов до первого слова о продукте", "num", num(won_g, "q_before_pitch"), num(lost_g, "q_before_pitch")),
+        ("Коммуникаций на сделку", "num", round(len(won_g) / len(won_ids), 1) if won_ids else None,
+                                          round(len(lost_g) / len(lost_ids), 1) if lost_ids else None),
+        ("Средний балл разговора", "num", num(won_g, "total"), num(lost_g, "total")),
+    ]
+    agg["won_vs_lost"] = {
+        "won_label": labels.get(won, won), "lost_label": labels.get(lost, lost),
+        "won_deals": len(won_ids), "lost_deals": len(lost_ids),
+        "won_contacts": len(won_g), "lost_contacts": len(lost_g),
+        "rows": [{"label": l, "kind": k, "won": w, "lost": ls_} for l, k, w, ls_ in rows
+                 if w is not None and ls_ is not None],
+    }
+
     out = ROOT / "active"; out.mkdir(exist_ok=True)
     (out / "aggregates.json").write_text(json.dumps(agg, ensure_ascii=False, indent=2), encoding="utf-8")
-    (out / "scored.json").write_text(json.dumps({"items": items}, ensure_ascii=False), encoding="utf-8")
+    (out / "scored.json").write_text(json.dumps({"items": items, "aggregates": agg},
+                                            ensure_ascii=False), encoding="utf-8")
 
     print(f"Размечено {n} контактов ({agg['calls']} звонков, {agg['chats']} переписок), профиль {prof}")
     print(f"  фокусный этап «{agg['focus_label']}»: {agg['focus']['contacts']} контактов, средний {agg['focus']['avg']}")
     print(f"  квалификация на этапе «{agg['bant']['label']}»: полный BANT у {agg['bant']['full']} из {agg['bant']['contacts']}")
     print(f"  сегментов: {len(agg['segments'])}")
+    q = agg["bant_by_stage"]
+    print(f"  BANT по воронке: {sum(x['full'] for x in q['stages'])} из {q['deals']} сделок закрыты по всем четырём")
+    w = agg["won_vs_lost"]
+    print(f"  выигранные против проигранных: {w['won_deals']} и {w['lost_deals']} сделок, {len(w['rows'])} сравнений")
     print(f"→ active/aggregates.json (для инсайтов) · active/scored.json (оценки всех контактов)")
 
 

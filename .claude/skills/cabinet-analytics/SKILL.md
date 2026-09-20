@@ -84,15 +84,19 @@ python3 scripts/build_data.py
 ```js
 window.CABINET_SCORES = {
   items: [
-    { id:"c01", type:"call",  total:2.9,
+    { id:"c01", type:"call", total:2.9, stage:"discovery", lead_id:"l07",
       evaluate:[{id:"structure", name:"…", value:6, max:10}, …],
+      bant:{ budget:false, authority:true, need:true, timing:false },
       extracted:{ spsv:{…}, qualification:{…}, objections:[…], next_step:"…", signals:"…" },
       comment:"…" },
     { id:"ch01", type:"chat", total:2.0, evaluate:[…], comment:"…" }
   ],
+  aggregates: { … },                                    // целиком из active/scored.json
   insights: [ { level:"bad|warn|good", title:"…", text:"…" } ]
 };
 ```
+
+**`items` и `aggregates` бери из `active/scored.json` как есть, ничего не переписывая руками.** Это считает код, и кабинет на этом рисует графики: `bant` и `lead_id` у каждого контакта нужны для диаграммы квалификации по воронке на вкладке «Обзор», `aggregates.won_vs_lost` — для сравнительной таблицы на вкладке «Глубина». Твоя работа — `insights` и семантический разбор двух-трёх десятков контактов, а не перенабор цифр.
 
 Инсайтов 5–8, каждый с цифрой и выводом. Инсайт без числа — это мнение, а не аналитика. Эталон — `reference/scores.js`.
 

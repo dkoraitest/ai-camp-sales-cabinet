@@ -100,6 +100,26 @@
   .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  /* BANT по воронке и сравнение выигранных с проигранными */
+  .stack{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--panel-2)}
+  .stack i{display:block;height:100%}
+  .stack i.full{background:var(--good)} .stack i.part{background:var(--warn)}
+  .stack i.none{background:rgba(248,113,113,.35)}
+  .qrow{display:grid;grid-template-columns:190px 1fr 132px;gap:12px;align-items:center;
+    padding:7px 0;font-size:13px}
+  .qrow .lbl{color:var(--fg)}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin:2px 0 12px}
+  .legend b{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+  .cmp{display:grid;grid-template-columns:1fr 150px 150px;gap:14px;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .cmp:last-child{border:0}
+  .cmp-head{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;
+    border-bottom:1px solid var(--line);padding-bottom:8px}
+  .cmp .v{display:flex;align-items:center;gap:8px}
+  .cmp .v .bar{flex:1}
+  .cmp .v span{flex:0 0 42px;text-align:right}
+  .scope{color:var(--muted);font-size:12.5px;margin:-6px 0 12px;
+    padding-left:11px;border-left:2px solid var(--line)}
   /* Команда: карточки в одну линию, листается вбок */
   /* Лента идёт до правого края окна, а не до границы колонки: иначе справа
      остаётся мёртвая полоса, в которой прокрутка не работает. */
@@ -294,6 +314,59 @@ function dealStrip(leadId, pool){        // где по воронке лежи�
   return '<span class="strip" title="сколько коммуникаций на каждом этапе">'+fn.map((s,i) =>
     '<i class="'+(cnt[s]?'has':'')+(i===cur?' cur':'')+'" title="'+esc(stageLabel(s))+': '+
       (cnt[s]||0)+'">'+(cnt[s]||'')+'</i>').join('')+'</span>';
+}
+/* BANT по всей воронке. Квалификация копится по сделке: признак мог
+   прозвучать на первом звонке, а КП отправляют после четвёртого. Поэтому
+   считаем объединение по всем коммуникациям сделки, а не по одной.
+   Если scores.js принёс готовый разрез — берём его, иначе считаем сами. */
+function bantByStage(){
+  const s = DataSource.scores(); if(!s) return null;
+  if(s.aggregates && s.aggregates.bant_by_stage) return s.aggregates.bant_by_stage;
+  const items = (s.items || []).filter(i => i.bant && i.lead_id);
+  if(!items.length) return null;
+  const keys = Object.keys(items[0].bant);
+  const per = {};
+  items.forEach(i => {
+    const e = per[i.lead_id] || (per[i.lead_id] = {});
+    keys.forEach(k => { if(i.bant[k]) e[k] = true });
+  });
+  const leads = DataSource.leads();
+  const stages = DataSource.funnel().map(x => x.id || x);
+  const rows = stages.map(st => {
+    const ls = leads.filter(l => l.stage === st && per[l.id]);
+    const full = ls.filter(l => keys.every(k => per[l.id][k]));
+    const none = ls.filter(l => !keys.some(k => per[l.id][k]));
+    return {stage: st, label: stageLabel(st), leads: ls.length, full: full.length,
+            partial: ls.length - full.length - none.length, none: none.length,
+            money: ls.reduce((a,l) => a + (l.value_kzt||0), 0),
+            money_full: full.reduce((a,l) => a + (l.value_kzt||0), 0)};
+  });
+  return {deals: Object.keys(per).length, stages: rows,
+          labels: {budget:'Бюджет', authority:'Полномочия', need:'Потребность', timing:'Сроки'}};
+}
+function bantChart(){
+  const q = bantByStage(); if(!q) return '';
+  const rows = q.stages.filter(r => r.leads);
+  if(!rows.length) return '';
+  const max = Math.max(...rows.map(r => r.leads));
+  const full = rows.reduce((a,r) => a + r.full, 0);
+  return '<h2>Квалификация по BANT на каждом этапе</h2>'+
+    '<p class="scope">'+full+' из '+q.deals+' сделок в работе закрыты по всем четырём признакам: '+
+      'бюджет, полномочия, потребность, сроки. Остальные двигаются по воронке вслепую.</p>'+
+    '<div class="legend"><span><b style="background:var(--good)"></b>все четыре</span>'+
+      '<span><b style="background:var(--warn)"></b>частично</span>'+
+      '<span><b style="background:rgba(248,113,113,.35)"></b>ничего не выяснено</span></div>'+
+    '<div class="card">'+rows.map(r => {
+      const w = r.leads / max * 100;
+      const part = n => r.leads ? (n / r.leads * 100) : 0;
+      return '<div class="qrow"><div class="lbl">'+esc(r.label)+'</div>'+
+        '<div><div class="stack" style="width:'+w.toFixed(1)+'%">'+
+          '<i class="full" style="width:'+part(r.full)+'%"></i>'+
+          '<i class="part" style="width:'+part(r.partial)+'%"></i>'+
+          '<i class="none" style="width:'+part(r.none)+'%"></i></div></div>'+
+        '<div class="muted" style="text-align:right">'+r.full+' из '+r.leads+
+          (r.money ? '<br><span style="font-size:11px">'+money(r.money)+'</span>' : '')+'</div></div>';
+    }).join('')+'</div>';
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+

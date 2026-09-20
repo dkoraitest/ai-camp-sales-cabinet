@@ -100,6 +100,26 @@
   .tg{background:var(--panel-2);border-radius:10px;padding:12px;margin-top:10px;font-size:13px;
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
+  /* BANT по воронке и сравнение выигранных с проигранными */
+  .stack{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--panel-2)}
+  .stack i{display:block;height:100%}
+  .stack i.full{background:var(--good)} .stack i.part{background:var(--warn)}
+  .stack i.none{background:rgba(248,113,113,.35)}
+  .qrow{display:grid;grid-template-columns:190px 1fr 132px;gap:12px;align-items:center;
+    padding:7px 0;font-size:13px}
+  .qrow .lbl{color:var(--fg)}
+  .legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin:2px 0 12px}
+  .legend b{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px}
+  .cmp{display:grid;grid-template-columns:1fr 150px 150px;gap:14px;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .cmp:last-child{border:0}
+  .cmp-head{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;
+    border-bottom:1px solid var(--line);padding-bottom:8px}
+  .cmp .v{display:flex;align-items:center;gap:8px}
+  .cmp .v .bar{flex:1}
+  .cmp .v span{flex:0 0 42px;text-align:right}
+  .scope{color:var(--muted);font-size:12.5px;margin:-6px 0 12px;
+    padding-left:11px;border-left:2px solid var(--line)}
   /* Команда: карточки в одну линию, листается вбок */
   /* Лента идёт до правого края окна, а не до границы колонки: иначе справа
      остаётся мёртвая полоса, в которой прокрутка не работает. */
@@ -294,6 +314,59 @@ function dealStrip(leadId, pool){        // где по воронке лежи�
   return '<span class="strip" title="сколько коммуникаций на каждом этапе">'+fn.map((s,i) =>
     '<i class="'+(cnt[s]?'has':'')+(i===cur?' cur':'')+'" title="'+esc(stageLabel(s))+': '+
       (cnt[s]||0)+'">'+(cnt[s]||'')+'</i>').join('')+'</span>';
+}
+/* BANT по всей воронке. Квалификация копится по сделке: признак мог
+   прозвучать на первом звонке, а КП отправляют после четвёртого. Поэтому
+   считаем объединение по всем коммуникациям сделки, а не по одной.
+   Если scores.js принёс готовый разрез — берём его, иначе считаем сами. */
+function bantByStage(){
+  const s = DataSource.scores(); if(!s) return null;
+  if(s.aggregates && s.aggregates.bant_by_stage) return s.aggregates.bant_by_stage;
+  const items = (s.items || []).filter(i => i.bant && i.lead_id);
+  if(!items.length) return null;
+  const keys = Object.keys(items[0].bant);
+  const per = {};
+  items.forEach(i => {
+    const e = per[i.lead_id] || (per[i.lead_id] = {});
+    keys.forEach(k => { if(i.bant[k]) e[k] = true });
+  });
+  const leads = DataSource.leads();
+  const stages = DataSource.funnel().map(x => x.id || x);
+  const rows = stages.map(st => {
+    const ls = leads.filter(l => l.stage === st && per[l.id]);
+    const full = ls.filter(l => keys.every(k => per[l.id][k]));
+    const none = ls.filter(l => !keys.some(k => per[l.id][k]));
+    return {stage: st, label: stageLabel(st), leads: ls.length, full: full.length,
+            partial: ls.length - full.length - none.length, none: none.length,
+            money: ls.reduce((a,l) => a + (l.value_kzt||0), 0),
+            money_full: full.reduce((a,l) => a + (l.value_kzt||0), 0)};
+  });
+  return {deals: Object.keys(per).length, stages: rows,
+          labels: {budget:'Бюджет', authority:'Полномочия', need:'Потребность', timing:'Сроки'}};
+}
+function bantChart(){
+  const q = bantByStage(); if(!q) return '';
+  const rows = q.stages.filter(r => r.leads);
+  if(!rows.length) return '';
+  const max = Math.max(...rows.map(r => r.leads));
+  const full = rows.reduce((a,r) => a + r.full, 0);
+  return '<h2>Квалификация по BANT на каждом этапе</h2>'+
+    '<p class="scope">'+full+' из '+q.deals+' сделок в работе закрыты по всем четырём признакам: '+
+      'бюджет, полномочия, потребность, сроки. Остальные двигаются по воронке вслепую.</p>'+
+    '<div class="legend"><span><b style="background:var(--good)"></b>все четыре</span>'+
+      '<span><b style="background:var(--warn)"></b>частично</span>'+
+      '<span><b style="background:rgba(248,113,113,.35)"></b>ничего не выяснено</span></div>'+
+    '<div class="card">'+rows.map(r => {
+      const w = r.leads / max * 100;
+      const part = n => r.leads ? (n / r.leads * 100) : 0;
+      return '<div class="qrow"><div class="lbl">'+esc(r.label)+'</div>'+
+        '<div><div class="stack" style="width:'+w.toFixed(1)+'%">'+
+          '<i class="full" style="width:'+part(r.full)+'%"></i>'+
+          '<i class="part" style="width:'+part(r.partial)+'%"></i>'+
+          '<i class="none" style="width:'+part(r.none)+'%"></i></div></div>'+
+        '<div class="muted" style="text-align:right">'+r.full+' из '+r.leads+
+          (r.money ? '<br><span style="font-size:11px">'+money(r.money)+'</span>' : '')+'</div></div>';
+    }).join('')+'</div>';
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
@@ -493,6 +566,7 @@ function renderOverview(){
   }
 
   html += ovFunnel(S);
+  html += bantChart();
 
   const mx = CFG.matrix || {extract:[],evaluate:[]};
   if((mx.evaluate||[]).length){
@@ -849,15 +923,54 @@ registerTab({ id: 'leads', label: 'Лиды', render: renderLeads });
 <script>
 /* Блок «Глубина». Подключается сборщиком: scripts/build_cabinet.py */
 /* ----------------------- ГЛУБОКАЯ АНАЛИТИКА ----------------------- */
+/* Каждый разрез устроен одинаково: сначала что смотрели и на каком объёме,
+   потом вывод. Иначе получается полотно текста, которому нечем себя
+   подтвердить. Цифры считает код, вывод пишет модель.                    */
+function scopeLine(t){ return '<p class="scope">'+t+'</p>' }
+function finding(level, title, text){
+  return '<div class="insight '+esc(level||'warn')+'"><h4>'+esc(title)+'</h4><p>'+esc(text)+'</p></div>';
+}
+function wonVsLost(){
+  const a = (DataSource.scores()||{}).aggregates;
+  const w = a && a.won_vs_lost;
+  if(!w || !(w.rows||[]).length) return '';
+  /* Колонка выигранных всегда зелёная, проигранных — красная: это сравнение
+     двух исходов, а не оценка каждой строки по отдельности. */
+  const cell = (v, kind, other, cls) => {
+    const max = kind === 'share' ? 1 : Math.max(v, other, 0.1);
+    return '<div class="v"><div class="bar '+cls+'"><i style="width:'+
+      Math.round(v/max*100)+'%"></i></div><span>'+
+      (kind === 'share' ? Math.round(v*100)+'%' : v)+'</span></div>';
+  };
+  return '<h2>О чём говорят в выигранных сделках</h2>'+
+    scopeLine('Сравнили поведение менеджера в '+w.won_deals+' закрытых сделках ('+w.won_contacts+
+      ' коммуникаций) и в '+w.lost_deals+' проигранных ('+w.lost_contacts+
+      '). Сравниваются приёмы, а не свойства клиента: свойства повторить нельзя, приёмы можно.')+
+    '<div class="card"><div class="cmp cmp-head"><div>Что делали в разговоре</div>'+
+      '<div>'+esc(w.won_label)+'</div><div>'+esc(w.lost_label)+'</div></div>'+
+    w.rows.map(r => '<div class="cmp"><div>'+esc(r.label)+'</div>'+
+      cell(r.won, r.kind, r.lost, 'good') + cell(r.lost, r.kind, r.won, 'bad')+'</div>').join('')+
+    '</div>';
+}
+function bantDepth(){
+  const q = bantByStage(); if(!q) return '';
+  const late = q.stages.filter(r => r.leads && r.full < r.leads);
+  const money = late.reduce((a,r) => a + (r.money - r.money_full), 0);
+  return scopeLine('По всем '+q.deals+' сделкам в работе собрали, что выяснено за всю историю '+
+    'переписки и звонков, а не в одном разговоре. Неквалифицированных сделок в воронке на '+
+    (money ? new Intl.NumberFormat('ru-RU').format(money)+' ₸' : 'значимую сумму')+'.');
+}
 function renderDeep(){
   const d = DataSource.deep();
   const have = DataSource.contacts().length;
+  const deals = new Set(DataSource.contacts().map(c => c.lead_id)).size;
   const need = (CFG.deep_analytics||{}).min_items || 300;
+
   let html = '<div class="card" style="margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">'+
-    '<div><div class="kpi-label">Кросс-аналитика по всей базе</div>'+
-    '<div class="small muted">Разбор выигранных сделок, связь квалификации с закрытием, карта возражений, SPSV по сегментам</div></div>'+
+    '<div><div class="kpi-label">Что проанализировано</div>'+
+    '<div class="small muted">'+have+' коммуникаций в '+deals+' сделках · четыре разреза: выигранные против проигранных, квалификация по воронке, карта возражений, модель клиента по сегментам</div></div>'+
     '<div style="text-align:right"><div class="kpi">'+have+' <span class="muted" style="font-size:15px">/ '+need+'</span></div>'+
-    '<div class="kpi-note">контактов в базе</div></div></div>';
+    '<div class="kpi-note">порог значимости</div></div></div>';
   if(have < need) html += '<p class="muted small" style="margin:14px 0 0">'+
     'На таком объёме выводы — иллюстрация механики, а не статистика. Чтобы закономерности стали значимыми, нужно от '+need+' контактов: это примерно месяц работы отдела из четырёх человек.</p>';
   html += '</div>';
@@ -865,8 +978,32 @@ function renderDeep(){
   if(!d) return html + emptyBlock('Глубокая аналитика не запускалась',
     'Это отдельный разрез: не «как прошёл разговор», а «что общего у сделок, которые мы выиграли».','шага 4');
 
+  html += wonVsLost();
+  if((d.win_patterns||[]).length){
+    html += '<h2>Выводы по выигранным сделкам</h2>';
+    html += scopeLine('Что из этих различий можно повторить завтра.');
+    d.win_patterns.forEach(p => html += finding('good', p.title, p.text));
+  }
+
+  if((d.qualification_link||[]).length || bantByStage()){
+    html += '<h2>Квалификация и исход</h2>' + bantDepth();
+    html += bantChart().replace(/^<h2>.*?<\/h2>/, '').replace(/<p class="scope">.*?<\/p>/, '');
+    (d.qualification_link||[]).forEach(p => html += finding(p.level, p.title, p.text));
+  }
+
+  if((d.objection_map||[]).length){
+    html += '<h2>Карта возражений</h2>'+
+      scopeLine('Дословные формулировки из всей базы, частота и ответ тех, у кого выше конверсия. Прямой вход в скрипты и в обучение.')+
+      '<table><thead><tr><th>Возражение</th><th>Частота</th><th>Что отвечают лучшие</th></tr></thead><tbody>';
+    d.objection_map.forEach(o => html += '<tr><td>«'+esc(o.objection)+'»</td><td>'+esc(o.count)+'</td>'+
+      '<td class="muted">'+esc(o.best_response)+'</td></tr>');
+    html += '</tbody></table>';
+  }
+
   if((d.spsv||[]).length){
-    html += '<h2>SPSV по сегментам</h2><div class="cards">';
+    html += '<h2>Модель клиента по сегментам</h2>'+
+      scopeLine('Собрано из блоков разговоров: как клиенты каждого сегмента описывают свою ситуацию, боль и ценность их же словами. Материал для скриптов, КП и сайта — не придуманный на стратсессии.')+
+      '<div class="cards">';
     d.spsv.forEach(s => {
       html += '<div class="card"><div style="display:flex;justify-content:space-between"><strong>'+esc(s.segment)+'</strong>'+
         '<span class="pill">'+esc(s.share)+'</span></div>';
@@ -876,20 +1013,6 @@ function renderDeep(){
       html += '</div>';
     });
     html += '</div>';
-  }
-  if((d.win_patterns||[]).length){
-    html += '<h2>Что общего у выигранных сделок</h2>';
-    d.win_patterns.forEach(p => html += '<div class="insight good"><h4>'+esc(p.title)+'</h4><p>'+esc(p.text)+'</p></div>');
-  }
-  if((d.qualification_link||[]).length){
-    html += '<h2>Квалификация и исход</h2>';
-    d.qualification_link.forEach(p => html += '<div class="insight '+esc(p.level||'warn')+'"><h4>'+esc(p.title)+'</h4><p>'+esc(p.text)+'</p></div>');
-  }
-  if((d.objection_map||[]).length){
-    html += '<h2>Карта возражений</h2><table><thead><tr><th>Возражение</th><th>Частота</th><th>Что отвечают лучшие</th></tr></thead><tbody>';
-    d.objection_map.forEach(o => html += '<tr><td>«'+esc(o.objection)+'»</td><td>'+esc(o.count)+'</td>'+
-      '<td class="muted">'+esc(o.best_response)+'</td></tr>');
-    html += '</tbody></table>';
   }
   return html;
 }
