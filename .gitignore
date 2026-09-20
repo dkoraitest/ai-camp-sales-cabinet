@@ -5,3 +5,4 @@ cabinet/enrich.js
 active/
 data/own/
 cabinet/
+__pycache__/
