@@ -2,8 +2,34 @@
 /* -------------------------- МЕНЕДЖЕРЫ -------------------------- */
 function renderManagers(){
   const coach = DataSource.coaching();
-  let html = '<div class="cards">';
-  DataSource.managers().forEach(m => {
+  const all = DataSource.managers();
+  const detailed = coach ? new Set((coach.managers||[]).filter(x => x.summary).map(x => x.id)) : new Set();
+  let html = '';
+
+  // Большой отдел: сначала рейтинг таблицей, иначе двадцать карточек нечитаемы
+  if(all.length > 8){
+    const rows = all.map(m => {
+      const mine = DataSource.contacts().filter(c => c.manager_id === m.id);
+      const scored = mine.map(c => scoreOf(c.id)).filter(Boolean);
+      const avg = scored.length ? scored.reduce((a,s)=>a+s.total,0)/scored.length : null;
+      return {m, n: mine.length, avg};
+    }).sort((a,b) => (b.avg ?? -1) - (a.avg ?? -1));
+    html += '<h2>Рейтинг команды · '+all.length+' человек</h2><table><thead><tr>'+
+      '<th>#</th><th>Менеджер</th><th>Контактов</th><th>Балл</th><th></th><th></th></tr></thead><tbody>';
+    rows.forEach((r,i) => {
+      html += '<tr><td class="muted">'+(i+1)+'</td><td>'+esc(r.m.name)+'</td>'+
+        '<td class="muted">'+r.n+'</td>'+
+        '<td>'+(r.avg!==null ? '<span class="pill '+grade(r.avg,10)+'">'+r.avg.toFixed(1)+'</span>' : '<span class="pill">—</span>')+'</td>'+
+        '<td style="width:180px">'+(r.avg!==null ? '<div class="bar '+grade(r.avg,10)+'"><i style="width:'+Math.round(r.avg*10)+'%"></i></div>' : '')+'</td>'+
+        '<td class="muted small">'+(detailed.has(r.m.id) ? 'разбор ниже' : '')+'</td></tr>';
+    });
+    html += '</tbody></table>';
+    if(detailed.size) html += '<h2>Разбор · '+detailed.size+' из '+all.length+'</h2>';
+  }
+
+  html += '<div class="cards">';
+  const shown = all.length > 8 && detailed.size ? all.filter(m => detailed.has(m.id)) : all;
+  shown.forEach(m => {
     const mine = DataSource.contacts().filter(c => c.manager_id === m.id);
     const scored = mine.map(c => scoreOf(c.id)).filter(Boolean);
     const avg = scored.length ? scored.reduce((a,s)=>a+s.total,0)/scored.length : null;
