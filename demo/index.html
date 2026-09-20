@@ -112,8 +112,7 @@
 
 <script src="data.js"></script>
 <script src="config.js"></script>
-<!-- Появляются по мере прохождения шагов. Пока файла нет, браузер ругнётся в консоль
-     и покажет заглушку — это нормально. -->
+<!-- Появляются по мере прохождения шагов -->
 <script src="scores.js" onerror="void 0"></script>
 <script src="coach.js" onerror="void 0"></script>
 <script src="enrich.js" onerror="void 0"></script>
@@ -170,6 +169,40 @@ function kpi(label, value, note){
     (note ? '<div class="kpi-note">'+esc(note)+'</div>' : '')+'</div>';
 }
 
+/* ---------------------------- Каркас ---------------------------- */
+/* Вкладки регистрируются подключёнными блоками — см. blocks/ */
+const TABS = [];
+const TAB_ORDER = ['overview','contacts','insights','managers','leads','deep'];
+function registerTab(t){
+  TABS.push(t);
+  TABS.sort((a,b) => TAB_ORDER.indexOf(a.id) - TAB_ORDER.indexOf(b.id));
+}
+let active = null;
+function draw(){
+  $('#tabs').innerHTML = TABS.map(t => '<button class="'+(t.id===active?'on':'')+'" onclick="go(\''+t.id+'\')">'+t.label+'</button>').join('');
+  $('#view').innerHTML = (TABS.find(t => t.id === active) || TABS[0]).render();
+}
+function go(id){ active = id; draw(); }
+
+function boot(){
+  const meta = DataSource.meta();
+  $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
+    ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
+  $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
+  if(meta.synthetic){
+    const b = document.createElement('span');
+    b.className = 'pill warn'; b.style.marginLeft = '4px';
+    b.textContent = 'данные синтетические';
+    b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
+    document.querySelector('header').appendChild(b);
+  }
+  active = TABS.length ? TABS[0].id : null;
+  draw();
+}
+
+</script>
+<script>
+/* Блок «Обзор». Подключается сборщиком: scripts/build_cabinet.py */
 /* ---------------------------- ОБЗОР ---------------------------- */
 function renderOverview(){
   const contacts = DataSource.contacts(), leads = DataSource.leads(), sc = DataSource.scores();
@@ -221,7 +254,11 @@ function renderOverview(){
   }
   return html;
 }
+registerTab({ id: 'overview', label: 'Обзор', render: renderOverview });
 
+</script>
+<script>
+/* Блок «Коммуникации». Подключается сборщиком: scripts/build_cabinet.py */
 /* ------------------------ КОММУНИКАЦИИ ------------------------ */
 function renderContacts(){
   const all = DataSource.contacts();
@@ -300,7 +337,25 @@ function openContact(id){
   $('#m-body').innerHTML = body;
   $('#modal').showModal();
 }
+registerTab({ id: 'contacts', label: 'Коммуникации', render: renderContacts });
 
+</script>
+<script>
+/* Блок «Инсайты». Подключается сборщиком: scripts/build_cabinet.py */
+/* --------------------------- ИНСАЙТЫ --------------------------- */
+function renderInsights(){
+  const sc = DataSource.scores();
+  if(!sc || !(sc.insights||[]).length){
+    return emptyBlock('Инсайтов пока нет',
+      'Когда коммуникации будут разобраны, кабинет сам найдёт закономерности: где проседает воронка, кто в чём силён, какие возражения повторяются.','шага 1');
+  }
+  return sc.insights.map(i => '<div class="insight '+esc(i.level||'')+'"><h4>'+esc(i.title)+'</h4><p>'+esc(i.text)+'</p></div>').join('');
+}
+registerTab({ id: 'insights', label: 'Инсайты', render: renderInsights });
+
+</script>
+<script>
+/* Блок «Менеджеры». Подключается сборщиком: scripts/build_cabinet.py */
 /* -------------------------- МЕНЕДЖЕРЫ -------------------------- */
 function renderManagers(){
   const coach = DataSource.coaching();
@@ -357,7 +412,11 @@ function renderManagers(){
       'Кабинет оценивает разговоры, но пока не объясняет менеджеру, что делать иначе, и не тренирует слабые места.','шага 2');
   return html;
 }
+registerTab({ id: 'managers', label: 'Менеджеры', render: renderManagers });
 
+</script>
+<script>
+/* Блок «Лиды». Подключается сборщиком: scripts/build_cabinet.py */
 /* ---------------------------- ЛИДЫ ---------------------------- */
 function renderLeads(){
   const leads = DataSource.leads(), enr = DataSource.enrichment();
@@ -407,17 +466,11 @@ function openLead(id){
   $('#m-body').innerHTML = body;
   $('#modal').showModal();
 }
+registerTab({ id: 'leads', label: 'Лиды', render: renderLeads });
 
-/* --------------------------- ИНСАЙТЫ --------------------------- */
-function renderInsights(){
-  const sc = DataSource.scores();
-  if(!sc || !(sc.insights||[]).length){
-    return emptyBlock('Инсайтов пока нет',
-      'Когда коммуникации будут разобраны, кабинет сам найдёт закономерности: где проседает воронка, кто в чём силён, какие возражения повторяются.','шага 1');
-  }
-  return sc.insights.map(i => '<div class="insight '+esc(i.level||'')+'"><h4>'+esc(i.title)+'</h4><p>'+esc(i.text)+'</p></div>').join('');
-}
-
+</script>
+<script>
+/* Блок «Глубина». Подключается сборщиком: scripts/build_cabinet.py */
 /* ----------------------- ГЛУБОКАЯ АНАЛИТИКА ----------------------- */
 function renderDeep(){
   const d = DataSource.deep();
@@ -463,37 +516,9 @@ function renderDeep(){
   }
   return html;
 }
+registerTab({ id: 'deep', label: 'Глубина', render: renderDeep });
 
-/* ---------------------------- Каркас ---------------------------- */
-const TABS = [
-  {id:'overview', label:'Обзор',         render:renderOverview},
-  {id:'contacts', label:'Коммуникации',  render:renderContacts},
-  {id:'managers', label:'Менеджеры',     render:renderManagers},
-  {id:'leads',    label:'Лиды',          render:renderLeads},
-  {id:'insights', label:'Инсайты',       render:renderInsights},
-  {id:'deep',     label:'Глубина',       render:renderDeep}
-];
-let active = 'overview';
-function draw(){
-  $('#tabs').innerHTML = TABS.map(t => '<button class="'+(t.id===active?'on':'')+'" onclick="go(\''+t.id+'\')">'+t.label+'</button>').join('');
-  $('#view').innerHTML = (TABS.find(t => t.id === active) || TABS[0]).render();
-}
-function go(id){ active = id; draw(); }
-
-(function init(){
-  const meta = DataSource.meta();
-  $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
-    ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
-  $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
-  if(meta.synthetic){
-    const b = document.createElement('span');
-    b.className = 'pill warn'; b.style.marginLeft = '4px';
-    b.textContent = 'данные синтетические';
-    b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
-    document.querySelector('header').appendChild(b);
-  }
-  draw();
-})();
 </script>
+<script>boot();</script>
 </body>
 </html>
