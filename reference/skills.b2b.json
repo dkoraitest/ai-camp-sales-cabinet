@@ -1,46 +1,46 @@
 {
   "skills": {
-    "m2": {
-      "structure": 6.8,
-      "discovery": 2.0,
-      "qualification": 0.6,
-      "objections": 3.8,
-      "deal_control": 2.9,
-      "expertise": 5.0,
+    "m4": {
+      "structure": 7.1,
+      "discovery": 4,
+      "qualification": 2.5,
+      "objections": 4.1,
+      "deal_control": 4.7,
+      "expertise": 5.6,
       "balance": 9
     },
     "m1": {
-      "structure": 8,
-      "discovery": 6.4,
-      "qualification": 5.5,
-      "objections": 5.5,
-      "deal_control": 7.8,
-      "expertise": 5.0,
+      "structure": 8.3,
+      "discovery": 7.6,
+      "qualification": 6.6,
+      "objections": 6.4,
+      "deal_control": 8.4,
+      "expertise": 6.8,
       "balance": 9
     },
-    "m4": {
-      "structure": 7.1,
-      "discovery": 3.9,
-      "qualification": 2.4,
-      "objections": 4.1,
-      "deal_control": 4.0,
-      "expertise": 5.2,
+    "m2": {
+      "structure": 5.1,
+      "discovery": 1.8,
+      "qualification": 0.2,
+      "objections": 3.8,
+      "deal_control": 2.9,
+      "expertise": 4.8,
       "balance": 9
     },
     "m3": {
-      "structure": 6.4,
-      "discovery": 1.7,
-      "qualification": 0.4,
-      "objections": 3.9,
-      "deal_control": 2.5,
-      "expertise": 4.6,
+      "structure": 5.1,
+      "discovery": 2.6,
+      "qualification": 0.8,
+      "objections": 3.6,
+      "deal_control": 2.2,
+      "expertise": 5.1,
       "balance": 9
     }
   },
   "avg": {
-    "m2": 4.3,
-    "m1": 6.7,
-    "m4": 5.1,
-    "m3": 4.1
+    "m4": 5.3,
+    "m1": 7.6,
+    "m2": 3.9,
+    "m3": 4.0
   }
 }

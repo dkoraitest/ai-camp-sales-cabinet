@@ -9,7 +9,19 @@
     --bg:#0b0d12; --panel:#12151d; --panel-2:#171b25; --line:#222838;
     --fg:#f2f4f8; --muted:#8b93a7; --accent:#5b8cff; --good:#34d399;
     --warn:#fbbf24; --bad:#f87171; --radius:14px;
+    --turn-mgr:rgba(91,140,255,.10);
   }
+  :root[data-theme="light"]{
+    --bg:#f6f7fa; --panel:#ffffff; --panel-2:#eef1f6; --line:#dfe3ec;
+    --fg:#141821; --muted:#5d6577; --accent:#2f6bff; --good:#0f9d63;
+    --warn:#b7791f; --bad:#d64545;
+    --turn-mgr:rgba(47,107,255,.09);
+  }
+  :root[data-theme="light"] .card,
+  :root[data-theme="light"] dialog{box-shadow:0 1px 3px rgba(20,24,33,.06)}
+  #theme{background:none;border:1px solid var(--line);color:var(--muted);
+    border-radius:9px;padding:6px 12px;font-size:13px;cursor:pointer;margin-left:auto}
+  #theme:hover{color:var(--fg);border-color:var(--muted)}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--fg);
     font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
@@ -59,7 +71,7 @@
   .turn{margin-bottom:12px;display:flex;gap:10px}
   .turn .who{flex:0 0 76px;color:var(--muted);font-size:12px;padding-top:2px}
   .turn.client .text{background:var(--panel-2);border-radius:10px;padding:9px 12px}
-  .turn.manager .text{background:rgba(91,140,255,.1);border-radius:10px;padding:9px 12px}
+  .turn.manager .text{background:var(--turn-mgr);border-radius:10px;padding:9px 12px}
   .x{background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer;line-height:1}
   .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
   select,input,button.act{background:var(--panel-2);border:1px solid var(--line);color:var(--fg);
@@ -97,6 +109,7 @@
 <header>
   <h1 id="brand">Кабинет продаж</h1>
   <span class="sub" id="profile-note"></span>
+  <button id="theme" onclick="toggleTheme()" title="Тёмная или светлая тема">Светлая</button>
 </header>
 
 <nav id="tabs"></nav>
@@ -183,6 +196,25 @@ function draw(){
   $('#view').innerHTML = (TABS.find(t => t.id === active) || TABS[0]).render();
 }
 function go(id){ active = id; draw(); }
+
+/* Тема. Выбор запоминается в браузере; если хранилище недоступно —
+   просто работает тёмная, ничего не ломается. */
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  const b = document.getElementById('theme');
+  if(b) b.textContent = t === 'light' ? 'Тёмная' : 'Светлая';
+}
+function toggleTheme(){
+  const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  applyTheme(next);
+  try { localStorage.setItem('cabinet-theme', next); } catch(e){}
+}
+(function initTheme(){
+  // по умолчанию тёмная: кабинет часто показывают с проектора
+  let saved = null;
+  try { saved = localStorage.getItem('cabinet-theme'); } catch(e){}
+  applyTheme(saved === 'light' ? 'light' : 'dark');
+})();
 
 function boot(){
   const meta = DataSource.meta();

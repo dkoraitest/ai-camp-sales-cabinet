@@ -103,7 +103,7 @@
       "lead_id": "l38",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 14,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -146,7 +146,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c020",
@@ -155,7 +156,7 @@
       "lead_id": "l245",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 11,
+      "duration_min": 7,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -206,7 +207,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c103",
@@ -215,7 +217,7 @@
       "lead_id": "l254",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 19,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -282,7 +284,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c111",
@@ -291,7 +294,7 @@
       "lead_id": "l26",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 17,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -350,7 +353,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c070",
@@ -359,7 +363,7 @@
       "lead_id": "l80",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 12,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -426,7 +430,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c075",
@@ -435,7 +440,7 @@
       "lead_id": "l226",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -502,7 +507,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c107",
@@ -511,7 +517,7 @@
       "lead_id": "l42",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 13,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -562,7 +568,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c066",
@@ -571,7 +578,7 @@
       "lead_id": "l28",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 9,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -638,7 +645,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c065",
@@ -647,7 +655,7 @@
       "lead_id": "l172",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -690,7 +698,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c148",
@@ -699,7 +708,7 @@
       "lead_id": "l130",
       "stage": "new",
       "direction": "inbound",
-      "duration_min": 23,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -766,7 +775,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c162",
@@ -775,7 +785,7 @@
       "lead_id": "l77",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -834,7 +844,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c095",
@@ -843,7 +854,7 @@
       "lead_id": "l87",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 8,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -886,7 +897,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c158",
@@ -895,7 +907,7 @@
       "lead_id": "l177",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -938,7 +950,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c105",
@@ -947,7 +960,7 @@
       "lead_id": "l27",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 13,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -998,7 +1011,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c100",
@@ -1007,7 +1021,7 @@
       "lead_id": "l53",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -1050,7 +1064,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c156",
@@ -1059,7 +1074,7 @@
       "lead_id": "l257",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1118,7 +1133,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c114",
@@ -1127,7 +1143,7 @@
       "lead_id": "l91",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 13,
+      "duration_min": 7,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -1170,7 +1186,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c154",
@@ -1179,7 +1196,7 @@
       "lead_id": "l218",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 17,
+      "duration_min": 6,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -1230,7 +1247,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c039",
@@ -1239,7 +1257,7 @@
       "lead_id": "l33",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 9,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -1274,7 +1292,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c102",
@@ -1283,7 +1302,7 @@
       "lead_id": "l82",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 17,
+      "duration_min": 10,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -1342,7 +1361,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c127",
@@ -1351,7 +1371,7 @@
       "lead_id": "l129",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 19,
+      "duration_min": 7,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -1410,7 +1430,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c116",
@@ -1419,7 +1440,7 @@
       "lead_id": "l110",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 17,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1470,7 +1491,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c126",
@@ -1479,7 +1501,7 @@
       "lead_id": "l216",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1546,7 +1568,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c160",
@@ -1555,7 +1578,7 @@
       "lead_id": "l199",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 20,
+      "duration_min": 10,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -1622,7 +1645,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c027",
@@ -1631,7 +1655,7 @@
       "lead_id": "l171",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 22,
+      "duration_min": 10,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -1698,7 +1722,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c037",
@@ -1707,7 +1732,7 @@
       "lead_id": "l204",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 11,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1766,7 +1791,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c121",
@@ -1775,7 +1801,7 @@
       "lead_id": "l74",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1826,7 +1852,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c104",
@@ -1835,7 +1862,7 @@
       "lead_id": "l53",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -1878,7 +1905,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c112",
@@ -1887,7 +1915,7 @@
       "lead_id": "l141",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 6,
+      "duration_min": 3,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -1914,7 +1942,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c063",
@@ -1923,7 +1952,7 @@
       "lead_id": "l70",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -1966,7 +1995,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c055",
@@ -1975,7 +2005,7 @@
       "lead_id": "l158",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2042,7 +2072,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c115",
@@ -2051,7 +2082,7 @@
       "lead_id": "l199",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 17,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2102,7 +2133,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c017",
@@ -2111,7 +2143,7 @@
       "lead_id": "l233",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 20,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2170,7 +2202,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c090",
@@ -2179,7 +2212,7 @@
       "lead_id": "l140",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2246,7 +2279,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c079",
@@ -2255,7 +2289,7 @@
       "lead_id": "l145",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 8,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -2298,7 +2332,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c094",
@@ -2307,7 +2342,7 @@
       "lead_id": "l07",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 19,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2366,7 +2401,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c036",
@@ -2375,7 +2411,7 @@
       "lead_id": "l169",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 11,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2434,7 +2470,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c048",
@@ -2443,7 +2480,7 @@
       "lead_id": "l10",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 8,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -2494,7 +2531,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c157",
@@ -2503,7 +2541,7 @@
       "lead_id": "l177",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 5,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -2554,7 +2592,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c101",
@@ -2563,7 +2602,7 @@
       "lead_id": "l135",
       "stage": "closed_won",
       "direction": "inbound",
-      "duration_min": 21,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -2630,7 +2669,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c091",
@@ -2639,7 +2679,7 @@
       "lead_id": "l33",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -2682,7 +2722,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c076",
@@ -2691,7 +2732,7 @@
       "lead_id": "l127",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 22,
+      "duration_min": 9,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -2758,7 +2799,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c145",
@@ -2767,7 +2809,7 @@
       "lead_id": "l107",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 7,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -2794,7 +2836,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c143",
@@ -2803,7 +2846,7 @@
       "lead_id": "l109",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 22,
+      "duration_min": 10,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -2870,7 +2913,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c088",
@@ -2879,7 +2923,7 @@
       "lead_id": "l176",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -2922,7 +2966,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c054",
@@ -2931,7 +2976,7 @@
       "lead_id": "l191",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -2974,7 +3019,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c086",
@@ -2983,7 +3029,7 @@
       "lead_id": "l35",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3042,7 +3088,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c141",
@@ -3051,7 +3098,7 @@
       "lead_id": "l54",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 14,
+      "duration_min": 7,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -3094,7 +3141,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c131",
@@ -3103,7 +3151,7 @@
       "lead_id": "l46",
       "stage": "closed_lost",
       "direction": "inbound",
-      "duration_min": 13,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -3146,7 +3194,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c049",
@@ -3155,7 +3204,7 @@
       "lead_id": "l198",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 23,
+      "duration_min": 12,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3222,7 +3271,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c092",
@@ -3231,7 +3281,7 @@
       "lead_id": "l55",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3290,7 +3340,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c081",
@@ -3299,7 +3350,7 @@
       "lead_id": "l171",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 8,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3326,7 +3377,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c117",
@@ -3335,7 +3387,7 @@
       "lead_id": "l145",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 4,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3362,7 +3414,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c138",
@@ -3371,7 +3424,7 @@
       "lead_id": "l247",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 7,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3414,7 +3467,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c096",
@@ -3423,7 +3477,7 @@
       "lead_id": "l132",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3482,7 +3536,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c018",
@@ -3491,7 +3546,7 @@
       "lead_id": "l120",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 22,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3558,7 +3613,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c044",
@@ -3567,7 +3623,7 @@
       "lead_id": "l227",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 6,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -3610,7 +3666,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c032",
@@ -3619,7 +3676,7 @@
       "lead_id": "l187",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 6,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3646,7 +3703,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c052",
@@ -3655,7 +3713,7 @@
       "lead_id": "l136",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 23,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3722,7 +3780,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c035",
@@ -3731,7 +3790,7 @@
       "lead_id": "l75",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -3790,7 +3849,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c106",
@@ -3799,7 +3859,7 @@
       "lead_id": "l57",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 10,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -3842,7 +3902,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c123",
@@ -3851,7 +3912,7 @@
       "lead_id": "l251",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 6,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3886,7 +3947,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c080",
@@ -3895,7 +3957,7 @@
       "lead_id": "l88",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 8,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -3930,7 +3992,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c085",
@@ -3939,7 +4002,7 @@
       "lead_id": "l191",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 11,
+      "duration_min": 7,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -3982,7 +4045,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c109",
@@ -3991,7 +4055,7 @@
       "lead_id": "l186",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 11,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -4026,7 +4090,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c040",
@@ -4035,7 +4100,7 @@
       "lead_id": "l184",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 23,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4102,7 +4167,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c142",
@@ -4111,7 +4177,7 @@
       "lead_id": "l228",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 10,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -4154,7 +4220,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c025",
@@ -4163,7 +4230,7 @@
       "lead_id": "l77",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 20,
+      "duration_min": 10,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -4230,7 +4297,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c023",
@@ -4239,7 +4307,7 @@
       "lead_id": "l200",
       "stage": "closed_lost",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -4282,7 +4350,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c034",
@@ -4291,7 +4360,7 @@
       "lead_id": "l25",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 18,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4350,7 +4419,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c120",
@@ -4359,7 +4429,7 @@
       "lead_id": "l242",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 11,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -4394,7 +4464,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c045",
@@ -4403,7 +4474,7 @@
       "lead_id": "l63",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 9,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -4470,7 +4541,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c022",
@@ -4479,7 +4551,7 @@
       "lead_id": "l228",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 7,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -4522,7 +4594,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c163",
@@ -4531,7 +4604,7 @@
       "lead_id": "l244",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 16,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4582,7 +4655,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c068",
@@ -4591,7 +4665,7 @@
       "lead_id": "l27",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 19,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4658,7 +4732,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c108",
@@ -4667,7 +4742,7 @@
       "lead_id": "l232",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 8,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -4710,7 +4785,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c147",
@@ -4719,7 +4795,7 @@
       "lead_id": "l159",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4786,7 +4862,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c056",
@@ -4795,7 +4872,7 @@
       "lead_id": "l74",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 16,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4854,7 +4931,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c149",
@@ -4863,7 +4941,7 @@
       "lead_id": "l97",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -4922,7 +5000,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c140",
@@ -4931,7 +5010,7 @@
       "lead_id": "l211",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -4974,7 +5053,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c130",
@@ -4983,7 +5063,7 @@
       "lead_id": "l180",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5034,7 +5114,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c074",
@@ -5043,7 +5124,7 @@
       "lead_id": "l232",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 7,
+      "duration_min": 3,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -5070,7 +5151,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c021",
@@ -5079,7 +5161,7 @@
       "lead_id": "l95",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 11,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -5122,7 +5204,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c087",
@@ -5131,7 +5214,7 @@
       "lead_id": "l108",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -5174,7 +5257,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c043",
@@ -5183,7 +5267,7 @@
       "lead_id": "l160",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 21,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5242,7 +5326,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c084",
@@ -5251,7 +5336,7 @@
       "lead_id": "l06",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -5286,7 +5371,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c015",
@@ -5295,7 +5381,7 @@
       "lead_id": "l129",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 21,
+      "duration_min": 8,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -5354,7 +5440,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c134",
@@ -5363,7 +5450,7 @@
       "lead_id": "l172",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 7,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -5430,7 +5517,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c118",
@@ -5439,7 +5527,7 @@
       "lead_id": "l44",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 12,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5506,7 +5594,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c128",
@@ -5515,7 +5604,7 @@
       "lead_id": "l127",
       "stage": "trial_booked",
       "direction": "inbound",
-      "duration_min": 21,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5582,7 +5671,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c057",
@@ -5591,7 +5681,7 @@
       "lead_id": "l89",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 5,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -5634,7 +5724,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c077",
@@ -5643,7 +5734,7 @@
       "lead_id": "l183",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 8,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -5678,7 +5769,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c083",
@@ -5687,7 +5779,7 @@
       "lead_id": "l172",
       "stage": "new",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5746,7 +5838,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c113",
@@ -5755,7 +5848,7 @@
       "lead_id": "l48",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 11,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -5814,7 +5907,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c110",
@@ -5823,7 +5917,7 @@
       "lead_id": "l216",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -5866,7 +5960,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c026",
@@ -5875,7 +5970,7 @@
       "lead_id": "l249",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 6,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -5902,7 +5997,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c046",
@@ -5911,7 +6007,7 @@
       "lead_id": "l49",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 6,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -5954,7 +6050,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c133",
@@ -5963,7 +6060,7 @@
       "lead_id": "l241",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 19,
+      "duration_min": 7,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -6022,7 +6119,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c152",
@@ -6031,7 +6129,7 @@
       "lead_id": "l173",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6066,7 +6164,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c019",
@@ -6075,7 +6174,7 @@
       "lead_id": "l102",
       "stage": "payment",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -6126,7 +6225,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c073",
@@ -6135,7 +6235,7 @@
       "lead_id": "l252",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -6178,7 +6278,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c161",
@@ -6187,7 +6288,7 @@
       "lead_id": "l158",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 7,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6214,7 +6315,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c082",
@@ -6223,7 +6325,7 @@
       "lead_id": "l169",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 11,
+      "duration_min": 5,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -6274,7 +6376,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c062",
@@ -6283,7 +6386,7 @@
       "lead_id": "l196",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6326,7 +6429,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c098",
@@ -6335,7 +6439,7 @@
       "lead_id": "l117",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 7,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6378,7 +6482,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c155",
@@ -6387,7 +6492,7 @@
       "lead_id": "l45",
       "stage": "closed_lost",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -6438,7 +6543,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c132",
@@ -6447,7 +6553,7 @@
       "lead_id": "l33",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6490,7 +6596,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c137",
@@ -6499,7 +6606,7 @@
       "lead_id": "l216",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -6534,7 +6641,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c124",
@@ -6543,7 +6651,7 @@
       "lead_id": "l213",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 9,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -6570,7 +6678,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c129",
@@ -6579,7 +6688,7 @@
       "lead_id": "l110",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 16,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -6638,7 +6747,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c051",
@@ -6647,7 +6757,7 @@
       "lead_id": "l243",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 18,
+      "duration_min": 9,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -6706,7 +6816,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c099",
@@ -6715,7 +6826,7 @@
       "lead_id": "l126",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -6774,7 +6885,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c150",
@@ -6783,7 +6895,7 @@
       "lead_id": "l253",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6826,7 +6938,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c042",
@@ -6835,7 +6948,7 @@
       "lead_id": "l107",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 7,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -6870,7 +6983,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c119",
@@ -6879,7 +6993,7 @@
       "lead_id": "l235",
       "stage": "closed_won",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 11,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -6946,7 +7060,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c053",
@@ -6955,7 +7070,7 @@
       "lead_id": "l202",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7006,7 +7121,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c135",
@@ -7015,7 +7131,7 @@
       "lead_id": "l96",
       "stage": "closed_won",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 7,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -7058,7 +7174,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c01",
@@ -7067,7 +7184,7 @@
       "lead_id": "l04",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 8,
       "outcome": "записаны на пробный, выяснен мотив родителя",
       "transcript": [
         {
@@ -7122,7 +7239,8 @@
           "who": "manager",
           "text": "Записала. Пришлю ссылку в WhatsApp и напомню за час. Если планы поменяются — просто напишите, перенесём."
         }
-      ]
+      ],
+      "turns": 13
     },
     {
       "id": "c060",
@@ -7131,7 +7249,7 @@
       "lead_id": "l158",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -7174,7 +7292,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c159",
@@ -7183,7 +7302,7 @@
       "lead_id": "l111",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -7210,7 +7329,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c02",
@@ -7219,7 +7339,7 @@
       "lead_id": "l07",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 4,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, клиент ушёл думать",
       "transcript": [
         {
@@ -7258,7 +7378,8 @@
           "who": "manager",
           "text": "Хорошо, думайте."
         }
-      ]
+      ],
+      "turns": 9
     },
     {
       "id": "c047",
@@ -7267,7 +7388,7 @@
       "lead_id": "l91",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 22,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7326,7 +7447,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c028",
@@ -7335,7 +7457,7 @@
       "lead_id": "l151",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -7378,7 +7500,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c069",
@@ -7387,7 +7510,7 @@
       "lead_id": "l98",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 17,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7438,7 +7561,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c03",
@@ -7447,7 +7571,7 @@
       "lead_id": "l11",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 8,
       "outcome": "оплата, разбита на две части",
       "transcript": [
         {
@@ -7494,7 +7618,8 @@
           "who": "manager",
           "text": "Отправляю ссылку на оплату первого платежа. Группа стартует в понедельник, расписание пришлю сегодня же."
         }
-      ]
+      ],
+      "turns": 11
     },
     {
       "id": "c04",
@@ -7503,7 +7628,7 @@
       "lead_id": "l15",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 3,
+      "duration_min": 4,
       "outcome": "не дозвонился до сути, следующий шаг не назначен",
       "transcript": [
         {
@@ -7530,7 +7655,8 @@
           "who": "client",
           "text": "Давайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c061",
@@ -7539,7 +7665,7 @@
       "lead_id": "l222",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 20,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7598,7 +7724,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c029",
@@ -7607,7 +7734,7 @@
       "lead_id": "l181",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7674,7 +7801,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c125",
@@ -7683,7 +7811,7 @@
       "lead_id": "l73",
       "stage": "new",
       "direction": "inbound",
-      "duration_min": 23,
+      "duration_min": 12,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -7750,7 +7878,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c05",
@@ -7759,7 +7888,7 @@
       "lead_id": "l19",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 11,
+      "duration_min": 6,
       "outcome": "отработано возражение про возраст, записаны на пробный",
       "transcript": [
         {
@@ -7810,7 +7939,8 @@
           "who": "manager",
           "text": "Суббота, одиннадцать утра. Ссылку пришлю в WhatsApp."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c153",
@@ -7819,7 +7949,7 @@
       "lead_id": "l74",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 15,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -7862,7 +7992,8 @@
           "who": "client",
           "text": "Ладно, спасибо."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c164",
@@ -7871,7 +8002,7 @@
       "lead_id": "l205",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -7914,7 +8045,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c06",
@@ -7923,7 +8055,7 @@
       "lead_id": "l22",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 6,
+      "duration_min": 7,
       "outcome": "отказ, цена не отработана",
       "transcript": [
         {
@@ -7962,7 +8094,8 @@
           "who": "manager",
           "text": "Хорошо, если передумаете — пишите."
         }
-      ]
+      ],
+      "turns": 9
     },
     {
       "id": "c024",
@@ -7971,7 +8104,7 @@
       "lead_id": "l135",
       "stage": "trial_done",
       "direction": "inbound",
-      "duration_min": 18,
+      "duration_min": 6,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8022,7 +8155,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c041",
@@ -8031,7 +8165,7 @@
       "lead_id": "l162",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8082,7 +8216,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c033",
@@ -8091,7 +8226,7 @@
       "lead_id": "l216",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -8134,7 +8269,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c136",
@@ -8143,7 +8279,7 @@
       "lead_id": "l195",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8202,7 +8338,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c07",
@@ -8211,7 +8348,7 @@
       "lead_id": "l26",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 8,
+      "duration_min": 7,
       "outcome": "выявлен настоящий ЛПР — решает папа",
       "transcript": [
         {
@@ -8258,7 +8395,8 @@
           "who": "manager",
           "text": "Записываю на субботу, двенадцать часов. Напомню в пятницу вечером."
         }
-      ]
+      ],
+      "turns": 11
     },
     {
       "id": "c016",
@@ -8267,7 +8405,7 @@
       "lead_id": "l78",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 21,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8326,7 +8464,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c122",
@@ -8335,7 +8474,7 @@
       "lead_id": "l182",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 12,
+      "duration_min": 6,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -8378,7 +8517,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c038",
@@ -8387,7 +8527,7 @@
       "lead_id": "l36",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 19,
+      "duration_min": 7,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8446,7 +8586,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c08",
@@ -8455,7 +8596,7 @@
       "lead_id": "l31",
       "stage": "trial_booked",
       "direction": "outbound",
-      "duration_min": 5,
+      "duration_min": 4,
       "outcome": "подтверждение записи, без подготовки родителя",
       "transcript": [
         {
@@ -8482,7 +8623,8 @@
           "who": "client",
           "text": "До свидания."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c064",
@@ -8491,7 +8633,7 @@
       "lead_id": "l27",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 6,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -8518,7 +8660,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c09",
@@ -8527,7 +8670,7 @@
       "lead_id": "l34",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 6,
       "outcome": "оплата корпоративная, счёт на ТОО",
       "transcript": [
         {
@@ -8566,7 +8709,8 @@
           "who": "manager",
           "text": "Высылаю счёт и договор на почту в течение часа. Если бухгалтерии что-то понадобится — пусть звонит мне напрямую."
         }
-      ]
+      ],
+      "turns": 9
     },
     {
       "id": "c093",
@@ -8575,7 +8719,7 @@
       "lead_id": "l226",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 10,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -8618,7 +8762,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c10",
@@ -8627,7 +8772,7 @@
       "lead_id": "l38",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 7,
+      "duration_min": 6,
       "outcome": "презентация без вопросов, интерес не проверен",
       "transcript": [
         {
@@ -8666,7 +8811,8 @@
           "who": "manager",
           "text": "Хорошо, обращайтесь."
         }
-      ]
+      ],
+      "turns": 9
     },
     {
       "id": "c11",
@@ -8675,7 +8821,7 @@
       "lead_id": "l41",
       "stage": "trial_done",
       "direction": "outbound",
-      "duration_min": 13,
+      "duration_min": 6,
       "outcome": "оплата после отработки возражения о времени",
       "transcript": [
         {
@@ -8722,7 +8868,8 @@
           "who": "manager",
           "text": "Отправляю ссылку на оплату и расписание. Первое занятие пятнадцатого в восемнадцать, напомню накануне."
         }
-      ]
+      ],
+      "turns": 11
     },
     {
       "id": "c030",
@@ -8731,7 +8878,7 @@
       "lead_id": "l218",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 23,
+      "duration_min": 10,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -8798,7 +8945,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c059",
@@ -8807,7 +8955,7 @@
       "lead_id": "l81",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 18,
+      "duration_min": 6,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -8866,7 +9014,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 14
     },
     {
       "id": "c12",
@@ -8875,7 +9024,7 @@
       "lead_id": "l44",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 6,
+      "duration_min": 5,
       "outcome": "не предложен следующий шаг",
       "transcript": [
         {
@@ -8910,7 +9059,8 @@
           "who": "manager",
           "text": "Пожалуйста, обращайтесь."
         }
-      ]
+      ],
+      "turns": 8
     },
     {
       "id": "c13",
@@ -8919,7 +9069,7 @@
       "lead_id": "l46",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 7,
       "outcome": "оплата, допродажа второго направления",
       "transcript": [
         {
@@ -8958,7 +9108,8 @@
           "who": "manager",
           "text": "Поставила себе напоминание на двадцать пятое октября."
         }
-      ]
+      ],
+      "turns": 9
     },
     {
       "id": "c071",
@@ -8967,7 +9118,7 @@
       "lead_id": "l72",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -9010,7 +9161,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c14",
@@ -9019,7 +9171,7 @@
       "lead_id": "l48",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 4,
+      "duration_min": 2,
       "outcome": "отказ, причина не выяснена",
       "transcript": [
         {
@@ -9038,7 +9190,8 @@
           "who": "client",
           "text": "До свидания."
         }
-      ]
+      ],
+      "turns": 4
     },
     {
       "id": "c067",
@@ -9047,7 +9200,7 @@
       "lead_id": "l41",
       "stage": "closed_won",
       "direction": "inbound",
-      "duration_min": 8,
+      "duration_min": 4,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -9074,7 +9227,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c058",
@@ -9083,7 +9237,7 @@
       "lead_id": "l99",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 5,
+      "duration_min": 3,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -9110,7 +9264,8 @@
           "who": "client",
           "text": "Хорошо, записывайте."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c072",
@@ -9119,7 +9274,7 @@
       "lead_id": "l195",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 9,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -9170,7 +9325,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 12
     },
     {
       "id": "c078",
@@ -9179,7 +9335,7 @@
       "lead_id": "l207",
       "stage": "closed_lost",
       "direction": "outbound",
-      "duration_min": 17,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -9246,7 +9402,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c089",
@@ -9255,7 +9412,7 @@
       "lead_id": "l94",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 20,
+      "duration_min": 11,
       "outcome": "мотив выяснен, но до записи не дошли",
       "transcript": [
         {
@@ -9322,7 +9479,8 @@
           "who": "client",
           "text": "Спасибо, мы пока присматриваемся."
         }
-      ]
+      ],
+      "turns": 16
     },
     {
       "id": "c050",
@@ -9331,7 +9489,7 @@
       "lead_id": "l132",
       "stage": "payment",
       "direction": "outbound",
-      "duration_min": 7,
+      "duration_min": 4,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -9358,7 +9516,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 6
     },
     {
       "id": "c031",
@@ -9367,7 +9526,7 @@
       "lead_id": "l90",
       "stage": "new",
       "direction": "outbound",
-      "duration_min": 9,
+      "duration_min": 5,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -9410,7 +9569,8 @@
           "who": "client",
           "text": "Я подумаю и напишу."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c097",
@@ -9419,7 +9579,7 @@
       "lead_id": "l18",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 14,
+      "duration_min": 6,
       "outcome": "цена названа без ценности, ушли думать",
       "transcript": [
         {
@@ -9462,7 +9622,8 @@
           "who": "client",
           "text": "Надо посоветоваться."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c151",
@@ -9471,7 +9632,7 @@
       "lead_id": "l77",
       "stage": "qualified",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 5,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -9514,7 +9675,8 @@
           "who": "client",
           "text": "Да, четверг подходит."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c144",
@@ -9523,7 +9685,7 @@
       "lead_id": "l79",
       "stage": "closed_won",
       "direction": "outbound",
-      "duration_min": 12,
+      "duration_min": 5,
       "outcome": "записаны на пробный без выяснения мотива",
       "transcript": [
         {
@@ -9566,7 +9728,8 @@
           "who": "client",
           "text": "Давайте попробуем."
         }
-      ]
+      ],
+      "turns": 10
     },
     {
       "id": "c146",
@@ -9575,7 +9738,7 @@
       "lead_id": "l02",
       "stage": "qualified",
       "direction": "inbound",
-      "duration_min": 16,
+      "duration_min": 8,
       "outcome": "мотив выяснен, записаны на пробный",
       "transcript": [
         {
@@ -9626,7 +9789,8 @@
           "who": "client",
           "text": "Да, давайте."
         }
-      ]
+      ],
+      "turns": 12
     }
   ],
   "leads": [

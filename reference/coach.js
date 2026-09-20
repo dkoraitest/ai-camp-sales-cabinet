@@ -10,37 +10,37 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 8,
+          "value": 8.3,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 6.4,
+          "value": 7.6,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 5.5,
+          "value": 6.6,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5.5,
+          "value": 6.4,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 7.8,
+          "value": 8.4,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 5.0,
+          "value": 6.8,
           "max": 10
         },
         {
@@ -76,19 +76,19 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 6.8,
+          "value": 5.1,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 2.0,
+          "value": 1.8,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0.6,
+          "value": 0.2,
           "max": 10
         },
         {
@@ -106,7 +106,7 @@ window.CABINET_COACH = {
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 5.0,
+          "value": 4.8,
           "max": 10
         },
         {
@@ -146,37 +146,37 @@ window.CABINET_COACH = {
         {
           "id": "structure",
           "name": "Структура разговора",
-          "value": 6.4,
+          "value": 5.1,
           "max": 10
         },
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 1.7,
+          "value": 2.6,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 0.4,
+          "value": 0.8,
           "max": 10
         },
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 3.9,
+          "value": 3.6,
           "max": 10
         },
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 2.5,
+          "value": 2.2,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 4.6,
+          "value": 5.1,
           "max": 10
         },
         {
@@ -218,13 +218,13 @@ window.CABINET_COACH = {
         {
           "id": "discovery",
           "name": "Глубина выявления",
-          "value": 3.9,
+          "value": 4,
           "max": 10
         },
         {
           "id": "qualification",
           "name": "Качество квалификации",
-          "value": 2.4,
+          "value": 2.5,
           "max": 10
         },
         {
@@ -236,13 +236,13 @@ window.CABINET_COACH = {
         {
           "id": "deal_control",
           "name": "Управление сделкой",
-          "value": 4.0,
+          "value": 4.7,
           "max": 10
         },
         {
           "id": "expertise",
           "name": "Экспертность",
-          "value": 5.2,
+          "value": 5.6,
           "max": 10
         },
         {

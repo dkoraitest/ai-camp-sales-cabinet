@@ -42,6 +42,10 @@ PRICE_Q = ["А сколько это стоит?", "Порядок цен как
 CLI_YES = ["Хорошо, договорились.", "Да, давайте.", "Идёт.", "Согласен, так и сделаем.", "Да, ставьте."]
 CLI_NO = ["Я подумаю и напишу.", "Надо посоветоваться.", "Хорошо, посмотрю.",
           "Понятно, мы вернёмся к этому позже.", "Ладно, спасибо."]
+CLIENT_Q = ["А как это будет работать в нашем случае?", "Сколько времени займёт запуск?",
+            "А если у нас всё по-другому устроено?", "Кто будет этим заниматься с вашей стороны?",
+            "А поддержка потом какая?", "Мы можем сначала на одном направлении попробовать?",
+            "А что если не пойдёт?", "Какие гарантии по срокам?"]
 
 
 def validate(profile):
@@ -80,26 +84,33 @@ def say(who, text, p):
     return f + (text[0].lower() + text[1:] if text[:1].isupper() else text)
 
 
-def build_call(P, mgr, stage, seg, lead, idx, dt):
+# сколько «кругов» вопрос-ответ на этапе: на демо и переговорах разговор длиннее
+STAGE_DEPTH = {0: 1, 1: 3, 2: 4, 3: 3, 4: 3, 5: 2, 6: 1}
+
+def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
     st = mgr["style"]; t = []; said = set()
     add = lambda w, x: t.append({"who": w, "text": x})
     def pick(pool):
         fresh = [x for x in pool if x not in said] or list(pool)
         x = random.choice(fresh); said.add(x); return x
 
+    objection_closed_talk = False
     weak = random.random() > st.get("asks_first", .5) + .3
     greet = (P["greetings"]["weak"] if weak and P.get("greetings", {}).get("weak") else P["greetings"]["normal"])
     add("manager", random.choice(greet).format(
         name=lead["contact"].split()[0], mgr=mgr["name"].split()[0], company=P["company"]))
     add("client", random.choice(NOISE if random.random() < .18 else ACK))
 
+    rounds = STAGE_DEPTH.get(stage_idx, 2)
     asks = random.random() < st.get("asks_first", .5)
     if asks:
         deep = st.get("asks_first", .5) > .5
-        for q in random.sample(P["questions"]["situation"], k=min(2 if deep else 1, len(P["questions"]["situation"]))):
+        k_sit = min(len(P["questions"]["situation"]), (2 if deep else 1) + rounds - 1)
+        for q in random.sample(P["questions"]["situation"], k=k_sit):
             add("manager", say("manager", q, st.get("filler", .2)))
             add("client", say("client", pick(seg["situation"]), .3))
-        for q in random.sample(P["questions"]["pain"], k=min(2 if deep else 1, len(P["questions"]["pain"]))):
+        k_pain = min(len(P["questions"]["pain"]), (2 if deep else 1) + rounds - 1)
+        for q in random.sample(P["questions"]["pain"], k=k_pain):
             add("manager", say("manager", q, st.get("filler", .2)))
             add("client", say("client", pick(seg["pain"]), .3))
         if random.random() < st.get("qualify", .4) and P["questions"].get("qualify"):
@@ -109,14 +120,19 @@ def build_call(P, mgr, stage, seg, lead, idx, dt):
             add("manager", random.choice(P["questions"]["deep"]))
             add("client", say("client", pick(seg["cost"]), .35))
     else:
-        add("manager", say("manager", pick(P["product_lines"]), st.get("filler", .2)))
-        add("client", random.choice(SHORT_ACK))
-        add("manager", pick(P["product_lines"]))
-        add("client", random.choice(SHORT_ACK))
+        for _ in range(max(2, rounds)):
+            add("manager", say("manager", pick(P["product_lines"]), st.get("filler", .2)))
+            add("client", random.choice(SHORT_ACK))
 
     if random.random() < st.get("value_first", .4) and P.get("value_lines"):
         add("manager", pick(P["value_lines"]))
         add("client", random.choice(["Это как раз то, что нам нужно.", "Интересно.", "Хорошо."]))
+
+    # на демо и обсуждении предложения клиент задаёт встречные вопросы
+    if stage_idx in (2, 3, 4):
+        for _ in range(random.randint(1, 3)):
+            add("client", random.choice(CLIENT_Q))
+            add("manager", pick(P["value_lines"] + P["product_lines"]))
 
     if random.random() < .75:
         add("client", random.choice(PRICE_Q))
@@ -126,8 +142,14 @@ def build_call(P, mgr, stage, seg, lead, idx, dt):
             style = st.get("objection_style", "justify")
             pool = P["objection_answers"].get(style) or next(iter(P["objection_answers"].values()))
             add("manager", random.choice(pool))
+            objection_closed_talk = (style == "avoid")
 
     closed = random.random() < st.get("next_step", .5)
+    if objection_closed_talk:
+        # менеджер уже свернул разговор («перезвоню позже») — второго финала не будет
+        closed = False
+        t.append({"who": "client", "text": random.choice(CLI_NO)})
+        return finish(P, t, lead, mgr, stage, idx, dt, asks, False)
     if closed:
         pool = P["closings"]["strong"] if st.get("asks_first", .5) > .5 else P["closings"]["mid"]
         add("manager", random.choice(pool).format(
@@ -138,14 +160,23 @@ def build_call(P, mgr, stage, seg, lead, idx, dt):
         add("manager", random.choice(P["closings"]["weak"]))
         add("client", random.choice(CLI_NO))
 
+    return finish(P, t, lead, mgr, stage, idx, dt, asks, closed)
+
+
+def finish(P, t, lead, mgr, stage, idx, dt, asks, closed):
+    """Собирает контакт и считает длительность из объёма разговора.
+
+    Реплика в живом разговоре — это 15–25 секунд с паузами и уточнениями.
+    Раньше длительность бралась с потолка, и 10 реплик превращались в 22 минуты."""
     depth = any(q in " ".join(x["text"] for x in t) for q in P["questions"].get("deep", ["\0"]))
     outcome = (("потребность раскрыта до последствий" if depth else
                 "ситуация выяснена, до сути не дошли") if asks else "презентация без выявления")
     outcome += ", следующий шаг с датой" if closed else ", next step не зафиксирован"
+    minutes = max(2, round(len(t) * random.uniform(0.45, 0.75)))
     return {"id": f"c{idx:03d}", "date": dt.isoformat(timespec="minutes"),
             "manager_id": mgr["id"], "lead_id": lead["id"], "stage": stage,
             "direction": random.choice(["outbound", "outbound", "inbound"]),
-            "duration_min": max(3, int(len(t) * random.uniform(1.1, 2.0))),
+            "duration_min": minutes, "turns": len(t),
             "outcome": outcome, "transcript": t}
 
 
@@ -251,21 +282,56 @@ def main():
 
     mgrs = P["managers"]
     calls, chats = [], []
-    for i in range(a.calls):
-        lead = random.choice(leads)
-        mgr = random.choice(mgrs)
-        seg = next((s for s in P["segments"] if s["name"] == lead["industry"]), P["segments"][0])
-        dt = start + timedelta(days=random.randint(0, 88), hours=random.randint(0, 9),
+    cid = chid = 0
+    chat_budget = 0 if a.no_chats else a.chats
+    n_stages = len(stages)
+    terminal = {stages[-1], stages[-2]} if n_stages >= 2 else set()
+
+    # Контакты генерируются не вразнобой, а историями по сделкам: лид проходит
+    # этапы по очереди, и на каждом пройденном остаётся след. Так в базе
+    # оказываются все этапы воронки, а не только первый, и у каждой сделки
+    # видно, как она двигалась.
+    for lead in leads:
+        if cid >= a.calls and chid >= chat_budget:
+            break
+        reached = stages.index(lead["stage"])
+        mgr = random.choice(mgrs)                     # сделку ведёт один человек
+        lead["manager_id"] = mgr["id"]
+        seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
+        dt = start + timedelta(days=random.randint(0, 70), hours=random.randint(0, 9),
                                minutes=random.choice([0, 5, 10, 15, 20, 30, 40, 45]))
-        calls.append(build_call(P, mgr, random.choice(stages), seg, lead, i + 1, dt))
-    chat_n = 0 if a.no_chats else a.chats
-    for i in range(chat_n):
-        lead = random.choice(leads); mgr = random.choice(mgrs)
-        style = mgr["style"].get("objection_style", "justify")
-        kind = {"counter": "lead", "justify": "fade", "avoid": "pricelist", "discount": "haggle"}.get(style, "fade")
-        if random.random() < .35: kind = random.choice(list(CHAT_KINDS))
-        dt = start + timedelta(days=random.randint(0, 85), hours=random.randint(0, 8))
-        chats.append(build_chat(P, mgr, lead, i + 1, dt, kind))
+
+        path = list(range(reached + 1))
+        if lead["stage"] in terminal and reached > 1:
+            path = list(range(reached))+[reached]     # финальный этап — последним контактом
+        for si in path:
+            if cid >= a.calls:
+                break
+            cid += 1
+            calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
+            dt += timedelta(days=random.randint(2, 12), hours=random.randint(-3, 4))
+
+            # переписка возникает между звонками, чаще на средних этапах
+            if chid < chat_budget and 0 < si < n_stages - 2 and random.random() < .45:
+                chid += 1
+                style = mgr["style"].get("objection_style", "justify")
+                kind = {"counter": "lead", "justify": "fade",
+                        "avoid": "pricelist", "discount": "haggle"}.get(style, "fade")
+                if random.random() < .3:
+                    kind = random.choice(list(CHAT_KINDS))
+                ch = build_chat(P, mgr, lead, chid, dt - timedelta(days=1), kind)
+                ch["stage"] = stages[si]
+                chats.append(ch)
+
+    # если лидов не хватило на заданный объём — добираем повторными касаниями
+    while cid < a.calls:
+        lead = random.choice(leads)
+        mgr = next((m for m in mgrs if m["id"] == lead.get("manager_id")), random.choice(mgrs))
+        seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
+        si = random.randint(0, stages.index(lead["stage"]))
+        cid += 1
+        dt = start + timedelta(days=random.randint(0, 88), hours=random.randint(0, 9))
+        calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
 
     calls.sort(key=lambda c: c["date"]); chats.sort(key=lambda c: c["date_start"])
     out = {"profile": {"id": "own", "title": P["company"], "company": P["company"],
