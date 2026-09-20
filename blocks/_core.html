@@ -101,8 +101,11 @@
     border-left:2px solid var(--accent);white-space:pre-wrap}
   .tg .meta{color:var(--muted);font-size:12px;margin-bottom:6px;white-space:normal}
   /* Команда: карточки в одну линию, листается вбок */
-  .rail{display:flex;gap:14px;overflow-x:auto;padding:2px 2px 12px;
-    scroll-snap-type:x proximity;scroll-behavior:smooth}
+  /* Лента идёт до правого края окна, а не до границы колонки: иначе справа
+     остаётся мёртвая полоса, в которой прокрутка не работает. */
+  .rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
+    scroll-behavior:smooth;padding:2px 28px 12px 2px;
+    margin-right:calc(-1 * max(0px, 100vw - 100% - 44px))}
   .rail > .card{flex:0 0 320px;scroll-snap-align:start;display:flex;flex-direction:column}
   .rail::-webkit-scrollbar{height:8px}
   .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}

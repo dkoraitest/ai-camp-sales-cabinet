@@ -32,9 +32,10 @@ function renderManagers(){
 
   const shown = all.length > 8 && detailed.size ? all.filter(m => detailed.has(m.id)) : all;
   html += '<div class="rail-head"><h2>'+(all.length > 8 ? 'Разбор · '+shown.length+' из '+all.length : 'Команда')+'</h2>'+
-    '<button class="arrow" onclick="railScroll(-1)" title="Левее">&#8249;</button>'+
-    '<button class="arrow" onclick="railScroll(1)" title="Правее">&#8250;</button>'+
-    '<span class="muted small">листается вбок</span></div>';
+    '<span id="rail-nav" style="display:none;align-items:center;gap:8px">'+
+      '<button class="arrow" onclick="railScroll(-1)" title="Левее">&#8249;</button>'+
+      '<button class="arrow" onclick="railScroll(1)" title="Правее">&#8250;</button>'+
+      '<span class="muted small">листается вбок</span></span></div>';
 
   html += '<div class="rail" id="mgr-rail">';
   shown.forEach(m => {
@@ -70,6 +71,7 @@ function renderManagers(){
   });
   html += '</div>';
 
+  setTimeout(railNav, 0);
   if(!coach) html += '<h2>Карта навыков и обратная связь</h2>'+
     emptyBlock('Тренер ещё не подключён',
       'Кабинет оценивает разговоры, но пока не объясняет менеджеру, что делать иначе, и не тренирует слабые места.','шага 2');
@@ -79,6 +81,13 @@ const shorten = (s, n) => s.length > n ? s.slice(0, n).replace(/[\s,;:—-]+\S*$
 function railScroll(dir){
   const r = $('#mgr-rail'); if(r) r.scrollBy({left: dir * 334, behavior: 'smooth'});
 }
+/* Стрелки нужны, только если лента не влезла: иначе кнопка, которая ничего
+   не делает, выглядит как сломанная. */
+function railNav(){
+  const r = $('#mgr-rail'), nav = $('#rail-nav');
+  if(r && nav) nav.style.display = r.scrollWidth > r.clientWidth + 4 ? 'inline-flex' : 'none';
+}
+window.addEventListener('resize', railNav);
 function openCoach(id){
   const coach = DataSource.coaching(); if(!coach) return;
   const fb = (coach.managers||[]).find(x => x.id === id); if(!fb) return;
