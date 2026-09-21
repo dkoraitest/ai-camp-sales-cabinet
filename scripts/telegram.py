@@ -8,10 +8,16 @@
 На воркшопе используется общий бот: заводить своего не нужно, токен даёт
 спикер. Дома вы заведёте свой за пять минут — docs/telegram.md.
 
+    python3 scripts/telegram.py init                 # узнать бота и показать ссылки в кабинете
+    python3 scripts/telegram.py link --auto          # привязать всех, кто прошёл по своей ссылке
     python3 scripts/telegram.py who                  # кто написал боту
-    python3 scripts/telegram.py link m1 --user @ivan # привязать чат к менеджеру
+    python3 scripts/telegram.py link m1 --user @ivan # привязать вручную
     python3 scripts/telegram.py send m1              # отправить разбор и тренировку
     python3 scripts/telegram.py send all --dry       # показать, что уйдёт, и не отправлять
+
+Менеджер не вводит ничего: он открывает ссылку вида t.me/<бот>?start=m2 из
+своей карточки в кабинете и жмёт «Старт». Телеграм передаёт боту id менеджера,
+и `link --auto` расставляет привязки сам.
 
 Зависимостей нет: только стандартная библиотека.
 """
@@ -20,6 +26,7 @@ import argparse, json, pathlib, re, sys, urllib.request, urllib.error, urllib.pa
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LINKS = ROOT / "active" / "telegram.json"
+STATE = ROOT / "cabinet" / "telegram.js"
 API = "https://api.telegram.org/bot{}/{}"
 
 
@@ -114,6 +121,55 @@ def texts(fb):
     return out
 
 
+def publish(bot=None):
+    """Кабинет — статический файл, он не ходит в сеть. Поэтому состояние
+    привязок кладём рядом обычным <script>. Токена и id чатов здесь нет:
+    только имя бота и кто уже подключён."""
+    data = links()
+    if bot is None:
+        bot = json.loads(STATE.read_text(encoding="utf-8").split("=", 1)[1].rsplit(";", 1)[0])["bot"] \
+              if STATE.exists() else None
+    payload = {"bot": bot, "links": {k: True for k in data}}
+    STATE.parent.mkdir(parents=True, exist_ok=True)
+    STATE.write_text("// Сгенерировано scripts/telegram.py — руками не править.\n"
+                     "// Токена и id чатов здесь нет: только имя бота и кто подключён.\n"
+                     f"window.CABINET_TELEGRAM = {json.dumps(payload, ensure_ascii=False)};\n",
+                     encoding="utf-8")
+    return bot
+
+
+def cmd_init(_):
+    me = call("getMe")
+    bot = me.get("username")
+    publish(bot)
+    print(f"Бот @{bot} на связи. Кабинет теперь показывает ссылку подключения в карточке каждого менеджера.")
+    print("Менеджер открывает свою ссылку, жмёт «Старт», дальше: python3 scripts/telegram.py link --auto")
+
+
+def cmd_auto(a):
+    """Привязка по deep-link: в /start прилетает id менеджера, гадать не нужно."""
+    found = {}
+    for u in call("getUpdates", timeout=0, limit=100):
+        msg = u.get("message") or {}
+        text = (msg.get("text") or "").strip()
+        ch = msg.get("chat") or {}
+        if text.startswith("/start ") and ch.get("id"):
+            found[text.split(None, 1)[1].strip()] = ch
+    if not found:
+        sys.exit("Никто ещё не прошёл по своей ссылке.\n"
+                 "Ссылка есть в карточке менеджера в кабинете, и её же печатает python3 scripts/telegram.py init")
+    data = links()
+    for mid, ch in found.items():
+        data[mid] = ch["id"]
+        name = mgr_name(mid)
+        call("sendMessage", chat_id=ch["id"],
+             text=f"Готово. Сюда будет приходить обратная связь по разговорам: {name}.")
+        print(f"✓ {mid} ({name}) → {('@' + ch['username']) if ch.get('username') else ch.get('first_name', '')}")
+    LINKS.parent.mkdir(parents=True, exist_ok=True)
+    LINKS.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    publish()
+
+
 def cmd_who(_):
     rows = chats()
     if not rows:
@@ -127,6 +183,10 @@ def cmd_who(_):
 
 
 def cmd_link(a):
+    if a.auto:
+        return cmd_auto(a)
+    if not a.manager:
+        sys.exit("Нужен id менеджера или флаг --auto.")
     rows = chats()
     if not rows:
         sys.exit("Боту никто не писал. Откройте бота, нажмите «Старт» и повторите.")
@@ -144,6 +204,7 @@ def cmd_link(a):
     name = mgr_name(a.manager)
     call("sendMessage", chat_id=row["id"],
          text=f"Готово. Сюда будет приходить обратная связь по разговорам: {name}.")
+    publish()
     print(f"✓ {a.manager} ({name}) → {row['user'] or row['name']}. Подтверждение отправлено.")
 
 
@@ -171,9 +232,12 @@ def cmd_send(a):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("init", help="узнать бота и показать ссылки в кабинете").set_defaults(fn=cmd_init)
     sub.add_parser("who", help="кто написал боту").set_defaults(fn=cmd_who)
     p = sub.add_parser("link", help="привязать чат к менеджеру"); p.set_defaults(fn=cmd_link)
-    p.add_argument("manager"); p.add_argument("--user", help="@handle получателя")
+    p.add_argument("manager", nargs="?", help="id менеджера; не нужен с --auto")
+    p.add_argument("--auto", action="store_true", help="привязать всех, кто прошёл по своей ссылке")
+    p.add_argument("--user", help="@handle получателя")
     p = sub.add_parser("send", help="отправить разбор"); p.set_defaults(fn=cmd_send)
     p.add_argument("manager", help="id менеджера или all")
     p.add_argument("--dry", action="store_true", help="показать тексты, не отправляя")

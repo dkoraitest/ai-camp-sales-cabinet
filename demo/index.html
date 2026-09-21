@@ -118,6 +118,10 @@
   .cmp .v{display:flex;align-items:center;gap:8px}
   .cmp .v .bar{flex:1}
   .cmp .v span{flex:0 0 42px;text-align:right}
+  .tg-link{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+  .tg-link code{flex:1 1 260px;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:9px;padding:8px 11px;font-size:12.5px;overflow:auto;white-space:nowrap}
+  .tg-link button{white-space:nowrap}
   .scope{color:var(--muted);font-size:12.5px;margin:-6px 0 12px;
     padding-left:11px;border-left:2px solid var(--line)}
   /* Команда: карточки в одну линию, листается вбок */
@@ -204,6 +208,7 @@
 <script src="coach.js" onerror="void 0"></script>
 <script src="enrich.js" onerror="void 0"></script>
 <script src="deep.js" onerror="void 0"></script>
+<script src="telegram.js" onerror="void 0"></script>
 <script>
 const CFG = window.CABINET_CONFIG || {profile:'b2b', matrix:{extract:[],evaluate:[]}, questions:[]};
 
@@ -231,7 +236,8 @@ const DataSource = {
   scores(){ return window.CABINET_SCORES || null },
   coaching(){ return window.CABINET_COACH || null },
   enrichment(){ return window.CABINET_ENRICH || null },
-  deep(){ return window.CABINET_DEEP || null }
+  deep(){ return window.CABINET_DEEP || null },
+  telegram(){ return window.CABINET_TELEGRAM || null }
 };
 
 const $ = s => document.querySelector(s);
@@ -462,6 +468,20 @@ function bantChart(){
         '<div class="muted" style="text-align:right">'+r.full+' из '+r.leads+
           (r.money ? '<br><span style="font-size:11px">'+money(r.money)+'</span>' : '')+'</div></div>';
     }).join('')+'</div>';
+}
+/* Копирование без библиотек: на file:// Clipboard API есть не везде. */
+function copyText(t, btn){
+  const done = () => { if(!btn) return; const was = btn.textContent;
+    btn.textContent = 'Скопировано'; setTimeout(() => btn.textContent = was, 1400) };
+  try { navigator.clipboard.writeText(t).then(done, () => fallback(t, done)) }
+  catch(e){ fallback(t, done) }
+}
+function fallback(t, done){
+  const a = document.createElement('textarea');
+  a.value = t; a.style.position = 'fixed'; a.style.opacity = '0';
+  document.body.appendChild(a); a.select();
+  try { document.execCommand('copy'); done() } catch(e){}
+  document.body.removeChild(a);
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
@@ -877,7 +897,8 @@ function renderManagers(){
     html += '<div class="card"><div style="display:flex;justify-content:space-between;align-items:baseline">'+
       '<strong>'+esc(m.name)+'</strong>'+
       (avg!==null ? '<span class="pill '+grade(avg,10)+'">'+avg.toFixed(1)+'</span>' : '<span class="pill">—</span>')+'</div>'+
-      '<div class="muted small" style="margin-top:2px">'+esc(m.role)+'</div>'+
+      '<div class="muted small" style="margin-top:2px">'+esc(m.role)+
+        (tgLinked(m.id) ? ' · <span class="pill good">Telegram</span>' : '')+'</div>'+
       '<div class="kpi-note">'+mine.length+' контактов · '+
         mine.filter(c=>c.kind==='call').length+' звонков, '+mine.filter(c=>c.kind==='chat').length+' переписок</div>';
 
@@ -896,6 +917,7 @@ function renderManagers(){
     if(fb && fb.focus) html += '<p class="focus"><b>Фокус недели.</b> '+esc(shorten(fb.focus, 150))+'</p>';
 
     if(fb) html += '<div class="card-cta"><button class="act" onclick="openCoach(\''+m.id+'\')">'+
+      (tgLinked(m.id) ? '' : '')+
       'Разбор и сообщения'+((fb.telegram_messages||[]).length ? ' · '+(fb.telegram_messages||[]).length : '')+' &rarr;</button></div>';
     html += '</div>';
   });
@@ -918,6 +940,42 @@ function railNav(){
   if(r && nav) nav.style.display = r.scrollWidth > r.clientWidth + 4 ? 'inline-flex' : 'none';
 }
 window.addEventListener('resize', railNav);
+/* Канал до менеджера. Кабинет ничего не отправляет сам — он статический
+   файл, и токену в нём не место. Его работа — дать ссылку, по которой
+   человек подключается одним нажатием, и показать, кто уже на связи. */
+function tgLinked(id){
+  const t = DataSource.telegram();
+  return !!(t && t.links && t.links[id]);
+}
+function tgCard(id, fb){
+  const t = DataSource.telegram();
+  const linked = tgLinked(id);
+  let b = '<div class="card" style="margin-bottom:14px"><div style="display:flex;'+
+    'justify-content:space-between;align-items:baseline;gap:12px"><div class="kpi-label">Канал до менеджера</div>'+
+    (linked ? '<span class="pill good">подключён</span>' : '<span class="pill">не подключён</span>')+'</div>';
+
+  if(!t || !t.bot){
+    b += '<p class="muted small" style="margin:8px 0 0">Бот ещё не назначен. Один раз на весь кабинет:</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py init</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py init\', this)">Скопировать</button></div>';
+  } else if(!linked){
+    const url = 'https://t.me/'+t.bot+'?start='+id;
+    b += '<p class="muted small" style="margin:8px 0 0">Отправьте эту ссылку менеджеру'+
+      (fb && fb.telegram ? ' ('+esc(fb.telegram)+')' : '')+'. Он открывает её, жмёт «Старт» — и всё, '+
+      'вводить ничего не нужно: имя бота и его id уходят автоматически.</p>'+
+      '<div class="tg-link"><code>'+esc(url)+'</code>'+
+      '<button class="act" onclick="copyText(\''+url+'\', this)">Скопировать ссылку</button></div>'+
+      '<p class="muted small" style="margin:12px 0 0">После этого у себя в терминале:</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py link --auto</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py link --auto\', this)">Скопировать</button></div>';
+  } else {
+    b += '<p class="muted small" style="margin:8px 0 0">Разбор и тренировка уйдут ему в Telegram '+
+      'через @'+esc(t.bot)+'. Сначала посмотрите текст с флагом <code>--dry</code>, потом отправляйте.</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py send '+esc(id)+'</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py send '+id+'\', this)">Скопировать</button></div>';
+  }
+  return b + '</div>';
+}
 function openCoach(id){
   const coach = DataSource.coaching(); if(!coach) return;
   const fb = (coach.managers||[]).find(x => x.id === id); if(!fb) return;
@@ -927,7 +985,8 @@ function openCoach(id){
   $('#m-sub').textContent = (m.role||'')+' · '+mine.length+' контактов'+
     (avg!==null ? ' · средний балл '+avg.toFixed(1) : '')+(fb.telegram ? ' · '+fb.telegram : '');
 
-  let body = '';
+  /* Канал идёт первым: это действие, а всё остальное — чтение. */
+  let body = tgCard(id, fb);
   if(fb.summary) body += '<div class="card" style="margin-bottom:14px">'+
     '<div class="kpi-label">Разбор по его разговорам</div>'+
     '<p class="small" style="margin:8px 0 0">'+esc(fb.summary)+'</p>'+
@@ -948,8 +1007,6 @@ function openCoach(id){
     body += '<h2>Что уходит ему в Telegram</h2>';
     msgs.forEach(t => body += '<div class="tg"><div class="meta">'+esc(fb.telegram||'')+
       (t.trigger ? ' · '+esc(t.trigger) : '')+'</div>'+esc(t.text)+'</div>');
-    body += '<p class="muted small" style="margin:14px 0 0">Отправить по-настоящему: '+
-      '<code>python3 scripts/telegram.py send '+esc(id)+'</code>. Как привязать чат — <code>docs/telegram.md</code>.</p>';
   }
   $('#m-body').innerHTML = body;
   $('#modal').showModal();

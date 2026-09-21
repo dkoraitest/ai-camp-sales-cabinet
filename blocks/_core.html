@@ -118,6 +118,10 @@
   .cmp .v{display:flex;align-items:center;gap:8px}
   .cmp .v .bar{flex:1}
   .cmp .v span{flex:0 0 42px;text-align:right}
+  .tg-link{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+  .tg-link code{flex:1 1 260px;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:9px;padding:8px 11px;font-size:12.5px;overflow:auto;white-space:nowrap}
+  .tg-link button{white-space:nowrap}
   .scope{color:var(--muted);font-size:12.5px;margin:-6px 0 12px;
     padding-left:11px;border-left:2px solid var(--line)}
   /* Команда: карточки в одну линию, листается вбок */
@@ -204,6 +208,7 @@
 <script src="coach.js" onerror="void 0"></script>
 <script src="enrich.js" onerror="void 0"></script>
 <script src="deep.js" onerror="void 0"></script>
+<script src="telegram.js" onerror="void 0"></script>
 <script>
 const CFG = window.CABINET_CONFIG || {profile:'b2b', matrix:{extract:[],evaluate:[]}, questions:[]};
 
@@ -231,7 +236,8 @@ const DataSource = {
   scores(){ return window.CABINET_SCORES || null },
   coaching(){ return window.CABINET_COACH || null },
   enrichment(){ return window.CABINET_ENRICH || null },
-  deep(){ return window.CABINET_DEEP || null }
+  deep(){ return window.CABINET_DEEP || null },
+  telegram(){ return window.CABINET_TELEGRAM || null }
 };
 
 const $ = s => document.querySelector(s);
@@ -462,6 +468,20 @@ function bantChart(){
         '<div class="muted" style="text-align:right">'+r.full+' из '+r.leads+
           (r.money ? '<br><span style="font-size:11px">'+money(r.money)+'</span>' : '')+'</div></div>';
     }).join('')+'</div>';
+}
+/* Копирование без библиотек: на file:// Clipboard API есть не везде. */
+function copyText(t, btn){
+  const done = () => { if(!btn) return; const was = btn.textContent;
+    btn.textContent = 'Скопировано'; setTimeout(() => btn.textContent = was, 1400) };
+  try { navigator.clipboard.writeText(t).then(done, () => fallback(t, done)) }
+  catch(e){ fallback(t, done) }
+}
+function fallback(t, done){
+  const a = document.createElement('textarea');
+  a.value = t; a.style.position = 'fixed'; a.style.opacity = '0';
+  document.body.appendChild(a); a.select();
+  try { document.execCommand('copy'); done() } catch(e){}
+  document.body.removeChild(a);
 }
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
