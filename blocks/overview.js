@@ -135,7 +135,7 @@ function renderOverview(){
   }
 
   html += ovFunnel(S);
-  html += bantChart();
+  html += bantDailyChart();
 
   const mx = CFG.matrix || {extract:[],evaluate:[]};
   if((mx.evaluate||[]).length){

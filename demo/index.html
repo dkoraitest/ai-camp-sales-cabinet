@@ -315,6 +315,101 @@ function dealStrip(leadId, pool){        // где по воронке лежи�
     '<i class="'+(cnt[s]?'has':'')+(i===cur?' cur':'')+'" title="'+esc(stageLabel(s))+': '+
       (cnt[s]||0)+'">'+(cnt[s]||'')+'</i>').join('')+'</span>';
 }
+/* BANT по дням: сколько звонков-квалификаций было и в скольких из них
+   прозвучал каждый из четырёх признаков. Это операционный график — он
+   отвечает на вопрос «как мы квалифицируем изо дня в день», а не «где в
+   воронке стоят деньги». Второй вопрос живёт на вкладке «Глубина».      */
+const BANT_KEYS = ['budget','authority','need','timing'];
+const BANT_LBL = {budget:'B · Бюджет', authority:'A · Полномочия',
+                  need:'N · Потребность', timing:'T · Сроки'};
+const BANT_COL = {budget:'var(--accent)', authority:'var(--good)',
+                  need:'var(--bad)', timing:'var(--warn)'};
+function bantSeries(){
+  const s = DataSource.scores(); if(!s) return null;
+  const byId = {}; DataSource.contacts().forEach(c => byId[c.id] = c);
+  const calls = (s.items || []).filter(i => i.bant && byId[i.id] && byId[i.id].kind === 'call')
+                               .map(i => ({bant: i.bant, when: byId[i.id].when, stage: byId[i.id].stage}));
+  if(calls.length < 8) return null;
+  const qual = (s.aggregates && s.aggregates.bant && s.aggregates.bant.stage) ||
+               (DataSource.funnel().map(x => x.id || x)[1]);
+  const q = calls.filter(c => c.stage === qual);
+  // если звонков на этапе квалификации мало, честнее показать все, чем пустой график
+  const use = q.length >= 12 ? q : calls;
+  const scope = use === q ? qual : null;
+
+  const days = new Set(use.map(c => c.when.slice(0,10)));
+  const byWeek = days.size > 45 || use.length / days.size < 2;
+  const key = c => {
+    if(!byWeek) return c.when.slice(0,10);
+    const d = new Date(c.when.slice(0,10));
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    return d.toISOString().slice(0,10);
+  };
+  const map = {};
+  use.forEach(c => {
+    const k = key(c);
+    const b = map[k] || (map[k] = {key:k, total:0, budget:0, authority:0, need:0, timing:0});
+    b.total++;
+    BANT_KEYS.forEach(x => { if(c.bant[x]) b[x]++ });
+  });
+  return {buckets: Object.values(map).sort((a,b) => a.key < b.key ? -1 : 1),
+          byWeek, scope, calls: use.length};
+}
+function bantDailyChart(){
+  const d = bantSeries(); if(!d || d.buckets.length < 2) return '';
+  const B = d.buckets, n = B.length;
+  const W = 1000, H = 300, L = 36, R = 10, T = 14, Bm = 34;
+  const pw = W - L - R, ph = H - T - Bm;
+  const raw = Math.max(4, ...B.map(b => b.total));
+  const tick = Math.ceil(raw / 4), max = tick * 4;   // подписи оси — целые числа
+  const y = v => T + ph - (v / max) * ph;
+  const gw = pw / n, bw = Math.max(2, Math.min(10, (gw - 6) / 4));
+
+  let g = '';
+  for(let i = 0; i <= 4; i++){
+    const v = tick * i, yy = y(v);
+    g += '<line x1="'+L+'" x2="'+(W-R)+'" y1="'+yy+'" y2="'+yy+'" stroke="var(--line)" stroke-width="1"/>'+
+         '<text x="'+(L-8)+'" y="'+(yy+4)+'" text-anchor="end" font-size="11" fill="var(--muted)">'+v+'</text>';
+  }
+  let bars = '', pts = [];
+  B.forEach((b,i) => {
+    const x0 = L + gw*i + (gw - bw*4)/2;
+    pts.push((L + gw*i + gw/2).toFixed(1)+','+y(b.total).toFixed(1));
+    BANT_KEYS.forEach((k,j) => {
+      const h = Math.max(0, T + ph - y(b[k]));
+      bars += '<rect x="'+(x0 + j*bw).toFixed(1)+'" y="'+y(b[k]).toFixed(1)+'" width="'+(bw-1).toFixed(1)+
+              '" height="'+h.toFixed(1)+'" fill="'+BANT_COL[k]+'" rx="1"/>';
+    });
+    bars += '<rect x="'+(L+gw*i).toFixed(1)+'" y="'+T+'" width="'+gw.toFixed(1)+'" height="'+ph+
+            '" fill="transparent"><title>'+esc(fmtBucket(b.key, d.byWeek))+'\nВсего звонков: '+b.total+
+            BANT_KEYS.map(k => '\n'+BANT_LBL[k]+': '+b[k]).join('')+'</title></rect>';
+  });
+  const step = Math.ceil(n / 12);
+  let xl = '';
+  B.forEach((b,i) => { if(i % step) return;
+    xl += '<text x="'+(L + gw*i + gw/2).toFixed(1)+'" y="'+(H-12)+'" text-anchor="middle" font-size="11" '+
+          'fill="var(--muted)">'+esc(fmtBucket(b.key, d.byWeek).slice(0,5))+'</text>';
+  });
+  const legend = '<div class="legend">'+BANT_KEYS.map(k =>
+      '<span><b style="background:'+BANT_COL[k]+'"></b>'+esc(BANT_LBL[k])+'</span>').join('')+
+    '<span><b style="background:var(--accent);height:3px;width:16px;border-radius:2px"></b>всего звонков</span></div>';
+  const what = d.scope ? 'звонков-квалификаций на этапе «'+esc(stageLabel(d.scope))+'»'
+                       : 'звонков по всем этапам (на этапе квалификации их пока мало)';
+  return '<h2>Квалификация по BANT: '+(d.byWeek ? 'по неделям' : 'по дням')+'</h2>'+
+    '<p class="scope">Линия — сколько было '+what+' в '+(d.byWeek ? 'неделю' : 'день')+
+      '. Столбцы — в скольких из них прозвучал каждый признак. Разрыв между линией и столбцами '+
+      'и есть объём работы, которая ушла дальше по воронке без ответа.</p>'+
+    legend+'<div class="card" style="padding:14px 16px">'+
+    '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto;display:block" '+
+      'preserveAspectRatio="xMidYMid meet">'+g+bars+xl+
+      '<polyline points="'+pts.join(' ')+'" fill="none" stroke="var(--accent)" stroke-width="2" opacity=".85"/>'+
+      pts.map(p => { const [a,c] = p.split(','); return '<circle cx="'+a+'" cy="'+c+'" r="2.6" fill="var(--accent)"/>' }).join('')+
+    '</svg></div>';
+}
+function fmtBucket(k, week){
+  const d = new Date(k), s = d.toLocaleDateString('ru-RU', {day:'2-digit', month:'2-digit'});
+  return week ? s+' — неделя' : s;
+}
 /* BANT по всей воронке. Квалификация копится по сделке: признак мог
    прозвучать на первом звонке, а КП отправляют после четвёртого. Поэтому
    считаем объединение по всем коммуникациям сделки, а не по одной.
@@ -566,7 +661,7 @@ function renderOverview(){
   }
 
   html += ovFunnel(S);
-  html += bantChart();
+  html += bantDailyChart();
 
   const mx = CFG.matrix || {extract:[],evaluate:[]};
   if((mx.evaluate||[]).length){
