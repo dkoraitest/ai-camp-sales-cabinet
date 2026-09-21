@@ -59,7 +59,10 @@ def validate(profile):
         if isinstance(profile.get(key), list) and len(profile[key]) < n:
             warns.append(f"«{key}»: {len(profile.get(key, []))} элементов, желательно хотя бы {n}")
     if profile.get("type") not in ("long", "flow"):
-        errs.append("«type» должен быть \"long\" (длинный цикл) или \"flow\" (поток заявок)")
+        errs.append("«type» — это длина цикла: \"long\" (сделка идёт неделями) или \"flow\" (поток заявок, решение за дни)")
+    if profile.get("audience") not in ("b2b", "b2c"):
+        warns.append("нет «audience»: кому продаём — \"b2b\" (компаниям) или \"b2c\" (людям). "
+                     "Это не то же самое, что длина цикла: опт с коротким циклом — это b2b и flow")
     for k in Q_KEYS:
         if k not in profile.get("questions", {}):
             errs.append(f"в «questions» нет группы «{k}»")
@@ -356,6 +359,9 @@ def main():
 
     random.seed(2609)
     flow = P["type"] == "flow"
+    # кому продаём — отдельный вопрос от длины цикла; старые профили без него
+    # считаем по циклу, как раньше
+    b2c = P.get("audience", "b2c" if flow else "b2b") == "b2c"
     now = datetime.now().replace(second=0, microsecond=0)
     start = now - timedelta(days=90)
     stages = [s["id"] for s in P["funnel"]]
@@ -369,7 +375,12 @@ def main():
         a.calls = max(260, 60 * len(P["managers"]))
     if a.leads is None:
         a.leads = round(a.calls / 3.3 * 1.15)
-    names = unique_names(P["clients"], a.leads)
+    if P.get("audience", "b2c" if P["type"] == "flow" else "b2b") == "b2c":
+        # клиенты — люди: имя и фамилия не должны склеиваться из разных людей
+        pool = people_pool(list(P["clients"]) + list(P.get("contact_names", [])))
+        names = [pool[i % len(pool)] for i in range(a.leads)]
+    else:
+        names = unique_names(P["clients"], a.leads)
     people = people_pool(P.get("contact_names", ["Клиент Клиентов"]))
     leads = []
     for i in range(a.leads):
@@ -501,13 +512,13 @@ def main():
 
     # Внешние события по компании — только в B2B: у сделки есть компания,
     # у заявки в потоке обычно нет.
-    if not flow:
+    if not b2c:
         for lead in leads:
             lead["events"] = make_events(lead["company"], P.get("what_we_sell", ""), now)
 
     calls.sort(key=lambda c: c["date"]); chats.sort(key=lambda c: c["date_start"])
     out = {"profile": {"id": "own", "title": P["company"], "company": P["company"],
-                       "type": "b2c" if flow else "b2b",
+                       "type": b2c and "b2c" or "b2b",
                        "what_we_sell": P["what_we_sell"], "cycle": P.get("cycle", ""),
                        "deal_size": P.get("deal_size", ""), "synthetic": True,
                        "stages": stages,

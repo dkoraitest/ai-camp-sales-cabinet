@@ -712,9 +712,11 @@ function openDeal(id){
   } else {
     let pre = '';
     if(b2c){
-      pre += '<div class="crit"><span class="muted">интерес</span><span>'+esc(l.interest||'—')+'</span></div>'+
-        '<div class="crit"><span class="muted">возраст ребёнка</span><span>'+esc(l.child_age ? l.child_age+' лет' : '—')+'</span></div>'+
-        '<div class="crit"><span class="muted">первый ответ</span><span>'+esc(l.responded_in_min != null ? l.responded_in_min+' мин' : '—')+'</span></div>';
+      // только те поля, что есть в базе участника: у школы «возраст ребёнка», у клиники его нет
+      [['интерес', l.interest], ['сегмент', !l.interest && l.industry], ['возраст ребёнка', l.child_age && l.child_age+' лет'],
+       ['контакт', l.contact && l.contact !== leadName(id) && l.contact], ['источник', l.source],
+       ['первый ответ', l.responded_in_min != null && l.responded_in_min+' мин']].filter(x => x[1]).forEach(([k,v]) =>
+        pre += '<div class="crit"><span class="muted">'+k+'</span><span>'+esc(v)+'</span></div>');
     } else {
       pre += '<div class="crit"><span class="muted">контакт</span><span>'+esc([l.contact, l.position].filter(Boolean).join(', ')||'—')+'</span></div>';
       (l.events||[]).forEach(ev => pre += '<div class="crit"><span class="muted">'+esc(fmtDate(ev.date).slice(0,5))+' · '+

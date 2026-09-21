@@ -12409,7 +12409,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l003",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -12873,7 +12873,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l017",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -13221,7 +13221,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l021",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -13569,7 +13569,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l025",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -13685,7 +13685,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l051",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -13975,7 +13975,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l021",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -14265,7 +14265,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l021",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -14787,7 +14787,7 @@ window.CABINET_SCORES = {
       "comment": "торг по скидке продолжен в переписке, ценность не возвращена в разговор",
       "lead_id": "l09",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15019,7 +15019,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l010",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15077,7 +15077,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l020",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15367,7 +15367,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l032",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15425,7 +15425,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l010",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15541,7 +15541,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l010",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15599,7 +15599,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l007",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15715,7 +15715,7 @@ window.CABINET_SCORES = {
       "comment": "торг ушёл в мессенджер, ценность не вернулась",
       "lead_id": "l007",
       "bant": {
-        "budget": false,
+        "budget": true,
         "authority": false,
         "need": false,
         "timing": false
@@ -15853,13 +15853,13 @@ window.CABINET_SCORES = {
       "label": "Выявление потребности",
       "contacts": 68,
       "coverage": {
-        "budget": 0.1,
+        "budget": 0.18,
         "authority": 0.16,
         "need": 0.37,
         "timing": 0.15
       },
       "full": 3,
-      "none": 40,
+      "none": 35,
       "full_vs_outcome": 0.67
     },
     "segments": [
@@ -15967,7 +15967,7 @@ window.CABINET_SCORES = {
           "money": 100150000,
           "money_full": 12600000,
           "coverage": {
-            "budget": 2,
+            "budget": 3,
             "authority": 2,
             "need": 4,
             "timing": 2
@@ -15994,12 +15994,12 @@ window.CABINET_SCORES = {
           "label": "Переговоры",
           "leads": 7,
           "full": 0,
-          "partial": 3,
-          "none": 4,
+          "partial": 4,
+          "none": 3,
           "money": 81800000,
           "money_full": 0,
           "coverage": {
-            "budget": 1,
+            "budget": 2,
             "authority": 0,
             "need": 3,
             "timing": 1
@@ -16009,13 +16009,13 @@ window.CABINET_SCORES = {
           "stage": "closed_won",
           "label": "Сделка закрыта",
           "leads": 10,
-          "full": 7,
-          "partial": 2,
+          "full": 8,
+          "partial": 1,
           "none": 1,
           "money": 70900000,
-          "money_full": 38100000,
+          "money_full": 48950000,
           "coverage": {
-            "budget": 7,
+            "budget": 8,
             "authority": 8,
             "need": 9,
             "timing": 8
@@ -16025,13 +16025,13 @@ window.CABINET_SCORES = {
           "stage": "closed_lost",
           "label": "Проиграна",
           "leads": 5,
-          "full": 0,
-          "partial": 3,
+          "full": 1,
+          "partial": 2,
           "none": 2,
           "money": 44700000,
-          "money_full": 0,
+          "money_full": 12650000,
           "coverage": {
-            "budget": 0,
+            "budget": 1,
             "authority": 1,
             "need": 3,
             "timing": 1
@@ -16092,8 +16092,8 @@ window.CABINET_SCORES = {
         {
           "label": "Полный BANT по сделке",
           "kind": "share",
-          "won": 0.7,
-          "lost": 0.0
+          "won": 0.8,
+          "lost": 0.2
         },
         {
           "label": "Вопросов до первого слова о продукте",
