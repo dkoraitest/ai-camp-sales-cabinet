@@ -115,7 +115,7 @@ window.CABINET_SCORES = {
       "bant": {
         "budget": false,
         "authority": true,
-        "need": false,
+        "need": true,
         "timing": false
       }
     },
@@ -7017,7 +7017,7 @@ window.CABINET_SCORES = {
       "bant": {
         "budget": true,
         "authority": true,
-        "need": false,
+        "need": true,
         "timing": false
       }
     },
@@ -10032,7 +10032,7 @@ window.CABINET_SCORES = {
       "lead_id": "l05",
       "bant": {
         "budget": false,
-        "authority": false,
+        "authority": true,
         "need": false,
         "timing": false
       }
@@ -11541,7 +11541,7 @@ window.CABINET_SCORES = {
       "bant": {
         "budget": false,
         "authority": true,
-        "need": false,
+        "need": true,
         "timing": false
       }
     },
@@ -15854,22 +15854,22 @@ window.CABINET_SCORES = {
       "contacts": 68,
       "coverage": {
         "budget": 0.1,
-        "authority": 0.15,
-        "need": 0.35,
+        "authority": 0.16,
+        "need": 0.37,
         "timing": 0.15
       },
       "full": 3,
-      "none": 41,
+      "none": 40,
       "full_vs_outcome": 0.67
     },
     "segments": [
       {
         "segment": "Дистрибуция",
-        "leads": 65,
+        "leads": 26,
         "contacts": 118,
-        "won": 10,
-        "lost": 7,
-        "win_rate": 0.59,
+        "won": 5,
+        "lost": 1,
+        "win_rate": 0.83,
         "avg_quality": 5.8,
         "top_client_lines": [
           "Сборка заказа занимает полтора часа вместо двадцати минут.",
@@ -15881,42 +15881,42 @@ window.CABINET_SCORES = {
       },
       {
         "segment": "Логистика",
-        "leads": 55,
+        "leads": 26,
         "contacts": 84,
-        "won": 6,
-        "lost": 2,
-        "win_rate": 0.75,
+        "won": 5,
+        "lost": 0,
+        "win_rate": 1.0,
         "avg_quality": 5.9,
         "top_client_lines": [
           "Отгрузки срываются, клиенты ждут по две-три недели.",
-          "Три склада: основной в Алматы и два региональных.",
           "Остатки не сходятся с фактом, находим только на инвентаризации.",
+          "Три склада: основной в Алматы и два региональных.",
           "Я инициирую, но бюджет утверждает финансовый директор.",
           "Пока не закладывали, будем смотреть по цифрам."
         ]
       },
       {
         "segment": "Производство",
-        "leads": 39,
+        "leads": 19,
         "contacts": 60,
-        "won": 4,
-        "lost": 3,
-        "win_rate": 0.57,
+        "won": 0,
+        "lost": 2,
+        "win_rate": 0.0,
         "avg_quality": 4.3,
         "top_client_lines": [
           "Сырьё списывается задним числом, себестоимость плывёт.",
           "Директор видит картину по группе раз в месяц и уже неактуальную.",
           "Да, но недолго, у меня встреча через пятнадцать минут.",
           "У нас уже стоит система, правда толком не пользуемся.",
-          "Мы можем сначала на одном направлении попробовать?"
+          "как сказать, три юрлица в группе, сводим вручную."
         ]
       },
       {
-        "segment": "прочие (13 мелких)",
-        "leads": 15,
+        "segment": "прочие (12 мелких)",
+        "leads": 14,
         "contacts": 9,
         "won": 0,
-        "lost": 3,
+        "lost": 2,
         "win_rate": 0.0,
         "avg_quality": 5.4,
         "top_client_lines": []
@@ -15953,7 +15953,7 @@ window.CABINET_SCORES = {
           "coverage": {
             "budget": 4,
             "authority": 5,
-            "need": 8,
+            "need": 9,
             "timing": 2
           }
         },
@@ -15984,7 +15984,7 @@ window.CABINET_SCORES = {
           "money_full": 38950000,
           "coverage": {
             "budget": 5,
-            "authority": 3,
+            "authority": 4,
             "need": 7,
             "timing": 4
           }

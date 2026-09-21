@@ -16,18 +16,26 @@ function renderMyDeals(){
     'В базе нет поля «ответственный» или выбран человек без портфеля. Выберите другого в списке «Я».', 'шага 0');
 
   if(b2c){
-    const rows = open.map(l => ({l, r: leadScore(l), wait: l.created ? daysBetween(new Date(l.created), now) : null}))
+    // Сколько клиент ждёт нас: с последнего разговора, а если его не было — с заявки.
+    // Колонки из общих полей базы: у школы это «интерес», у клиники — «сегмент».
+    const rows = open.map(l => { const lt = lastTouch(l.id);
+      const from = lt || (l.created ? new Date(l.created) : null);
+      return {l, r: leadScore(l), lt, wait: from ? daysBetween(from, now) : null} })
       .sort((a,b) => ((b.r&&b.r.score)||0) - ((a.r&&a.r.score)||0) || (b.wait||0) - (a.wait||0));
+    const extra = l => l.interest || l.industry || '—';
+    const extraLbl = open.some(l => l.interest) ? 'Интерес' : 'Сегмент';
     return '<div class="grid" style="margin-bottom:14px">'+
       kpi('В очереди', open.length, 'открытых заявок')+
       kpi('Приоритет A', rows.filter(x => x.r && x.r.grade === 'A').length, 'звонить сегодня')+
-      kpi('Ждут дольше 3 дней', rows.filter(x => x.wait > 3).length, 'без движения')+'</div>'+
+      kpi('Без ответа', rows.filter(x => !x.lt).length, 'ещё не было разговора')+
+      kpi('Ждут дольше 3 дней', rows.filter(x => x.wait > 3).length, 'с последнего касания')+'</div>'+
       '<p class="scope">Сверху — заявки, которые скорее всего купят, если позвонить сейчас. Приоритет считает код: свежесть, соответствие профилю и то, что клиент говорил в разговорах.</p>'+
-      '<table><thead><tr><th>Родитель</th><th>Интерес</th><th>Возраст</th><th>Источник</th><th>Ждёт</th><th>Приоритет</th></tr></thead><tbody>'+
+      '<table><thead><tr><th>Клиент</th><th>'+extraLbl+'</th><th>Источник</th><th>Ждёт</th><th>Первый ответ</th><th>Приоритет</th></tr></thead><tbody>'+
       rows.map(x => '<tr class="clickable" onclick="openDeal(\''+x.l.id+'\')"><td>'+esc(leadName(x.l.id))+'</td>'+
-        '<td class="muted">'+esc(x.l.interest||'—')+'</td><td class="muted">'+esc(x.l.child_age ? x.l.child_age+' лет' : '—')+'</td>'+
-        '<td class="muted">'+esc(x.l.source||'—')+'</td><td class="'+(x.wait > 3 ? 'late' : 'muted')+'">'+
-        (x.wait != null ? x.wait+' дн.' : '—')+'</td><td>'+scorePill(x.r)+'</td></tr>').join('')+'</tbody></table>';
+        '<td class="muted">'+esc(extra(x.l))+'</td><td class="muted">'+esc(x.l.source||'—')+'</td>'+
+        '<td class="'+(x.wait > 3 ? 'late' : 'muted')+'">'+(x.wait != null ? x.wait+' дн.'+(x.lt ? '' : ' · новая') : '—')+'</td>'+
+        '<td class="muted">'+(x.l.responded_in_min != null ? x.l.responded_in_min+' мин' : '—')+'</td>'+
+        '<td>'+scorePill(x.r)+'</td></tr>').join('')+'</tbody></table>';
   }
 
   const info = open.map(l => {

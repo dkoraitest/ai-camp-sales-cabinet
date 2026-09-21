@@ -274,7 +274,7 @@ const grade = (v,max) => { const r = v/(max||10); return r>=.75?'good':r>=.5?'wa
 /* Тип продаж: B2B — сделки, B2C — поток заявок. Берётся из профиля шага 0. */
 function isB2C(){
   const m = DataSource.meta();
-  return CFG.profile === 'b2c' || /b2c/i.test(m.type || '') ||
+  return CFG.profile === 'b2c' || /b2c|flow/i.test(m.type || '') ||
          DataSource.leads().some(l => 'parent' in l);
 }
 function scoreOf(id){
@@ -635,8 +635,8 @@ function leadScore(l){
   let fit = 0, rec = 0, conv = 0, total;
 
   if(isB2C()){
-    fit += l.interest ? 30 : 0;
-    fit += (l.child_age >= 8 && l.child_age <= 16) ? 30 : (l.child_age ? 10 : 0);
+    fit += (l.interest || l.industry) ? 30 : 0;
+    fit += l.child_age != null ? ((l.child_age >= 8 && l.child_age <= 16) ? 30 : 10) : 20;
     fit += ({'Рекомендация':40,'Сайт':30,'Instagram':20})[l.source] ?? 15;
     rec = age === null ? 30 : age <= 1 ? 100 : age <= 3 ? 80 : age <= 7 ? 50 : age <= 14 ? 20 : 0;
     if(e){

@@ -121,17 +121,47 @@ def people_pool(base):
     Повторяющееся имя у разных компаний не мешает: сделку различает компания.
     А вот «Руслан Ибраев 3» в карточке сразу выдаёт генератор."""
     fem = lambda w: w.endswith(("ова", "ева", "ина", "ская", "кызы"))
-    groups = {}
+    male = lambda w: w.endswith(("ов", "ев", "ин", "ский", "улы"))
+    groups, pool = {}, []
     for name in base:                      # имена и фамилии не смешиваются по роду
         f, l = name.split()[0], name.split()[-1]
+        if not (fem(l) or male(l)):        # Ким, Ли, Пак: род по фамилии не понять — берём как есть
+            pool.append(name); continue
         g = groups.setdefault(fem(l), ([], []))
         g[0].append(f); g[1].append(l)
-    pool = []
     for firsts, lasts in groups.values():
         firsts, lasts = list(dict.fromkeys(firsts)), list(dict.fromkeys(lasts))
         pool += [f"{f} {l}" for l in lasts for f in firsts]
     random.shuffle(pool)
     return pool or list(base)
+
+
+EVENTS = {
+ "news": ["{c} открывает новую точку в {city}", "{c} объявила о расширении ассортимента",
+          "{c} вышла на Kaspi и Wildberries", "{c} получила кредитную линию на развитие",
+          "В {c} сменился коммерческий директор", "{c} подписала контракт с крупной сетью",
+          "{c} переезжает на новый склад"],
+ "vacancy": ["Ищут руководителя отдела закупок", "Открыто пять вакансий менеджеров по продажам",
+             "Ищут операционного директора", "Набирают персонал на новую точку",
+             "Ищут финансового контролёра"],
+ "tender": ["Объявлен тендер: {what}, заявки до {due}"],
+}
+EVENT_SRC = {"news": "новости", "vacancy": "hh.kz", "tender": "goszakup.gov.kz"}
+CITIES_IN = ["Астане", "Алматы", "Шымкенте", "Караганде", "Актобе", "Атырау"]
+
+
+def make_events(company, what, now, rnd=random):
+    """Один-три датированных события по компании: из них инфо-помощник
+    строит повод касания. Всё синтетическое: в реальной работе это
+    коннектор к новостям, hh.kz и госзакупкам."""
+    out = []
+    for kind in rnd.sample(list(EVENTS), rnd.choice([1, 2, 2, 3])):
+        d = now - timedelta(days=rnd.randint(2, 70))
+        title = rnd.choice(EVENTS[kind]).format(
+            c=company, city=rnd.choice(CITIES_IN), what=(what or "").split(",")[0].strip()[:70],
+            due=(now + timedelta(days=rnd.randint(7, 25))).strftime("%d.%m"))
+        out.append({"date": d.date().isoformat(), "type": kind, "title": title, "source": EVENT_SRC[kind]})
+    return sorted(out, key=lambda e: e["date"])
 
 
 def workhour(dt):
@@ -298,9 +328,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("profile", nargs="?", default="active/profile.json")
     ap.add_argument("--validate", action="store_true")
-    ap.add_argument("--calls", type=int, default=260)
+    ap.add_argument("--calls", type=int, default=None,
+                    help="по умолчанию 60 на менеджера, но не меньше 260")
     ap.add_argument("--chats", type=int, default=90)
-    ap.add_argument("--leads", type=int, default=180)
+    ap.add_argument("--leads", type=int, default=None,
+                    help="по умолчанию столько, сколько проведут выбранные звонки, плюс новые заявки")
     ap.add_argument("--no-chats", action="store_true", help="у участника нет переписки как канала")
     a = ap.parse_args()
 
@@ -329,6 +361,14 @@ def main():
     stages = [s["id"] for s in P["funnel"]]
     weights = [18, 22, 16, 14, 10, 10, 10][:len(stages)] or [1] * len(stages)
 
+    # Сделка проходит в среднем три-четыре этапа, и на каждом остаётся разговор.
+    # Поэтому сделок столько, сколько проведут звонки, плюс немного новых заявок.
+    # Иначе половина базы — сделки без единого разговора, и они раздувают деньги
+    # на этапах и процент побед.
+    if a.calls is None:
+        a.calls = max(260, 60 * len(P["managers"]))
+    if a.leads is None:
+        a.leads = round(a.calls / 3.3 * 1.15)
     names = unique_names(P["clients"], a.leads)
     people = people_pool(P.get("contact_names", ["Клиент Клиентов"]))
     leads = []
@@ -361,12 +401,20 @@ def main():
     # часть людей с тремя контактами, и оценка по ним ничего не значит
     queue = []
     for lead in leads:
-        if cid >= a.calls and chid >= chat_budget:
-            break
         if not queue:
             queue = mgrs[:]; random.shuffle(queue)
         mgr = queue.pop()                             # сделку ведёт один человек
+        lead["owner"] = mgr["id"]                     # поле CRM «ответственный»
         lead["manager_id"] = mgr["id"]
+
+        # Сделка без разговоров бывает только в самом начале: это новая заявка,
+        # до которой ещё не дошли. Выигранная сделка без единого разговора —
+        # фантом, она раздувает деньги на этапах и процент побед.
+        if cid >= a.calls:
+            lead["stage"] = stages[0]
+            lead["created"] = (now - timedelta(days=random.randint(0, 3 if flow else 6))).date().isoformat()
+            lead["next_step"] = None
+            continue
 
         # Докуда дошла сделка — следствие того, как с ней работали.
         # Без этой связи аналитика показала бы, что качество разговоров
@@ -382,26 +430,38 @@ def main():
             else:                                     # проиграна
                 w.append(.55 - skill * .40)
         reached = random.choices(range(n_stages), weights=w)[0]
-        lead["stage"] = stages[reached]
-        seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
         # Проигранная сделка не проходит через «выиграна»: терминальный этап один.
         path = list(range(reached + 1))
-        if lead["stage"] in terminal:
+        if stages[reached] in terminal:
             path = list(range(min(reached, n_stages - 2))) + [reached]
+        # Разговоров не хватает на весь путь — сделка остаётся открытой там,
+        # докуда дошла, а не получает исход без единого разговора о нём.
+        left = a.calls - cid
+        if len(path) > left:
+            path = list(range(min(left, n_stages - 2)))
+        reached = path[-1]
+        lead["stage"] = stages[reached]
+        seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
 
         # Цепочка касаний строится назад от сегодня, чтобы последний разговор
         # не оказался в будущем: пауза между этапами известна заранее.
+        # Открытая сделка живая — последний разговор был недавно; закрытая
+        # могла закончиться и месяц назад.
         gaps = [random.randint(2, 12) for _ in path]
-        dt = workhour(now - timedelta(days=sum(gaps[:-1]) + random.randint(1, 40)))
+        tail = random.randint(1, 18) if stages[reached] not in terminal else random.randint(3, 45)
+        dt = workhour(now - timedelta(days=sum(gaps[:-1]) + tail))
+        # заявка пришла до первого разговора, а не после
+        lead["created"] = (dt - timedelta(days=random.randint(0, 4))).date().isoformat()
+        last, c0, h0 = None, len(calls), len(chats)
         for n, si in enumerate(path):
-            if cid >= a.calls:
-                break
             cid += 1
-            calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
-            dt = workhour(dt + timedelta(days=gaps[n]))
+            last = build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si)
+            calls.append(last)
+            if n < len(path) - 1:
+                dt = workhour(dt + timedelta(days=gaps[n]))
 
             # переписка возникает между звонками, чаще на средних этапах
-            if chid < chat_budget and 0 < si < n_stages - 2 and random.random() < .45:
+            if chid < chat_budget and 0 < si < n_stages - 2 and random.random() < .45 and n < len(path) - 1:
                 chid += 1
                 style = mgr["style"].get("objection_style", "justify")
                 kind = {"counter": "lead", "justify": "fade",
@@ -412,18 +472,42 @@ def main():
                 ch["stage"] = stages[si]
                 chats.append(ch)
 
-    # если лидов не хватило на заданный объём — добираем повторными касаниями
-    while cid < a.calls:
-        lead = random.choice(leads)
-        mgr = next((m for m in mgrs if m["id"] == lead.get("manager_id")), random.choice(mgrs))
-        seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
-        si = random.randint(0, stages.index(lead["stage"]))
-        cid += 1
-        dt = workhour(now - timedelta(days=random.randint(2, 90)))
-        calls.append(build_call(P, mgr, stages[si], seg, lead, cid, dt, stage_idx=si))
+        # Перенос с выходных на понедельник мог вытолкнуть конец цепочки
+        # в будущее. Сдвигаем всю сделку назад целыми неделями: дни недели
+        # и порядок разговоров сохраняются.
+        span = [c["date"] for c in calls[c0:]] + [c["date_end"] for c in chats[h0:]]
+        over = (datetime.fromisoformat(max(span)) - now) if span else timedelta(0)
+        if over > timedelta(0):
+            back = timedelta(days=7 * (over.days // 7 + 1))
+            sh = lambda x: (datetime.fromisoformat(x) - back).isoformat(timespec="minutes")
+            for c in calls[c0:]:
+                c["date"] = sh(c["date"])
+            for c in chats[h0:]:
+                c["date_start"], c["date_end"] = sh(c["date_start"]), sh(c["date_end"])
+                for m in c["messages"]:
+                    m["ts"] = sh(m["ts"])
+            lead["created"] = (datetime.fromisoformat(lead["created"]) - back).date().isoformat()
+
+        # Следующий шаг — тот, о котором договорились в последнем разговоре.
+        # Если договорённости не было, его нет и в CRM: так и бывает в жизни.
+        # Примерно каждый четвёртый уже просрочен — это и есть работа на сегодня.
+        if stages[reached] not in terminal and last and "следующий шаг с датой" in last["outcome"]:
+            after = datetime.fromisoformat(last["date"]) + timedelta(days=1)
+            due = now + (timedelta(days=random.randint(1, 10)) if random.random() < .75
+                         else -timedelta(days=random.randint(1, 6)))
+            lead["next_step"] = max(after, due).date().isoformat()
+        else:
+            lead["next_step"] = None
+
+    # Внешние события по компании — только в B2B: у сделки есть компания,
+    # у заявки в потоке обычно нет.
+    if not flow:
+        for lead in leads:
+            lead["events"] = make_events(lead["company"], P.get("what_we_sell", ""), now)
 
     calls.sort(key=lambda c: c["date"]); chats.sort(key=lambda c: c["date_start"])
     out = {"profile": {"id": "own", "title": P["company"], "company": P["company"],
+                       "type": "b2c" if flow else "b2b",
                        "what_we_sell": P["what_we_sell"], "cycle": P.get("cycle", ""),
                        "deal_size": P.get("deal_size", ""), "synthetic": True,
                        "stages": stages,
