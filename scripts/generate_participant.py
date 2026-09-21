@@ -557,7 +557,7 @@ def main():
 
     calls.sort(key=lambda c: c["date"]); chats.sort(key=lambda c: c["date_start"])
     out = {"profile": {"id": "own", "title": P["company"], "company": P["company"],
-                       "type": b2c and "b2c" or "b2b",
+                       "type": b2c and "b2c" or "b2b", "crm": P.get("crm", "none"),
                        "what_we_sell": P["what_we_sell"], "cycle": P.get("cycle", ""),
                        "deal_size": P.get("deal_size", ""), "synthetic": True,
                        "stages": stages,

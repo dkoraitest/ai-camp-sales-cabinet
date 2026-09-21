@@ -29,6 +29,11 @@
     display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
   h1{font-size:20px;margin:0;letter-spacing:-.01em}
   .sub{color:var(--muted);font-size:13px}
+  /* шапка в одну линию: описание компании уступает место плашке и ролям */
+  header{flex-wrap:nowrap}
+  #profile-note{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  header h1,#source,#roles,#theme{flex:none}
+  @media(max-width:1100px){header{flex-wrap:wrap} #profile-note{flex-basis:100%}}
   nav{display:flex;gap:4px;padding:0 20px;border-bottom:1px solid var(--line);overflow-x:auto}
   nav button{background:none;border:0;color:var(--muted);padding:14px 16px;
     font-size:14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
@@ -704,8 +709,9 @@ function leadScore(l){
       if(!ns) why.push('следующего шага нет');
       if(last && daysBetween(last, now) > 14) why.push('без контакта '+daysBetween(last, now)+' дн.');
     } else {
-      total = .60*clip(fit) + .40*rec;
-      why.push('разговоров по сделке нет');
+      // здоровье сделки без разговоров неизвестно: выше B она не поднимается
+      total = Math.min(64, .60*clip(fit) + .40*rec);
+      why.push('новая, разговоров ещё не было');
     }
   }
   const score = Math.round(clip(total));
@@ -870,18 +876,36 @@ function toggleTheme(){
   applyTheme(saved === 'light' ? 'light' : 'dark');
 })();
 
+function showSource(){
+  const meta = DataSource.meta(), crm = meta.crm || CFG.crm;
+  const file = {amocrm:'connectors/amocrm.md', bitrix24:'connectors/bitrix24.md'}[crm] || 'connectors/README.md';
+  $('#m-title').textContent = 'Откуда данные';
+  $('#m-sub').textContent = 'Рабочий слой поверх вашей CRM';
+  $('#m-body').innerHTML =
+    '<p class="small" style="margin:0 0 12px">Сегодня кабинет читает файл <code>data.js</code>'+
+      (meta.synthetic ? ': база сгенерирована под профиль вашей компании, выводы показывают механику, а не факты о ваших людях.' : '.')+'</p>'+
+    '<p class="small" style="margin:0 0 12px">В реальной работе он читает четыре источника: сделки из CRM, звонки из телефонии, '+
+      'переписку из мессенджеров и внешние события по компаниям. Коннектор — это скрипт: API CRM → файл → кабинет. '+
+      'Браузер в CRM не ходит, ключи в страницу не попадают.</p>'+
+    '<p class="small" style="margin:0">Как подключить: <code>'+esc(file)+'</code>. Скажите агенту <code>подключи CRM</code> — '+
+      'коннектор пишется вместе с ним, лучше после конференции.</p>';
+  $('#modal').showModal();
+}
 function boot(){
   const meta = DataSource.meta();
   $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
     ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
-  if(meta.synthetic){
-    const b = document.createElement('span');
-    b.className = 'pill warn'; b.style.marginLeft = '4px';
-    b.textContent = 'данные синтетические';
-    b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
-    document.querySelector('header').appendChild(b);
-  }
+  // Плашка источника: сегодня файл, завтра CRM участника
+  const CRM = {amocrm:'amoCRM', bitrix24:'Битрикс24', other:'другая', none:'таблицы'};
+  const src = meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
+  const crm = meta.crm || CFG.crm;
+  const b = document.createElement('button');
+  b.className = 'pill '+(meta.synthetic || meta.id !== 'own' ? 'warn' : 'good'); b.id = 'source';
+  b.style.cssText = 'margin-left:4px;cursor:pointer';
+  b.textContent = 'Источник: '+src+(crm ? ' · ваша CRM: '+(CRM[crm]||crm) : '')+' · как подключить';
+  b.onclick = showSource;
+  document.querySelector('header').insertBefore(b, document.getElementById('roles'));
   // первым открываем менеджера: «один разбор, два взгляда» начинается с себя
   role = store.get('cabinet-role');
   draw();

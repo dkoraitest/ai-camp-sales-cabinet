@@ -29,6 +29,11 @@
     display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
   h1{font-size:20px;margin:0;letter-spacing:-.01em}
   .sub{color:var(--muted);font-size:13px}
+  /* шапка в одну линию: описание компании уступает место плашке и ролям */
+  header{flex-wrap:nowrap}
+  #profile-note{flex:1 1 auto;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  header h1,#source,#roles,#theme{flex:none}
+  @media(max-width:1100px){header{flex-wrap:wrap} #profile-note{flex-basis:100%}}
   nav{display:flex;gap:4px;padding:0 20px;border-bottom:1px solid var(--line);overflow-x:auto}
   nav button{background:none;border:0;color:var(--muted);padding:14px 16px;
     font-size:14px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
@@ -704,8 +709,9 @@ function leadScore(l){
       if(!ns) why.push('следующего шага нет');
       if(last && daysBetween(last, now) > 14) why.push('без контакта '+daysBetween(last, now)+' дн.');
     } else {
-      total = .60*clip(fit) + .40*rec;
-      why.push('разговоров по сделке нет');
+      // здоровье сделки без разговоров неизвестно: выше B она не поднимается
+      total = Math.min(64, .60*clip(fit) + .40*rec);
+      why.push('новая, разговоров ещё не было');
     }
   }
   const score = Math.round(clip(total));
@@ -870,18 +876,36 @@ function toggleTheme(){
   applyTheme(saved === 'light' ? 'light' : 'dark');
 })();
 
+function showSource(){
+  const meta = DataSource.meta(), crm = meta.crm || CFG.crm;
+  const file = {amocrm:'connectors/amocrm.md', bitrix24:'connectors/bitrix24.md'}[crm] || 'connectors/README.md';
+  $('#m-title').textContent = 'Откуда данные';
+  $('#m-sub').textContent = 'Рабочий слой поверх вашей CRM';
+  $('#m-body').innerHTML =
+    '<p class="small" style="margin:0 0 12px">Сегодня кабинет читает файл <code>data.js</code>'+
+      (meta.synthetic ? ': база сгенерирована под профиль вашей компании, выводы показывают механику, а не факты о ваших людях.' : '.')+'</p>'+
+    '<p class="small" style="margin:0 0 12px">В реальной работе он читает четыре источника: сделки из CRM, звонки из телефонии, '+
+      'переписку из мессенджеров и внешние события по компаниям. Коннектор — это скрипт: API CRM → файл → кабинет. '+
+      'Браузер в CRM не ходит, ключи в страницу не попадают.</p>'+
+    '<p class="small" style="margin:0">Как подключить: <code>'+esc(file)+'</code>. Скажите агенту <code>подключи CRM</code> — '+
+      'коннектор пишется вместе с ним, лучше после конференции.</p>';
+  $('#modal').showModal();
+}
 function boot(){
   const meta = DataSource.meta();
   $('#brand').textContent = (CFG.company && CFG.company !== 'Демо-режим')
     ? 'Кабинет продаж · '+CFG.company : 'Кабинет продаж';
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
-  if(meta.synthetic){
-    const b = document.createElement('span');
-    b.className = 'pill warn'; b.style.marginLeft = '4px';
-    b.textContent = 'данные синтетические';
-    b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
-    document.querySelector('header').appendChild(b);
-  }
+  // Плашка источника: сегодня файл, завтра CRM участника
+  const CRM = {amocrm:'amoCRM', bitrix24:'Битрикс24', other:'другая', none:'таблицы'};
+  const src = meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
+  const crm = meta.crm || CFG.crm;
+  const b = document.createElement('button');
+  b.className = 'pill '+(meta.synthetic || meta.id !== 'own' ? 'warn' : 'good'); b.id = 'source';
+  b.style.cssText = 'margin-left:4px;cursor:pointer';
+  b.textContent = 'Источник: '+src+(crm ? ' · ваша CRM: '+(CRM[crm]||crm) : '')+' · как подключить';
+  b.onclick = showSource;
+  document.querySelector('header').insertBefore(b, document.getElementById('roles'));
   // первым открываем менеджера: «один разбор, два взгляда» начинается с себя
   role = store.get('cabinet-role');
   draw();
@@ -1429,31 +1453,45 @@ registerTab({ id: 'managers', label: 'Команда', render: renderManagers })
 /* ---------------------------- ЛИДЫ ---------------------------- */
 function renderLeads(){
   const enr = DataSource.enrichment();
-  /* Сверху — сделки, где недавно разговаривали: с них начинается работа. */
+  const b2c = isB2C();
+  /* Скоринг считает код при открытии кабинета, логика майского lead-scoring:
+     B2B — здоровье сделки, B2C — приоритет заявки. Сверху — то, что требует
+     внимания сейчас; закрытые сделки внизу. */
   const act = {}; DataSource.contacts().forEach(c => act[c.lead_id] = c.when);
-  const leads = DataSource.leads().slice().sort((a,b) =>
-    (act[b.id] ? new Date(act[b.id]) : 0) - (act[a.id] ? new Date(act[a.id]) : 0));
-  const isB2C = CFG.profile === 'b2c';
-  let html = '<table><thead><tr>'+
-    '<th>'+(isB2C?'Родитель':'Компания')+'</th><th>'+(isB2C?'Возраст':'Контакт')+'</th>'+
+  const rows = DataSource.leads().map(l => ({l, r: leadScore(l)}))
+    .sort((a,b) => ((b.r ? 1 : 0) - (a.r ? 1 : 0)) || ((b.r||{}).score||0) - ((a.r||{}).score||0) ||
+      (act[b.l.id] ? new Date(act[b.l.id]) : 0) - (act[a.l.id] ? new Date(act[a.l.id]) : 0));
+  const open = rows.filter(x => x.r);
+  const cnt = g => open.filter(x => x.r.grade === g).length;
+  const sum = g => open.filter(x => x.r.grade === g).reduce((a,x) => a + (x.l.value_kzt||0), 0);
+  let html = '<div class="grid" style="margin-bottom:6px">'+
+    kpi(b2c ? 'Приоритет A' : 'Здоровые сделки', cnt('A'), b2c ? 'звонить сегодня' : money(sum('A')))+
+    kpi(b2c ? 'Приоритет B' : 'Под вопросом', cnt('B'), b2c ? 'в течение двух дней' : money(sum('B')))+
+    kpi(b2c ? 'Приоритет C' : 'В зоне риска', cnt('C'), b2c ? 'письмо или отказ' : money(sum('C')))+
+    kpi('Открытых', open.length, 'из '+rows.length+(b2c ? ' заявок' : ' сделок'))+'</div>'+
+    '<p class="scope">'+(b2c ? 'Приоритет заявки' : 'Здоровье сделки')+' 0–100 считает код: '+
+      (b2c ? 'свежесть заявки, соответствие профилю, что клиент говорил в разговорах, скорость первого ответа.'
+           : 'соответствие профилю, полнота BANT по всем разговорам, следующий шаг, вовлечённость и тишина.')+
+      ' Без разговоров веса смещаются на профиль и свежесть. Наведите на оценку — будут причины.</p>';
+  html += '<table><thead><tr>'+
+    '<th>'+(b2c?'Клиент':'Компания')+'</th><th>'+(b2c?'Интерес':'Контакт')+'</th>'+
     '<th>Источник</th><th>Коммуникации</th><th>Этап</th><th>Сумма</th>'+
-    '<th>'+(isB2C?'Реакция, мин':'След. шаг')+'</th><th></th></tr></thead><tbody>';
-  leads.forEach(l => {
+    '<th>'+(b2c?'Первый ответ':'След. шаг')+'</th><th>'+(b2c?'Приоритет':'Здоровье')+'</th><th></th></tr></thead><tbody>';
+  rows.forEach(({l, r}) => {
     const e = enr ? (enr.leads||[]).find(x => x.id === l.id) : null;
     html += '<tr class="clickable" onclick="openLead(\''+l.id+'\')">'+
-      '<td>'+esc(l.company || l.parent)+'</td>'+
-      '<td>'+esc(isB2C ? l.child_age+' лет' : (l.contact||''))+'</td>'+
+      '<td>'+esc(leadName(l.id))+(touch(l.id) ? ' <span class="pill accent">касание</span>' : '')+'</td>'+
+      '<td class="muted">'+esc(b2c ? (l.interest || l.industry || '—') : (l.contact||''))+'</td>'+
       '<td class="muted">'+esc(l.source)+'</td>'+
       '<td>'+dealStrip(l.id)+'</td>'+
       '<td><span class="pill">'+esc(stageLabel(l.stage))+'</span></td>'+
       '<td>'+money(l.value_kzt)+'</td>'+
-      '<td class="muted">'+(isB2C ? (l.responded_in_min ?? '—')
-        : closed(l.stage) ? '—' : (l.next_step || '<span class="pill bad">нет</span>'))+'</td>'+
+      '<td class="muted">'+(b2c ? (l.responded_in_min != null ? l.responded_in_min+' мин' : '—')
+        : closed(l.stage) ? '—' : (l.next_step ? fmtDate(l.next_step).slice(0,5) : '<span class="pill bad">нет</span>'))+'</td>'+
+      '<td>'+scorePill(r)+'</td>'+
       '<td>'+(e ? '<span class="pill good">обогащён</span>' : '')+'</td></tr>';
   });
   html += '</tbody></table>';
-  if(!enr) html += '<h2>Обогащение</h2>'+emptyBlock('Карточки пока сырые',
-    'Кабинет знает только то, что записал менеджер. Внешнего контекста о клиенте нет.','шага 3');
   return html;
 }
 function openLead(id){
@@ -1461,6 +1499,7 @@ function openLead(id){
   if(!l) return;
   const enr = DataSource.enrichment();
   const e = enr ? (enr.leads||[]).find(x => x.id === id) : null;
+  if(typeof openDeal === 'function') return openDeal(id);   // карточка сделки: до, разговоры, после
   $('#m-title').textContent = l.company || l.parent;
   $('#m-sub').textContent = stageLabel(l.stage)+' · '+money(l.value_kzt)+' · источник: '+l.source;
   let body = '<div class="card" style="margin-bottom:16px">';
