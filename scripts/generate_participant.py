@@ -242,7 +242,11 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
 
     objection_closed_talk = False
     weak = random.random() > st.get("asks_first", .5) + .3
-    greet = (P["greetings"]["weak"] if weak and P.get("greetings", {}).get("weak") else P["greetings"]["normal"])
+    # приветствия профиля; если их нет — нейтральные, генерация не падает
+    G = P.get("greetings") or {}
+    normal = G.get("normal") or ["Здравствуйте, {name}! Это {mgr}, компания {company}. Удобно говорить?",
+                                 "{name}, добрый день. {mgr}, {company}. Есть пара минут?"]
+    greet = G.get("weak") if weak and G.get("weak") else normal
     add("manager", random.choice(greet).format(
         name=lead["contact"].split()[0], mgr=mgr["name"].split()[0], company=P["company"]))
     add("client", random.choice(NOISE if random.random() < .18 else ACK))

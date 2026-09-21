@@ -116,6 +116,13 @@ OBJ_WORDS = ["дорог", "дешевле", "подумать", "не закл�
              "расписание", "посоветоваться", "не время", "уже есть", "сезон"]
 
 
+def avg(values):
+    """Среднее или None. База может быть только из переписки, а у РОПа, который
+    подключался к чужим звонкам, может не быть своих разговоров."""
+    v = list(values)
+    return round(st.mean(v), 1) if v else None
+
+
 def turns_of(c):
     return c.get("transcript") or c.get("messages") or []
 
@@ -202,7 +209,7 @@ def main():
            "chats": sum(1 for f in flags.values() if f["kind"] == "chat"),
            "focus_stage": focus, "focus_label": labels.get(focus, focus),
            "qualification_stage": qual_stage,
-           "avg_total": round(st.mean(i["total"] for i in items), 1)}
+           "avg_total": avg(i["total"] for i in items)}
 
     # ── разрез 1 · качество коммуникаций на фокусном этапе ────────────
     fs = [f for f in flags.values() if f["stage"] == focus]
@@ -213,7 +220,7 @@ def main():
         "with_close": sum(1 for f in fs if f["close"]),
         "pitch_first": sum(1 for f in fs if f["q_before_pitch"] == 0),
         "avg_q_before_pitch": round(st.mean(f["q_before_pitch"] for f in fs), 1) if fs else None,
-        "by_manager": {mgr_name[m]: round(st.mean([f["total"] for f in fs if f["mgr"] == m]), 1)
+        "by_manager": {mgr_name[m]: avg(f["total"] for f in fs if f["mgr"] == m)
                        for m in mgr_name if any(f["mgr"] == m for f in fs)},
     }
 
@@ -229,12 +236,12 @@ def main():
                            "leads_on_stage": len(stuck), "money_on_stage": money,
                            "close_rate": round(sum(1 for f in g if f["close"]) / len(g), 2) if g else None})
     agg["funnel"] = stage_rows
-    agg["channels"] = {"calls_avg": round(st.mean([f["total"] for f in flags.values() if f["kind"] == "call"]), 1),
-                       "chats_avg": round(st.mean([f["total"] for f in flags.values() if f["kind"] == "chat"]), 1)
+    agg["channels"] = {"calls_avg": avg(f["total"] for f in flags.values() if f["kind"] == "call"),
+                       "chats_avg": avg(f["total"] for f in flags.values() if f["kind"] == "chat")
                        if agg["chats"] else None}
     agg["managers"] = {mgr_name[m]: {
         "contacts": sum(1 for f in flags.values() if f["mgr"] == m),
-        "avg": round(st.mean([f["total"] for f in flags.values() if f["mgr"] == m]), 1),
+        "avg": avg(f["total"] for f in flags.values() if f["mgr"] == m),
         "close_rate": round(sum(1 for f in flags.values() if f["mgr"] == m and f["close"]) /
                             max(1, sum(1 for f in flags.values() if f["mgr"] == m)), 2),
         "depth_rate": round(sum(1 for f in flags.values() if f["mgr"] == m and f["depth"]) /
