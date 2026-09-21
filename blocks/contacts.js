@@ -20,6 +20,7 @@ function renderContacts(){
   return html;
 }
 function bindFilters(){
+  if(!$('#f-view')) return;          // вкладку уже переключили, пока фильтры ждали отрисовки
   const draw = () => {
     const fk = $('#f-kind').value, fs = $('#f-stage').value, fm = $('#f-mgr').value;
     const rows = DataSource.contacts().filter(c =>
