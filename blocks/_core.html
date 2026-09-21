@@ -20,7 +20,7 @@
   :root[data-theme="light"] .card,
   :root[data-theme="light"] dialog{box-shadow:0 1px 3px rgba(20,24,33,.06)}
   #theme{background:none;border:1px solid var(--line);color:var(--muted);
-    border-radius:9px;padding:6px 12px;font-size:13px;cursor:pointer;margin-left:auto}
+    border-radius:9px;padding:6px 12px;font-size:13px;cursor:pointer}
   #theme:hover{color:var(--fg);border-color:var(--muted)}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--fg);
@@ -82,6 +82,7 @@
     border-bottom:1px solid var(--line);font-size:14px}
   .crit:last-child{border:0}
   .muted{color:var(--muted)}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9em;background:var(--panel-2);padding:1px 6px;border-radius:5px}
   .small{font-size:13px}
   .insight{border-left:3px solid var(--accent);padding:12px 16px;background:var(--panel);
     border-radius:0 10px 10px 0;margin-bottom:10px}
@@ -124,6 +125,27 @@
   .tg-link button{white-space:nowrap}
   .scope{color:var(--muted);font-size:12.5px;margin:-6px 0 12px;
     padding-left:11px;border-left:2px solid var(--line)}
+  /* Две роли: менеджер и руководитель. Один разбор, два взгляда. */
+  #roles{margin-left:auto;display:inline-flex;background:var(--panel-2);border:1px solid var(--line);
+    border-radius:10px;padding:3px;gap:2px}
+  #roles button{background:none;border:0;color:var(--muted);padding:6px 14px;border-radius:7px;
+    font-size:13px;cursor:pointer}
+  #roles button.on{background:var(--panel);color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+  #roles:empty{display:none}
+  #theme{margin-left:8px}
+  nav .who{align-self:center;margin:0 10px 0 4px;font-size:13px;padding:6px 10px}
+  nav .who-lbl{align-self:center;color:var(--muted);font-size:12px;margin-left:8px}
+  .sec{margin:18px 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .mod{border:1px dashed var(--line);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px}
+  .mod.filled{border-style:solid;background:var(--panel)}
+  .mod h3{margin:0 0 8px;font-size:14px}
+  .row-deal{display:grid;grid-template-columns:1.6fr .9fr .9fr 1fr auto;gap:12px;align-items:center;
+    padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer;font-size:14px}
+  .row-deal:hover{background:var(--panel-2)}
+  .late{color:var(--bad)}
+  .vs{position:relative;height:8px;background:var(--panel-2);border-radius:99px}
+  .vs i{position:absolute;left:0;top:0;height:100%;border-radius:99px}
+  .vs b{position:absolute;top:-4px;width:2px;height:16px;background:var(--fg);opacity:.55}
   /* Команда: карточки в одну линию, листается вбок */
   /* Лента идёт до правого края окна, а не до границы колонки: иначе справа
      остаётся мёртвая полоса, в которой прокрутка не работает. */
@@ -187,6 +209,7 @@
 <header>
   <h1 id="brand">Кабинет продаж</h1>
   <span class="sub" id="profile-note"></span>
+  <div id="roles"></div>
   <button id="theme" onclick="toggleTheme()" title="Тёмная или светлая тема">Светлая</button>
 </header>
 
@@ -248,6 +271,12 @@ const money = n => n ? new Intl.NumberFormat('ru-RU').format(n) + ' ₸' : '—'
 const stageLabel = code => (DataSource.meta().stage_labels || {})[code] || code;
 const grade = (v,max) => { const r = v/(max||10); return r>=.75?'good':r>=.5?'warn':'bad' };
 
+/* Тип продаж: B2B — сделки, B2C — поток заявок. Берётся из профиля шага 0. */
+function isB2C(){
+  const m = DataSource.meta();
+  return CFG.profile === 'b2c' || /b2c/i.test(m.type || '') ||
+         DataSource.leads().some(l => 'parent' in l);
+}
 function scoreOf(id){
   const s = DataSource.scores();
   if(!s) return null;
@@ -483,6 +512,247 @@ function fallback(t, done){
   try { document.execCommand('copy'); done() } catch(e){}
   document.body.removeChild(a);
 }
+function mgrStats(m){
+  const mine = DataSource.contacts().filter(c => c.manager_id === m.id);
+  const scored = mine.map(c => scoreOf(c.id)).filter(Boolean);
+  return {mine, avg: scored.length ? scored.reduce((a,s) => a+s.total, 0)/scored.length : null};
+}
+/* Канал до менеджера. Кабинет ничего не отправляет сам — он статический
+   файл, и токену в нём не место. Его работа — дать ссылку, по которой
+   человек подключается одним нажатием, и показать, кто уже на связи. */
+function tgLinked(id){
+  const t = DataSource.telegram();
+  return !!(t && t.links && t.links[id]);
+}
+function tgCard(id, fb){
+  const t = DataSource.telegram();
+  const linked = tgLinked(id);
+  let b = '<div class="card" style="margin-bottom:14px"><div style="display:flex;'+
+    'justify-content:space-between;align-items:baseline;gap:12px"><div class="kpi-label">Канал до менеджера</div>'+
+    (linked ? '<span class="pill good">подключён</span>' : '<span class="pill">не подключён</span>')+'</div>';
+
+  if(!t || !t.bot){
+    b += '<p class="muted small" style="margin:8px 0 0">Бот ещё не назначен. Один раз на весь кабинет:</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py init</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py init\', this)">Скопировать</button></div>';
+  } else if(!linked){
+    const url = 'https://t.me/'+t.bot+'?start='+id;
+    b += '<p class="muted small" style="margin:8px 0 0">Отправьте эту ссылку менеджеру'+
+      (fb && fb.telegram ? ' ('+esc(fb.telegram)+')' : '')+'. Он открывает её, жмёт «Старт» — и всё, '+
+      'вводить ничего не нужно: имя бота и его id уходят автоматически.</p>'+
+      '<div class="tg-link"><code>'+esc(url)+'</code>'+
+      '<button class="act" onclick="copyText(\''+url+'\', this)">Скопировать ссылку</button></div>'+
+      '<p class="muted small" style="margin:12px 0 0">После этого у себя в терминале:</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py link --auto</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py link --auto\', this)">Скопировать</button></div>';
+  } else {
+    b += '<p class="muted small" style="margin:8px 0 0">Разбор и тренировка уйдут ему в Telegram '+
+      'через @'+esc(t.bot)+'. Сначала посмотрите текст с флагом <code>--dry</code>, потом отправляйте.</p>'+
+      '<div class="tg-link"><code>python3 scripts/telegram.py send '+esc(id)+'</code>'+
+      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py send '+id+'\', this)">Скопировать</button></div>';
+  }
+  return b + '</div>';
+}
+/* Разбор менеджера: канал, разбор, фокус, тренировка, что уходит в Telegram.
+   Одно и то же показывают «Команда» у руководителя и «Мой тренер» у менеджера. */
+function coachBody(id){
+  const coach = DataSource.coaching(); if(!coach) return '';
+  const fb = (coach.managers||[]).find(x => x.id === id); if(!fb) return '';
+  let body = tgCard(id, fb);
+  if(fb.summary) body += '<div class="card" style="margin-bottom:14px">'+
+    '<div class="kpi-label">Разбор по его разговорам</div>'+
+    '<p class="small" style="margin:8px 0 0">'+esc(fb.summary)+'</p>'+
+    (fb.quote ? '<p class="small" style="margin:12px 0 0;padding:10px 12px;background:var(--panel-2);'+
+      'border-radius:10px;border-left:2px solid var(--accent)">'+esc(fb.quote)+'</p>' : '')+'</div>';
+  if(fb.focus) body += '<div class="card" style="margin-bottom:14px"><div class="kpi-label">Фокус недели</div>'+
+    '<p class="small" style="margin:8px 0 0">'+esc(fb.focus)+'</p></div>';
+  if(fb.drill) body += '<div class="card" style="margin-bottom:14px">'+
+    '<div class="kpi-label">Тренировка · '+esc(fb.drill.skill_name||'')+'</div>'+
+    '<p class="small" style="margin:8px 0 0"><b>'+esc(fb.drill.title)+'</b></p>'+
+    '<p class="muted small" style="margin:6px 0 0">'+esc(fb.drill.task)+'</p>'+
+    (fb.drill.expected ? '<p class="muted small" style="margin:8px 0 0"><b>Что проверяем:</b> '+esc(fb.drill.expected)+'</p>' : '')+
+    (fb.drill.reply_format ? '<p class="muted small" style="margin:6px 0 0"><b>Формат ответа:</b> '+esc(fb.drill.reply_format)+'</p>' : '')+
+    '</div>';
+
+  const msgs = fb.telegram_messages || [];
+  if(msgs.length){
+    body += '<h2>Что уходит ему в Telegram</h2>';
+    msgs.forEach(t => body += '<div class="tg"><div class="meta">'+esc(fb.telegram||'')+
+      (t.trigger ? ' · '+esc(t.trigger) : '')+'</div>'+esc(t.text)+'</div>');
+  }
+  return body;
+}
+/* -------------------------------------------------------------------
+   Ответственный и скоринг.
+
+   Ответственный — поле CRM. Если его нет в выгрузке, берём менеджера,
+   который вёл разговоры по сделке.
+
+   Скоринг — логика майского скилла lead-scoring: 0–100, категории A/B/C,
+   веса адаптивные под полноту данных. Есть разговоры — главный сигнал
+   в них. Нет — работают соответствие профилю и свежесть заявки.
+   B2B: здоровье сделки. B2C: приоритет заявки. Считается при открытии
+   кабинета, от зала ничего не требуется.
+------------------------------------------------------------------- */
+let _own = null;
+function ownerOf(l){
+  if(!l) return null;
+  if(l.owner) return l.owner;
+  if(l.manager_id) return l.manager_id;
+  if(!_own){ _own = {}; DataSource.contacts().forEach(c => { if(!_own[c.lead_id]) _own[c.lead_id] = c.manager_id }) }
+  return _own[l.id] || null;
+}
+const touch = id => ((DataSource.enrichment() || {}).touch || []).find(t => t.lead_id === id) || null;
+const daysBetween = (a, b) => Math.round((b - a) / 864e5);
+const closedStage = st => { const f = DataSource.funnel().map(x => x.id || x); return f.length > 2 && f.slice(-2).includes(st) };
+
+let _sig = null;
+function leadSignals(){
+  if(_sig) return _sig;
+  _sig = {};
+  const s = DataSource.scores();
+  const sc = {}; ((s && s.items) || []).forEach(i => sc[i.id] = i);
+  const BUY = ['когда старт','расписан','оплат','счёт','рассрочк','сколько стоит','договор','пилот','когда можно','давайте','подходит'];
+  DataSource.contacts().forEach(c => {
+    const e = _sig[c.lead_id] || (_sig[c.lead_id] = {n:0, last:null, totals:[], bant:{}, buy:0});
+    e.n++;
+    const w = new Date(c.when); if(!e.last || w > e.last) e.last = w;
+    const i = sc[c.id];
+    if(i){ e.totals.push(i.total); if(i.bant) Object.keys(i.bant).forEach(k => { if(i.bant[k]) e.bant[k] = true }) }
+    const turns = c.transcript || c.messages || [];
+    turns.forEach(t => { if(t.who === 'client'){ const x = (t.text||'').toLowerCase();
+      if(BUY.some(w => x.includes(w))) e.buy++ } });
+  });
+  return _sig;
+}
+function leadScore(l){
+  if(!l || closedStage(l.stage)) return null;
+  const e = leadSignals()[l.id];
+  const now = dataNow(), why = [];
+  const created = l.created ? new Date(l.created) : null;
+  const age = created ? daysBetween(created, now) : null;
+  const clip = v => Math.max(0, Math.min(100, v));
+  let fit = 0, rec = 0, conv = 0, total;
+
+  if(isB2C()){
+    fit += l.interest ? 30 : 0;
+    fit += (l.child_age >= 8 && l.child_age <= 16) ? 30 : (l.child_age ? 10 : 0);
+    fit += ({'Рекомендация':40,'Сайт':30,'Instagram':20})[l.source] ?? 15;
+    rec = age === null ? 30 : age <= 1 ? 100 : age <= 3 ? 80 : age <= 7 ? 50 : age <= 14 ? 20 : 0;
+    if(e){
+      conv += Math.min(60, e.buy * 30);
+      conv += l.responded_in_min != null ? (l.responded_in_min <= 15 ? 25 : l.responded_in_min <= 60 ? 10 : 0) : 0;
+      conv += e.bant.budget ? 15 : 0;
+      total = .25*clip(fit) + .25*rec + .5*clip(conv);
+    } else total = .5*clip(fit) + .5*rec;
+    if(e && e.buy) why.push('клиент спрашивал про старт или оплату');
+    if(age !== null && age <= 3) why.push('заявка свежая, '+age+' дн.');
+    if(l.responded_in_min > 60) why.push('первый ответ через '+l.responded_in_min+' мин');
+    if(!e) why.push('разговора ещё не было');
+  } else {
+    const pos = (l.position || '').toLowerCase();
+    fit += /директор|руковод|собствен|владел|ceo|founder|head/.test(pos) ? 40 : pos ? 15 : 0;
+    fit += l.size ? (l.size >= 50 && l.size <= 500 ? 30 : l.size > 500 ? 25 : 15) : 5;
+    fit += l.industry ? 15 : 0;
+    fit += ({'Рекомендация':15,'Выставка':12,'Сайт':10,'Вебинар':10})[l.source] ?? 0;
+    const last = e && e.last;
+    rec = last ? (d => d <= 7 ? 100 : d <= 14 ? 60 : d <= 30 ? 20 : 0)(daysBetween(last, now))
+               : (age === null ? 30 : age <= 7 ? 80 : age <= 21 ? 40 : 10);
+    if(e){
+      const nb = Object.keys(e.bant).length;
+      let buy = nb === 4 ? 50 : nb * 10;
+      const ns = l.next_step ? new Date(l.next_step) : null;
+      buy += ns ? (ns >= now ? 30 : -10) : 0;
+      buy += e.buy ? 20 : 0;
+      const avg = e.totals.length ? e.totals.reduce((a,b) => a+b, 0) / e.totals.length : null;
+      const eng = (e.n >= 5 ? 60 : e.n >= 3 ? 40 : 20) + (avg == null ? 0 : avg >= 7 ? 40 : avg >= 5 ? 20 : 0);
+      total = .30*clip(fit) + .40*clip(buy) + .15*clip(eng) + .15*rec;
+      if(nb === 4) why.push('BANT закрыт полностью'); else why.push('BANT: выяснено '+nb+' из 4');
+      if(ns && ns < now) why.push('следующий шаг просрочен');
+      if(!ns) why.push('следующего шага нет');
+      if(last && daysBetween(last, now) > 14) why.push('без контакта '+daysBetween(last, now)+' дн.');
+    } else {
+      total = .60*clip(fit) + .40*rec;
+      why.push('разговоров по сделке нет');
+    }
+  }
+  const score = Math.round(clip(total));
+  return {score, grade: score >= 65 ? 'A' : score >= 40 ? 'B' : 'C', why: why.slice(0, 3)};
+}
+function scorePill(r){
+  if(!r) return '<span class="pill">—</span>';
+  const cls = r.grade === 'A' ? 'good' : r.grade === 'B' ? 'warn' : 'bad';
+  return '<span class="pill '+cls+'" title="'+esc(r.why.join(' · '))+'">'+r.grade+' · '+r.score+'</span>';
+}
+
+/* Карточка сделки или заявки — центральный объект менеджера:
+   до контакта · лента всех разговоров · после контакта. */
+function openDeal(id){
+  const l = leadOf(id); if(!l) return;
+  const b2c = isB2C(), t = touch(id), r = leadScore(l);
+  const own = DataSource.managers().find(m => m.id === ownerOf(l));
+  $('#m-title').textContent = leadName(id);
+  $('#m-sub').textContent = [stageLabel(l.stage), money(l.value_kzt), own && ('ответственный: '+own.name),
+    l.source && ('источник: '+l.source)].filter(Boolean).join(' · ');
+  let body = '';
+
+  // ── до контакта
+  body += '<div class="sec">До контакта</div>';
+  if(t && t.before){
+    const bf = t.before;
+    body += '<div class="mod filled"><h3>Повод касания</h3><p class="small" style="margin:0">'+esc(bf.reason||'')+'</p>'+
+      ((bf.memory||[]).length ? '<div class="kpi-label" style="margin-top:12px">Из прошлых разговоров</div>'+
+        bf.memory.map(x => '<div class="crit"><span class="small">'+esc(x)+'</span></div>').join('') : '')+
+      ((bf.events||[]).length ? '<div class="kpi-label" style="margin-top:12px">Что произошло у клиента</div>'+
+        bf.events.map(x => '<div class="crit"><span class="small">'+esc(x)+'</span></div>').join('') : '')+
+      (bf.dossier ? '<div class="kpi-label" style="margin-top:12px">'+(b2c?'Контекст заявки':'Досье ЛПР')+'</div>'+
+        '<p class="small" style="margin:4px 0 0">'+esc(bf.dossier)+'</p>' : '')+
+      (t.message ? '<div class="kpi-label" style="margin-top:12px">Сообщение для касания</div>'+
+        '<div class="tg" style="margin-top:6px">'+esc(t.message)+'</div>' : '')+'</div>';
+  } else {
+    let pre = '';
+    if(b2c){
+      pre += '<div class="crit"><span class="muted">интерес</span><span>'+esc(l.interest||'—')+'</span></div>'+
+        '<div class="crit"><span class="muted">возраст ребёнка</span><span>'+esc(l.child_age ? l.child_age+' лет' : '—')+'</span></div>'+
+        '<div class="crit"><span class="muted">первый ответ</span><span>'+esc(l.responded_in_min != null ? l.responded_in_min+' мин' : '—')+'</span></div>';
+    } else {
+      pre += '<div class="crit"><span class="muted">контакт</span><span>'+esc([l.contact, l.position].filter(Boolean).join(', ')||'—')+'</span></div>';
+      (l.events||[]).forEach(ev => pre += '<div class="crit"><span class="muted">'+esc(fmtDate(ev.date).slice(0,5))+' · '+
+        esc(({news:'новость',vacancy:'вакансия',tender:'тендер'})[ev.type]||ev.type)+'</span><span class="small" style="max-width:70%;text-align:right">'+esc(ev.title)+'</span></div>');
+    }
+    body += '<div class="mod">'+pre+'<p class="muted small" style="margin:10px 0 0">Повод касания'+
+      (b2c ? '' : ', досье ЛПР')+' и сообщение появятся после шага 3: скажите агенту <code>следующее касание</code>.</p></div>';
+  }
+  if(r) body += '<p class="muted small" style="margin:-4px 0 12px">'+(b2c?'Приоритет заявки':'Здоровье сделки')+': '+
+    scorePill(r)+' '+esc(r.why.join(' · '))+'</p>';
+
+  // ── разговоры
+  body += '<div class="sec">Все разговоры по '+(b2c?'заявке':'сделке')+'</div>'+dealThread(id);
+
+  // ── после контакта
+  body += '<div class="sec">После контакта</div>';
+  if(t && t.after){
+    const a = t.after;
+    body += '<div class="mod filled"><h3>Автозадачи</h3>'+
+      (a.summary ? '<p class="small" style="margin:0 0 10px">'+esc(a.summary)+'</p>' : '')+
+      ((a.agreements||{}).we||[]).map(x => '<div class="crit"><span class="muted">мы</span><span class="small" style="max-width:80%;text-align:right">'+esc(x)+'</span></div>').join('')+
+      ((a.agreements||{}).client||[]).map(x => '<div class="crit"><span class="muted">клиент</span><span class="small" style="max-width:80%;text-align:right">'+esc(x)+'</span></div>').join('')+
+      ((a.tasks||[]).length ? '<div class="kpi-label" style="margin-top:12px">Задачи</div>'+
+        a.tasks.map(x => '<div class="crit"><span class="small">'+esc(x.text||x)+'</span><span class="muted small">'+esc(x.due||'')+'</span></div>').join('') : '')+
+      (a.email ? '<div class="kpi-label" style="margin-top:12px">Письмо клиенту</div><div class="tg" style="margin-top:6px">'+esc(a.email)+'</div>' : '')+
+      (a.crm ? '<div class="kpi-label" style="margin-top:14px">Уйдёт в CRM</div>'+
+        Object.entries(a.crm).map(([k,v]) => '<div class="crit"><span class="muted">'+esc(k)+'</span><span class="small" style="max-width:70%;text-align:right">'+esc(v)+'</span></div>').join('') : '')+
+      '</div>';
+    if(t.offer) body += '<div class="mod filled"><h3>'+(b2c ? 'Ответ в мессенджер' : 'КП')+'</h3>'+
+      (t.offer.spsv ? Object.entries(t.offer.spsv).map(([k,v]) => '<div class="crit"><span class="muted">'+esc(k)+'</span><span class="small" style="max-width:75%;text-align:right">'+esc(v)+'</span></div>').join('') : '')+
+      (t.offer.text ? '<div class="tg" style="margin-top:10px">'+esc(t.offer.text)+'</div>' : '')+'</div>';
+  } else {
+    body += '<div class="mod"><p class="muted small" style="margin:0">Саммари, договорённости обеих сторон, задачи, письмо клиенту '+
+      'и превью того, что уйдёт в CRM, появятся после шага 3'+(b2c ? ', вместе с ответом в мессенджер.' : ', вместе с КП.')+'</p></div>';
+  }
+  $('#m-body').innerHTML = body;
+  $('#modal').showModal();
+}
 function emptyBlock(title, hint, step){
   return '<div class="empty"><b>'+esc(title)+'</b>'+esc(hint)+'<br><br>'+
     '<span class="muted">Появится после</span> <code>'+esc(step)+'</code></div>';
@@ -495,17 +765,57 @@ function kpi(label, value, note){
 /* ---------------------------- Каркас ---------------------------- */
 /* Вкладки регистрируются подключёнными блоками — см. blocks/ */
 const TABS = [];
-const TAB_ORDER = ['overview','contacts','insights','managers','leads','deep'];
+/* Вкладки менеджера и руководителя. Блок сам говорит, чья это вкладка:
+   role:'manager' или по умолчанию руководитель. */
+const TAB_ORDER = ['my-deals','my-calls','my-coach',
+                   'overview','contacts','managers','leads','insights','deep'];
 function registerTab(t){
+  t.role = t.role || 'lead';
   TABS.push(t);
   TABS.sort((a,b) => TAB_ORDER.indexOf(a.id) - TAB_ORDER.indexOf(b.id));
 }
-let active = null;
-function draw(){
-  $('#tabs').innerHTML = TABS.map(t => '<button class="'+(t.id===active?'on':'')+'" onclick="go(\''+t.id+'\')">'+t.label+'</button>').join('');
-  $('#view').innerHTML = (TABS.find(t => t.id === active) || TABS[0]).render();
+const ROLE_LBL = {manager:'Менеджер', lead:'Руководитель'};
+let active = null, role = null;
+const roleTabs = r => TABS.filter(t => t.role === r);
+const store = {get(k){ try { return localStorage.getItem(k) } catch(e){ return null } },
+               set(k,v){ try { localStorage.setItem(k, v) } catch(e){} }};
+
+/* «Кто я». В прототипе — выпадающий список, в реальной работе у каждого свой вход. */
+function me(){
+  const ms = DataSource.managers();
+  const saved = store.get('cabinet-me');
+  if(saved && ms.find(m => m.id === saved)) return saved;
+  const n = {}; DataSource.contacts().forEach(c => n[c.manager_id] = (n[c.manager_id]||0) + 1);
+  const top = ms.slice().sort((a,b) => (n[b.id]||0) - (n[a.id]||0))[0];
+  return top ? top.id : null;
 }
-function go(id){ active = id; draw(); }
+function setMe(id){ store.set('cabinet-me', id); draw(); }
+function setRole(r){ role = r; store.set('cabinet-role', r); active = null; draw(); }
+
+function draw(){
+  const both = ['manager','lead'].filter(r => roleTabs(r).length);
+  if(!role || !both.includes(role)) role = both[0] || 'lead';
+  $('#roles').innerHTML = both.length > 1 ? both.map(r =>
+    '<button class="'+(r===role?'on':'')+'" onclick="setRole(\''+r+'\')">'+ROLE_LBL[r]+'</button>').join('') : '';
+  const tabs = roleTabs(role);
+  if(!tabs.find(t => t.id === active)) active = tabs.length ? tabs[0].id : null;
+  let who = '';
+  if(role === 'manager'){
+    const cur = me();
+    who = '<span class="who-lbl">Я</span><select class="who" onchange="setMe(this.value)">'+
+      DataSource.managers().map(m => '<option value="'+esc(m.id)+'"'+(m.id===cur?' selected':'')+'>'+
+        esc(m.name)+'</option>').join('')+'</select>';
+  }
+  $('#tabs').innerHTML = who + tabs.map(t => '<button class="'+(t.id===active?'on':'')+
+    '" onclick="go(\''+t.id+'\')">'+(typeof t.label === 'function' ? t.label() : t.label)+'</button>').join('');
+  const t = tabs.find(x => x.id === active);
+  $('#view').innerHTML = t ? t.render() : '';
+}
+function go(id){
+  const t = TABS.find(x => x.id === id);
+  if(t && t.role !== role) role = t.role;
+  active = id; draw();
+}
 
 /* Тема. Выбор запоминается в браузере; если хранилище недоступно —
    просто работает тёмная, ничего не ломается. */
@@ -538,7 +848,8 @@ function boot(){
     b.title = 'База сгенерирована под профиль вашей компании. Выводы показывают механику, а не факты о ваших людях.';
     document.querySelector('header').appendChild(b);
   }
-  active = TABS.length ? TABS[0].id : null;
+  // первым открываем менеджера: «один разбор, два взгляда» начинается с себя
+  role = store.get('cabinet-role');
   draw();
 }
 

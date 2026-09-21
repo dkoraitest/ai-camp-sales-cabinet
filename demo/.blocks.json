@@ -1,5 +1,6 @@
 {
   "blocks": [
+    "me",
     "overview",
     "contacts",
     "insights",

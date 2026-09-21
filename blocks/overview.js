@@ -159,4 +159,4 @@ function renderOverview(){
   }
   return html;
 }
-registerTab({ id: 'overview', label: 'Обзор', render: renderOverview });
+registerTab({ id: 'overview', label: 'Дашборд', render: renderOverview });

@@ -5,7 +5,7 @@
 а собранный файл остаётся одним самодостаточным HTML — его можно отправить
 руководителю вложением, и он откроется двойным кликом.
 
-    python3 scripts/build_cabinet.py --blocks overview,contacts,insights   # шаг 1
+    python3 scripts/build_cabinet.py --blocks me,overview,contacts,insights   # шаг 1
     python3 scripts/build_cabinet.py --add managers                        # шаг 2
     python3 scripts/build_cabinet.py --add leads                           # шаг 3
     python3 scripts/build_cabinet.py --add deep                            # шаг 4
@@ -22,14 +22,15 @@ OUT_DIR = ROOT / "cabinet"
 STATE = OUT_DIR / ".blocks.json"
 
 KNOWN = {
-    "overview": "Обзор — метрики, воронка, матрица оценки",
+    "me":       "Менеджер — мои сделки, мои звонки, мой тренер",
+    "overview": "Дашборд — метрики, воронка, BANT, матрица оценки",
     "contacts": "Коммуникации — звонки и переписка с разбором",
     "insights": "Инсайты — закономерности, которые нашла система",
-    "managers": "Менеджеры — карта навыков, обратная связь, тренировки",
+    "managers": "Команда — карта навыков, обратная связь, тренировки",
     "leads":    "Лиды — карточки, обогащение, готовые сообщения",
     "deep":     "Глубокая аналитика — кросс-аналитика по всей базе",
 }
-ORDER = ["overview", "contacts", "insights", "managers", "leads", "deep"]
+ORDER = ["me", "overview", "contacts", "insights", "managers", "leads", "deep"]
 
 
 def read_state(state=None):

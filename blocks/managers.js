@@ -3,11 +3,6 @@
 /* Карточка отвечает на вопрос руководителя: что с человеком и что ему уходит.
    Сам разбор и тексты для Telegram — в модалке: это письмо менеджеру,
    а не отчёт для чтения с экрана.                                          */
-function mgrStats(m){
-  const mine = DataSource.contacts().filter(c => c.manager_id === m.id);
-  const scored = mine.map(c => scoreOf(c.id)).filter(Boolean);
-  return {mine, avg: scored.length ? scored.reduce((a,s) => a+s.total, 0)/scored.length : null};
-}
 function renderManagers(){
   const coach = DataSource.coaching();
   const all = DataSource.managers();
@@ -90,42 +85,6 @@ function railNav(){
   if(r && nav) nav.style.display = r.scrollWidth > r.clientWidth + 4 ? 'inline-flex' : 'none';
 }
 window.addEventListener('resize', railNav);
-/* Канал до менеджера. Кабинет ничего не отправляет сам — он статический
-   файл, и токену в нём не место. Его работа — дать ссылку, по которой
-   человек подключается одним нажатием, и показать, кто уже на связи. */
-function tgLinked(id){
-  const t = DataSource.telegram();
-  return !!(t && t.links && t.links[id]);
-}
-function tgCard(id, fb){
-  const t = DataSource.telegram();
-  const linked = tgLinked(id);
-  let b = '<div class="card" style="margin-bottom:14px"><div style="display:flex;'+
-    'justify-content:space-between;align-items:baseline;gap:12px"><div class="kpi-label">Канал до менеджера</div>'+
-    (linked ? '<span class="pill good">подключён</span>' : '<span class="pill">не подключён</span>')+'</div>';
-
-  if(!t || !t.bot){
-    b += '<p class="muted small" style="margin:8px 0 0">Бот ещё не назначен. Один раз на весь кабинет:</p>'+
-      '<div class="tg-link"><code>python3 scripts/telegram.py init</code>'+
-      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py init\', this)">Скопировать</button></div>';
-  } else if(!linked){
-    const url = 'https://t.me/'+t.bot+'?start='+id;
-    b += '<p class="muted small" style="margin:8px 0 0">Отправьте эту ссылку менеджеру'+
-      (fb && fb.telegram ? ' ('+esc(fb.telegram)+')' : '')+'. Он открывает её, жмёт «Старт» — и всё, '+
-      'вводить ничего не нужно: имя бота и его id уходят автоматически.</p>'+
-      '<div class="tg-link"><code>'+esc(url)+'</code>'+
-      '<button class="act" onclick="copyText(\''+url+'\', this)">Скопировать ссылку</button></div>'+
-      '<p class="muted small" style="margin:12px 0 0">После этого у себя в терминале:</p>'+
-      '<div class="tg-link"><code>python3 scripts/telegram.py link --auto</code>'+
-      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py link --auto\', this)">Скопировать</button></div>';
-  } else {
-    b += '<p class="muted small" style="margin:8px 0 0">Разбор и тренировка уйдут ему в Telegram '+
-      'через @'+esc(t.bot)+'. Сначала посмотрите текст с флагом <code>--dry</code>, потом отправляйте.</p>'+
-      '<div class="tg-link"><code>python3 scripts/telegram.py send '+esc(id)+'</code>'+
-      '<button class="act" onclick="copyText(\'python3 scripts/telegram.py send '+id+'\', this)">Скопировать</button></div>';
-  }
-  return b + '</div>';
-}
 function openCoach(id){
   const coach = DataSource.coaching(); if(!coach) return;
   const fb = (coach.managers||[]).find(x => x.id === id); if(!fb) return;
@@ -134,31 +93,7 @@ function openCoach(id){
   $('#m-title').textContent = m.name || id;
   $('#m-sub').textContent = (m.role||'')+' · '+mine.length+' контактов'+
     (avg!==null ? ' · средний балл '+avg.toFixed(1) : '')+(fb.telegram ? ' · '+fb.telegram : '');
-
-  /* Канал идёт первым: это действие, а всё остальное — чтение. */
-  let body = tgCard(id, fb);
-  if(fb.summary) body += '<div class="card" style="margin-bottom:14px">'+
-    '<div class="kpi-label">Разбор по его разговорам</div>'+
-    '<p class="small" style="margin:8px 0 0">'+esc(fb.summary)+'</p>'+
-    (fb.quote ? '<p class="small" style="margin:12px 0 0;padding:10px 12px;background:var(--panel-2);'+
-      'border-radius:10px;border-left:2px solid var(--accent)">'+esc(fb.quote)+'</p>' : '')+'</div>';
-  if(fb.focus) body += '<div class="card" style="margin-bottom:14px"><div class="kpi-label">Фокус недели</div>'+
-    '<p class="small" style="margin:8px 0 0">'+esc(fb.focus)+'</p></div>';
-  if(fb.drill) body += '<div class="card" style="margin-bottom:14px">'+
-    '<div class="kpi-label">Тренировка · '+esc(fb.drill.skill_name||'')+'</div>'+
-    '<p class="small" style="margin:8px 0 0"><b>'+esc(fb.drill.title)+'</b></p>'+
-    '<p class="muted small" style="margin:6px 0 0">'+esc(fb.drill.task)+'</p>'+
-    (fb.drill.expected ? '<p class="muted small" style="margin:8px 0 0"><b>Что проверяем:</b> '+esc(fb.drill.expected)+'</p>' : '')+
-    (fb.drill.reply_format ? '<p class="muted small" style="margin:6px 0 0"><b>Формат ответа:</b> '+esc(fb.drill.reply_format)+'</p>' : '')+
-    '</div>';
-
-  const msgs = fb.telegram_messages || [];
-  if(msgs.length){
-    body += '<h2>Что уходит ему в Telegram</h2>';
-    msgs.forEach(t => body += '<div class="tg"><div class="meta">'+esc(fb.telegram||'')+
-      (t.trigger ? ' · '+esc(t.trigger) : '')+'</div>'+esc(t.text)+'</div>');
-  }
-  $('#m-body').innerHTML = body;
+  $('#m-body').innerHTML = coachBody(id);
   $('#modal').showModal();
 }
-registerTab({ id: 'managers', label: 'Менеджеры', render: renderManagers });
+registerTab({ id: 'managers', label: 'Команда', render: renderManagers });
