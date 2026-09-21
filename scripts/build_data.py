@@ -36,11 +36,17 @@ def main() -> None:
         f"window.CABINET_DATA = {payload};\n",
         encoding="utf-8",
     )
+    # В демо идут только демо-базы. База участника (own) остаётся у него:
+    # demo/ лежит в репозитории, и чужая компания не должна туда попасть.
     demo = ROOT / "demo" / "data.js"
     if demo.parent.exists():
-        demo.write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
-    print(f"→ {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)" +
-          (" · demo/data.js обновлён" if demo.parent.exists() else ""))
+        pub = {k: v for k, v in bundle.items() if k in ("b2b", "b2c")}
+        text = ("// Сгенерировано scripts/build_data.py — руками не править.\n"
+                "// Только демо-базы b2b и b2c.\n"
+                f"window.CABINET_DATA = {json.dumps(pub, ensure_ascii=False, indent=2)};\n")
+        if not demo.exists() or demo.read_text(encoding="utf-8") != text:
+            demo.write_text(text, encoding="utf-8")
+    print(f"→ {out.relative_to(ROOT)} ({out.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":
