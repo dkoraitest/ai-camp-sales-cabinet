@@ -115,7 +115,8 @@ def texts(fb):
     """Что уходит человеку: разбор после контакта и задание на отработку."""
     out = [m["text"] for m in fb.get("telegram_messages", []) if m.get("text")]
     d = fb.get("drill")
-    if d and not any(d.get("title", "\0") in t for t in out):
+    # тренер обычно уже написал тренировку отдельным сообщением — второй раз не шлём
+    if d and not any("тренировк" in t.lower() for t in out):
         out.append(f"Тренировка: {d['title']}\n\n{d['task']}\n\n"
                    f"Формат ответа: {d.get('reply_format', 'текст')}.")
     return out
