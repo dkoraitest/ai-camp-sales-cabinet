@@ -440,6 +440,14 @@ def strong_managers(convs):
     return sorted(out)
 
 
+SELLER_SAYS = ("отправил", "отправляю", "пришлю", "вышлю", "подготовлю", "подготовил", "посчитаю", "рассчитаю",
+               "предлагаю", "предлагаем", "могу предложить", "у нас есть", "мы можем", "мы делаем", "наша компания",
+               "наш склад", "наш менеджер", "отгрузим", "привезём", "sending", "we can", "our offer", "i will send",
+               "i'll send", "we offer")
+CLIENT_SAYS = ("жду", "пришлите", "скиньте", "сколько стоит", "сколько будет стоить", "дорого", "дешевле", "у других",
+               "нам нужн", "нам надо", "what about", "how much", "send me", "too expensive", "we need")
+
+
 def guess_roles(c, managers, words):
     """Роль каждого говорящего в этом разговоре: id менеджера или client.
     Метка одна на файл, а не на весь корпус: «Спикер 1» во входящем звонке —
@@ -448,7 +456,10 @@ def guess_roles(c, managers, words):
     by_norm = {norm(v): k for k, v in managers.items()}
     for sp in c["speakers"]:
         if sp not in by_name and norm(sp) in by_norm:
-            by_name[sp] = by_norm[norm(sp)]
+            mid = by_norm[norm(sp)]
+            by_name[sp] = mid
+            if re.search(r"[а-яё]", sp.lower()) and not re.search(r"[а-яё]", managers[mid].lower()):
+                managers[mid] = sp                     # показываем так, как имя пишут в компании
     text_of = defaultdict(str)
     for t in c["turns"]:
         text_of[t["speaker"]] += " " + t["text"].lower()
@@ -462,12 +473,18 @@ def guess_roles(c, managers, words):
         elif re.search(MANAGER_HINT, low) or (words and any(w in text_of[sp] for w in words)):
             seller.append(sp)
     if not any(r != "client" for r in roles.values()) and not seller and len(c["speakers"]) == 2:
-        q = Counter()
-        for i, t in enumerate(c["turns"]):
-            q[t["speaker"]] += t["text"].count("?") * 2 + (1 if i == 0 else 0)
-        free = [sp for sp, _ in q.most_common() if sp not in roles]
-        if free:
+        # Кто продавец, если компанию не назвали: по тому, что человек делает в разговоре.
+        # Вопросы — признак продавца только в звонке: в переписке спрашивает чаще клиент.
+        score = Counter()
+        for t in c["turns"]:
+            low = t["text"].lower()
+            score[t["speaker"]] += 2 * sum(w in low for w in SELLER_SAYS) - 2 * sum(w in low for w in CLIENT_SAYS)
+            if c["kind"] == "call":
+                score[t["speaker"]] += low.count("?")
+        free = sorted((sp for sp in c["speakers"] if sp not in roles), key=lambda sp: -score[sp])
+        if len(free) == 2 and score[free[0]] > 0 and score[free[0]] > score[free[1]]:
             seller.append(free[0])
+        # признаки не различают стороны — роли не выдумываем: build попросит указать менеджера
     first_names = {v.split()[0].lower(): k for k, v in managers.items()}
     first_names.update({norm(v.split()[0]): k for k, v in managers.items()})
     for sp in seller:
@@ -632,6 +649,10 @@ def cmd_scan(_):
         if sp not in managers.values():
             managers[f"m{len(managers) + 1}"] = sp
     oldc = old.get("conversations") or {}
+    # Первый проход только находит менеджеров: иначе разговор, разобранный раньше,
+    # не узнал бы менеджера, который назван по имени лишь в файле ниже по списку.
+    for c in convs:
+        guess_roles(c, managers, words)
     conv_map, telegram = {}, []
     for c in convs:
         prev = oldc.get(c["key"], {})
