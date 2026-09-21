@@ -88,6 +88,11 @@ function renderMyCalls(){
     kpi('Место в команде', (ranks.findIndex(r => r.id === id) + 1)+' из '+ranks.length, 'по среднему баллу')+'</div>';
   html += '<h2>Семь показателей: я и команда</h2><p class="scope">Полоса — ваш средний, риска — средний по отделу. Смотрите не на самую короткую полосу, а на самый большой разрыв с командой: он и есть фокус недели.</p><div class="card">'+
     keys.map(k => { const a = avgOf(mine, k.id), b = avgOf(items, k.id); if(a == null) return '';
+      // показатель, одинаковый у всей команды, ничего не различает: так бывает на синтетике
+      const per = DataSource.managers().map(m => avgOf(items.filter(i => byId[i.id] && byId[i.id].manager_id === m.id), k.id)).filter(v => v != null);
+      const flat = per.length > 1 && Math.max(...per) - Math.min(...per) < 0.3;
+      if(flat) return '<div class="skill"><div class="lbl"><span>'+esc(k.name)+'</span><span class="muted">'+a.toFixed(1)+
+        ' · у всей команды одинаково, на этой базе не различает</span></div><div class="vs"><i style="width:'+Math.round(a*10)+'%;background:var(--line)"></i></div></div>';
       const gap = a - b;
       return '<div class="skill"><div class="lbl"><span>'+esc(k.name)+'</span><span class="muted">'+a.toFixed(1)+
         ' <span style="opacity:.7">· команда '+b.toFixed(1)+'</span> '+
