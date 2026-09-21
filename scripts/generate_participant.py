@@ -12,7 +12,7 @@
 Результат: data/own/dataset.json + пересборка cabinet/data.js
 """
 
-import json, random, argparse, pathlib, sys
+import json, random, argparse, pathlib, re, sys
 from datetime import datetime, timedelta
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -161,7 +161,7 @@ def make_events(company, what, now, rnd=random):
     for kind in rnd.sample(list(EVENTS), rnd.choice([1, 2, 2, 3])):
         d = now - timedelta(days=rnd.randint(2, 70))
         title = rnd.choice(EVENTS[kind]).format(
-            c=company, city=rnd.choice(CITIES_IN), what=(what or "").split(",")[0].strip()[:70],
+            c=company, city=rnd.choice(CITIES_IN), what=re.split(r",| для | под ", what or "")[0].strip()[:70],
             due=(now + timedelta(days=rnd.randint(7, 25))).strftime("%d.%m"))
         out.append({"date": d.date().isoformat(), "type": kind, "title": title, "source": EVENT_SRC[kind]})
     return sorted(out, key=lambda e: e["date"])
