@@ -5,8 +5,7 @@
 открывает — он живёт в мессенджере. Поэтому разбор и тренировка уходят туда,
 где человек их прочитает, через пару минут после разговора.
 
-На воркшопе используется общий бот: заводить своего не нужно, токен даёт
-спикер. Дома вы заведёте свой за пять минут — docs/telegram.md.
+Нужен ваш бот: он создаётся за две минуты через @BotFather — docs/telegram.md.
 
     python3 scripts/telegram.py init                 # узнать бота и показать ссылки в кабинете
     python3 scripts/telegram.py link --auto          # привязать всех, кто прошёл по своей ссылке
@@ -26,6 +25,7 @@ import argparse, json, pathlib, re, sys, urllib.request, urllib.error, urllib.pa
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LINKS = ROOT / "active" / "telegram.json"
+SEEN = ROOT / "active" / "telegram_seen.json"
 STATE = ROOT / "cabinet" / "telegram.js"
 API = "https://api.telegram.org/bot{}/{}"
 
@@ -35,7 +35,7 @@ def token() -> str:
     env = ROOT / ".env"
     if not env.exists():
         sys.exit("Нет файла .env. Скопируйте .env.example в .env и вставьте токен бота.\n"
-                 "На воркшопе токен даёт спикер, заводить своего бота не нужно.")
+                 "Своего бота можно создать за две минуты: docs/telegram.md")
     for line in env.read_text(encoding="utf-8").splitlines():
         line = line.strip()
         if line.startswith("TELEGRAM_BOT_TOKEN="):
@@ -62,20 +62,43 @@ def call(method, **params):
     return out["result"]
 
 
+def updates():
+    """Всё, что приходило боту. Бот ваш, поэтому прочитанное подтверждаем:
+    иначе Telegram отдаёт только первые сто событий, и новых «Старт» уже не
+    видно. Чтобы ничего не потерять, увиденное храним в active/telegram_seen.json."""
+    try:
+        cache = json.loads(SEEN.read_text(encoding="utf-8"))
+    except Exception:
+        cache = {"offset": None, "items": []}
+    while True:
+        params = {"timeout": 0, "limit": 100}
+        if cache.get("offset"):
+            params["offset"] = cache["offset"]
+        batch = call("getUpdates", **params)
+        for u in batch:
+            msg = u.get("message") or u.get("edited_message") or {}
+            ch = msg.get("chat") or {}
+            if ch.get("id"):
+                name = " ".join(x for x in (ch.get("first_name"), ch.get("last_name")) if x)
+                cache["items"].append({"chat": ch["id"], "name": name or "—",
+                                       "user": ("@" + ch["username"]) if ch.get("username") else "",
+                                       "text": (msg.get("text") or "")[:120]})
+        if batch:
+            cache["offset"] = batch[-1]["update_id"] + 1
+        if len(batch) < 100:
+            break
+    cache["items"] = cache["items"][-2000:]
+    SEEN.parent.mkdir(parents=True, exist_ok=True)
+    SEEN.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+    return cache["items"]
+
+
 def chats():
-    """Кто писал боту. Offset не подтверждаем: бот общий, чужие сообщения
-    забирать из очереди нельзя — соседу по залу они тоже нужны."""
-    seen, out = set(), []
-    for u in call("getUpdates", timeout=0, limit=100):
-        msg = u.get("message") or u.get("edited_message") or {}
-        ch = msg.get("chat") or {}
-        if not ch.get("id") or ch["id"] in seen:
-            continue
-        seen.add(ch["id"])
-        name = " ".join(x for x in (ch.get("first_name"), ch.get("last_name")) if x)
-        out.append({"id": ch["id"], "user": ("@" + ch["username"]) if ch.get("username") else "",
-                    "name": name or "—"})
-    return out
+    """Кто писал боту — по одному на чат, с последним известным именем."""
+    out = {}
+    for it in updates():
+        out[it["chat"]] = {"id": it["chat"], "user": it["user"], "name": it["name"]}
+    return list(out.values())
 
 
 def links():
@@ -148,24 +171,27 @@ def cmd_init(_):
 
 
 def cmd_auto(a):
-    """Привязка по deep-link: в /start прилетает id менеджера, гадать не нужно."""
+    """Привязка по deep-link: в /start прилетает id менеджера, гадать не нужно.
+    Если по одной ссылке прошли двое, остаётся последний: ссылка у каждого своя."""
     found = {}
-    for u in call("getUpdates", timeout=0, limit=100):
-        msg = u.get("message") or {}
-        text = (msg.get("text") or "").strip()
-        ch = msg.get("chat") or {}
-        if text.startswith("/start ") and ch.get("id"):
-            found[text.split(None, 1)[1].strip()] = ch
+    for it in updates():
+        text = it["text"].strip()
+        if text.startswith("/start ") and len(text.split()) > 1:
+            found[text.split(None, 1)[1].strip()] = it
     if not found:
         sys.exit("Никто ещё не прошёл по своей ссылке.\n"
                  "Ссылка есть в карточке менеджера в кабинете, и её же печатает python3 scripts/telegram.py init")
     data = links()
-    for mid, ch in found.items():
-        data[mid] = ch["id"]
+    for mid, it in found.items():
         name = mgr_name(mid)
-        call("sendMessage", chat_id=ch["id"],
+        who = it["user"] or it["name"]
+        if data.get(mid) == it["chat"]:
+            print(f"  {mid} ({name}) уже подключён → {who}")
+            continue
+        data[mid] = it["chat"]
+        call("sendMessage", chat_id=it["chat"],
              text=f"Готово. Сюда будет приходить обратная связь по разговорам: {name}.")
-        print(f"✓ {mid} ({name}) → {('@' + ch['username']) if ch.get('username') else ch.get('first_name', '')}")
+        print(f"✓ {mid} ({name}) → {who}")
     LINKS.parent.mkdir(parents=True, exist_ok=True)
     LINKS.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
     publish()

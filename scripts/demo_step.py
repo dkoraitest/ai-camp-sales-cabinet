@@ -3,7 +3,7 @@
 
 Если у участника что-то не получилось, он не должен выпасть из потока.
 Скрипт смотрит, какие шаги уже собраны, кладёт в кабинет эталон текущего
-шага из reference/ и собирает вкладку. Дальше участник идёт со всеми.
+шага из reference/ и собирает вкладку. Дальше участник идёт по шагам.
 
     python3 scripts/demo_step.py            # определить шаг и включить демо
     python3 scripts/demo_step.py --step 3   # включить демо конкретного шага
@@ -129,10 +129,10 @@ def main():
         print("  Обновите страницу: Cmd+R (Mac) или Ctrl+R (Windows)" +
               (f" — {s['see']}." if s else ", дальше говорите `разбери коммуникации`."))
         if s and s["next"]:
-            print(f"  Следующий шаг со всеми — `{s['next']}`.")
+            print(f"  Следующий шаг — `{s['next']}`.")
     if step == 0 and again is None:
         print("✓ Демо: подключена база DataFlow Solutions (B2B, 271 разговор).")
-        print("  Продолжаем со всеми: скажите `разбери коммуникации`.")
+        print("  Дальше: скажите `шаг 1` (или `разбери коммуникации`).")
     elif step > 0:
         blocks = []
         for n in range(1, step + 1):
@@ -152,7 +152,7 @@ def main():
         if again is None:
             print(f"  {'Кабинет открылся в браузере (если нет — cabinet/index.html двойным кликом)' if first else 'Обновите вкладку кабинета: Cmd+R или F5'}: {s['see']}.")
             if s["next"]:
-                print(f"  Продолжаем со всеми: следующий шаг — `{s['next']}`.")
+                print(f"  Дальше — следующий шаг: `{s['next']}`.")
     MARK.write_text(json.dumps({"step": step, "blocks": built()}, ensure_ascii=False), encoding="utf-8")
     if was_b2c:
         print("  Демо-база — продажи компаниям (B2B): вместо «Моей очереди» будут «Мои сделки». "
