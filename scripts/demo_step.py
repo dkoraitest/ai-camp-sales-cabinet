@@ -103,10 +103,10 @@ def main():
         print("Собрано:", ", ".join(blocks) or "ничего")
         print("Текущий шаг:", step if step < 5 else "все шаги пройдены")
         return
-    if step == 5:
+    again = repeat_guard(step) if a.step is None else None
+    if step == 5 and again is None:
         print("Все шаги уже собраны. Полный эталон: откройте demo/index.html")
         return
-    again = repeat_guard(step) if a.step is None else None
     if again is not None:
         step = again
     was_b2c = False
