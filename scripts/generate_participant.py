@@ -80,6 +80,20 @@ def validate(profile):
     for i, s in enumerate(profile.get("segments", [])):
         for f in ("name", "situation", "pain", "cost"):
             if f not in s: errs.append(f"сегмент #{i+1} ({s.get('name','?')}): нет поля «{f}»")
+    # Два последних этапа генератор и аналитика считают исходами: выиграна и
+    # проиграна. Воронка «… → Первая отгрузка → Повторный заказ» сделала бы
+    # повторный заказ проигрышем, и все выводы о выигранных сделках — ложью.
+    fn = profile.get("funnel") or []
+    if len(fn) >= 3:
+        txt = lambda s: (str(s.get("id", "")) + " " + str(s.get("label", ""))).lower()
+        lost = r"lost|проигр|отказ|потерян|не купил|неусп|слит|закрыта без"
+        won = r"won|выигр|закрыт|оплат|продаж|договор|подпис|покупк|успе|отгрузк|клиент"
+        if not re.search(lost, txt(fn[-1])):
+            errs.append(f"последний этап воронки «{fn[-1].get('label', fn[-1].get('id'))}» должен быть проигрышем "
+                        "(«Проиграна», «Отказ»): два последних этапа — исходы сделки")
+        if not re.search(won, txt(fn[-2])):
+            warns.append(f"предпоследний этап «{fn[-2].get('label', fn[-2].get('id'))}» будет считаться выигрышем. "
+                         "Если это не так — добавьте этап «Сделка закрыта» перед «Проиграна»")
     return errs, warns
 
 
@@ -207,7 +221,9 @@ def persona(P, seg, rnd=random):
         "cost": [rnd.choice(seg["cost"])],
         "qa": {k: rnd.choice(v) for k, v in answers.items()},
         "qa_any": rnd.choice(P.get("qualify_answers") or ["Решаю я."]),
-        "objections": rnd.sample(P["objections"], k=min(2, len(P["objections"]))),
+        # у сегмента могут быть свои возражения: у виниров не спрашивают, приживётся ли имплант
+        "objections": rnd.sample(seg.get("objections") or P["objections"],
+                                 k=min(2, len(seg.get("objections") or P["objections"]))),
     }
 
 
@@ -425,16 +441,18 @@ def main():
     for i in range(a.leads):
         resp = random.choices([6, 9, 12, 15, 20, 30, 45, 60, 90, 150, 240],
                               weights=[8, 10, 12, 12, 10, 9, 8, 7, 6, 5, 4])[0]
-        leads.append({"id": f"l{i+1:03d}", "company": names[i],
+        lead = {"id": f"l{i+1:03d}", "company": names[i],
           "contact": names[i] if b2c_aud else people[i % len(people)],
-          "position": random.choice(P.get("positions", ["Руководитель"])),
           "industry": random.choice(P["segments"])["name"],
-          "size": random.randint(20, 400),
           "source": random.choice(P["sources"]),
           "created": (start + timedelta(days=random.randint(0, 85))).date().isoformat(),
           "stage": random.choices(stages, weights=weights[:len(stages)])[0],
           "value_kzt": random.randrange(*P.get("deal_range", [500000, 15000000]), 50000),
-          "next_step": None, "responded_in_min": resp})
+          "next_step": None, "responded_in_min": resp}
+        if not b2c_aud:                     # у человека из B2C нет должности и размера компании
+            lead["position"] = random.choice(P.get("positions", ["Руководитель"]))
+            lead["size"] = random.randint(20, 400)
+        leads.append(lead)
 
     mgrs = P["managers"]
     calls, chats = [], []

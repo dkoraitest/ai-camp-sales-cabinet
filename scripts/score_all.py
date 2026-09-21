@@ -89,6 +89,10 @@ def load_profile_markers(prof):
             h = head(t)
             if len(h) >= 8 and h not in target[key]:
                 target[key].append(h); added += 1
+    for m in P.get("extra_metrics") or []:
+        if m.get("id") and m.get("name") and m.get("markers") and m["id"] not in NAMES:
+            NAMES[m["id"]] = m["name"]
+            EXTRA.append({"id": m["id"], "markers": [x.lower() for x in m["markers"]]})
     q = P.get("questions", {})
     add("disc", q.get("situation")); add("disc", q.get("pain"))
     add("depth", q.get("deep")); add("qual", q.get("qualify"))
@@ -101,6 +105,11 @@ def load_profile_markers(prof):
             if re.search(rx, t.lower()):
                 add(k, [t], BANT)
     return added
+
+
+# Показатели сверх семи — из профиля участника (extra_metrics). Код считает их
+# по фразам менеджера: прозвучала хоть одна — показатель выполнен.
+EXTRA = []
 
 
 OBJ_WORDS = ["дорог", "дешевле", "подумать", "не закладывали", "рано", "бросит",
@@ -139,6 +148,8 @@ def mark(c):
 
     vals = dict(structure=structure, discovery=discovery, qualification=qualification,
                 objections=objections, deal_control=deal_control, expertise=expertise, balance=balance)
+    for m in EXTRA:
+        vals[m["id"]] = 8 if any(x in text for x in m["markers"]) else 3
     bant = {k: any(m in text for m in v) or bool(re.search(BANT_RX[k], text)) for k, v in BANT.items()}
     return vals, round(sum(vals.values()) / len(vals), 1), dict(
         depth=has("depth"), qual=has("qual"), close=has("close"), weak_open=has("weak"),
