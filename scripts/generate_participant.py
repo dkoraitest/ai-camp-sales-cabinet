@@ -100,19 +100,19 @@ def unique_names(base, n, suffixes=CITIES):
     Профиль компании даёт десяток названий, а сделок нужны сотни. Если просто
     крутить список по кругу, в таблице коммуникаций одна и та же «Мега Склад»
     встретится четырнадцать раз — и человек прочитает это как одну сделку.
-    Поэтому недостающие названия собираются из частей тех же имён."""
+    Недостающие названия — те же компании с городом или формой: «Мега Склад
+    Астана», «Мега Склад Групп». Слова из разных названий не склеиваем: так
+    выходило «Добрый Облако»."""
     out = list(dict.fromkeys(base))
     seen = set(out)
-    heads = [c.split()[0] for c in out]
-    tails = [c.split()[-1] for c in out if len(c.split()) > 1] or heads
-    for extra in ([""] + list(suffixes)):
-        for h in heads:
-            for t in tails:
-                if len(out) >= n:
-                    return out[:n]
-                name = " ".join(x for x in (h, t, extra) if x)
-                if name not in seen:
-                    seen.add(name); out.append(name)
+    forms = list(suffixes) + ["Групп", "Трейд", "Плюс", "Сервис", "KZ"]
+    for extra in forms:
+        for c in list(dict.fromkeys(base)):
+            if len(out) >= n:
+                return out[:n]
+            name = f"{c} {extra}"
+            if name not in seen:
+                seen.add(name); out.append(name)
     i = 2
     while len(out) < n:
         out += [f"{c} {i}" for c in base]
