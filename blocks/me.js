@@ -119,7 +119,7 @@ function renderMyCoach(){
       fb.skills.map(s => '<div class="skill"><div class="lbl"><span>'+esc(s.name)+'</span><span class="muted">'+s.value+'/'+(s.max||10)+'</span></div>'+
         '<div class="bar '+grade(s.value,s.max||10)+'"><i style="width:'+Math.round(s.value/(s.max||10)*100)+'%"></i></div></div>').join('')+'</div>';
   }
-  return html + coachBody(id);
+  return html + coachBody(id, true);
 }
 
 registerTab({ id: 'my-deals', role: 'manager', label: () => isB2C() ? 'Моя очередь' : 'Мои сделки', render: renderMyDeals });

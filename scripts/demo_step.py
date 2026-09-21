@@ -138,6 +138,13 @@ def main():
         for n in range(1, step + 1):
             shutil.copy2(REF / STEPS[n]["file"], CAB / STEPS[n]["file"])
             blocks += STEPS[n]["blocks"]
+        if step < 4:
+            # выводы по всей базе появляются на шаге 4: раньше «инсайты выросли» не случится
+            f = CAB / "scores.js"; t = f.read_text(encoding="utf-8")
+            head, body = t.split("{", 1)
+            j = json.loads("{" + body[:body.rindex("}") + 1])
+            j["insights"] = [x for x in j.get("insights", []) if x.get("scope") != "base"]
+            f.write_text(head + json.dumps(j, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
         run("scripts/build_cabinet.py", "--blocks", ",".join(blocks))
         s = STEPS[step]
         if again is None: print(f"✓ Демо шага {step} ({s['name']}): эталон в кабинете, вкладки собраны.")
