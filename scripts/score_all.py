@@ -59,6 +59,50 @@ BANT = {
  "timing":    ["к какому сроку", "когда планируете", "срок", "когда нужно", "к какой дате",
                "когда хотите", "как скоро", "в какие сроки"],
 }
+# Вторая линия: регулярки с пропуском слов. «Кто у вас принимает решение»
+# и «кто принимает решение» — один и тот же вопрос, подстрока ловит только второй.
+BANT_RX = {
+ "budget":    r"бюджет|закладыва|как(ую|ой) сумм|цена вопроса|сколько готовы|инвестиц|во сколько оценива|какие деньги|оплат|предоплат|отсрочк",
+ "authority": r"кто(\s+\S+){0,3}\s+(принима|решает|утвержда|согласов|подписыва|участву|влияет|отвечает)|с кем ещё|решение принима|лпр",
+ "need":      r"не устраива|что болит|как(ая|ую) (задач|проблем)|зачем вам|что хотите получить|что уже пробовали|где ломается|что мешает|что должно (измениться|произойти)",
+ "timing":    r"к какому (сроку|числу|дате|сезону)|когда (планиру|нужн|хотите|должн|старт|запуск)|срок|как скоро|к (началу|концу) (сезона|месяца|квартала)",
+}
+
+
+def load_profile_markers(prof):
+    """Маркеры из профиля участника.
+
+    Демо-маркеры написаны под DataFlow: «второй скан», «маршруту сборки».
+    У другого бизнеса они не сработают никогда, и экспертность с работой
+    с возражениями окажутся занижены у всех. Поэтому, если есть профиль
+    шага 0, берём его же формулировки: генератор вставляет их в разговоры
+    дословно, а участник узнаёт в них свои вопросы."""
+    path = ROOT / "active" / "profile.json"
+    if prof != "own" or not path.exists():
+        return 0
+    P = json.loads(path.read_text(encoding="utf-8"))
+    head = lambda t: " ".join(re.sub(r"[^\w\s-]", " ", t.lower()).split()[:4])
+    added = 0
+    def add(key, lines, target=M):
+        nonlocal added
+        for t in lines or []:
+            h = head(t)
+            if len(h) >= 8 and h not in target[key]:
+                target[key].append(h); added += 1
+    q = P.get("questions", {})
+    add("disc", q.get("situation")); add("disc", q.get("pain"))
+    add("depth", q.get("deep")); add("qual", q.get("qualify"))
+    oa = P.get("objection_answers", {})
+    add("counter", oa.get("counter")); add("discount", oa.get("discount"))
+    add("value", P.get("value_lines")); add("close", P.get("closings"))
+    # вопросы квалификации раскладываем по BANT по смыслу самого вопроса
+    for t in q.get("qualify", []) or []:
+        for k, rx in BANT_RX.items():
+            if re.search(rx, t.lower()):
+                add(k, [t], BANT)
+    return added
+
+
 OBJ_WORDS = ["дорог", "дешевле", "подумать", "не закладывали", "рано", "бросит",
              "расписание", "посоветоваться", "не время", "уже есть", "сезон"]
 
@@ -95,7 +139,7 @@ def mark(c):
 
     vals = dict(structure=structure, discovery=discovery, qualification=qualification,
                 objections=objections, deal_control=deal_control, expertise=expertise, balance=balance)
-    bant = {k: any(m in text for m in v) for k, v in BANT.items()}
+    bant = {k: any(m in text for m in v) or bool(re.search(BANT_RX[k], text)) for k, v in BANT.items()}
     return vals, round(sum(vals.values()) / len(vals), 1), dict(
         depth=has("depth"), qual=has("qual"), close=has("close"), weak_open=has("weak"),
         discount=has("discount"), counter=has("counter"), objection=objection,
@@ -113,6 +157,9 @@ def main():
     prof = a.profile or (re.search(r'profile:\s*"(\w+)"', cfg) or [None, "b2b"])[1]
     focus = a.stage or (re.search(r'focus_stage:\s*"(\w+)"', cfg) or [None, None])[1]
 
+    extra = load_profile_markers(prof)
+    if extra:
+        print(f"  маркеры из профиля компании: +{extra} формулировок")
     d = json.loads((ROOT / f"data/{prof}/dataset.json").read_text(encoding="utf-8"))
     stages = d["profile"]["stages"]
     labels = d["profile"].get("stage_labels", {})
