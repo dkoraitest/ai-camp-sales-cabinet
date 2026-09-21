@@ -125,6 +125,15 @@ AGENTS.md          главные правила для любого агент�
 
 ---
 
+## Контакты
+
+- Telegram: [@d_korob](https://t.me/d_korob)
+- Email: dkor.aitest@gmail.com
+- SurfNote - собирает контекст из всех коммуникаций компании: https://surfnote.ru/ · бот @surfnoteiobot
+- Кейсы внедрения AI в продажи: https://www.aisurfers.ru/
+
+---
+
 ## Лицензия
 
 MIT — [LICENSE](LICENSE). Берите, меняйте, внедряйте у себя.
