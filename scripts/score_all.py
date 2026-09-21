@@ -16,7 +16,7 @@
     python3 scripts/score_all.py --profile b2b
 """
 
-import json, re, pathlib, argparse, statistics as st
+import json, re, pathlib, argparse, sys, statistics as st
 from collections import Counter, defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -154,6 +154,10 @@ def main():
 
     cfg_path = ROOT / "cabinet/config.js"
     cfg = cfg_path.read_text(encoding="utf-8") if cfg_path.exists() else ""
+    if not a.profile and not cfg and (ROOT / "data/own/dataset.json").exists():
+        sys.exit("Есть база вашей компании (data/own), но нет cabinet/config.js — непонятно, что разбирать.\n"
+                 "Шаг 0 пишет cabinet/config.js с profile: \"own\". Допишите его или запустите: "
+                 "python3 scripts/score_all.py --profile own")
     prof = a.profile or (re.search(r'profile:\s*"(\w+)"', cfg) or [None, "b2b"])[1]
     focus = a.stage or (re.search(r'focus_stage:\s*"(\w+)"', cfg) or [None, None])[1]
 
