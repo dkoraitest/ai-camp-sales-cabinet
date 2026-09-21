@@ -900,7 +900,7 @@ function renderMyDeals(){
     const rows = open.map(l => { const lt = lastTouch(l.id);
       const from = lt || (l.created ? new Date(l.created) : null);
       return {l, r: leadScore(l), lt, wait: from ? daysBetween(from, now) : null} })
-      .sort((a,b) => ((b.r&&b.r.score)||0) - ((a.r&&a.r.score)||0) || (b.wait||0) - (a.wait||0));
+      .sort((a,b) => (!!touch(b.l.id) - !!touch(a.l.id)) || ((b.r&&b.r.score)||0) - ((a.r&&a.r.score)||0) || (b.wait||0) - (a.wait||0));
     const extra = l => l.interest || l.industry || '—';
     const extraLbl = open.some(l => l.interest) ? 'Интерес' : 'Сегмент';
     return '<div class="grid" style="margin-bottom:14px">'+

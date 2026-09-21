@@ -179,8 +179,44 @@ def workhour(dt):
                       minute=random.choice([0, 5, 10, 15, 20, 25, 30, 40, 45, 50]))
 
 
+# Вопросы и ответы квалификации раскладываются по смыслу, чтобы на «бюджет
+# закладывали?» клиент не отвечал «решаю я».
+QA_KIND = [("authority", r"кто|реша|решени|утвержда|согласов|подпис|партн|супруг|муж|жена|собственник|директор"),
+           ("budget", r"бюджет|сумм|стоим|цен|деньг|оплат|рассрочк|закладыва|миллион|тысяч|тенге|₸"),
+           ("timing", r"срок|когда|квартал|месяц|недел|сезон|к нов|до конца|к какому")]
+
+
+def qa_kind(text):
+    t = text.lower()
+    return next((k for k, rx in QA_KIND if re.search(rx, t)), "need")
+
+
+def persona(P, seg, rnd=random):
+    """Один клиент — одна история во всех разговорах сделки.
+
+    Без этого в пяти звонках одной сделки клиент то держит сеть заправок, то
+    магазин вдвоём, а на шаге 3 досье и сообщение строятся на противоречиях."""
+    answers = {}
+    for a in P.get("qualify_answers", []):
+        answers.setdefault(qa_kind(a), []).append(a)
+    return {
+        "situation": rnd.sample(seg["situation"], k=min(2, len(seg["situation"]))),
+        "pain": rnd.sample(seg["pain"], k=min(2, len(seg["pain"]))),
+        "cost": [rnd.choice(seg["cost"])],
+        "qa": {k: rnd.choice(v) for k, v in answers.items()},
+        "qa_any": rnd.choice(P.get("qualify_answers") or ["Решаю я."]),
+        "objections": rnd.sample(P["objections"], k=min(2, len(P["objections"]))),
+    }
+
+
+def fix_prep(text):
+    """«в четверг в в пятнадцать часов» — плейсхолдер уже с предлогом."""
+    return re.sub(r"\bв (в|во|после)\b", r"\1", text)
+
+
 def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
     st = mgr["style"]; t = []; said = set()
+    who = lead.get("_persona") or persona(P, seg)
     add = lambda w, x: t.append({"who": w, "text": x})
     def pick(pool):
         fresh = [x for x in pool if x not in said] or list(pool)
@@ -200,21 +236,20 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
         k_sit = min(len(P["questions"]["situation"]), (2 if deep else 1) + rounds - 1)
         for q in random.sample(P["questions"]["situation"], k=k_sit):
             add("manager", say("manager", q, st.get("filler", .2)))
-            add("client", say("client", pick(seg["situation"]), .3))
+            add("client", say("client", pick(who["situation"]), .3))
         k_pain = min(len(P["questions"]["pain"]), (2 if deep else 1) + rounds - 1)
         for q in random.sample(P["questions"]["pain"], k=k_pain):
             add("manager", say("manager", q, st.get("filler", .2)))
-            add("client", say("client", pick(seg["pain"]), .3))
+            add("client", say("client", pick(who["pain"]), .3))
         if random.random() < st.get("qualify", .4) and P["questions"].get("qualify"):
             # сильный менеджер закрывает квалификацию несколькими вопросами, слабый одним
             k = 3 if st.get("qualify", .4) > .6 else 2 if st.get("qualify", .4) > .3 else 1
             for q in random.sample(P["questions"]["qualify"], k=min(k, len(P["questions"]["qualify"]))):
                 add("manager", say("manager", q, st.get("filler", .2)))
-                add("client", say("client", random.choice(
-                    P.get("qualify_answers", ["Решаю я.", "Согласовываю с руководителем."])), .25))
+                add("client", say("client", who["qa"].get(qa_kind(q), who["qa_any"]), .25))
         if random.random() < st.get("to_depth", .3) and P["questions"].get("deep"):
             add("manager", random.choice(P["questions"]["deep"]))
-            add("client", say("client", pick(seg["cost"]), .35))
+            add("client", say("client", pick(who["cost"]), .35))
     else:
         for _ in range(max(2, rounds)):
             add("manager", say("manager", pick(P["product_lines"]), st.get("filler", .2)))
@@ -234,7 +269,7 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
         add("client", random.choice(PRICE_Q))
         add("manager", random.choice(P.get("price_lines", ["Зависит от объёма, посчитаю и пришлю."])))
         if random.random() < .7:
-            add("client", random.choice(P["objections"]))
+            add("client", random.choice(who["objections"]))
             style = st.get("objection_style", "justify")
             pool = P["objection_answers"].get(style) or next(iter(P["objection_answers"].values()))
             add("manager", random.choice(pool))
@@ -248,9 +283,9 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
         return finish(P, t, lead, mgr, stage, idx, dt, asks, False)
     if closed:
         pool = P["closings"]["strong"] if st.get("asks_first", .5) > .5 else P["closings"]["mid"]
-        add("manager", random.choice(pool).format(
+        add("manager", fix_prep(random.choice(pool).format(
             day=random.choice(["во вторник", "в среду", "в четверг", "в понедельник", "в пятницу"]),
-            time=random.choice(["в одиннадцать", "в пятнадцать часов", "в десять", "после обеда"])))
+            time=random.choice(["в одиннадцать", "в пятнадцать часов", "в десять", "после обеда"]))))
         add("client", random.choice(CLI_YES))
     else:
         add("manager", random.choice(P["closings"]["weak"]))
@@ -309,7 +344,7 @@ CHAT_KINDS = {
 
 def build_chat(P, mgr, lead, idx, dt, kind):
     n = lead["contact"].split()[0]
-    q = random.choice(P["objections"])
+    q = random.choice((lead.get("_persona") or {}).get("objections") or P["objections"])
     a = random.choice(next(iter(P["objection_answers"].values())))
     msgs, cur = [], dt
     for who, text in CHAT_KINDS[kind]:
@@ -375,7 +410,8 @@ def main():
         a.calls = max(260, 60 * len(P["managers"]))
     if a.leads is None:
         a.leads = round(a.calls / 3.3 * 1.15)
-    if P.get("audience", "b2c" if P["type"] == "flow" else "b2b") == "b2c":
+    b2c_aud = P.get("audience", "b2c" if P["type"] == "flow" else "b2b") == "b2c"
+    if b2c_aud:
         # клиенты — люди: имя и фамилия не должны склеиваться из разных людей
         pool = people_pool(list(P["clients"]) + list(P.get("contact_names", [])))
         names = [pool[i % len(pool)] for i in range(a.leads)]
@@ -387,7 +423,7 @@ def main():
         resp = random.choices([6, 9, 12, 15, 20, 30, 45, 60, 90, 150, 240],
                               weights=[8, 10, 12, 12, 10, 9, 8, 7, 6, 5, 4])[0]
         leads.append({"id": f"l{i+1:03d}", "company": names[i],
-          "contact": people[i % len(people)],
+          "contact": names[i] if b2c_aud else people[i % len(people)],
           "position": random.choice(P.get("positions", ["Руководитель"])),
           "industry": random.choice(P["segments"])["name"],
           "size": random.randint(20, 400),
@@ -453,6 +489,7 @@ def main():
         reached = path[-1]
         lead["stage"] = stages[reached]
         seg = next((x for x in P["segments"] if x["name"] == lead["industry"]), P["segments"][0])
+        lead["_persona"] = persona(P, seg)
 
         # Цепочка касаний строится назад от сегодня, чтобы последний разговор
         # не оказался в будущем: пауза между этапами известна заранее.
@@ -512,6 +549,8 @@ def main():
 
     # Внешние события по компании — только в B2B: у сделки есть компания,
     # у заявки в потоке обычно нет.
+    for lead in leads:
+        lead.pop("_persona", None)
     if not b2c:
         for lead in leads:
             lead["events"] = make_events(lead["company"], P.get("what_we_sell", ""), now)

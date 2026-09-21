@@ -470,7 +470,7 @@ window.CABINET_SCORES = {
     {
       "id": "c006",
       "type": "call",
-      "total": 8.6,
+      "total": 9.1,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -494,7 +494,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -1050,7 +1050,7 @@ window.CABINET_SCORES = {
     {
       "id": "c054",
       "type": "call",
-      "total": 8.1,
+      "total": 8.6,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -1074,7 +1074,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 2,
+          "value": 5,
           "max": 10
         },
         {
@@ -1746,7 +1746,7 @@ window.CABINET_SCORES = {
     {
       "id": "c065",
       "type": "call",
-      "total": 8.9,
+      "total": 9.0,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -1770,7 +1770,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 5,
           "max": 10
         },
         {
@@ -2790,7 +2790,7 @@ window.CABINET_SCORES = {
     {
       "id": "c056",
       "type": "call",
-      "total": 9.0,
+      "total": 8.9,
       "stage": "demo",
       "evaluate": [
         {
@@ -2814,7 +2814,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -3776,7 +3776,7 @@ window.CABINET_SCORES = {
     {
       "id": "c121",
       "type": "call",
-      "total": 9.6,
+      "total": 9.0,
       "stage": "negotiation",
       "evaluate": [
         {
@@ -3800,7 +3800,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 9,
+          "value": 5,
           "max": 10
         },
         {
@@ -4472,7 +4472,7 @@ window.CABINET_SCORES = {
     {
       "id": "c089",
       "type": "call",
-      "total": 8.6,
+      "total": 8.1,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -4496,7 +4496,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 2,
           "max": 10
         },
         {
@@ -5632,7 +5632,7 @@ window.CABINET_SCORES = {
     {
       "id": "c100",
       "type": "call",
-      "total": 9.0,
+      "total": 8.9,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -5656,7 +5656,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -5748,7 +5748,7 @@ window.CABINET_SCORES = {
     {
       "id": "c108",
       "type": "call",
-      "total": 8.6,
+      "total": 9.1,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -5772,7 +5772,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 9,
           "max": 10
         },
         {
@@ -5980,7 +5980,7 @@ window.CABINET_SCORES = {
     {
       "id": "c160",
       "type": "call",
-      "total": 8.6,
+      "total": 8.1,
       "stage": "first_contact",
       "evaluate": [
         {
@@ -6004,7 +6004,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 2,
           "max": 10
         },
         {
@@ -6676,7 +6676,7 @@ window.CABINET_SCORES = {
     {
       "id": "c067",
       "type": "call",
-      "total": 9.0,
+      "total": 8.9,
       "stage": "discovery",
       "evaluate": [
         {
@@ -6700,7 +6700,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -6908,7 +6908,7 @@ window.CABINET_SCORES = {
     {
       "id": "c127",
       "type": "call",
-      "total": 8.9,
+      "total": 9.0,
       "stage": "proposal",
       "evaluate": [
         {
@@ -6932,7 +6932,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 5,
           "max": 10
         },
         {
@@ -8648,7 +8648,7 @@ window.CABINET_SCORES = {
     {
       "id": "c192",
       "type": "call",
-      "total": 8.9,
+      "total": 9.0,
       "stage": "discovery",
       "evaluate": [
         {
@@ -8672,7 +8672,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 5,
           "max": 10
         },
         {
@@ -9286,7 +9286,7 @@ window.CABINET_SCORES = {
     {
       "id": "c163",
       "type": "call",
-      "total": 8.0,
+      "total": 8.1,
       "stage": "proposal",
       "evaluate": [
         {
@@ -9310,7 +9310,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 4,
+          "value": 5,
           "max": 10
         },
         {
@@ -9402,7 +9402,7 @@ window.CABINET_SCORES = {
     {
       "id": "c088",
       "type": "call",
-      "total": 9.0,
+      "total": 8.9,
       "stage": "proposal",
       "evaluate": [
         {
@@ -9426,7 +9426,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -9750,7 +9750,7 @@ window.CABINET_SCORES = {
     {
       "id": "c031",
       "type": "call",
-      "total": 7.3,
+      "total": 7.7,
       "stage": "discovery",
       "evaluate": [
         {
@@ -9774,7 +9774,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 2,
+          "value": 5,
           "max": 10
         },
         {
@@ -10852,7 +10852,7 @@ window.CABINET_SCORES = {
     {
       "id": "c111",
       "type": "call",
-      "total": 8.1,
+      "total": 8.0,
       "stage": "proposal",
       "evaluate": [
         {
@@ -10876,7 +10876,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -11780,7 +11780,7 @@ window.CABINET_SCORES = {
     {
       "id": "c190",
       "type": "call",
-      "total": 9.0,
+      "total": 8.9,
       "stage": "closed_won",
       "evaluate": [
         {
@@ -11804,7 +11804,7 @@ window.CABINET_SCORES = {
         {
           "id": "objections",
           "name": "Работа с ценой и возражениями",
-          "value": 5,
+          "value": 4,
           "max": 10
         },
         {
@@ -15742,7 +15742,7 @@ window.CABINET_SCORES = {
         "Виктория Ким": 7.3,
         "Денис Ахметов": 3.8,
         "Марат Сулейменов": 4.0,
-        "Айдана Бекова": 4.5
+        "Айдана Бекова": 4.6
       }
     },
     "funnel": [
@@ -15795,7 +15795,7 @@ window.CABINET_SCORES = {
         "stage": "closed_won",
         "label": "Сделка закрыта",
         "contacts": 10,
-        "avg": 6.7,
+        "avg": 6.6,
         "leads_on_stage": 10,
         "money_on_stage": 70900000,
         "close_rate": 0.7
@@ -15845,7 +15845,7 @@ window.CABINET_SCORES = {
       "without_depth": 0.41,
       "with_close": 0.52,
       "without_close": 0.35,
-      "objection_counter": 0.7,
+      "objection_counter": 0.66,
       "objection_discount": 0.47
     },
     "bant": {
@@ -15872,11 +15872,11 @@ window.CABINET_SCORES = {
         "win_rate": 0.83,
         "avg_quality": 5.8,
         "top_client_lines": [
-          "Сборка заказа занимает полтора часа вместо двадцати минут.",
           "Похожие позиции путают постоянно, возвраты каждую неделю.",
+          "Сборка заказа занимает полтора часа вместо двадцати минут.",
+          "На пересортице в прошлом квартале потеряли миллиона четыре.",
           "Решаю я, но ИТ должен посмотреть на интеграции.",
-          "Да, но недолго, у меня встреча через пятнадцать минут.",
-          "Я инициирую, но бюджет утверждает финансовый директор."
+          "Пока не закладывали, будем смотреть по цифрам."
         ]
       },
       {
@@ -15888,11 +15888,11 @@ window.CABINET_SCORES = {
         "win_rate": 1.0,
         "avg_quality": 5.9,
         "top_client_lines": [
+          "Три склада: основной в Алматы и два региональных.",
           "Отгрузки срываются, клиенты ждут по две-три недели.",
           "Остатки не сходятся с фактом, находим только на инвентаризации.",
-          "Три склада: основной в Алматы и два региональных.",
-          "Я инициирую, но бюджет утверждает финансовый директор.",
-          "Пока не закладывали, будем смотреть по цифрам."
+          "Пока не закладывали, будем смотреть по цифрам.",
+          "Решаю я, но ИТ должен посмотреть на интеграции."
         ]
       },
       {
@@ -15908,7 +15908,7 @@ window.CABINET_SCORES = {
           "Директор видит картину по группе раз в месяц и уже неактуальную.",
           "Да, но недолго, у меня встреча через пятнадцать минут.",
           "У нас уже стоит система, правда толком не пользуемся.",
-          "как сказать, три юрлица в группе, сводим вручную."
+          "ну, директор видит картину по группе раз в месяц и уже неактуальную."
         ]
       },
       {
@@ -16080,7 +16080,7 @@ window.CABINET_SCORES = {
         {
           "label": "На возражение — встречный вопрос",
           "kind": "share",
-          "won": 0.38,
+          "won": 0.37,
           "lost": 0.0
         },
         {
