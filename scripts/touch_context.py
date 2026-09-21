@@ -65,7 +65,7 @@ def suggest(d, sc, manager=None):
     rows.sort(key=lambda x: -x[0])
     name = {m["id"]: m["name"] for m in d["managers"]}
     print("Сделки, где касание сейчас нужнее всего:\n")
-    for w, l, n, idle, why in rows[:5]:
+    for w, l, n, idle, why in rows[:4]:
         who = l.get("company") or l.get("parent") or l.get("contact")
         print(f"  {l['id']:<6} {who:<24} {d['profile']['stage_labels'].get(l['stage'], l['stage']):<22} "
               f"{name.get(l.get('owner') or l.get('manager_id'), ''):<18} разговоров {n}, тишина {idle} дн. · {', '.join(why)}")

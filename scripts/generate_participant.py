@@ -254,18 +254,18 @@ def build_call(P, mgr, stage, seg, lead, idx, dt, stage_idx=1):
             add("client", say("client", pick(who["cost"]), .35))
     else:
         for _ in range(max(2, rounds)):
-            add("manager", say("manager", pick(P["product_lines"]), st.get("filler", .2)))
+            add("manager", say("manager", pick(seg.get("product_lines") or P["product_lines"]), st.get("filler", .2)))
             add("client", random.choice(SHORT_ACK))
 
     if random.random() < st.get("value_first", .4) and P.get("value_lines"):
-        add("manager", pick(P["value_lines"]))
+        add("manager", pick(seg.get("value_lines") or P["value_lines"]))
         add("client", random.choice(["Это как раз то, что нам нужно.", "Интересно.", "Хорошо."]))
 
     # на демо и обсуждении предложения клиент задаёт встречные вопросы
     if stage_idx in (2, 3, 4):
         for _ in range(random.randint(1, 3)):
             add("client", random.choice(P.get("client_questions") or CLIENT_Q))
-            add("manager", pick(P["value_lines"] + P["product_lines"]))
+            add("manager", pick((seg.get("value_lines") or P["value_lines"]) + (seg.get("product_lines") or P["product_lines"])))
 
     if random.random() < .75:
         add("client", random.choice(PRICE_Q))
@@ -308,7 +308,8 @@ def finish(P, t, lead, mgr, stage, idx, dt, asks, closed):
     minutes = max(2, round(len(t) * random.uniform(0.45, 0.75)))
     return {"id": f"c{idx:03d}", "date": dt.isoformat(timespec="minutes"),
             "manager_id": mgr["id"], "lead_id": lead["id"], "stage": stage,
-            "direction": random.choice(["outbound", "outbound", "inbound"]),
+            # доля входящих — из профиля: клиника живёт на входящих, холодный B2B на исходящих
+            "direction": "inbound" if random.random() < P.get("inbound_share", 1 / 3) else "outbound",
             "duration_min": minutes, "turns": len(t),
             "outcome": outcome, "transcript": t}
 
