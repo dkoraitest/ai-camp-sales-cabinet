@@ -145,11 +145,12 @@ def main():
             j = json.loads("{" + body[:body.rindex("}") + 1])
             j["insights"] = [x for x in j.get("insights", []) if x.get("scope") != "base"]
             f.write_text(head + json.dumps(j, ensure_ascii=False, indent=2) + ";\n", encoding="utf-8")
-        run("scripts/build_cabinet.py", "--blocks", ",".join(blocks))
+        first = not (CAB / "index.html").exists()
+        run("scripts/build_cabinet.py", "--blocks", ",".join(blocks))   # впервые — откроет сам
         s = STEPS[step]
         if again is None: print(f"✓ Демо шага {step} ({s['name']}): эталон в кабинете, вкладки собраны.")
         if again is None:
-            print(f"  Откройте cabinet/index.html (обновите страницу): {s['see']}.")
+            print(f"  {'Кабинет открылся в браузере (если нет — cabinet/index.html двойным кликом)' if first else 'Обновите вкладку кабинета: Cmd+R или F5'}: {s['see']}.")
             if s["next"]:
                 print(f"  Продолжаем со всеми: следующий шаг — `{s['next']}`.")
     MARK.write_text(json.dumps({"step": step, "blocks": built()}, ensure_ascii=False), encoding="utf-8")

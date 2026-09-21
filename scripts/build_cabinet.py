@@ -14,7 +14,7 @@
     python3 scripts/build_cabinet.py --blocks ... --out demo               # собрать в другую папку
 """
 
-import argparse, pathlib, re, json, sys
+import argparse, pathlib, re, json, os, sys, webbrowser
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BLOCKS = ROOT / "blocks"
@@ -67,6 +67,18 @@ def build(blocks, out_dir=None):
     return blocks, html
 
 
+def open_cabinet(path):
+    """Первый раз кабинет открываем сами: участник видит результат шага 1
+    без поиска файла. В песочнице агента или без экрана браузер может не
+    открыться — тогда просто говорим, где файл. CABINET_NO_OPEN=1 отключает."""
+    if os.environ.get("CABINET_NO_OPEN") == "1":
+        return False
+    try:
+        return bool(webbrowser.open(path.resolve().as_uri()))
+    except Exception:
+        return False
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--blocks", help="список блоков через запятую (пересобрать с нуля)")
@@ -110,13 +122,23 @@ def main():
     else:
         sys.exit("Нужен --blocks, --add или --rebuild. Что подключено сейчас: --list")
 
+    first = not (out_dir / "index.html").exists()
     blocks, html = build(blocks, out_dir)
     new = [b for b in blocks if b not in current]
     print(f"✓ Кабинет собран: {len(blocks)} вкладок, {len(html)//1024} KB")
     for b in blocks:
         mark = "+" if b in new else " "
         print(f"  {mark} {b:9} — {KNOWN[b]}")
-    print(f"\n  Открыть: {(out_dir / 'index.html').relative_to(ROOT)}")
+    page = out_dir / "index.html"
+    rel = page.relative_to(ROOT)
+    if out_dir != OUT_DIR:
+        print(f"\n  Собрано: {rel}")
+    elif first and open_cabinet(page):
+        print(f"\n  Кабинет открылся в браузере. Если нет — откройте {rel} двойным кликом.")
+    elif first:
+        print(f"\n  Откройте {rel} двойным кликом.")
+    else:
+        print(f"\n  Обновите вкладку кабинета: Cmd+R на Mac, F5 на Windows. Файл: {rel}")
 
 
 if __name__ == "__main__":
