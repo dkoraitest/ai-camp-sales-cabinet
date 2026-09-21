@@ -228,6 +228,7 @@
 <script src="config.js"></script>
 <!-- Появляются по мере прохождения шагов -->
 <script src="scores.js" onerror="void 0"></script>
+<script src="aggregates.js" onerror="void 0"></script>
 <script src="coach.js" onerror="void 0"></script>
 <script src="enrich.js" onerror="void 0"></script>
 <script src="deep.js" onerror="void 0"></script>
@@ -257,6 +258,13 @@ const DataSource = {
     return [...calls, ...chats].sort((a,b) => new Date(a.when) - new Date(b.when));
   },
   scores(){ return window.CABINET_SCORES || null },
+  // разрезы считает код (score_all → aggregates.js); если файла нет или он
+  // от другой базы — берём то, что лежит внутри scores.js
+  aggregates(){
+    const a = window.CABINET_AGG;
+    if(a && (!a.profile || a.profile === CFG.profile)) return a;
+    return (this.scores() || {}).aggregates || null;
+  },
   coaching(){ return window.CABINET_COACH || null },
   enrichment(){ return window.CABINET_ENRICH || null },
   deep(){ return window.CABINET_DEEP || null },
@@ -272,6 +280,16 @@ const stageLabel = code => (DataSource.meta().stage_labels || {})[code] || code;
 const grade = (v,max) => { const r = v/(max||10); return r>=.75?'good':r>=.5?'warn':'bad' };
 
 /* Тип продаж: B2B — сделки, B2C — поток заявок. Берётся из профиля шага 0. */
+function bantOf(item){
+  if(item && item.bant) return item.bant;
+  const a = DataSource.aggregates(), m = a && a.marks && item && a.marks[item.id];
+  return m ? m.bant : null;
+}
+function leadOfItem(item){
+  if(item && item.lead_id) return item.lead_id;
+  const a = DataSource.aggregates(), m = a && a.marks && item && a.marks[item.id];
+  return m ? m.lead : null;
+}
 function isB2C(){
   const m = DataSource.meta();
   return CFG.profile === 'b2c' || /b2c|flow/i.test(m.type || '') ||
@@ -362,10 +380,11 @@ const BANT_COL = {budget:'var(--accent)', authority:'var(--good)',
 function bantSeries(){
   const s = DataSource.scores(); if(!s) return null;
   const byId = {}; DataSource.contacts().forEach(c => byId[c.id] = c);
-  const calls = (s.items || []).filter(i => i.bant && byId[i.id] && byId[i.id].kind === 'call')
-                               .map(i => ({bant: i.bant, when: byId[i.id].when, stage: byId[i.id].stage}));
+  const calls = (s.items || []).filter(i => bantOf(i) && byId[i.id] && byId[i.id].kind === 'call')
+                               .map(i => ({bant: bantOf(i), when: byId[i.id].when, stage: byId[i.id].stage}));
   if(calls.length < 8) return null;
-  const qual = (s.aggregates && s.aggregates.bant && s.aggregates.bant.stage) ||
+  const ag = DataSource.aggregates();
+  const qual = (ag && ag.bant && ag.bant.stage) ||
                (DataSource.funnel().map(x => x.id || x)[1]);
   const q = calls.filter(c => c.stage === qual);
   // если звонков на этапе квалификации мало, честнее показать все, чем пустой график
@@ -451,14 +470,15 @@ function fmtBucket(k, week){
    Если scores.js принёс готовый разрез — берём его, иначе считаем сами. */
 function bantByStage(){
   const s = DataSource.scores(); if(!s) return null;
-  if(s.aggregates && s.aggregates.bant_by_stage) return s.aggregates.bant_by_stage;
-  const items = (s.items || []).filter(i => i.bant && i.lead_id);
+  const ag = DataSource.aggregates();
+  if(ag && ag.bant_by_stage) return ag.bant_by_stage;
+  const items = (s.items || []).filter(i => bantOf(i) && leadOfItem(i));
   if(!items.length) return null;
-  const keys = Object.keys(items[0].bant);
+  const keys = Object.keys(bantOf(items[0]));
   const per = {};
   items.forEach(i => {
-    const e = per[i.lead_id] || (per[i.lead_id] = {});
-    keys.forEach(k => { if(i.bant[k]) e[k] = true });
+    const e = per[leadOfItem(i)] || (per[leadOfItem(i)] = {}), b = bantOf(i);
+    keys.forEach(k => { if(b[k]) e[k] = true });
   });
   const leads = DataSource.leads();
   const stages = DataSource.funnel().map(x => x.id || x);
@@ -618,7 +638,7 @@ function leadSignals(){
     e.n++;
     const w = new Date(c.when); if(!e.last || w > e.last) e.last = w;
     const i = sc[c.id];
-    if(i){ e.totals.push(i.total); if(i.bant) Object.keys(i.bant).forEach(k => { if(i.bant[k]) e.bant[k] = true }) }
+    if(i){ e.totals.push(i.total); const b = bantOf(i); if(b) Object.keys(b).forEach(k => { if(b[k]) e.bant[k] = true }) }
     const turns = c.transcript || c.messages || [];
     turns.forEach(t => { if(t.who === 'client'){ const x = (t.text||'').toLowerCase();
       if(BUY.some(w => x.includes(w))) e.buy++ } });
@@ -1461,7 +1481,7 @@ function finding(level, title, text){
   return '<div class="insight '+esc(level||'warn')+'"><h4>'+esc(title)+'</h4><p>'+esc(text)+'</p></div>';
 }
 function wonVsLost(){
-  const a = (DataSource.scores()||{}).aggregates;
+  const a = DataSource.aggregates();
   const w = a && a.won_vs_lost;
   if(!w || !(w.rows||[]).length) return '';
   /* Колонка выигранных всегда зелёная, проигранных — красная: это сравнение

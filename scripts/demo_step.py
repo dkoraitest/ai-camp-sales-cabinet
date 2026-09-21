@@ -75,6 +75,22 @@ def run(*cmd):
         sys.exit(r.stdout + r.stderr)
 
 
+MARK = CAB / ".demo.json"
+
+
+def repeat_guard(step):
+    """Повторный вызов без собственных действий не должен перескакивать шаг.
+    Участник мог просто не обновить страницу и сказать «не работает».
+    Тогда пересобираем тот же шаг и просим обновить страницу."""
+    try:
+        m = json.loads(MARK.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    if m.get("blocks") == built() and step == m.get("step", -1) + 1:
+        return m["step"]
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--step", type=int, choices=[0, 1, 2, 3, 4])
@@ -90,28 +106,49 @@ def main():
     if step == 5:
         print("Все шаги уже собраны. Полный эталон: откройте demo/index.html")
         return
+    again = repeat_guard(step) if a.step is None else None
+    if again is not None:
+        step = again
+    was_b2c = False
+    try:
+        was_b2c = json.loads((ROOT / "active/profile.json").read_text(encoding="utf-8")).get("audience") == "b2c" \
+                  and 'profile: "own"' in (CAB / "config.js").read_text(encoding="utf-8")
+    except Exception:
+        pass
 
     CAB.mkdir(exist_ok=True)
     touched = ["config.js"] + [STEPS[n]["file"] for n in range(1, max(step, 1) + 1) if n <= step]
-    saved = backup(touched)
+    saved = None if again is not None else backup(touched)
 
     # эталоны построены на демо-базе B2B — переключаем кабинет на неё целиком
     shutil.copy2(REF / "config.js", CAB / "config.js")
     run("scripts/build_data.py")
-    if step == 0:
+    if again is not None:
+        s = STEPS.get(step)
+        print(f"Эталон шага {step} уже был в кабинете — пересобрал его ещё раз, вперёд не шагаю.")
+        print("  Обновите страницу: Cmd+R (Mac) или Ctrl+R (Windows)" +
+              (f" — {s['see']}." if s else ", дальше говорите `разбери коммуникации`."))
+        if s and s["next"]:
+            print(f"  Следующий шаг со всеми — `{s['next']}`.")
+    if step == 0 and again is None:
         print("✓ Демо: подключена база DataFlow Solutions (B2B, 271 разговор).")
         print("  Продолжаем со всеми: скажите `разбери коммуникации`.")
-    else:
+    elif step > 0:
         blocks = []
         for n in range(1, step + 1):
             shutil.copy2(REF / STEPS[n]["file"], CAB / STEPS[n]["file"])
             blocks += STEPS[n]["blocks"]
         run("scripts/build_cabinet.py", "--blocks", ",".join(blocks))
         s = STEPS[step]
-        print(f"✓ Демо шага {step} ({s['name']}): эталон в кабинете, вкладки собраны.")
-        print(f"  Откройте cabinet/index.html (обновите страницу): {s['see']}.")
-        if s["next"]:
-            print(f"  Продолжаем со всеми: следующий шаг — `{s['next']}`.")
+        if again is None: print(f"✓ Демо шага {step} ({s['name']}): эталон в кабинете, вкладки собраны.")
+        if again is None:
+            print(f"  Откройте cabinet/index.html (обновите страницу): {s['see']}.")
+            if s["next"]:
+                print(f"  Продолжаем со всеми: следующий шаг — `{s['next']}`.")
+    MARK.write_text(json.dumps({"step": step, "blocks": built()}, ensure_ascii=False), encoding="utf-8")
+    if was_b2c:
+        print("  Демо-база — продажи компаниям (B2B): вместо «Моей очереди» будут «Мои сделки». "
+              "Механика та же, для потока заявок всё сработает на вашей базе.")
     if saved:
         print(f"  Ваши файлы сохранены в {saved.relative_to(ROOT)} — к своей базе можно вернуться после конференции.")
 

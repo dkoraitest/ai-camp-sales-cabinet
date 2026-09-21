@@ -8,7 +8,7 @@ function finding(level, title, text){
   return '<div class="insight '+esc(level||'warn')+'"><h4>'+esc(title)+'</h4><p>'+esc(text)+'</p></div>';
 }
 function wonVsLost(){
-  const a = (DataSource.scores()||{}).aggregates;
+  const a = DataSource.aggregates();
   const w = a && a.won_vs_lost;
   if(!w || !(w.rows||[]).length) return '';
   /* Колонка выигранных всегда зелёная, проигранных — красная: это сравнение

@@ -354,6 +354,15 @@ def main():
     (out / "aggregates.json").write_text(json.dumps(agg, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "scored.json").write_text(json.dumps({"items": items, "aggregates": agg},
                                             ensure_ascii=False), encoding="utf-8")
+    # Разрезы, на которых кабинет рисует графики, кладём прямо рядом с ним.
+    # Модель пишет scores.js сама и может не перенести цифры — тогда вкладки
+    # «Дашборд» и «Глубокая аналитика» остались бы пустыми.
+    cab = ROOT / "cabinet"; cab.mkdir(exist_ok=True)
+    marks = {i["id"]: {"lead": i["lead_id"], "bant": i["bant"]} for i in items}
+    (cab / "aggregates.js").write_text(
+        "// Сгенерировано scripts/score_all.py — руками не править.\n"
+        f"window.CABINET_AGG = {json.dumps(dict(agg, marks=marks), ensure_ascii=False)};\n",
+        encoding="utf-8")
 
     print(f"Размечено {n} контактов ({agg['calls']} звонков, {agg['chats']} переписок), профиль {prof}")
     print(f"  фокусный этап «{agg['focus_label']}»: {agg['focus']['contacts']} контактов, средний {agg['focus']['avg']}")
@@ -363,7 +372,8 @@ def main():
     print(f"  BANT по воронке: {sum(x['full'] for x in q['stages'])} из {q['deals']} сделок закрыты по всем четырём")
     w = agg["won_vs_lost"]
     print(f"  выигранные против проигранных: {w['won_deals']} и {w['lost_deals']} сделок, {len(w['rows'])} сравнений")
-    print(f"→ active/aggregates.json (для инсайтов) · active/scored.json (оценки всех контактов)")
+    print(f"→ active/aggregates.json (для инсайтов) · active/scored.json (оценки всех контактов)"
+          f" · cabinet/aggregates.js (графики кабинета)")
 
 
 if __name__ == "__main__":
