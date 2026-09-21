@@ -42,6 +42,18 @@ CLIENT_HINT = r"клиент|покупател|абонент|заказчик|
 
 # ─────────────────────────── чтение форматов ───────────────────────────
 
+def read_text(path):
+    """Текст файла в любой из обычных кодировок: UTF-8 с BOM и без,
+    UTF-16 (экспорт на Windows), cp1251 (старые выгрузки телефонии)."""
+    raw = path.read_bytes()
+    if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return raw.decode("utf-16")
+    try:
+        return raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        return raw.decode("cp1251", errors="replace")
+
+
 def parse_date(s):
     """Дата из разных записей: 21.09.2026, 21/09/26, 2026-09-21 — с временем или без."""
     s = s.strip().replace(" ", " ").replace("‎", "")
@@ -75,7 +87,8 @@ WA = [re.compile(r"^\[(\d{1,2}[./]\d{1,2}[./]\d{2,4}, \d{1,2}:\d{2}(?::\d{2})?)\
 def read_whatsapp(text):
     turns = []
     for line in text.splitlines():
-        line = line.replace("‎", "").rstrip()
+        # невидимые метки направления и узкие пробелы перед AM/PM из экспорта WhatsApp
+        line = line.replace("\u200e", "").replace("\u202f", " ").replace("\xa0", " ").rstrip()
         m = next((r.match(line) for r in WA if r.match(line)), None)
         if m:
             turns.append({"speaker": m.group(2).strip(), "text": m.group(3).strip(),
@@ -167,7 +180,7 @@ COLS = {"conv": ("conversation", "conversation_id", "call_id", "chat_id", "ра�
 
 
 def read_csv(path):
-    raw = path.read_text(encoding="utf-8-sig", errors="replace")
+    raw = read_text(path)
     dialect = csv.Sniffer().sniff(raw[:2000], delimiters=",;\t") if raw.strip() else csv.excel
     rows = list(csv.DictReader(raw.splitlines(), dialect=dialect))
     if not rows:
@@ -195,16 +208,15 @@ def scan_file(path):
     try:
         if suf == ".json":
             return [dict(base, format="telegram", kind="chat", channel="telegram", title=c["title"], turns=c["turns"])
-                    for c in read_telegram(json.loads(path.read_text(encoding="utf-8")), path)]
+                    for c in read_telegram(json.loads(read_text(path)), path)]
         if suf == ".csv":
             return [dict(base, format="csv", kind="call", channel=None, title=c["title"], turns=c["turns"])
                     for c in (read_csv(path) or [])]
         if suf in (".vtt", ".srt"):
-            turns, sec = read_subtitles(path.read_text(encoding="utf-8", errors="replace"))
+            turns, sec = read_subtitles(read_text(path))
             return [dict(base, format=suf[1:], kind="call", channel=None, title=path.stem, turns=turns,
                          duration_min=round(sec / 60) if sec else None)] if turns else []
-        text = read_docx(path) if suf == ".docx" else path.read_text(encoding="utf-8", errors="replace") \
-            if suf in (".txt", ".md", "") else None
+        text = read_docx(path) if suf == ".docx" else read_text(path) if suf in (".txt", ".md", "") else None
         if text is None:
             return []
         wa = read_whatsapp(text)
