@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""«Включи демо» на любом шаге.
+
+Если у участника что-то не получилось, он не должен выпасть из потока.
+Скрипт смотрит, какие шаги уже собраны, кладёт в кабинет эталон текущего
+шага из reference/ и собирает вкладку. Дальше участник идёт со всеми.
+
+    python3 scripts/demo_step.py            # определить шаг и включить демо
+    python3 scripts/demo_step.py --step 3   # включить демо конкретного шага
+    python3 scripts/demo_step.py --status   # только показать, что собрано
+
+Эталоны построены на демо-базе B2B, поэтому кабинет целиком переключается
+на неё. Файлы участника не пропадают: они сохраняются в active/before-demo/.
+"""
+
+import argparse, json, pathlib, shutil, subprocess, sys
+from datetime import datetime
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+CAB, REF = ROOT / "cabinet", ROOT / "reference"
+STEPS = {
+    1: {"name": "разбор коммуникаций", "blocks": ["me", "overview", "contacts", "insights"], "file": "scores.js",
+        "next": "подключи тренера", "see": "Менеджер → выберите себя в «Я» → Мои звонки"},
+    2: {"name": "тренер", "blocks": ["managers"], "file": "coach.js",
+        "next": "следующее касание", "see": "Менеджер → Мой тренер; Руководитель → Команда"},
+    3: {"name": "следующее касание", "blocks": ["leads"], "file": "enrich.js",
+        "next": "глубокая аналитика", "see": "Менеджер → Мои сделки → сделка с пометкой «касание готово»"},
+    4: {"name": "глубокая аналитика", "blocks": ["deep"], "file": "deep.js",
+        "next": None, "see": "Руководитель → Глубокая аналитика"},
+}
+
+
+def built():
+    f = CAB / ".blocks.json"
+    try:
+        return json.loads(f.read_text(encoding="utf-8")).get("blocks", [])
+    except Exception:
+        return []
+
+
+def done(step, blocks):
+    s = STEPS[step]
+    return all(b in blocks for b in s["blocks"]) and (CAB / s["file"]).exists()
+
+
+def current():
+    """Текущий шаг — первый несобранный. Шаг 0 — если базы ещё нет."""
+    blocks = built()
+    cfg = CAB / "config.js"
+    has_base = cfg.exists() and ((ROOT / "data/own/dataset.json").exists() or
+                                 'profile: "b2b"' in cfg.read_text(encoding="utf-8") or
+                                 'profile: "b2c"' in cfg.read_text(encoding="utf-8"))
+    if not has_base and not blocks:
+        return 0
+    for n in (1, 2, 3, 4):
+        if not done(n, blocks):
+            return n
+    return 5
+
+
+def backup(names):
+    dst = ROOT / "active" / "before-demo" / datetime.now().strftime("%H%M%S")
+    saved = []
+    for n in names:
+        f = CAB / n
+        if f.exists():
+            dst.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(f, dst / n); saved.append(n)
+    return dst if saved else None
+
+
+def run(*cmd):
+    r = subprocess.run([sys.executable, *cmd], cwd=ROOT, capture_output=True, text=True)
+    if r.returncode:
+        sys.exit(r.stdout + r.stderr)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--step", type=int, choices=[0, 1, 2, 3, 4])
+    ap.add_argument("--status", action="store_true")
+    a = ap.parse_args()
+    step = a.step if a.step is not None else current()
+
+    if a.status:
+        blocks = built()
+        print("Собрано:", ", ".join(blocks) or "ничего")
+        print("Текущий шаг:", step if step < 5 else "все шаги пройдены")
+        return
+    if step == 5:
+        print("Все шаги уже собраны. Полный эталон: откройте demo/index.html")
+        return
+
+    CAB.mkdir(exist_ok=True)
+    touched = ["config.js"] + [STEPS[n]["file"] for n in range(1, max(step, 1) + 1) if n <= step]
+    saved = backup(touched)
+
+    # эталоны построены на демо-базе B2B — переключаем кабинет на неё целиком
+    shutil.copy2(REF / "config.js", CAB / "config.js")
+    run("scripts/build_data.py")
+    if step == 0:
+        print("✓ Демо: подключена база DataFlow Solutions (B2B, 271 разговор).")
+        print("  Продолжаем со всеми: скажите `разбери коммуникации`.")
+    else:
+        blocks = []
+        for n in range(1, step + 1):
+            shutil.copy2(REF / STEPS[n]["file"], CAB / STEPS[n]["file"])
+            blocks += STEPS[n]["blocks"]
+        run("scripts/build_cabinet.py", "--blocks", ",".join(blocks))
+        s = STEPS[step]
+        print(f"✓ Демо шага {step} ({s['name']}): эталон в кабинете, вкладки собраны.")
+        print(f"  Откройте cabinet/index.html (обновите страницу): {s['see']}.")
+        if s["next"]:
+            print(f"  Продолжаем со всеми: следующий шаг — `{s['next']}`.")
+    if saved:
+        print(f"  Ваши файлы сохранены в {saved.relative_to(ROOT)} — к своей базе можно вернуться после конференции.")
+
+
+if __name__ == "__main__":
+    main()
