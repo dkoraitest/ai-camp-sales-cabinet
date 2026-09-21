@@ -10,3 +10,6 @@ __pycache__/
 .env.*
 !.env.example
 cabinet/telegram.js
+# Записи разговоров участника — личные данные, в репозиторий не попадают
+data/import/*
+!data/import/.gitkeep

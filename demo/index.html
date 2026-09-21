@@ -898,7 +898,8 @@ function boot(){
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
   // Плашка источника: сегодня файл, завтра CRM участника
   const CRM = {amocrm:'amoCRM', bitrix24:'Битрикс24', other:'другая', none:'таблицы'};
-  const src = meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
+  const src = meta.imported ? 'ваши записи'+(meta.topped_up ? ' + синтетика' : '')
+            : meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
   const crm = meta.crm || CFG.crm;
   const b = document.createElement('button');
   b.className = 'pill '+(meta.synthetic || meta.id !== 'own' ? 'warn' : 'good'); b.id = 'source';
@@ -1255,7 +1256,8 @@ function byDate(rows){
       return '<tr class="clickable" onclick="openContact(\''+c.id+'\')">'+
         '<td>'+fmtDate(c.when)+'</td>'+
         '<td>'+esc(leadName(c.lead_id))+'</td>'+
-        '<td><span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span></td>'+
+        '<td><span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span>'+
+          (c.synthetic ? ' <span class="pill" title="Догенерировано до рабочего объёма, не ваш разговор">синтетика</span>' : '')+'</td>'+
         '<td>'+esc(mgrName(c.manager_id))+'</td>'+
         '<td><span class="pill">'+esc(stageLabel(c.stage))+'</span></td>'+
         '<td class="muted">'+esc(c.volume)+'</td><td>'+badge+'</td>'+

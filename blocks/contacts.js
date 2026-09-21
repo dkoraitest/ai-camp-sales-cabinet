@@ -40,7 +40,8 @@ function byDate(rows){
       return '<tr class="clickable" onclick="openContact(\''+c.id+'\')">'+
         '<td>'+fmtDate(c.when)+'</td>'+
         '<td>'+esc(leadName(c.lead_id))+'</td>'+
-        '<td><span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span></td>'+
+        '<td><span class="pill">'+esc(c.kind==='call'?'звонок':(c.channel||'переписка'))+'</span>'+
+          (c.synthetic ? ' <span class="pill" title="Догенерировано до рабочего объёма, не ваш разговор">синтетика</span>' : '')+'</td>'+
         '<td>'+esc(mgrName(c.manager_id))+'</td>'+
         '<td><span class="pill">'+esc(stageLabel(c.stage))+'</span></td>'+
         '<td class="muted">'+esc(c.volume)+'</td><td>'+badge+'</td>'+

@@ -385,6 +385,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("profile", nargs="?", default="active/profile.json")
     ap.add_argument("--validate", action="store_true")
+    ap.add_argument("--out", help="куда писать базу; по умолчанию data/own/dataset.json. "
+                                  "Импорт с догенерацией пишет сюда временный файл")
     ap.add_argument("--calls", type=int, default=None,
                     help="по умолчанию 60 на менеджера, но не меньше 260")
     ap.add_argument("--chats", type=int, default=90)
@@ -586,9 +588,14 @@ def main():
                        "funnel": P["funnel"]},
            "managers": [{"id": m["id"], "name": m["name"], "role": m.get("role", "Менеджер")} for m in mgrs],
            "calls": calls, "chats": chats, "leads": leads}
-    d = ROOT / "data/own"; d.mkdir(parents=True, exist_ok=True)
-    (d / "dataset.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"✓ {P['company']}: {len(calls)} звонков, {len(chats)} переписок, {len(leads)} лидов → data/own/dataset.json")
+    dst = pathlib.Path(a.out) if a.out else ROOT / "data/own/dataset.json"
+    imported = ROOT / "data/own/imported.json"
+    if not a.out and imported.exists():
+        sys.exit("В data/own лежит база из ваших записей (imported.json). Генератор её не перезаписывает.\n"
+                 "Догенерировать до рабочего объёма: python3 scripts/import_data.py build --top-up 200")
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    dst.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"✓ {P['company']}: {len(calls)} звонков, {len(chats)} переписок, {len(leads)} лидов → {dst.relative_to(ROOT) if dst.is_relative_to(ROOT) else dst}")
     print("  Дальше: в cabinet/config.js поставьте profile: \"own\" и запустите python3 scripts/build_data.py")
 
 if __name__ == "__main__":

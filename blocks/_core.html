@@ -898,7 +898,8 @@ function boot(){
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
   // Плашка источника: сегодня файл, завтра CRM участника
   const CRM = {amocrm:'amoCRM', bitrix24:'Битрикс24', other:'другая', none:'таблицы'};
-  const src = meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
+  const src = meta.imported ? 'ваши записи'+(meta.topped_up ? ' + синтетика' : '')
+            : meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
   const crm = meta.crm || CFG.crm;
   const b = document.createElement('button');
   b.className = 'pill '+(meta.synthetic || meta.id !== 'own' ? 'warn' : 'good'); b.id = 'source';
