@@ -826,7 +826,8 @@ function me(){
   const saved = store.get('cabinet-me');
   if(saved && ms.find(m => m.id === saved)) return saved;
   const n = {}; DataSource.contacts().forEach(c => n[c.manager_id] = (n[c.manager_id]||0) + 1);
-  const top = ms.slice().sort((a,b) => (n[b.id]||0) - (n[a.id]||0))[0];
+  // по умолчанию — живой человек с наибольшим числом разговоров, синтетика в конце
+  const top = ms.slice().sort((a,b) => (!!a.synthetic - !!b.synthetic) || (n[b.id]||0) - (n[a.id]||0))[0];
   return top ? top.id : null;
 }
 function setMe(id){ store.set('cabinet-me', id); draw(); }
@@ -898,11 +899,13 @@ function boot(){
   $('#profile-note').textContent = [meta.title, meta.what_we_sell].filter(Boolean).join(' · ');
   // Плашка источника: сегодня файл, завтра CRM участника
   const CRM = {amocrm:'amoCRM', bitrix24:'Битрикс24', other:'другая', none:'таблицы'};
-  const src = meta.imported ? 'ваши записи'+(meta.topped_up ? ' + синтетика' : '')
+  const all = DataSource.contacts().length, share = meta.topped_up && all ? Math.round(meta.topped_up / all * 100) : 0;
+  const src = meta.imported ? (share > 50 ? 'в основном синтетика ('+share+'%), ваших записей '+(all - meta.topped_up)
+                                          : 'ваши записи'+(share ? ' + синтетика '+share+'%' : ''))
             : meta.synthetic ? 'синтетика под вашу компанию' : (meta.id === 'own' ? 'ваши записи' : 'демо-база');
   const crm = meta.crm || CFG.crm;
   const b = document.createElement('button');
-  b.className = 'pill '+(meta.synthetic || meta.id !== 'own' ? 'warn' : 'good'); b.id = 'source';
+  b.className = 'pill '+(meta.synthetic || meta.id !== 'own' || share > 50 ? 'warn' : 'good'); b.id = 'source';
   b.style.cssText = 'margin-left:4px;cursor:pointer';
   b.textContent = 'Источник: '+src+(crm ? ' · ваша CRM: '+(CRM[crm]||crm) : '')+' · как подключить';
   b.onclick = showSource;

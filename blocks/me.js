@@ -32,7 +32,8 @@ function renderMyDeals(){
       '<p class="scope">Сверху — заявки, которые скорее всего купят, если позвонить сейчас. Приоритет считает код: свежесть, соответствие профилю и то, что клиент говорил в разговорах.</p>'+
       '<table><thead><tr><th>Клиент</th><th>'+extraLbl+'</th><th>Источник</th><th>Ждёт</th><th>Первый ответ</th><th>Приоритет</th></tr></thead><tbody>'+
       rows.map(x => '<tr class="clickable" onclick="openDeal(\''+x.l.id+'\')"><td>'+esc(leadName(x.l.id))+
-        (touch(x.l.id) ? ' <span class="pill accent">ответ готов</span>' : '')+'</td>'+
+        (touch(x.l.id) ? ' <span class="pill accent">ответ готов</span>' : '')+
+        (x.l.synthetic ? ' <span class="pill">синтетика</span>' : '')+'</td>'+
         '<td class="muted">'+esc(extra(x.l))+'</td><td class="muted">'+esc(x.l.source||'—')+'</td>'+
         '<td class="'+(x.wait > 3 ? 'late' : 'muted')+'">'+(x.wait != null ? x.wait+' дн.'+(x.lt ? '' : ' · новая') : '—')+'</td>'+
         '<td class="muted">'+(x.l.responded_in_min != null ? x.l.responded_in_min+' мин' : '—')+'</td>'+
@@ -58,7 +59,8 @@ function renderMyDeals(){
     if(!rows.length) return;
     html += '<h2>'+esc(stageLabel(st))+' · '+rows.length+' · '+money(rows.reduce((a,x) => a + (x.l.value_kzt||0), 0))+'</h2><div class="card" style="padding:4px 6px">'+
       rows.map(x => '<div class="row-deal" onclick="openDeal(\''+x.l.id+'\')">'+
-        '<div><b>'+esc(leadName(x.l.id))+'</b>'+(touch(x.l.id) ? ' <span class="pill accent">касание готово</span>' : '')+'<div class="muted small">'+esc([x.l.contact, x.l.position].filter(Boolean).join(', '))+'</div></div>'+
+        '<div><b>'+esc(leadName(x.l.id))+'</b>'+(touch(x.l.id) ? ' <span class="pill accent">касание готово</span>' : '')+
+        (x.l.synthetic ? ' <span class="pill" title="Догенерировано до рабочего объёма">синтетика</span>' : '')+'<div class="muted small">'+esc([x.l.contact, x.l.position].filter(Boolean).join(', '))+'</div></div>'+
         '<div>'+money(x.l.value_kzt)+'</div>'+
         '<div class="'+(x.stuck ? 'late' : 'muted')+' small">'+(x.last ? 'контакт '+x.idle+' дн. назад' : 'разговоров нет')+'</div>'+
         '<div class="'+(x.late || !x.ns ? 'late' : 'muted')+' small">'+(x.ns ? (x.late ? 'шаг просрочен · ' : 'шаг · ')+fmtDate(x.l.next_step).slice(0,5) : 'следующего шага нет')+'</div>'+
