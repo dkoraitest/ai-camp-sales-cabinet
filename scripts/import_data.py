@@ -438,6 +438,19 @@ def contains(a, b):
     return bool(re.search(r"(?<![\w])" + re.escape(norm(a)) + r"(?![\w])", norm(b)))
 
 
+def mentions(name, text):
+    """Название звучит в тексте само по себе, а не как начало более длинного:
+    в «ТОО "Арман Строй Сервис"» сделка «Арман Строй» не упомянута — это другая компания."""
+    want = norm(name).split()
+    toks = [(norm(t), t[:1].isupper()) for t in re.findall(r"\w+|[^\w\s]", text)]
+    for i in range(len(toks) - len(want) + 1):
+        if want and [w for w, _ in toks[i:i + len(want)]] == want:
+            nxt = toks[i + len(want)] if i + len(want) < len(toks) else ("", False)
+            if not (nxt[0] and nxt[1]):                       # дальше не слово с заглавной
+                return True
+    return False
+
+
 def strong_managers(convs):
     """Менеджер ведёт разных клиентов: он есть хотя бы в двух разговорах с
     непересекающимися собеседниками. Но клиент, у которого сделку передали от
@@ -483,6 +496,7 @@ def guess_roles(c, managers, words, people=None, notes=None):
             by_name[sp] = mid
             if re.search(r"[а-яё]", sp.lower()) and not re.search(r"[а-яё]", managers[mid].lower()):
                 managers[mid] = sp                     # показываем так, как имя пишут в компании
+    by_first = {}
     for sp in c["speakers"]:
         # «Марат» без фамилии — менеджер Марат Садыков, если других Маратов в записях нет.
         # «Асель» при менеджере Асель Ким и клиентке Асель Нурлановой — не угадываем.
@@ -490,9 +504,13 @@ def guess_roles(c, managers, words, people=None, notes=None):
             continue
         hit = [k for k, v in managers.items() if norm(v).split()[:1] == [norm(sp)]]
         if len(hit) == 1 and not people.get(norm(sp), set()) - {norm(managers[hit[0]])}:
-            by_name[sp] = hit[0]
-            if notes is not None:
-                notes.append(f"«{sp}» → {hit[0]} {managers[hit[0]]}")
+            by_first[sp] = hit[0]
+    # Разговор без клиента не бывает: если после такой догадки клиента не осталось,
+    # «Алибек» — это тёзка менеджера, родитель или клиент, а не сам менеджер.
+    if by_first and any(sp not in by_name and sp not in by_first for sp in c["speakers"]):
+        by_name.update(by_first)
+        if notes is not None:
+            notes += [f"«{sp}» → {mid} {managers[mid]}" for sp, mid in by_first.items()]
     text_of, first_of = defaultdict(str), defaultdict(list)
     for t in c["turns"]:
         text_of[t["speaker"]] += " " + t["text"].lower()
@@ -564,6 +582,17 @@ DOC = {"чат", "звонок", "встреча", "созвон", "запись
        "протокол", "call", "meeting", "chat", "notes", "transcript", "recording"}
 
 
+def title_is(label, title):
+    """Название чата — это имя контакта целиком, кроме названия программы, типа и
+    предлогов: «Чат WhatsApp с Гульмира мама Санжара» — контакт «Гульмира мама Санжара»."""
+    noise = {norm(w) for w in APPS | DOC | {"с", "со", "with", "от", "для"}}
+    t, l = norm(title).split(), norm(label).split()
+    for i in range(len(t) - len(l) + 1):
+        if l and t[i:i + len(l)] == l:
+            return all(w in noise or w.isdigit() for w in t[:i] + t[i + len(l):])
+    return False
+
+
 def title_lead(title, seller=()):
     """Имя сделки из имени файла: «2026-09-25_звонок_Нур_Фарм_передача» → «Нур Фарм».
     Названия компаний пишутся с заглавной, описания — со строчной, поэтому берутся
@@ -577,6 +606,20 @@ def title_lead(title, seller=()):
     return " ".join(keep) if keep and any(len(w) > 2 for w in keep) else None
 
 
+ORG = {"тоо", "ооо", "ао", "оао", "зао", "пао", "ип", "llp", "llc", "ltd", "inc", "jsc", "gmbh", "corp", "group",
+       "групп", "груп", "холдинг", "holding", "company", "компания"}
+
+
+def core(name, first_names=()):
+    """Название для сравнения: латиница как кириллица, без формы собственности,
+    «Group» и имени контакта впереди. «Madiyar Sunkar Media Group» → «сункар медиа»."""
+    org = {norm(w) for w in ORG}
+    w = [x for x in norm(name).split() if x not in org]
+    while len(w) > 1 and w[0] in first_names:
+        w = w[1:]
+    return " ".join(w)
+
+
 def merge_leads(conv_map, convs, only):
     """Предложение, а не решение: агент сверяет каждую сделку по preview.
     Склеивается только то, за что говорят люди в разговорах:
@@ -585,13 +628,14 @@ def merge_leads(conv_map, convs, only):
     · одно слово, с которого начинается ровно одно полное название — «Каспий» →
       «Каспий Трейд», если в обоих звучит один и тот же клиент.
     По одним названиям сокращение не отличить от другой компании: «Береке» и
-    «Береке Шымкент» без общего клиента не склеиваются, а возвращаются подсказкой."""
+    «Береке Шымкент» без общего клиента не склеиваются, а возвращаются подсказкой.
+    Подсказка — пара (сделка, почему): она шире склейки и сама ничего не решает."""
     by_key = {c["key"]: c for c in convs}
     hints = {}
     for _ in range(5):
         live = [(k, m) for k, m in conv_map.items() if not m["exclude"]]
         cnt = Counter(m["lead"] for _, m in live)
-        firsts, fulls, said = defaultdict(set), defaultdict(set), defaultdict(str)
+        firsts, fulls, said, label = defaultdict(set), defaultdict(set), defaultdict(str), {}
         for k, m in live:
             clients = [sp for sp, r in m["speakers"].items() if r == "client" and not GENERIC.match(sp.lower())]
             for sp in clients:
@@ -599,7 +643,7 @@ def merge_leads(conv_map, convs, only):
                 if w and not w[0].isupper() and len(norm(w[0])) >= 3:     # «ТОО Мега» — не имя
                     firsts[m["lead"]].add(norm(w[0]))
                     if len(w) >= 2:
-                        fulls[m["lead"]].add(norm(sp))
+                        fulls[m["lead"]].add(norm(sp)); label.setdefault(norm(sp), sp)
             said[m["lead"]] += " " + " ".join(clients) + " " + " ".join(
                 t["text"] for t in (by_key.get(k) or {}).get("turns", []))
         ren, hints = {}, {}
@@ -614,13 +658,13 @@ def merge_leads(conv_map, convs, only):
                     if len(extra) <= 2 and extra[0] in firsts[b]:
                         ren[b] = a
                     else:
-                        hints.setdefault(b, []).append(a)
+                        hints.setdefault(b, []).append((a, ""))
                 elif b in starts:
                     shared = fulls[a] & fulls[b] or any(contains(f, said[a]) for f in firsts[b])
                     if len(norm(a).split()) == 1 and len(starts) == 1 and shared:
                         ren[a] = b
                     else:                               # «Мега Склад» и «Мега Склад Астана» — филиал?
-                        hints.setdefault(a, []).append(b)
+                        hints.setdefault(a, []).append((b, ""))
         changed = False
         for k in only:
             m = conv_map[k]
@@ -629,6 +673,32 @@ def merge_leads(conv_map, convs, only):
                 m["lead"] = ren[m["lead"]]; changed = True
         if not changed:
             break
+    # Подсказки шире склейки: то же название латиницей, с «Group» или с именем контакта
+    # впереди; один и тот же клиент у двух сделок; сделка на одно имя при клиенте с этим
+    # именем в известной сделке («Серик» и Серик Балтабаев из «Каратау Агро»).
+    names = set().union(*firsts.values()) if firsts else set()
+    seen = {frozenset((a, b)) for a, bs in hints.items() for b, _ in bs}
+
+    def add(a, b, why):
+        if frozenset((a, b)) not in seen:
+            seen.add(frozenset((a, b))); hints.setdefault(a, []).append((b, why))
+
+    leads = sorted(cnt)
+    for i, a in enumerate(leads):
+        for b in leads[i + 1:]:
+            ca, cb = core(a, names), core(b, names)
+            both = sorted(fulls[a] & fulls[b])
+            if ca and cb and (ca == cb or contains(ca, cb) or contains(cb, ca)):
+                add(a, b, "то же название" + (f", общий клиент {label[both[0]]}" if both else ""))
+            elif both:
+                add(a, b, f"общий клиент {label[both[0]]}")
+    for a in leads:
+        if len(norm(a).split()) != 1 or norm(a) not in firsts[a]:
+            continue                                      # только сделка на одно имя человека
+        for b in leads:
+            for full in sorted(fulls[b]):
+                if b != a and full.split()[0] == norm(a):
+                    add(a, b, f"клиент {label[full]}")
     return hints
 
 
@@ -642,18 +712,20 @@ def mention_leads(conv_map, convs):
         if not m.get("_weak"):
             continue
         text = " ".join(t["text"] for t in c["turns"])
-        hit = [n for n in known if contains(n, text)]
+        hit = [n for n in known if mentions(n, text)]
         hit = [n for n in hit if not any(n != o and contains(n, o) for o in hit)]   # «Мега» внутри «Мега Склад»
         if len(hit) == 1:
             m["lead"], m["lead_why"] = hit[0], f"в разговоре упоминается «{hit[0]}»"
 
 
-def person_to_company(conv_map, convs, only):
+def person_to_company(conv_map, convs, only, managers):
     """Сделка на имя человека («Асель Нурланова») — это компания, если у того же
     менеджера клиент этой компании представляется тем же именем: «Это Асель,
-    закупщик Тенгри Фуд». Кандидат должен быть ровно один."""
+    закупщик Тенгри Фуд». Кандидат должен быть ровно один. Разговор, который ведёт
+    менеджер с тем же именем, не в счёт: там клиент зовёт менеджера — «Спасибо, Динара!»."""
     by_key = {c["key"]: c for c in convs}
     mgrs_of = lambda m: {r for r in m["speakers"].values() if r != "client"}
+    first_of = lambda r: (norm(managers.get(r, "")).split() or [""])[0]
     for person in {m["lead"] for k, m in conv_map.items() if not m["exclude"]}:
         own = [m for k, m in conv_map.items() if m["lead"] == person and not m["exclude"] and k in only]
         if not own:
@@ -665,6 +737,8 @@ def person_to_company(conv_map, convs, only):
         cand = set()
         for k, m in conv_map.items():
             if m["exclude"] or m["lead"] == person or not (mgrs_of(m) & mgrs):
+                continue
+            if norm(first) in {first_of(r) for r in mgrs_of(m)}:
                 continue
             said = " ".join(t["text"].lower() for t in by_key.get(k, {"turns": []})["turns"]
                             if m["speakers"].get(t["speaker"]) == "client")
@@ -695,7 +769,7 @@ def work_chats(conv_map, only):
         m = conv_map[k]
         if not m["exclude"] or all(r == "client" for r in m["speakers"].values()):
             continue
-        hit = [l for l in companies if contains(l, m["title"])]
+        hit = [l for l in companies if mentions(l, m["title"])]
         if hit:
             why = f"в названии чата — сделка «{hit[0]}»"
         else:
@@ -748,6 +822,7 @@ def cmd_scan(_):
 
     P = profile()
     words = company_words(P)
+    b2c = (P or {}).get("audience", "b2c" if (P or {}).get("type") == "flow" else "b2b") == "b2c"
     old = json.loads(MAPPING.read_text(encoding="utf-8")) if MAPPING.exists() else {}
     managers = dict(old.get("managers") or {})              # id → имя, заполненное не теряется
     for sp in strong_managers(convs):
@@ -772,8 +847,11 @@ def cmd_scan(_):
         if notes and not prev.get("speakers"):
             by_first[c["key"]] = notes
         client = [sp for sp, r in roles.items() if r == "client" and not GENERIC.match(sp.lower()) and sp != "—"]
-        # сделка: из имени файла или чата, иначе названный клиент, иначе как есть
-        named = title_lead(c["title"], words)
+        # сделка: из имени файла или чата, иначе названный клиент, иначе как есть.
+        # Чат, названный именем контакта, — это контакт целиком, со строчными словами:
+        # «Гульмира мама Санжара», а не «Гульмира Санжара»
+        whole = [sp for sp in client if title_is(sp, c["title"])]
+        named = whole[0] if len(whole) == 1 else title_lead(c["title"], words)
         # в названии одно слово («Мега»), а клиент подписан полнее («Ерлан Мега Склад») — берём «Мега Склад»
         fuller = set()
         for sp in client if named and len(named.split()) == 1 else ():
@@ -787,7 +865,8 @@ def cmd_scan(_):
             named = fuller.pop()
         person = named and any(norm(named) == norm(sp) or norm(named) == norm(sp.split()[0]) for sp in client)
         lead = prev.get("lead") or named or (client[0] if len(client) == 1 else c["title"])
-        why = "проверено раньше" if prev.get("lead") else ("имя человека — ищу компанию" if person else
+        why = "проверено раньше" if prev.get("lead") else (
+              ("клиент из названия чата" if b2c else "имя человека — укажите компанию") if person else
               f"в названии «{part}», клиент подписан полнее" if part else
               "из названия файла или чата" if named else "клиент в разговоре" if len(client) == 1 else
               "не нашёл — укажите сделку")
@@ -804,7 +883,8 @@ def cmd_scan(_):
     merge_leads(conv_map, convs, auto)
     mention_leads(conv_map, [c for c in convs if c["key"] in auto])
     hints = merge_leads(conv_map, convs, auto)
-    person_to_company(conv_map, convs, auto)
+    if not b2c:                                   # в B2C человек и есть заявка, компании у него нет
+        person_to_company(conv_map, convs, auto, managers)
     tg = [c["key"] for c in convs if c["format"] == "telegram"]
     back = work_chats(conv_map, [k for k in tg if "exclude" not in oldc.get(k, {}) and
                                  next(c for c in convs if c["key"] == k).get("tg_type") not in
@@ -854,8 +934,12 @@ def cmd_scan(_):
     if nobody:
         print(f"Не нашёл менеджера ({len(nobody)}) — в speakers поставьте id тому, кто продаёт: " + "; ".join(nobody[:6])
               + (" …" if len(nobody) > 6 else ""))
+    alone = [k for k, m in conv_map.items() if not m["exclude"] and "client" not in m["speakers"].values()]
+    if alone:
+        print(f"Нет клиента ({len(alone)}) — тёзку менеджера отметьте client, внутренний разговор — exclude: true: "
+              + "; ".join(alone[:6]) + (" …" if len(alone) > 6 else ""))
     if by_first:
-        print("Менеджер узнан по имени без фамилии — проверьте:")
+        print("Менеджер узнан по имени без фамилии — проверьте; если это клиент, поставьте client:")
         for k, n in list(by_first.items())[:6]:
             print(f"  {k}: {', '.join(n)}")
     nodate = [c["key"] for c in convs if not c["dated"]]
@@ -887,12 +971,13 @@ def cmd_scan(_):
         print("Сделку вели разные менеджеры — ответственным станет тот, кто говорил последним. "
               "Если это не так, впишите его id в owner в leads:")
         print("\n".join(handed))
-    hints = {a: [b for b in bs if b in live] for a, bs in hints.items() if a in live}
+    hints = {a: [(b, why) for b, why in bs if b in live and b != a] for a, bs in hints.items() if a in live}
     if any(hints.values()):
-        print("Похожие названия без общего клиента — одна компания или разные, решите по preview:")
+        print("Может быть, одна сделка — скрипт не склеивал, решите по preview. Список неполный: "
+              "похожие названия проверьте и сами:")
         for a, bs in hints.items():
             if bs:
-                print(f"  «{a}» — {' или '.join(f'«{b}»' for b in bs)}?")
+                print(f"  «{a}» — " + " или ".join(f"«{b}»" + (f" ({why})" if why else "") for b, why in bs) + "?")
     print("\nПроверьте data/import/_mapping.json, потом: python3 scripts/import_data.py build")
 
 
@@ -982,6 +1067,9 @@ def cmd_build(a):
         ids = [r for r in (m.get("speakers") or {}).values() if r != "client"]
         if not ids:
             problems.append(f"{key}: не указан менеджер — в speakers у кого-то должен стоять id")
+        elif "client" not in (m.get("speakers") or {}).values():
+            problems.append(f"{key}: в разговоре нет клиента — проверьте роли в speakers: тёзку менеджера "
+                            f"или родителя отметьте client, внутренний разговор команды — exclude: true")
         elif "m?" in ids:
             problems.append(f"{key}: «m?» — впишите id менеджера из managers")
         elif any(r not in managers for r in ids):
@@ -1093,7 +1181,9 @@ def top_up(base, target):
     if need <= 0:
         print(f"  В базе уже {real} разговоров — догенерация до {target} не нужна.")
         return base
-    calls, chats = max(1, round(need * 0.8)), max(0, need - max(1, round(need * 0.8)))
+    # генератор строит сделки цепочками и выдаёт чуть меньше, чем просили: просим
+    # с запасом, лишние сделки ниже срезаем целиком
+    calls, chats = need, max(1, round(need * 0.25))
     try:
         real_people = {norm(sp) for c in json.loads(PARSED.read_text(encoding="utf-8")) for sp in c["speakers"]}
     except Exception:
@@ -1102,7 +1192,9 @@ def top_up(base, target):
     # ни имени, ни фамилии живого человека из записей и профиля
     taken = {w for n in real_people | {norm(x) for x in P.get("contact_names", [])} |
              {norm(m.get("name", "")) for m in P.get("managers") or []} for w in n.split()}
-    halves = [[f"{f} {l}" for f in firsts for l in lasts if norm(f) not in taken and norm(l) not in taken]
+    # «мама Санжара» — значит, и «Санжар» занят: имена сравниваются по началу, без падежа
+    used = lambda w: any(t.startswith(norm(w)) or (len(t) >= 4 and norm(w).startswith(t)) for t in taken)
+    halves = [[f"{f} {l}" for f in firsts for l in lasts if not used(f) and not used(l)]
               for firsts, lasts in NEUTRAL]
     people = [n for h in halves for n in h] or ["Клиент Клиентов"]
     P["contact_names"] = people
@@ -1127,6 +1219,18 @@ def top_up(base, target):
             sys.exit("Догенерация не получилась — профиль компании неполный. Что сказал генератор:\n  " + "\n  ".join(last) +
                      "\nПроверьте профиль: python3 scripts/generate_participant.py --validate active/profile.json")
         syn = json.loads(dst.read_text(encoding="utf-8"))
+    # лишнее срезаем сделками целиком, вместе с их разговорами: сначала те, что помещаются
+    # в излишек, потом, если не хватило, самую короткую из перекрывающих остаток
+    per = Counter(x["lead_id"] for x in syn["calls"] + syn["chats"])
+    extra, drop = sum(per.values()) - need, set()
+    for l in reversed(syn["leads"]):
+        if 0 < per[l["id"]] <= extra:
+            drop.add(l["id"]); extra -= per[l["id"]]
+    over = [l["id"] for l in syn["leads"] if l["id"] not in drop and per[l["id"]] >= extra > 0]
+    if over:
+        drop.add(min(over, key=lambda i: per[i]))
+    for f in ("leads", "calls", "chats"):
+        syn[f] = [x for x in syn[f] if (x["id"] if f == "leads" else x["lead_id"]) not in drop]
     real_names = {l["company"].lower() for l in base["leads"]}
     ids = {}
     for m in syn["managers"]:

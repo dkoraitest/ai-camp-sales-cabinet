@@ -353,8 +353,124 @@ class RoundThree(ImportTest):
         self.assertEqual(len(both), 1)
 
 
+class RoundFour(unittest.TestCase):
+    """Находки четвёртого раунда: онлайн-школа, заявки от родителей и корпоративные клиенты."""
+    PROFILE = {"company": "Qadam Academy", "what_we_sell": "курсы для детей и корпоративный английский",
+               "audience": "b2c", "type": "flow", "crm": "none",
+               "funnel": [{"id": "lead", "label": "Заявка"}, {"id": "trial", "label": "Пробное"},
+                          {"id": "paid", "label": "Оплата"}, {"id": "lost", "label": "Отказ"}]}
+    FILES = {
+        # родители: одна — тёзка менеджера, другой — тёзка другого менеджера и записан одним именем
+        "Чат WhatsApp с Гульмира мама Санжара.txt":
+            "14.09.26, 19:02 - Гульмира мама Санжара: Здравствуйте! Оставляла заявку на курс программирования для сына.\n"
+            "14.09.26, 19:10 - Динара Омарова: Гульмира, добрый вечер! Это Динара, школа Qadam. Санжар уже пробовал?\n"
+            "14.09.26, 19:20 - Гульмира мама Санжара: Спасибо, Динара! А сколько стоит в месяц?\n"
+            "14.09.26, 19:21 - Динара Омарова: 32 000 ₸ в месяц, первое занятие бесплатно.\n",
+        "Чат WhatsApp с Динара мама Амира.txt":
+            "15.09.26, 18:00 - Динара мама Амира: Добрый вечер, есть английский для 8 лет?\n"
+            "15.09.26, 18:05 - Динара Омарова: Динара, добрый вечер! Да, группа по субботам.\n"
+            "15.09.26, 18:07 - Динара мама Амира: Хорошо, запишите на пробное.\n",
+        "WhatsApp Chat - Алибек.txt":
+            "17.09.26, 20:14 - Алибек: Добрый вечер. Дочке 13 лет, хочет в веб-дизайн. Есть такое?\n"
+            "17.09.26, 20:20 - Динара Омарова: Алибек, добрый вечер! Да, курс для 12–15 лет.\n"
+            "17.09.26, 20:25 - Алибек: Сколько по деньгам?\n",
+        # корпоративные клиенты
+        "2026-09-08_звонок_Каратау_Агро.txt": "Алибек Нуртаев: Серик Маратович, добрый день! Qadam Academy, английский для команды.\n"
+                                              "Серик Балтабаев: Добрый день. Нам нужно для десяти сотрудников.\n"
+                                              "Алибек Нуртаев: Какой уровень у группы?\nСерик Балтабаев: Начальный.\n",
+        "2026-09-11_встреча_Номад_Софт.txt": "Алибек Нуртаев: Жанар, добрый день! Давайте по программе.\n"
+                                             "Жанар Мусина: Да, нам важны отчёты по прогрессу.\n"
+                                             "Алибек Нуртаев: Отчёт каждый месяц. Подходит?\nЖанар Мусина: Подходит.\n",
+        # одна компания латиницей, с Group и именем контакта впереди
+        "2026-09-12_встреча_Сункар_Медиа.txt": "Самат Жаксылыков: Мадияр, добрый день! Qadam Academy.\n"
+                                               "Мадияр Курманов: Добрый день. Нужен английский для продюсеров.\n"
+                                               "Самат Жаксылыков: Сколько человек в группе?\nМадияр Курманов: Восемь.\n",
+        "WhatsApp Chat with Madiyar Sunkar Media Group.txt":
+            "9/18/26, 9:05 AM - Samat Zhaksylykov: Madiyar, good morning! Sending the program.\n"
+            "9/18/26, 11:40 AM - Madiyar Kurmanov: Thanks. Our director wants a trial first\n"
+            "9/18/26, 11:42 AM - Samat Zhaksylykov: Sure, a free trial on Tuesday. Does that work?\n",
+        # рабочий чат с контактом одним именем
+        "WhatsApp Chat - Серик.txt": "19.09.26, 10:00 - Самат Жаксылыков: Серик Маратович, договор отправил на почту.\n"
+                                     "19.09.26, 10:30 - Серик: Договор подписан, первый платёж отправили.\n"
+                                     "19.09.26, 10:31 - Самат Жаксылыков: Спасибо! Расписание пришлю в пятницу.\n",
+        # похожая, но другая компания звучит в безымянном звонке
+        "2026-09-19_звонок_Арман_Строй.txt": "Алибек Нуртаев: Добрый день, Qadam Academy, английский для инженеров.\n"
+                                             "Клиент: Слушаю. Мы Арман Строй из Шымкента.\nАлибек Нуртаев: Сколько человек?\n"
+                                             "Клиент: Пятеро.\n",
+        "звонки.csv": "ID звонка;Дата;Говорящий;Текст\n"
+                      "5534;16.09.2026 14:20:05;Оператор;Добрый день! Qadam Academy, корпоративный английский.\n"
+                      '5534;16.09.2026 14:20:14;Абонент;"Мы ТОО ""Арман Строй Сервис"" из Караганды, нам уже предлагали."\n',
+    }
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = root = pathlib.Path(tempfile.mkdtemp())
+        (root / "data" / "import").mkdir(parents=True); (root / "active").mkdir(); (root / "cabinet").mkdir()
+        (root / "active" / "profile.json").write_text(json.dumps(cls.PROFILE, ensure_ascii=False), encoding="utf-8")
+        for name, text in cls.FILES.items():
+            (root / "data" / "import" / name).write_text(text, encoding="utf-8")
+        (root / "blocks").mkdir(); (root / "scripts").mkdir()
+        shutil.copy2(REPO / "blocks" / "config.template.js", root / "blocks" / "config.template.js")
+        shutil.copy2(REPO / "scripts" / "build_data.py", root / "scripts" / "build_data.py")
+        src = root / "data" / "import"
+        imp.ROOT, imp.SRC = root, src
+        imp.PARSED, imp.MAPPING, imp.DONE = src / "_parsed.json", src / "_mapping.json", src / "_done"
+        imp.OWN, imp.CAB = root / "data" / "own", root / "cabinet"
+        cls.out = io.StringIO(); stdout = sys.stdout; sys.stdout = cls.out
+        try:
+            imp.cmd_scan(None)
+        finally:
+            sys.stdout = stdout
+        cls.mp = json.loads(imp.MAPPING.read_text(encoding="utf-8"))
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def conv(self, key):
+        return self.mp["conversations"][key]
+
+    def test_manager_namesake_stays_client(self):
+        # «Алибек» — как менеджер Алибек Нуртаев, но в чате, кроме него, только менеджер Динара
+        self.assertEqual(self.conv("WhatsApp Chat - Алибек.txt")["speakers"]["Алибек"], "client")
+        self.assertNotIn("«Алибек» →", self.out.getvalue())
+
+    def test_build_stops_on_conversation_without_client(self):
+        mp = json.loads(json.dumps(self.mp))
+        mid = next(k for k, v in mp["managers"].items() if v == "Алибек Нуртаев")
+        mp["conversations"]["WhatsApp Chat - Алибек.txt"]["speakers"]["Алибек"] = mid
+        imp.MAPPING.write_text(json.dumps(mp, ensure_ascii=False), encoding="utf-8")
+        out, stdout = io.StringIO(), sys.stdout; sys.stdout = out
+        try:
+            with self.assertRaises(SystemExit):
+                imp.cmd_build(type("A", (), {"top_up": 0})())
+        finally:
+            sys.stdout = stdout
+            imp.MAPPING.write_text(json.dumps(self.mp, ensure_ascii=False), encoding="utf-8")
+        self.assertIn("WhatsApp Chat - Алибек.txt: в разговоре нет клиента", out.getvalue())
+
+    def test_b2c_lead_is_the_whole_contact(self):
+        for key, lead in (("Чат WhatsApp с Гульмира мама Санжара.txt", "Гульмира мама Санжара"),
+                          ("Чат WhatsApp с Динара мама Амира.txt", "Динара мама Амира")):
+            self.assertEqual(self.conv(key)["lead"], lead)      # тёзку менеджера не склеило с другой мамой
+            self.assertEqual(self.conv(key)["lead_why"], "клиент из названия чата")
+
+    def test_hint_same_company_in_latin_with_group(self):
+        self.assertIn("«Madiyar Sunkar Media Group» — «Сункар Медиа» (то же название, общий клиент", self.out.getvalue())
+        self.assertEqual(self.conv("2026-09-12_встреча_Сункар_Медиа.txt")["lead"], "Сункар Медиа")   # сама не склеивает
+
+    def test_hint_one_name_chat_to_known_client(self):
+        self.assertEqual(self.conv("WhatsApp Chat - Серик.txt")["lead"], "Серик")
+        self.assertIn("«Серик» — «Каратау Агро» (клиент Серик Балтабаев)?", self.out.getvalue())
+
+    def test_longer_company_name_is_not_a_mention(self):
+        # «Арман Строй Сервис» из Караганды — не «Арман Строй» из Шымкента
+        self.assertNotEqual(self.conv("звонки.csv")["lead"], "Арман Строй")
+
+
 class TopUp(unittest.TestCase):
-    """Догенерация не берёт ни имён, ни фамилий живых людей: ни из записей, ни из профиля."""
+    """Догенерация не берёт ни имён, ни фамилий живых людей: ни из записей, ни из профиля,
+    и добирает почти ровно до заказанного объёма."""
 
     def test_synthetic_people_are_not_real(self):
         root = pathlib.Path(tempfile.mkdtemp())
@@ -364,14 +480,19 @@ class TopUp(unittest.TestCase):
             P = json.loads((REPO / "scripts" / "profile.example.json").read_text(encoding="utf-8"))
             P["managers"][0]["name"] = "Айжан Оспанова"          # в профиле настоящая команда
             (root / "active" / "profile.json").write_text(json.dumps(P, ensure_ascii=False), encoding="utf-8")
-            (root / "data" / "import" / "_parsed.json").write_text(json.dumps(
-                [{"speakers": {"Айжан Оспанова": 3, "Арман Касенов": 2}}], ensure_ascii=False), encoding="utf-8")
+            (root / "data" / "import" / "_parsed.json").write_text(json.dumps(       # «мама Санжара»: Санжар тоже занят
+                [{"speakers": {"Айжан Оспанова": 3, "Арман Касенов": 2, "Гульмира мама Санжара": 2}}],
+                ensure_ascii=False), encoding="utf-8")
             imp.ROOT, imp.PARSED = root, root / "data" / "import" / "_parsed.json"
             base = {"profile": {}, "managers": [{"id": "m1", "name": "Айжан Оспанова"}], "calls": [], "chats": [], "leads": []}
             out = imp.top_up(base, 40)
         finally:
             shutil.rmtree(root, ignore_errors=True)
-        real = {"айжан", "оспанова", "арман", "касенов"}
+        total = len(out["calls"]) + len(out["chats"])
+        self.assertTrue(34 <= total <= 40, total)                 # до 40, недобор меньше одной сделки
+        ids = {l["id"] for l in out["leads"]}
+        self.assertTrue(all(x["lead_id"] in ids for x in out["calls"] + out["chats"]))
+        real = {"айжан", "оспанова", "арман", "касенов", "санжар"}
         syn = [m["name"] for m in out["managers"] if m.get("synthetic")] + \
               [l.get("contact", "") for l in out["leads"] if l.get("synthetic")]
         self.assertTrue(syn)
