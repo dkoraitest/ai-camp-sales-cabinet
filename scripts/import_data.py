@@ -814,7 +814,7 @@ def cmd_scan(_):
     leads = dict(old.get("leads") or {})
     for m in conv_map.values():
         if not m["exclude"]:
-            leads.setdefault(m["lead"], {"result": None, "value_kzt": None})
+            leads.setdefault(m["lead"], {"result": None, "value_kzt": None, "owner": None})
     stages = [s["id"] for s in (P or {}).get("funnel", [])]
     mapping = {
         "_как_заполнять": (
@@ -825,7 +825,8 @@ def cmd_scan(_):
             "lead — компания или клиент: одинаковое имя склеивает разговоры в одну сделку. "
             "stage — id этапа из _этапы или null (по порядку). date — поправьте, если в файле не было даты. "
             "exclude: true — разговор не про продажи (личный чат, Избранное). "
-            "leads — итог сделки: result won/lost/null и value_kzt."),
+            "leads — итог сделки: result won/lost/null и value_kzt; owner — id ответственного, "
+            "если он не тот, кто говорил с клиентом последним."),
         "_этапы": {s["id"]: s["label"] for s in (P or {}).get("funnel", [])},
         "managers": managers, "conversations": conv_map, "leads": leads}
     MAPPING.write_text(json.dumps(mapping, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -874,6 +875,18 @@ def cmd_scan(_):
         whys = sorted({conv_map[k].get("lead_why", "") for k in ks} - {""})
         print(f"  {lead} — разговоров {len(ks)}" + (f" ({'; '.join(whys)})" if whys else ""))
     live = {m["lead"] for m in conv_map.values() if not m["exclude"]}
+    handed = []
+    for lead in sorted(live):
+        seq = [next((r for r in m["speakers"].values() if r != "client"), None)
+               for m in sorted((m for m in conv_map.values() if m["lead"] == lead and not m["exclude"]),
+                               key=lambda m: m["date"])]
+        seq = [managers.get(x, x) for x in dict.fromkeys(x for x in seq if x and x != "m?")]
+        if len(seq) > 1:
+            handed.append(f"  {lead}: {' → '.join(seq)}")
+    if handed:
+        print("Сделку вели разные менеджеры — ответственным станет тот, кто говорил последним. "
+              "Если это не так, впишите его id в owner в leads:")
+        print("\n".join(handed))
     hints = {a: [b for b in bs if b in live] for a, bs in hints.items() if a in live}
     if any(hints.values()):
         print("Похожие названия без общего клиента — одна компания или разные, решите по preview:")
@@ -978,6 +991,8 @@ def cmd_build(a):
     for lead, v in (mp.get("leads") or {}).items():
         if (v or {}).get("result") not in (None, "", "won", "lost"):
             problems.append(f"сделка «{lead}»: result — won, lost или null")
+        if (v or {}).get("owner") and v["owner"] not in managers:
+            problems.append(f"сделка «{lead}»: owner {v['owner']} нет в managers")
     if problems:
         print("Сопоставление не готово, база не собрана:")
         for p in problems[:30]:
@@ -991,12 +1006,12 @@ def cmd_build(a):
     calls, chats, leads = [], [], []
     for li, (lead_name, items) in enumerate(sorted(by_lead.items()), 1):
         items.sort(key=lambda x: x[1].get("date") or x[0]["date"])
-        lid, owners = f"l{li:03d}", Counter()
+        lid, owners = f"l{li:03d}", []
         for n, (c, m) in enumerate(items):
             roles = m["speakers"]
             stage = m.get("stage") or working[min(n, len(working) - 1)]
             mid = next((roles[t["speaker"]] for t in c["turns"] if roles.get(t["speaker"], "client") != "client"), None)
-            owners[mid] += 1
+            owners.append(mid)
             date = m.get("date") or c["date"]
             turns = [{"who": "manager" if roles.get(t["speaker"], "client") != "client" else "client", "text": t["text"],
                       **({"ts": t["ts"]} if c["kind"] == "chat" and t.get("ts") else {})} for t in c["turns"]]
@@ -1015,7 +1030,8 @@ def cmd_build(a):
         res = info.get("result")
         last = items[-1][1].get("stage")
         stage = stages[-2] if res == "won" else stages[-1] if res == "lost" else last or working[min(len(items) - 1, len(working) - 1)]
-        owner = owners.most_common(1)[0][0]
+        # ответственный — кто ведёт сделку сейчас: после передачи это новый менеджер
+        owner = info.get("owner") or next((x for x in reversed(owners) if x), None)
         leads.append({"id": lid, "company": lead_name, "contact": lead_name if b2c else "", "source": "импорт",
                       "created": min((m.get("date") or c["date"]) for c, m in items)[:10], "stage": stage,
                       "value_kzt": info.get("value_kzt") or 0, "next_step": None, "owner": owner, "manager_id": owner})

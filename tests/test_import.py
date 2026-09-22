@@ -296,6 +296,17 @@ class RoundThree(ImportTest):
     def test_handover_client_stays_client(self):
         self.assertEqual(self.conv("2026-09-25_звонок_Нур_Фарм_передача.txt")["speakers"]["Данияр"], "client")
         self.assertEqual(self.conv("2026-09-25_звонок_Нур_Фарм_передача.txt")["lead"], "Нур Фарм")
+        self.assertIn("Нур Фарм: Асель Ким → Марат Садыков", self.out.getvalue())
+
+    def test_handover_owner_is_the_new_manager(self):
+        out, stdout = io.StringIO(), sys.stdout; sys.stdout = out
+        try:
+            imp.cmd_build(type("A", (), {"top_up": 0})())
+        finally:
+            sys.stdout = stdout
+        d = json.loads((imp.OWN / "dataset.json").read_text(encoding="utf-8"))
+        lead = next(l for l in d["leads"] if l["company"] == "Нур Фарм")
+        self.assertEqual(lead["owner"], self.mid("Марат Садыков"))
 
     def test_similar_company_is_not_merged(self):
         self.assertEqual(self.conv("2026-09-24_звонок_Береке_Шымкент.txt")["lead"], "Береке Шымкент")
