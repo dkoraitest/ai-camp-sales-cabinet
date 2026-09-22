@@ -81,17 +81,22 @@ function renderMyCalls(){
     return v.length ? v.reduce((a,b) => a+b, 0) / v.length : null };
   const keys = (mine[0].evaluate || []).map(e => ({id: e.id, name: e.name}));
   const tot = arr => arr.reduce((a,i) => a + i.total, 0) / arr.length;
-  const my = tot(mine), team = tot(items);
-  const ranks = DataSource.managers().map(m => { const x = items.filter(i => byId[i.id] && byId[i.id].manager_id === m.id);
-    return {id: m.id, v: x.length ? tot(x) : -1} }).sort((a,b) => b.v - a.v);
+  // синтетические менеджеры догенерированы до рабочего объёма: своих людей сравниваем только со своими
+  const all = DataSource.managers(), self = all.find(m => m.id === id) || {};
+  const peers = all.filter(m => !!m.synthetic === !!self.synthetic), peerIds = new Set(peers.map(m => m.id));
+  const teamItems = items.filter(i => byId[i.id] && peerIds.has(byId[i.id].manager_id));
+  const my = tot(mine), team = tot(teamItems);
+  const ranks = peers.map(m => { const x = items.filter(i => byId[i.id] && byId[i.id].manager_id === m.id);
+    return {id: m.id, v: x.length ? tot(x) : -1} }).filter(r => r.v >= 0).sort((a,b) => b.v - a.v);
+  const scope = peers.length === all.length ? 'все разговоры отдела' : self.synthetic ? 'среди синтетических менеджеров' : 'ваши люди, без синтетики';
   let html = '<div class="grid" style="margin-bottom:14px">'+
     kpi('Мой средний балл', my.toFixed(1), 'по '+mine.length+' разговорам')+
-    kpi('Средний по команде', team.toFixed(1), 'все разговоры отдела')+
+    kpi('Средний по команде', team.toFixed(1), scope)+
     kpi('Место в команде', (ranks.findIndex(r => r.id === id) + 1)+' из '+ranks.length, 'по среднему баллу')+'</div>';
   html += '<h2>Семь показателей: я и команда</h2><p class="scope">Полоса — ваш средний, риска — средний по отделу. Смотрите не на самую короткую полосу, а на самый большой разрыв с командой: он и есть фокус недели.</p><div class="card">'+
-    keys.map(k => { const a = avgOf(mine, k.id), b = avgOf(items, k.id); if(a == null) return '';
+    keys.map(k => { const a = avgOf(mine, k.id), b = avgOf(teamItems, k.id); if(a == null) return '';
       // показатель, одинаковый у всей команды, ничего не различает: так бывает на синтетике
-      const per = DataSource.managers().map(m => avgOf(items.filter(i => byId[i.id] && byId[i.id].manager_id === m.id), k.id)).filter(v => v != null);
+      const per = peers.map(m => avgOf(items.filter(i => byId[i.id] && byId[i.id].manager_id === m.id), k.id)).filter(v => v != null);
       const flat = per.length > 1 && Math.max(...per) - Math.min(...per) < 0.3;
       if(flat) return '<div class="skill"><div class="lbl"><span>'+esc(k.name)+'</span><span class="muted">'+a.toFixed(1)+
         ' · у всей команды одинаково, на этой базе не различает</span></div><div class="vs"><i style="width:'+Math.round(a*10)+'%;background:var(--line)"></i></div></div>';
