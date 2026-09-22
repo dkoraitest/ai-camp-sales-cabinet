@@ -44,6 +44,47 @@ FILES = {
     # md с жирными метками и датой в заголовке
     "транскрипт_Нур_Фарм.md": "# Созвон с Нур Фарм, 2026-09-14\n\n**Асель Ким:** Данияр, добрый день! Qazaq Pack на связи.\n"
                               "**Данияр:** Добрый.\n**Асель Ким:** Сколько рулонов в месяц?\n**Данияр:** Сорок.\n",
+    # три участника, один сказал одну реплику
+    "2026-09-23_звонок_Береке.txt": "Айгуль Жумабаева: Серик, добрый день! Qazaq Pack, удобно?\n"
+                                    "Серик Жаксылыков: Да, со мной финдиректор.\nГульнара Омарова: Здравствуйте, нас волнует отсрочка.\n"
+                                    "Айгуль Жумабаева: Сколько паллет в месяц?\nСерик Жаксылыков: Около ста.\n",
+    # сводка по клиентам: метки повторяются и чередуются, но это не разговор
+    "сводка.txt": "Статус: Береке ждёт расчёт\nПримечание: отсрочка 30 дней\nСтатус: Шыгыс — отгрузка 25.09\n"
+                  "Примечание: счёт на предоплату\n",
+    # живые сообщения со словами, похожими на служебные
+    "Чат WhatsApp с Серик Береке.txt": "23.09.26, 09:10 - Серик Жаксылыков: Айгуль, вижу пропущенный звонок от вас, наберу\n"
+                                        "23.09.26, 09:11 - Айгуль Жумабаева: Хорошо, расчёт пришлю сюда.\n"
+                                        "23.09.26, 09:12 - Айгуль Жумабаева: Пропущенный аудиозвонок\n"
+                                        "23.09.26, 09:15 - Серик Жаксылыков: Контакт изменён у бухгалтера, пишите на новый номер\n",
+    # филиал с похожим названием — не та же сделка
+    "2026-09-24_звонок_Береке_Шымкент.txt": "Марат Садыков: Добрый день, это Марат, Qazaq Pack.\nКлиент: Мы отдельная компания.\n"
+                                            "Марат Садыков: Какие объёмы у вас?\nКлиент: Полтонны в месяц.\n",
+    # передача сделки: клиент говорит уже с другим менеджером
+    "2026-09-25_звонок_Нур_Фарм_передача.txt": "Марат Садыков: Данияр, добрый день! Это Марат, Qazaq Pack, теперь я веду вашу сделку.\n"
+                                               "Данияр: Добрый. Договор вы получили?\nМарат Садыков: Да, вернём с правками. Кто подписывает?\n"
+                                               "Данияр: Генеральный.\n",
+    # встреча с метками по одному имени: Марат — один на все записи, Асель — и менеджер, и клиентка
+    "2026-09-20_встреча_Тенгри_Фуд.txt": "[00:00:05] Марат: Доброе утро! Как и обещал, принёс расчёт по списаниям.\n"
+                                         "[00:00:21] Асель: Да, Ержан Болатович подключится через пару минут.\n"
+                                         "[00:01:02] Ержан Болатович: Здравствуйте. Давайте сразу к цифрам.\n"
+                                         "[00:01:10] Марат: Одно списание перекрывает разницу в цене за полгода.\n"
+                                         "[00:02:30] Ержан Болатович: Хорошо, готовьте договор.\n"
+                                         "[00:02:50] Гульжан Сапарова: Договор посмотрю до пятницы.\n",
+    # в имени файла роль, а не компания; клиент назван полнее, чем в имени файла
+    "2026-09-16_звонок_Мега_с_РОП.txt": "Айгуль Жумабаева: Ерлан, добрый день! Сколько плёнки уходит в месяц?\n"
+                                        "Ерлан Мега Склад: Две тонны.\n"
+                                        "Айгуль Жумабаева: Давайте я подключу руководителя, он согласует отсрочку.\n"
+                                        "Нуржан РОП: Ерлан, добрый день, отсрочку 30 дней согласуем со второй поставки.\n"
+                                        "Ерлан Мега Склад: Хорошо, договорились.\n",
+    # «Мега» — начало двух названий: какого, скрипт не решает
+    "2026-09-24_звонок_Мега_Склад_Астана.txt": "Марат Садыков: Добрый день, это Марат, Qazaq Pack.\n"
+                                               "Клиент: Мы отдельная компания, в Астане.\nМарат Садыков: Какие объёмы?\n"
+                                               "Клиент: Полтонны в месяц.\n",
+    "2026-09-26_звонок_Мега.txt": "Айгуль Жумабаева: Добрый день, Qazaq Pack. Какой у вас склад?\nКлиент: Новый, пока без вывески.\n"
+                                  "Айгуль Жумабаева: Сколько паллет в месяц?\nКлиент: Двадцать.\n",
+    # одно слово, с которого начинается ровно одно название
+    "короткий_звонок_Каспий.txt": "Менеджер: Руслан, добрый день, это Асель из Qazaq Pack, по КП звоню.\n"
+                                  "Клиент: Асель, мы уже взяли у другого поставщика, извините. Всего доброго.\n",
     # Teams VTT с GUID
     "Teams_Каспий_Трейд_2026-09-18.vtt": "WEBVTT\n\n6c0b7c2e-4a1d/12-0\n00:00:03.120 --> 00:00:06.480\n"
                                          "<v Асель Ким>Руслан, добрый день!</v>\n\n6c0b7c2e-4a1d/13-0\n"
@@ -84,6 +125,13 @@ class ImportTest(unittest.TestCase):
             z.writestr("_chat.txt", "[20.09.2026, 10:00:00] Асель Нурланова: Марат, адрес склада прислала.\n"
                                     "[20.09.2026, 10:05:00] Марат Садыков: Спасибо, будем в среду.\n")
         (src / "WhatsApp Chat - Асель Нурланова.zip").write_bytes(b.getvalue())
+        # тот же чат ещё и распакован рядом
+        (src / "_chat.txt").write_text("[20.09.2026, 10:00:00] Асель Нурланова: Марат, адрес склада прислала.\n"
+                                       "[20.09.2026, 10:05:00] Марат Садыков: Спасибо, будем в среду.\n", encoding="utf-8")
+        # docx Teams: имя и время через табуляцию, реплика с переносом строки внутри
+        (src / "Teams_таб_Береке.docx").write_bytes(docx([
+            "Айгуль Жумабаева</w:t><w:tab/><w:t>0:03", "Коллеги, начнём?</w:t><w:br/><w:t>Плюс вопрос по срокам.",
+            "Серик Жаксылыков</w:t><w:tab/><w:t>0:09", "Да, начинаем."]))
         # полный архив Telegram в папке экспорта: рабочий чат, «Мама», «Избранное»
         (src / "ChatExport_2026-09-20").mkdir()
         (src / "ChatExport_2026-09-20" / "result.json").write_text(json.dumps({"chats": {"list": [
@@ -93,10 +141,30 @@ class ImportTest(unittest.TestCase):
                 {"type": "message", "date": "2026-09-20T09:01:00", "from": "Асель Ким", "text": "В 8"}]},
             {"name": "Руслан Каспий Трейд", "type": "personal_chat", "messages": [
                 {"type": "message", "date": "2026-09-19T14:00:00", "from": "Асель Ким", "text": "Руслан, отправляю КП, как обсуждали."},
-                {"type": "message", "date": "2026-09-19T14:10:00", "from": "Руслан Ибраев", "text": "Получил. Дорого."}]}]}},
+                {"type": "message", "date": "2026-09-19T14:10:00", "from": "Руслан Ибраев", "text": "Получил. Дорого."}]},
+            {"id": 7, "name": "Руслан", "type": "personal_chat", "messages": [
+                {"type": "message", "date": "2026-09-20T18:00:00", "from": "Руслан", "text": "Асель, в субботу на футбол идёшь?"},
+                {"type": "message", "date": "2026-09-20T18:05:00", "from": "Асель Ким", "text": "Иду!"}]},
+            {"id": 8, "name": "Руслан", "type": "personal_chat", "messages": [
+                {"type": "message", "date": "2026-09-21T10:00:00", "from": "Асель Ким", "text": "Руслан, добрый день! Каспий Трейд, по плёнке пришлю расчёт."},
+                {"type": "message", "date": "2026-09-21T10:05:00", "from": "Руслан", "text": "Спасибо, посмотрим цену."}]},
+            # рабочие чаты без слов про деньги: сделка в названии чата и клиент сделки из других записей
+            {"id": 9, "name": "Жанна Алтын Групп", "type": "personal_chat", "messages": [
+                {"type": "message", "date": "2026-09-23T12:00:00", "from": "Айгуль Жумабаева", "text": "Жанна, добрый день! Удобно созвониться завтра в 11?"},
+                {"type": "message", "date": "2026-09-23T12:05:00", "from": "Жанна Сапарова", "text": "Да, давайте, наберите."}]},
+            {"id": 10, "name": "Бауыржан", "type": "personal_chat", "messages": [
+                {"type": "message", "date": "2026-09-23T19:00:00", "from": "Марат Садыков", "text": "Бауыржан, добрый вечер! Завтра в силе?"},
+                {"type": "message", "date": "2026-09-23T19:05:00", "from": "Бауыржан Тлеуов", "text": "Да, ждём."}]}]}},
             ensure_ascii=False), encoding="utf-8")
-        for name in ("ROOT", "SRC", "PARSED", "MAPPING", "DONE", "OWN", "CAB"):
-            pass
+        (root / "blocks").mkdir(); (root / "scripts").mkdir()
+        shutil.copy2(REPO / "blocks" / "config.template.js", root / "blocks" / "config.template.js")
+        shutil.copy2(REPO / "scripts" / "build_data.py", root / "scripts" / "build_data.py")
+        # после «включи демо»: эталонный конфиг демо-компании и привязки Telegram
+        (root / "cabinet" / "config.js").write_text('window.CABINET_CONFIG = { profile: "b2b", company: "DataFlow Solutions", '
+                                                    'focus_stage: "discovery", funnel: [] };', encoding="utf-8")
+        (root / "active" / "telegram.json").write_text('{"m1": 111}', encoding="utf-8")
+        (root / "cabinet" / "telegram.js").write_text('window.CABINET_TELEGRAM = {"bot": "demo_bot", "links": {"m1": true}};',
+                                                      encoding="utf-8")
         imp.ROOT, imp.SRC = root, src
         imp.PARSED, imp.MAPPING, imp.DONE = src / "_parsed.json", src / "_mapping.json", src / "_done"
         imp.OWN, imp.CAB = root / "data" / "own", root / "cabinet"
@@ -194,6 +262,110 @@ class ImportTest(unittest.TestCase):
         d = json.loads((imp.OWN / "dataset.json").read_text(encoding="utf-8"))
         self.assertTrue(all(x.get("imported") for x in d["calls"] + d["chats"]))
         self.assertNotIn("Мама", {l["company"] for l in d["leads"]})
+        cfg = (imp.CAB / "config.js").read_text(encoding="utf-8")
+        self.assertIn('"Qazaq Pack"', cfg); self.assertIn('profile: "own"', cfg)
+        self.assertFalse((imp.ROOT / "active" / "telegram.json").exists())
+        self.assertIn('"links": {}', (imp.CAB / "telegram.js").read_text(encoding="utf-8"))
+
+
+class RoundThree(ImportTest):
+    """Находки третьего раунда: те же примеры, другие проверки."""
+
+    def test_single_utterance_participant(self):
+        self.assertIn("Гульнара Омарова", self.parsed["2026-09-23_звонок_Береке.txt"]["speakers"])
+        # одна короткая фраза без вопроса и обращения, но подписана именем и фамилией
+        self.assertIn("Гульжан Сапарова", self.parsed["2026-09-20_встреча_Тенгри_Фуд.txt"]["speakers"])
+
+    def test_notes_with_repeating_labels_are_not_dialogue(self):
+        self.assertNotIn("сводка.txt", self.mp["conversations"])
+
+    def test_live_messages_are_kept(self):
+        text = [t["text"] for t in self.parsed["Чат WhatsApp с Серик Береке.txt"]["turns"]]
+        self.assertTrue(any("пропущенный звонок от вас" in x for x in text))
+        self.assertTrue(any("Контакт изменён у бухгалтера" in x for x in text))
+        self.assertNotIn("Пропущенный аудиозвонок", text)
+
+    def test_same_named_chats_are_different(self):
+        keys = [k for k in self.mp["conversations"] if k.startswith("ChatExport_2026-09-20/result.json#")]
+        self.assertIn("ChatExport_2026-09-20/result.json#7", keys)
+        self.assertIn("ChatExport_2026-09-20/result.json#8", keys)
+        self.assertTrue(self.conv("ChatExport_2026-09-20/result.json#7")["exclude"])
+        self.assertFalse(self.conv("ChatExport_2026-09-20/result.json#8")["exclude"])
+        self.assertEqual(self.conv("ChatExport_2026-09-20/result.json#8")["lead"], "Каспий Трейд")
+
+    def test_handover_client_stays_client(self):
+        self.assertEqual(self.conv("2026-09-25_звонок_Нур_Фарм_передача.txt")["speakers"]["Данияр"], "client")
+        self.assertEqual(self.conv("2026-09-25_звонок_Нур_Фарм_передача.txt")["lead"], "Нур Фарм")
+
+    def test_similar_company_is_not_merged(self):
+        self.assertEqual(self.conv("2026-09-24_звонок_Береке_Шымкент.txt")["lead"], "Береке Шымкент")
+        # «Береке» — начало «Береке Шымкент», но общего клиента нет: подсказка вместо склейки
+        self.assertEqual(self.conv("2026-09-23_звонок_Береке.txt")["lead"], "Береке")
+        self.assertEqual(self.conv("Чат WhatsApp с Серик Береке.txt")["lead"], "Береке")   # Серик — клиент Береке
+        self.assertIn("«Береке» — «Береке Шымкент»?", self.out.getvalue())
+
+    def test_docx_tab_layout_and_breaks(self):
+        c = self.parsed["Teams_таб_Береке.docx"]
+        self.assertEqual(set(c["speakers"]), {"Айгуль Жумабаева", "Серик Жаксылыков"})
+        self.assertIn("Плюс", c["turns"][0]["text"])
+        self.assertNotIn("начнём?Плюс", c["turns"][0]["text"])
+
+    def test_first_name_label_is_manager_only_if_unique(self):
+        c = self.conv("2026-09-20_встреча_Тенгри_Фуд.txt")
+        self.assertEqual(c["speakers"]["Марат"], self.mid("Марат Садыков"))
+        self.assertEqual(c["speakers"]["Асель"], "client")        # есть и Асель Ким, и Асель Нурланова
+        self.assertEqual(c["speakers"]["Ержан Болатович"], "client")
+        self.assertEqual(c["lead"], "Тенгри Фуд")
+        self.assertIn("имени без фамилии", self.out.getvalue())
+
+    def test_role_word_is_not_a_company(self):
+        c = self.conv("2026-09-16_звонок_Мега_с_РОП.txt")
+        self.assertEqual(c["lead"], "Мега Склад")
+        self.assertEqual(c["speakers"]["Ерлан Мега Склад"], "client")
+        self.assertNotEqual(c["speakers"]["Нуржан РОП"], "client")
+
+    def test_prefix_merge_only_when_one_candidate(self):
+        self.assertEqual(self.conv("2026-09-26_звонок_Мега.txt")["lead"], "Мега")
+        self.assertEqual(self.conv("2026-09-24_звонок_Мега_Склад_Астана.txt")["lead"], "Мега Склад Астана")
+        self.assertEqual(self.conv("короткий_звонок_Каспий.txt")["lead"], "Каспий Трейд")
+        self.assertEqual(self.conv("звонки.csv")["lead"], "Мега Склад")    # «Мега» внутри «Мега Склад» не мешает
+
+    def test_work_chat_without_money_words(self):
+        for key in ("ChatExport_2026-09-20/result.json#9", "ChatExport_2026-09-20/result.json#10"):
+            self.assertFalse(self.conv(key)["exclude"], key)
+            self.assertEqual(self.conv(key)["lead"], "Алтын Групп", key)
+        self.assertTrue(self.conv("ChatExport_2026-09-20/result.json#7")["exclude"])
+        self.assertTrue(self.conv("ChatExport_2026-09-20/result.json#Мама")["exclude"])
+
+    def test_duplicate_chat_taken_once(self):
+        both = [k for k in ("WhatsApp Chat - Асель Нурланова.zip", "_chat.txt") if k in self.mp["conversations"]]
+        self.assertEqual(len(both), 1)
+
+
+class TopUp(unittest.TestCase):
+    """Догенерация не берёт ни имён, ни фамилий живых людей: ни из записей, ни из профиля."""
+
+    def test_synthetic_people_are_not_real(self):
+        root = pathlib.Path(tempfile.mkdtemp())
+        try:
+            (root / "active").mkdir(); (root / "data" / "import").mkdir(parents=True); (root / "scripts").mkdir()
+            shutil.copy2(REPO / "scripts" / "generate_participant.py", root / "scripts" / "generate_participant.py")
+            P = json.loads((REPO / "scripts" / "profile.example.json").read_text(encoding="utf-8"))
+            P["managers"][0]["name"] = "Айжан Оспанова"          # в профиле настоящая команда
+            (root / "active" / "profile.json").write_text(json.dumps(P, ensure_ascii=False), encoding="utf-8")
+            (root / "data" / "import" / "_parsed.json").write_text(json.dumps(
+                [{"speakers": {"Айжан Оспанова": 3, "Арман Касенов": 2}}], ensure_ascii=False), encoding="utf-8")
+            imp.ROOT, imp.PARSED = root, root / "data" / "import" / "_parsed.json"
+            base = {"profile": {}, "managers": [{"id": "m1", "name": "Айжан Оспанова"}], "calls": [], "chats": [], "leads": []}
+            out = imp.top_up(base, 40)
+        finally:
+            shutil.rmtree(root, ignore_errors=True)
+        real = {"айжан", "оспанова", "арман", "касенов"}
+        syn = [m["name"] for m in out["managers"] if m.get("synthetic")] + \
+              [l.get("contact", "") for l in out["leads"] if l.get("synthetic")]
+        self.assertTrue(syn)
+        for name in syn:
+            self.assertFalse(set(imp.norm(name.replace("· синтетика", "")).split()) & {imp.norm(w) for w in real}, name)
 
 
 if __name__ == "__main__":
