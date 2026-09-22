@@ -389,6 +389,10 @@ class RoundFour(unittest.TestCase):
             "9/18/26, 9:05 AM - Samat Zhaksylykov: Madiyar, good morning! Sending the program.\n"
             "9/18/26, 11:40 AM - Madiyar Kurmanov: Thanks. Our director wants a trial first\n"
             "9/18/26, 11:42 AM - Samat Zhaksylykov: Sure, a free trial on Tuesday. Does that work?\n",
+        # второй чат того же менеджера латиницей, с другим клиентом: он «ведёт разных клиентов» и в латинице
+        "WhatsApp Chat with Alfa Group.txt":
+            "9/19/26, 10:00 AM - Samat Zhaksylykov: Good morning, Aigerim! Sending the quote for 12 people.\n"
+            "9/19/26, 10:05 AM - Aigerim Sadykova: Thanks, we will review it this week.\n",
         # рабочий чат с контактом одним именем
         "WhatsApp Chat - Серик.txt": "19.09.26, 10:00 - Самат Жаксылыков: Серик Маратович, договор отправил на почту.\n"
                                      "19.09.26, 10:30 - Серик: Договор подписан, первый платёж отправили.\n"
@@ -462,6 +466,16 @@ class RoundFour(unittest.TestCase):
     def test_hint_one_name_chat_to_known_client(self):
         self.assertEqual(self.conv("WhatsApp Chat - Серик.txt")["lead"], "Серик")
         self.assertIn("«Серик» — «Каратау Агро» (клиент Серик Балтабаев)?", self.out.getvalue())
+
+    def test_latin_name_is_one_manager(self):
+        same = [k for k, v in self.mp["managers"].items() if imp.norm(v) == imp.norm("Самат Жаксылыков")]
+        self.assertEqual(len(same), 1, self.mp["managers"])
+        self.assertEqual(self.mp["managers"][same[0]], "Самат Жаксылыков")     # как пишут в компании
+        self.assertEqual(self.conv("WhatsApp Chat with Alfa Group.txt")["speakers"]["Samat Zhaksylykov"], same[0])
+        self.assertEqual(self.conv("2026-09-12_встреча_Сункар_Медиа.txt")["speakers"]["Самат Жаксылыков"], same[0])
+
+    def test_new_manager_id_does_not_take_a_used_one(self):
+        self.assertNotIn(imp.new_id({"m1": "Айгуль", "m3": "Марат"}), {"m1", "m3"})
 
     def test_longer_company_name_is_not_a_mention(self):
         # «Арман Строй Сервис» из Караганды — не «Арман Строй» из Шымкента

@@ -451,6 +451,16 @@ def mentions(name, text):
     return False
 
 
+def same_manager(managers, name):
+    """id менеджера с этим именем в любой письменности: «Samat Zhaksylykov» — это «Самат Жаксылыков»."""
+    return next((k for k, v in managers.items() if norm(v) and norm(v) == norm(name)), None)
+
+
+def new_id(managers):
+    """Свободный id: после правки руками бывают дыры (m1, m3), и m3 занимать нельзя."""
+    return next(f"m{i}" for i in itertools.count(1) if f"m{i}" not in managers)
+
+
 def strong_managers(convs):
     """Менеджер ведёт разных клиентов: он есть хотя бы в двух разговорах с
     непересекающимися собеседниками. Но клиент, у которого сделку передали от
@@ -538,15 +548,15 @@ def guess_roles(c, managers, words, people=None, notes=None):
         if len(free) == 2 and score[free[0]] > 0 and score[free[0]] > score[free[1]]:
             seller.append(free[0])
         # признаки не различают стороны — роли не выдумываем: build попросит указать менеджера
-    first_names = {v.split()[0].lower(): k for k, v in managers.items()}
-    first_names.update({norm(v.split()[0]): k for k, v in managers.items()})
+    first_names = {v.split()[0].lower(): k for k, v in managers.items() if v.split()}
+    first_names.update({norm(v.split()[0]): k for k, v in managers.items() if v.split()})
     for sp in seller:
         # «Нуржан РОП», «Менеджер Айгуль»: имя без слова-роли
         base = re.sub(MANAGER_HINT, "", sp, flags=re.I).strip(" -:()·,")
         if base and not GENERIC.match(sp.lower()) and sp != "—":
             known = by_name.get(sp) or next((k for k, v in managers.items()
-                                             if base.lower() in (v.lower(), v.split()[0].lower())), None)
-            mid = known or f"m{len(managers) + 1}"
+                                             if norm(base) in (norm(v), (norm(v).split() or [""])[0])), None)
+            mid = known or new_id(managers)
             managers.setdefault(mid, sp); by_name.setdefault(sp, mid)
             roles[sp] = mid
             continue
@@ -826,8 +836,11 @@ def cmd_scan(_):
     old = json.loads(MAPPING.read_text(encoding="utf-8")) if MAPPING.exists() else {}
     managers = dict(old.get("managers") or {})              # id → имя, заполненное не теряется
     for sp in strong_managers(convs):
-        if sp not in managers.values():
-            managers[f"m{len(managers) + 1}"] = sp
+        mid = same_manager(managers, sp)
+        if mid is None:
+            managers[new_id(managers)] = sp
+        elif re.search(r"[а-яё]", sp.lower()) and not re.search(r"[а-яё]", managers[mid].lower()):
+            managers[mid] = sp                     # показываем так, как имя пишут в компании
     oldc = old.get("conversations") or {}
     # Первый проход только находит менеджеров: иначе разговор, разобранный раньше,
     # не узнал бы менеджера, который назван по имени лишь в файле ниже по списку.
